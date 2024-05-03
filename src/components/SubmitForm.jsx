@@ -2,7 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { withForwardedRef } from '../utils/withRef';
+import { withForwardedRef } from '../withRef';
 
 
 

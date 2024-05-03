@@ -5,7 +5,7 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
-var _withRef = require("../utils/withRef");
+var _withRef = require("../withRef");
 var _Control = _interopRequireDefault(require("./Control"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _TextInput;
