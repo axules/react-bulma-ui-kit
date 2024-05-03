@@ -11,10 +11,8 @@ function Button(props) {
   } = props;
   const Tag = as;
 
-  console.log('LAAAAAAAAAAAAAAAAA', Tag);
-
   return (
-    <button
+    <Tag
       ref={forwardedRef}
       type="button"
       {...restProps}
@@ -30,7 +28,7 @@ function Button(props) {
       )}
     >
       {children}
-    </button>
+    </Tag>
   );
 }
 
@@ -55,4 +53,5 @@ Button.defaultProps = {
 };
 
 export default Button
-  |> memo;
+  |> memo
+  |> withForwardedRef;

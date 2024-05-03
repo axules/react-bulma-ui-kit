@@ -7,7 +7,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../utils/withRef");
 var _jsxRuntime = require("react/jsx-runtime");
-var _Button;
+var _ref, _Button;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Button(props) {
   const {
@@ -24,8 +24,7 @@ function Button(props) {
     ...restProps
   } = props;
   const Tag = as;
-  console.log('LAAAAAAAAAAAAAAAAA', Tag);
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Tag, {
     ref: forwardedRef,
     type: "button",
     ...restProps,
@@ -37,5 +36,5 @@ function Button(props) {
 Button.defaultProps = {
   as: 'button'
 };
-var _default = exports.default = (_Button = Button, /*#__PURE__*/(0, _react.memo)(_Button));
+var _default = exports.default = (_ref = (_Button = Button, /*#__PURE__*/(0, _react.memo)(_Button)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=Button.js.map
