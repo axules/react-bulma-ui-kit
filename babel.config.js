@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    'babel-plugin-transform-react-remove-prop-types',
     '@babel/plugin-proposal-export-default-from',
     ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
   ],
@@ -13,7 +14,6 @@ module.exports = {
     }],
     ['@babel/preset-react', {
       runtime: 'automatic',
-      development: process.env.NODE_ENV === 'development',
     }]
   ]
 }

@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
+import classNames from 'classnames';
 
-import { withForwardedRef } from './withRef';
+import { withForwardedRef } from '../utils/withRef';
 
 
 function Button(props) {
@@ -11,13 +11,15 @@ function Button(props) {
   } = props;
   const Tag = as;
 
+  console.log('LAAAAAAAAAAAAAAAAA', Tag);
+
   return (
-    <Tag
+    <button
       ref={forwardedRef}
       type="button"
       {...restProps}
       disabled={disabled || isLoading}
-      className={cn(
+      className={classNames(
         'button',
         isLoading && 'is-loading',
         small && 'is-small',
@@ -28,7 +30,7 @@ function Button(props) {
       )}
     >
       {children}
-    </Tag>
+    </button>
   );
 }
 
@@ -53,5 +55,4 @@ Button.defaultProps = {
 };
 
 export default Button
-  |> memo
-  |> withForwardedRef;
+  |> memo;

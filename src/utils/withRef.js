@@ -1,13 +1,11 @@
 import { forwardRef } from 'react';
 
-import { getDisplayName } from '../services/utils';
-
 
 export function withForwardedRef(WrappedComponent) {
   return withRef('forwardedRef')(WrappedComponent);
 }
 
-export function withRef(propName) {
+function withRef(propName) {
   return function (WrappedComponent) {
     const Wrapper = forwardRef((props, ref) => {
       if (ref && props[propName]) {
@@ -16,7 +14,7 @@ export function withRef(propName) {
       return <WrappedComponent {...props} {...{ [propName]: ref || props[propName] }} />;
     });
 
-    Wrapper.displayName = `WithRef(${getDisplayName(WrappedComponent)})`;
+    Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
     return Wrapper;
   };

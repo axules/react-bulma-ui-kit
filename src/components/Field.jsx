@@ -2,9 +2,10 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { withForwardedRef } from '../utils/withRef';
+
 import HelpText from './HelpText';
 import Label from './Label';
-import { withForwardedRef } from './withRef';
 
 
 function Field(props) {

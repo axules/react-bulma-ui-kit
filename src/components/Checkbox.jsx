@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { withForwardedRef } from './withRef';
+import { withForwardedRef } from '../utils/withRef';
 
 
 function Checkbox(props) {
