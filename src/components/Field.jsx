@@ -19,8 +19,10 @@ function Field(props) {
     hasAddons,
     errorText,
     helpText,
+    required,
     ...restProps
   } = props;
+
   const classes = [
     isGrouped && 'is-grouped',
     isGroupedMultiline && 'is-grouped is-grouped-multiline',
@@ -37,7 +39,7 @@ function Field(props) {
       {label && (
         isHorizontal
           ? <div className="field-label is-normal"><Label>{label}</Label></div>
-          : <Label>{label}</Label>
+          : <Label required={required}>{label}</Label>
       )}
 
       {isHorizontal ? <div className="field-body">{children}</div> : children}
@@ -58,6 +60,7 @@ Field.propTypes = {
   isGrouped: PropTypes.bool,
   isGroupedMultiline: PropTypes.bool,
   hasAddons: PropTypes.bool,
+  required: PropTypes.bool,
 };
 
 Field.defaultProps = {

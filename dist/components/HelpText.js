@@ -16,8 +16,8 @@ function HelpText(props) {
     success,
     danger
   } = props;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-    className: (0, _classnames.default)('help helpText', className, success && 'is-success' || danger && 'is-danger'),
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: (0, _classnames.default)('help', className, success && 'is-success' || danger && 'is-danger'),
     children: children
   });
 }

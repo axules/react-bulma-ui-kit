@@ -23,6 +23,7 @@ function TextInput(props) {
     info,
     link,
     primary,
+    small,
     medium,
     large,
     offAutocomplete,
@@ -31,7 +32,7 @@ function TextInput(props) {
     ...restProps
   } = props;
   const style = danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
-  const size = medium && 'is-medium' || large && 'is-large' || undefined;
+  const size = small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
   const inputRender = /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
     type: "text",
     ref: forwardedRef,

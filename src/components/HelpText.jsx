@@ -9,9 +9,9 @@ function HelpText(props) {
   const { children, className, success, danger } = props;
 
   return (
-    <p className={classNames('help helpText', className, success && 'is-success' || danger && 'is-danger')}>
+    <div className={classNames('help', className, success && 'is-success' || danger && 'is-danger')}>
       {children}
-    </p>
+    </div>
   );
 }
 

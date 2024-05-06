@@ -4,6 +4,11 @@ exports.__esModule = true;
 exports.withForwardedRef = withForwardedRef;
 var _react = require("react");
 var _jsxRuntime = require("react/jsx-runtime");
+/**
+ * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ * @param {React Component} WrappedComponent
+ * @returns
+ */
 function withForwardedRef(WrappedComponent) {
   return withRef('forwardedRef')(WrappedComponent);
 }

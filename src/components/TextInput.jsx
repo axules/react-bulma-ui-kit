@@ -21,6 +21,7 @@ function TextInput(props) {
     info,
     link,
     primary,
+    small,
     medium,
     large,
     offAutocomplete,
@@ -37,7 +38,8 @@ function TextInput(props) {
     || primary && 'is-primary'
     || undefined;
 
-  const size = medium && 'is-medium'
+  const size = small && 'is-small'
+    || medium && 'is-medium'
     || large && 'is-large'
     || undefined;
 
@@ -52,28 +54,27 @@ function TextInput(props) {
   );
 
   return leftIcon || rightIcon || asControl
-    ? <Control
-      className={classNames(leftIcon && 'has-icons-left', leftIcon && 'has-icons-right')}
-      isExpanded={isExpanded}
-    >
+    ? (
+      <Control
+        className={classNames(leftIcon && 'has-icons-left', leftIcon && 'has-icons-right')}
+        isExpanded={isExpanded}
+      >
 
-      {inputRender}
+        {inputRender}
 
-      {leftIcon
-        && (
+        {leftIcon && (
           <span className="icon is-left">
             {leftIcon}
           </span>
-        )
-      }
-      {rightIcon
-        && (
+        )}
+
+        {rightIcon && (
           <span className="icon is-right">
             {rightIcon}
           </span>
-        )
-      }
-    </Control>
+        )}
+      </Control>
+    )
     : inputRender;
 }
 
@@ -92,6 +93,8 @@ TextInput.propTypes = {
 
   asControl: PropTypes.bool,
   isExpanded: PropTypes.bool,
+
+  small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,
   offAutocomplete: PropTypes.bool,

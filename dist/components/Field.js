@@ -22,6 +22,7 @@ function Field(props) {
     hasAddons,
     errorText,
     helpText,
+    required,
     ...restProps
   } = props;
   const classes = [isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons'];
@@ -41,6 +42,7 @@ function Field(props) {
         children: label
       })
     }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_Label.default, {
+      required: required,
       children: label
     })), isHorizontal ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "field-body",
