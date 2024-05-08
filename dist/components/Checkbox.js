@@ -29,15 +29,14 @@ function Checkbox(props) {
     className: (0, _classnames.default)('checkbox', className),
     disabled: disabled,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      style: "margin-right:8px;",
       ...restProps,
       className: classNameInput,
       type: "checkbox",
       ref: inputRef,
       disabled: disabled,
       checked: checked
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-      children: [" ", children]
-    })]
+    }), children]
   }) : /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
     ...restProps,
     className: (0, _classnames.default)('checkbox', className, classNameInput),
