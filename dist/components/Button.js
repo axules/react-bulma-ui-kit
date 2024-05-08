@@ -11,7 +11,7 @@ var _ref, _Button;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Button(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'button',
     children,
     className,
     isLoading,
@@ -49,8 +49,5 @@ function Button(props) {
     children: children
   });
 }
-Button.defaultProps = {
-  as: 'button'
-};
 var _default = exports.default = (_ref = (_Button = Button, /*#__PURE__*/(0, _react.memo)(_Button)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=Button.js.map

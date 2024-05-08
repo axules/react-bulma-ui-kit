@@ -62,8 +62,5 @@ Title.propTypes = {
   subtitle: PropTypes.bool,
 };
 
-Title.defaultProps = {
-};
-
 export default Title
   |> memo;

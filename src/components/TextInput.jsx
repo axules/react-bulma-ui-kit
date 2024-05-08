@@ -99,9 +99,6 @@ TextInput.propTypes = {
   offAutocomplete: PropTypes.bool,
 };
 
-TextInput.defaultProps = {
-};
-
 export default TextInput
   |> memo
   |> withForwardedRef;

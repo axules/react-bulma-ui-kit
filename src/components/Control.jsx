@@ -7,7 +7,7 @@ import { withForwardedRef } from '../withRef';
 
 function Control(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'div',
     className,
     children,
     isExpanded,
@@ -29,10 +29,6 @@ Control.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   isExpanded: PropTypes.bool,
-};
-
-Control.defaultProps = {
-  as: 'div'
 };
 
 export default Control

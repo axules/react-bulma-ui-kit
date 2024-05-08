@@ -42,6 +42,5 @@ function Radio(props) {
     checked: checked
   });
 }
-Radio.defaultProps = {};
 var _default = exports.default = (_ref = (_Radio = Radio, /*#__PURE__*/(0, _react.memo)(_Radio)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=Radio.js.map

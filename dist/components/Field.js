@@ -50,6 +50,5 @@ function Field(props) {
     }) : children, help, errorHelp]
   });
 }
-Field.defaultProps = {};
 var _default = exports.default = (_ref = (_Field = Field, /*#__PURE__*/(0, _react.memo)(_Field)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=Field.js.map

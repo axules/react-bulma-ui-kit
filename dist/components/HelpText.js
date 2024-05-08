@@ -11,7 +11,7 @@ var _ref, _HelpText;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function HelpText(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'div',
     children,
     className,
     success,
@@ -25,8 +25,5 @@ function HelpText(props) {
     children: children
   });
 }
-HelpText.defaultProps = {
-  as: 'div'
-};
 var _default = exports.default = (_ref = (_HelpText = HelpText, /*#__PURE__*/(0, _react.memo)(_HelpText)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=HelpText.js.map

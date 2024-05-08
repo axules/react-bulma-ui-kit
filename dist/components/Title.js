@@ -32,6 +32,5 @@ function Title(props) {
     children: children
   });
 }
-Title.defaultProps = {};
 var _default = exports.default = (_Title = Title, /*#__PURE__*/(0, _react.memo)(_Title));
 //# sourceMappingURL=Title.js.map

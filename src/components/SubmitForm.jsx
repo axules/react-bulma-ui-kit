@@ -21,9 +21,6 @@ SubmitForm.propTypes = {
   forwardedRef: PropTypes.any,
 };
 
-SubmitForm.defaultProps = {
-};
-
 export default SubmitForm
   |> memo
   |> withForwardedRef;

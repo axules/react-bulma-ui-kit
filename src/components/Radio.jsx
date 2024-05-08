@@ -51,9 +51,6 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
 };
 
-Radio.defaultProps = {
-};
-
 export default Radio
   |> memo
   |> withForwardedRef;

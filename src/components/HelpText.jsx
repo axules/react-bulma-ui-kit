@@ -7,7 +7,7 @@ import { withForwardedRef } from '../withRef';
 
 function HelpText(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'div',
     children,
     className,
     success,
@@ -31,10 +31,6 @@ HelpText.propTypes = {
   className: PropTypes.string,
   success: PropTypes.bool,
   danger: PropTypes.bool,
-};
-
-HelpText.defaultProps = {
-  as: 'div'
 };
 
 export default HelpText

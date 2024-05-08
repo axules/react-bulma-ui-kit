@@ -48,6 +48,5 @@ function Checkbox(props) {
     checked: checked
   });
 }
-Checkbox.defaultProps = {};
 var _default = exports.default = (_ref = (_Checkbox = Checkbox, /*#__PURE__*/(0, _react.memo)(_Checkbox)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=Checkbox.js.map

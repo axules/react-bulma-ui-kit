@@ -25,6 +25,5 @@ function DeleteButton(props) {
     className: (0, _classnames.default)('delete', sizeClassName, className)
   });
 }
-DeleteButton.defaultProps = {};
 var _default = exports.default = (_DeleteButton = DeleteButton, /*#__PURE__*/(0, _react.memo)(_DeleteButton));
 //# sourceMappingURL=DeleteButton.js.map

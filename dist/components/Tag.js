@@ -11,7 +11,7 @@ var _Tag;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Tag(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'span',
     children,
     className,
     onClose,
@@ -45,8 +45,5 @@ function Tag(props) {
     })]
   });
 }
-Tag.defaultProps = {
-  as: 'span'
-};
 var _default = exports.default = (_Tag = Tag, /*#__PURE__*/(0, _react.memo)(_Tag));
 //# sourceMappingURL=Tag.js.map

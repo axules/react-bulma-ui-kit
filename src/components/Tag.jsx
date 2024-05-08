@@ -8,7 +8,7 @@ import DeleteButton from './DeleteButton';
 
 function Tag(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'span',
     children,
     className,
     onClose,
@@ -99,10 +99,6 @@ Tag.propTypes = {
 
   medium: PropTypes.bool,
   large: PropTypes.bool,
-};
-
-Tag.defaultProps = {
-  as: 'span'
 };
 
 export default Tag

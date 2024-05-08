@@ -32,6 +32,5 @@ function Notification(props) {
     }), children]
   });
 }
-Notification.defaultProps = {};
 var _default = exports.default = (_Notification = Notification, /*#__PURE__*/(0, _react.memo)(_Notification));
 //# sourceMappingURL=Notification.js.map

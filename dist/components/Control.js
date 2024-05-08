@@ -11,7 +11,7 @@ var _ref, _Control;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Control(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'div',
     className,
     children,
     isExpanded,
@@ -24,8 +24,5 @@ function Control(props) {
     children: children
   });
 }
-Control.defaultProps = {
-  as: 'div'
-};
 var _default = exports.default = (_ref = (_Control = Control, /*#__PURE__*/(0, _react.memo)(_Control)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=Control.js.map

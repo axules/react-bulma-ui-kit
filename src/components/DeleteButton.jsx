@@ -37,8 +37,5 @@ DeleteButton.propTypes = {
   large: PropTypes.bool,
 };
 
-DeleteButton.defaultProps = {
-};
-
 export default DeleteButton
   |> memo;

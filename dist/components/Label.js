@@ -20,6 +20,5 @@ function Label(props) {
     children: children
   });
 }
-Label.defaultProps = {};
 var _default = exports.default = (_Label = Label, /*#__PURE__*/(0, _react.memo)(_Label));
 //# sourceMappingURL=Label.js.map

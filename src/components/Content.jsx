@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 
 function Content(props) {
-  const { as: HtmlTag, children, ...restProps } = props;
+  const { as: HtmlTag = 'div', children, ...restProps } = props;
 
   return (
     <HtmlTag {...restProps} className={classNames('content', classNames)}>
@@ -17,10 +17,6 @@ Content.propTypes = {
   as: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-};
-
-Content.defaultProps = {
-  as: 'div',
 };
 
 export default Content

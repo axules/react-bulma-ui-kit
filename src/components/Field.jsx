@@ -63,9 +63,6 @@ Field.propTypes = {
   required: PropTypes.bool,
 };
 
-Field.defaultProps = {
-};
-
 export default Field
   |> memo
   |> withForwardedRef;

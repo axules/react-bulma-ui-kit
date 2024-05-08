@@ -68,9 +68,6 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
 };
 
-Checkbox.defaultProps = {
-};
-
 export default Checkbox
   |> memo
   |> withForwardedRef;

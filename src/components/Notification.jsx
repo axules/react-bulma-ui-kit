@@ -50,8 +50,5 @@ Notification.propTypes = {
   light: PropTypes.bool
 };
 
-Notification.defaultProps = {
-};
-
 export default Notification
   |> memo;

@@ -10,7 +10,7 @@ var _Content;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Content(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'div',
     children,
     ...restProps
   } = props;
@@ -20,8 +20,5 @@ function Content(props) {
     children: children
   });
 }
-Content.defaultProps = {
-  as: 'div'
-};
 var _default = exports.default = (_Content = Content, /*#__PURE__*/(0, _react.memo)(_Content));
 //# sourceMappingURL=Content.js.map

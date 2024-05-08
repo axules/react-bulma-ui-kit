@@ -51,6 +51,5 @@ function TextInput(props) {
     })]
   }) : inputRender;
 }
-TextInput.defaultProps = {};
 var _default = exports.default = (_ref = (_TextInput = TextInput, /*#__PURE__*/(0, _react.memo)(_TextInput)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=TextInput.js.map

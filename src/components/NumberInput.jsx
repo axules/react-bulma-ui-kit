@@ -16,7 +16,4 @@ class NumberInput extends PureComponent {
 NumberInput.propTypes = {
 };
 
-NumberInput.defaultProps = {
-};
-
 export default NumberInput;

@@ -27,6 +27,5 @@ function SubmitForm(props) {
     }), children]
   });
 }
-SubmitForm.defaultProps = {};
 var _default = exports.default = (_ref = (_SubmitForm = SubmitForm, /*#__PURE__*/(0, _react.memo)(_SubmitForm)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=SubmitForm.js.map

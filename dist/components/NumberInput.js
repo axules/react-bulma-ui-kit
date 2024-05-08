@@ -13,6 +13,5 @@ class NumberInput extends _react.PureComponent {
     });
   }
 }
-NumberInput.defaultProps = {};
 var _default = exports.default = NumberInput;
 //# sourceMappingURL=NumberInput.js.map

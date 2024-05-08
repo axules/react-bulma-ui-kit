@@ -18,8 +18,5 @@ Label.propTypes = {
   children: PropTypes.node
 };
 
-Label.defaultProps = {
-};
-
 export default Label
   |> memo;

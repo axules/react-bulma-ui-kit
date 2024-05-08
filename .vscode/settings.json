@@ -4,7 +4,7 @@
     "workbench.colorTheme": "Monokai Dimmed",
     "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": true,
-    "javascript.validate.enable": false,
+    "javascript.validate.enable": true,
     "files.exclude": {
         "**/node_modules": true,
         "**/.git": true,
@@ -16,7 +16,7 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     // "javascript.implicitProjectConfig.experimentalDecorators": true,
     "js/ts.implicitProjectConfig.experimentalDecorators": true,
-    "typescript.validate.enable": false,
+    "typescript.validate.enable": true,
     "search.exclude": {
         "**/build": true,
         "**/stats.json": true

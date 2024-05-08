@@ -7,7 +7,7 @@ import { withForwardedRef } from '../withRef';
 
 function Button(props) {
   const {
-    as: HtmlTag,
+    as: HtmlTag = 'button',
     children,
     className,
     isLoading,
@@ -112,10 +112,6 @@ Button.propTypes = {
   large: PropTypes.bool,
 
   fullWidth: PropTypes,
-};
-
-Button.defaultProps = {
-  as: 'button',
 };
 
 export default Button
