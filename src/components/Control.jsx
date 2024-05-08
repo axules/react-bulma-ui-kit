@@ -6,25 +6,33 @@ import { withForwardedRef } from '../withRef';
 
 
 function Control(props) {
-  const { className, children, isExpanded } = props;
+  const {
+    as: HtmlTag,
+    className,
+    children,
+    isExpanded,
+    ...restProps
+  } = props;
   const classes = [
     isExpanded && 'is-expanded',
   ];
 
   return (
-    <div className={classNames('control', className, ...classes)}>
+    <HtmlTag {...restProps} className={classNames('control', className, ...classes)}>
       {children}
-    </div>
+    </HtmlTag>
   );
 }
 
 Control.propTypes = {
+  as: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
   isExpanded: PropTypes.bool,
 };
 
 Control.defaultProps = {
+  as: 'div'
 };
 
 export default Control

@@ -1,17 +1,14 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
 
 import { withForwardedRef } from '../withRef';
 
 
-
-const cnPrefix = 'submitForm';
-
 function SubmitForm(props) {
-  const { className, children, disabled, forwardedRef, ...restProps } = props;
+  const { children, disabled, forwardedRef, ...restProps } = props;
+
   return (
-    <form className={cn(cnPrefix, className)} ref={forwardedRef} {...restProps}>
+    <form {...restProps} ref={forwardedRef}>
       <button disabled={disabled} type="submit" style={{ display: 'none' }} />
       {children}
     </form>
@@ -19,17 +16,12 @@ function SubmitForm(props) {
 }
 
 SubmitForm.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.node,
   disabled: PropTypes.node,
-  forwardedRef: PropTypes.shape(),
+  forwardedRef: PropTypes.any,
 };
 
 SubmitForm.defaultProps = {
-  className: undefined,
-  children: undefined,
-  disabled: undefined,
-  forwardedRef: undefined,
 };
 
 export default SubmitForm

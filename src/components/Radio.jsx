@@ -1,45 +1,29 @@
-import {
-  memo,
-  useEffect,
-} from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { useReusableRef } from '../useReusableRef';
 import { withForwardedRef } from '../withRef';
 
 
-function Checkbox(props) {
+function Radio(props) {
   const {
     className,
     classNameInput,
     children,
     forwardedRef,
-    indeterminate,
     checked,
     disabled,
     ...restProps
   } = props;
 
-  const inputRef = useReusableRef(forwardedRef);
-
-  useEffect(
-    () => {
-      inputRef.current.indeterminate = checked
-        ? undefined
-        : indeterminate || undefined;
-    },
-    [indeterminate, checked, inputRef]
-  );
-
   return children
     ? (
-      <label className={classNames('checkbox', className)} disabled={disabled}>
+      <label className={classNames('radio', className)} disabled={disabled}>
         <input
           {...restProps}
           className={classNameInput}
-          type="checkbox"
-          ref={inputRef}
+          type="radio"
+          ref={forwardedRef}
           disabled={disabled}
           checked={checked}
         />
@@ -48,28 +32,27 @@ function Checkbox(props) {
     ) : (
       <input
         {...restProps}
-        className={classNames('checkbox', className, classNameInput)}
-        type="checkbox"
-        ref={inputRef}
+        className={classNames('radio', className, classNameInput)}
+        type="radio"
+        ref={forwardedRef}
         disabled={disabled}
         checked={checked}
       />
     );
 }
 
-Checkbox.propTypes = {
+Radio.propTypes = {
   className: PropTypes.string,
   classNameInput: PropTypes.string,
   forwardedRef: PropTypes.object,
   children: PropTypes.node,
-  indeterminate: PropTypes.bool,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
 };
 
-Checkbox.defaultProps = {
+Radio.defaultProps = {
 };
 
-export default Checkbox
+export default Radio
   |> memo
   |> withForwardedRef;

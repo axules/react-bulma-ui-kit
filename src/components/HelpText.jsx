@@ -6,16 +6,27 @@ import { withForwardedRef } from '../withRef';
 
 
 function HelpText(props) {
-  const { children, className, success, danger } = props;
+  const {
+    as: HtmlTag,
+    children,
+    className,
+    success,
+    danger,
+    ...restProps
+  } = props;
+
+  const styleClassName = success && 'is-success'
+  || danger && 'is-danger';
 
   return (
-    <div className={classNames('help', className, success && 'is-success' || danger && 'is-danger')}>
+    <HtmlTag {...restProps} className={classNames('help', styleClassName, className)}>
       {children}
-    </div>
+    </HtmlTag>
   );
 }
 
 HelpText.propTypes = {
+  as: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   success: PropTypes.bool,
@@ -23,6 +34,7 @@ HelpText.propTypes = {
 };
 
 HelpText.defaultProps = {
+  as: 'div'
 };
 
 export default HelpText
