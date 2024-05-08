@@ -2,8 +2,6 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { withForwardedRef } from '../withRef';
-
 
 function Label(props) {
   const { children, className, ...restProps } = props;
@@ -24,5 +22,4 @@ Label.defaultProps = {
 };
 
 export default Label
-  |> memo
-  |> withForwardedRef;
+  |> memo;
