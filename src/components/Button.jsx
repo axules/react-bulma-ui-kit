@@ -23,6 +23,7 @@ function Button(props) {
     small,
     medium,
     large,
+    fullWidth,
 
     white,
     light,
@@ -72,6 +73,7 @@ function Button(props) {
         isLoading && 'is-loading',
         outlined && 'is-outlined',
         rounded && 'is-rounded',
+        fullWidth && 'is-fullwidth',
         className
       )}
     >
@@ -108,6 +110,8 @@ Button.propTypes = {
   small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,
+
+  fullWidth: PropTypes,
 };
 
 Button.defaultProps = {

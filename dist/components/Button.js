@@ -25,6 +25,7 @@ function Button(props) {
     small,
     medium,
     large,
+    fullWidth,
     white,
     light,
     dark,
@@ -44,7 +45,7 @@ function Button(props) {
     type: "button",
     ...restProps,
     disabled: disabled || isLoading,
-    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, isLoading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', className),
+    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, isLoading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', className),
     children: children
   });
 }
