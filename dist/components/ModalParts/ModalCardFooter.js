@@ -16,7 +16,7 @@ function ModalCardFooter(props) {
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
-    className: (0, _classnames.default)('modal-card-footer', className),
+    className: (0, _classnames.default)('modal-card-foot', className),
     children: children
   });
 }

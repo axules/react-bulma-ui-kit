@@ -16,7 +16,7 @@ function ModalCardTitle(props) {
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
-    className: (0, _classnames.default)('modal-card-head', className),
+    className: (0, _classnames.default)('modal-card-title', className),
     children: children
   });
 }

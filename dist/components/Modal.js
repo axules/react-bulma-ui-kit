@@ -38,7 +38,7 @@ function Modal(props) {
   }, [closeOnEsc, onPressEsc]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ...restProps,
-    className: (0, _classnames.default)('modal', className),
+    className: (0, _classnames.default)('modal', className, open && 'is-active'),
     children: [!transparent && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "modal-background"
     }), children]

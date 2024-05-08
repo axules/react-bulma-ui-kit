@@ -7,7 +7,7 @@ function ModalCardTitle(props) {
   const { children, className, ...restProps } = props;
 
   return (
-    <div {...restProps} className={classNames('modal-card-head', className)}>
+    <div {...restProps} className={classNames('modal-card-title', className)}>
       {children}
     </div>
   );

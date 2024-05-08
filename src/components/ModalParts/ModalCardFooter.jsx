@@ -7,7 +7,7 @@ function ModalCardFooter(props) {
   const { children, className, ...restProps } = props;
 
   return (
-    <div {...restProps} className={classNames('modal-card-footer', className)}>
+    <div {...restProps} className={classNames('modal-card-foot', className)}>
       {children}
     </div>
   );

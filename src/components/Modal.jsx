@@ -43,7 +43,7 @@ function Modal(props) {
   );
 
   return (
-    <div {...restProps} className={classNames('modal', className)}>
+    <div {...restProps} className={classNames('modal', className, open && 'is-active')}>
       {!transparent && <div className="modal-background"></div>}
       {children}
     </div>
@@ -54,6 +54,7 @@ Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   transparent: PropTypes.bool,
+  open: PropTypes.bool,
   onClose: PropTypes.func,
   closeOnEsc: PropTypes.bool,
 };
