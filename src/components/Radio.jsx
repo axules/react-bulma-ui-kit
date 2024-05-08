@@ -20,7 +20,7 @@ function Radio(props) {
     ? (
       <label className={classNames('radio', className)} disabled={disabled}>
         <input
-          style="margin-right:8px;"
+          style={{ marginRight: '8px' }}
           {...restProps}
           className={classNameInput}
           type="radio"

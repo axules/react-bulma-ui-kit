@@ -23,7 +23,9 @@ function Radio(props) {
     className: (0, _classnames.default)('radio', className),
     disabled: disabled,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
-      style: "margin-right:8px;",
+      style: {
+        marginRight: '8px'
+      },
       ...restProps,
       className: classNameInput,
       type: "radio",

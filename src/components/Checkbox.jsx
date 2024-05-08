@@ -36,7 +36,7 @@ function Checkbox(props) {
     ? (
       <label className={classNames('checkbox', className)} disabled={disabled}>
         <input
-          style="margin-right:8px;"
+          style={{ marginRight: '8px' }}
           {...restProps}
           className={classNameInput}
           type="checkbox"
