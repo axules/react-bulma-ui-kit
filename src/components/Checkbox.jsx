@@ -36,6 +36,7 @@ function Checkbox(props) {
     ? (
       <label className={classNames('checkbox', className)} disabled={disabled}>
         <input
+          style="margin-right:8px;"
           {...restProps}
           className={classNameInput}
           type="checkbox"
@@ -43,7 +44,7 @@ function Checkbox(props) {
           disabled={disabled}
           checked={checked}
         />
-        <span> {children}</span>
+        {children}
       </label>
     ) : (
       <input

@@ -20,6 +20,7 @@ function Radio(props) {
     ? (
       <label className={classNames('radio', className)} disabled={disabled}>
         <input
+          style="margin-right:8px;"
           {...restProps}
           className={classNameInput}
           type="radio"
@@ -27,7 +28,7 @@ function Radio(props) {
           disabled={disabled}
           checked={checked}
         />
-        <span> {children}</span>
+        {children}
       </label>
     ) : (
       <input
