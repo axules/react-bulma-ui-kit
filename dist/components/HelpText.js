@@ -11,16 +11,22 @@ var _ref, _HelpText;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function HelpText(props) {
   const {
+    as: HtmlTag,
     children,
     className,
     success,
-    danger
+    danger,
+    ...restProps
   } = props;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    className: (0, _classnames.default)('help', className, success && 'is-success' || danger && 'is-danger'),
+  const styleClassName = success && 'is-success' || danger && 'is-danger';
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
+    ...restProps,
+    className: (0, _classnames.default)('help', styleClassName, className),
     children: children
   });
 }
-HelpText.defaultProps = {};
+HelpText.defaultProps = {
+  as: 'div'
+};
 var _default = exports.default = (_ref = (_HelpText = HelpText, /*#__PURE__*/(0, _react.memo)(_HelpText)), (0, _withRef.withForwardedRef)(_ref));
 //# sourceMappingURL=HelpText.js.map

@@ -5,34 +5,28 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
-var _useReusableRef = require("../useReusableRef");
 var _withRef = require("../withRef");
 var _jsxRuntime = require("react/jsx-runtime");
-var _ref, _Checkbox;
+var _ref, _Radio;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function Checkbox(props) {
+function Radio(props) {
   const {
     className,
     classNameInput,
     children,
     forwardedRef,
-    indeterminate,
     checked,
     disabled,
     ...restProps
   } = props;
-  const inputRef = (0, _useReusableRef.useReusableRef)(forwardedRef);
-  (0, _react.useEffect)(() => {
-    inputRef.current.indeterminate = checked ? undefined : indeterminate || undefined;
-  }, [indeterminate, checked, inputRef]);
   return children ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
-    className: (0, _classnames.default)('checkbox', className),
+    className: (0, _classnames.default)('radio', className),
     disabled: disabled,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
       ...restProps,
       className: classNameInput,
-      type: "checkbox",
-      ref: inputRef,
+      type: "radio",
+      ref: forwardedRef,
       disabled: disabled,
       checked: checked
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
@@ -40,13 +34,13 @@ function Checkbox(props) {
     })]
   }) : /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
     ...restProps,
-    className: (0, _classnames.default)('checkbox', className, classNameInput),
-    type: "checkbox",
-    ref: inputRef,
+    className: (0, _classnames.default)('radio', className, classNameInput),
+    type: "radio",
+    ref: forwardedRef,
     disabled: disabled,
     checked: checked
   });
 }
-Checkbox.defaultProps = {};
-var _default = exports.default = (_ref = (_Checkbox = Checkbox, /*#__PURE__*/(0, _react.memo)(_Checkbox)), (0, _withRef.withForwardedRef)(_ref));
-//# sourceMappingURL=Checkbox.js.map
+Radio.defaultProps = {};
+var _default = exports.default = (_ref = (_Radio = Radio, /*#__PURE__*/(0, _react.memo)(_Radio)), (0, _withRef.withForwardedRef)(_ref));
+//# sourceMappingURL=Radio.js.map
