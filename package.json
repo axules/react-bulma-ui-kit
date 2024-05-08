@@ -6,7 +6,10 @@
     "type": "git",
     "url": "https://github.com/axules/react-bulma-ui-kit"
   },
-  "main": "./dist/components",
+  "main": "./dist/",
+  "exports": {
+    ".": ["./dist/", "./dist/components"]
+  },
   "files": [
     "src",
     "dist",
