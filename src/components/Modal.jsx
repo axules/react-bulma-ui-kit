@@ -1,6 +1,11 @@
-import { memo } from 'react';
+import {
+  memo,
+  useEffect
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import { useStaticCallback } from '../useStaticCallback';
 
 import ModalCard from './ModalParts/ModalCard';
 import ModalCardBody from './ModalParts/ModalCardBody';
@@ -15,8 +20,27 @@ function Modal(props) {
     children,
     className,
     transparent,
+    closeOnEsc,
+    onClose,
     ...restProps
   } = props;
+
+  const onPressEsc = useStaticCallback((event) => {
+    if (event.key === 'Escape' || event.code === 27 || event.keyCode === 27 && !event.defaultPrevented) {
+      event.preventDefault();
+      onClose();
+    }
+  });
+
+  useEffect(
+    () => {
+      document.addEventListener('keydown', onPressEsc);
+      return () => {
+        document.removeEventListener('keydown', onPressEsc);
+      };
+    },
+    [closeOnEsc, onPressEsc]
+  );
 
   return (
     <div {...restProps} className={classNames('modal', className)}>
@@ -30,6 +54,8 @@ Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   transparent: PropTypes.bool,
+  onClose: PropTypes.func,
+  closeOnEsc: PropTypes.bool,
 };
 
 const ModalExport = Modal

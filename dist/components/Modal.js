@@ -5,6 +5,7 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
+var _useStaticCallback = require("../useStaticCallback");
 var _ModalCard = _interopRequireDefault(require("./ModalParts/ModalCard"));
 var _ModalCardBody = _interopRequireDefault(require("./ModalParts/ModalCardBody"));
 var _ModalCardFooter = _interopRequireDefault(require("./ModalParts/ModalCardFooter"));
@@ -19,8 +20,22 @@ function Modal(props) {
     children,
     className,
     transparent,
+    closeOnEsc,
+    onClose,
     ...restProps
   } = props;
+  const onPressEsc = (0, _useStaticCallback.useStaticCallback)(event => {
+    if (event.key === 'Escape' || event.code === 27 || event.keyCode === 27 && !event.defaultPrevented) {
+      event.preventDefault();
+      onClose();
+    }
+  });
+  (0, _react.useEffect)(() => {
+    document.addEventListener('keydown', onPressEsc);
+    return () => {
+      document.removeEventListener('keydown', onPressEsc);
+    };
+  }, [closeOnEsc, onPressEsc]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ...restProps,
     className: (0, _classnames.default)('modal', className),

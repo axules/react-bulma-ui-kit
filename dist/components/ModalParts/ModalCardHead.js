@@ -15,7 +15,7 @@ function ModalCardHead(props) {
     children,
     className,
     title,
-    hasClose,
+    onClickClose,
     ...restProps
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
@@ -23,7 +23,9 @@ function ModalCardHead(props) {
     className: (0, _classnames.default)('modal-card-head', className),
     children: [title && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalCardTitle.default, {
       children: title
-    }), children, hasClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {})]
+    }), children, onClickClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {
+      onClick: onClickClose
+    })]
   });
 }
 var _default = exports.default = (_ModalCardHead = ModalCardHead, /*#__PURE__*/(0, _react.memo)(_ModalCardHead));
