@@ -7,8 +7,6 @@ import { withForwardedRef } from '../withRef';
 import Control from './Control';
 
 
-const cnPrefix = 'textInput';
-
 function TextInput(props) {
   const {
     forwardedRef,
@@ -30,7 +28,7 @@ function TextInput(props) {
     ...restProps
   } = props;
 
-  const style = danger && 'is-danger'
+  const styleClassName = danger && 'is-danger'
     || success && 'is-success'
     || warning && 'is-warning'
     || info && 'is-info'
@@ -38,7 +36,7 @@ function TextInput(props) {
     || primary && 'is-primary'
     || undefined;
 
-  const size = small && 'is-small'
+  const sizeClassName = small && 'is-small'
     || medium && 'is-medium'
     || large && 'is-large'
     || undefined;
@@ -49,7 +47,7 @@ function TextInput(props) {
       ref={forwardedRef}
       autoComplete={offAutocomplete ? 'off' : undefined}
       {...restProps}
-      className={classNames('input', style, size, cnPrefix, className)}
+      className={classNames('input', styleClassName, sizeClassName, className)}
     />
   );
 
@@ -84,6 +82,9 @@ TextInput.propTypes = {
   leftIcon: PropTypes.node,
   rightIcon: PropTypes.node,
 
+  asControl: PropTypes.bool,
+  isExpanded: PropTypes.bool,
+
   primary: PropTypes.bool,
   link: PropTypes.bool,
   info: PropTypes.bool,
@@ -91,12 +92,10 @@ TextInput.propTypes = {
   success: PropTypes.bool,
   danger: PropTypes.bool,
 
-  asControl: PropTypes.bool,
-  isExpanded: PropTypes.bool,
-
   small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,
+
   offAutocomplete: PropTypes.bool,
 };
 

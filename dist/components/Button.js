@@ -11,25 +11,40 @@ var _ref, _Button;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Button(props) {
   const {
-    as,
+    as: HtmlTag,
     children,
     className,
     isLoading,
     forwardedRef,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
     small,
+    medium,
+    large,
+    white,
+    light,
+    dark,
+    black,
+    text,
+    ghost,
     outlined,
     rounded,
     disabled,
-    light,
     ...restProps
   } = props;
-  const Tag = as;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Tag, {
+  const brightnessClassName = white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || text && 'is-text' || ghost && 'is-ghost' || undefined;
+  const styleClassName = danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
+  const sizeClassName = small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: "button",
     ...restProps,
     disabled: disabled || isLoading,
-    className: (0, _classnames.default)('button', isLoading && 'is-loading', small && 'is-small', outlined && 'is-outlined', rounded && 'is-rounded', light && 'is-light', className),
+    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, isLoading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', className),
     children: children
   });
 }

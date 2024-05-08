@@ -2,16 +2,21 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { withForwardedRef } from '../withRef';
+import DeleteButton from './DeleteButton';
 
 
-function Button(props) {
+
+function Tag(props) {
   const {
     as: HtmlTag,
     children,
     className,
-    isLoading,
+    onClose,
     forwardedRef,
+
+    rounded,
+    hasHover,
+    isDelete,
 
     danger,
     success,
@@ -20,7 +25,6 @@ function Button(props) {
     link,
     primary,
 
-    small,
     medium,
     large,
 
@@ -28,12 +32,6 @@ function Button(props) {
     light,
     dark,
     black,
-    text,
-    ghost,
-
-    outlined,
-    rounded,
-    disabled,
     ...restProps
   } = props;
 
@@ -41,8 +39,6 @@ function Button(props) {
   || light && 'is-light'
   || dark && 'is-dark'
   || black && 'is-black'
-  || text && 'is-text'
-  || ghost && 'is-ghost'
   || undefined;
 
   const styleClassName = danger && 'is-danger'
@@ -53,50 +49,46 @@ function Button(props) {
     || primary && 'is-primary'
     || undefined;
 
-  const sizeClassName = small && 'is-small'
-    || medium && 'is-medium'
+  const sizeClassName = medium && 'is-medium'
     || large && 'is-large'
     || undefined;
 
   return (
     <HtmlTag
       ref={forwardedRef}
-      type="button"
       {...restProps}
-      disabled={disabled || isLoading}
       className={classNames(
-        'button',
+        'tag',
         styleClassName,
         sizeClassName,
         brightnessClassName,
-        isLoading && 'is-loading',
-        outlined && 'is-outlined',
+        hasHover && 'is-hoverable',
         rounded && 'is-rounded',
+        isDelete && 'is-delete',
         className
       )}
     >
       {children}
+      {onClose && <DeleteButton onClick={onClose} />}
     </HtmlTag>
   );
 }
 
-Button.propTypes = {
+Tag.propTypes = {
   as: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  isLoading: PropTypes.bool,
-  disabled: PropTypes.bool,
-  outlined: PropTypes.bool,
+  onClose: PropTypes.func,
+  forwardedRef: PropTypes.any,
 
   rounded: PropTypes.bool,
-  forwardedRef: PropTypes.any,
+  hasHover: PropTypes.bool,
+  isDelete: PropTypes.bool,
 
   white: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
   black: PropTypes.bool,
-  text: PropTypes.bool,
-  ghost: PropTypes.bool,
 
   primary: PropTypes.bool,
   link: PropTypes.bool,
@@ -105,15 +97,13 @@ Button.propTypes = {
   success: PropTypes.bool,
   danger: PropTypes.bool,
 
-  small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,
 };
 
-Button.defaultProps = {
-  as: 'button',
+Tag.defaultProps = {
+  as: 'span'
 };
 
-export default Button
-  |> memo
-  |> withForwardedRef;
+export default Tag
+  |> memo;
