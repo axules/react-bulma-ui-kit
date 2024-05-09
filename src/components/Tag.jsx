@@ -32,6 +32,8 @@ function Tag(props) {
     light,
     dark,
     black,
+
+    hasAddons,
     ...restProps
   } = props;
 
@@ -65,6 +67,7 @@ function Tag(props) {
         hasHover && 'is-hoverable',
         rounded && 'is-rounded',
         isDelete && 'is-delete',
+        hasAddons && 'has-addons',
         className
       )}
     >
@@ -99,6 +102,7 @@ Tag.propTypes = {
 
   medium: PropTypes.bool,
   large: PropTypes.bool,
+  hasAddons: PropTypes.bool,
 };
 
 export default Tag

@@ -31,6 +31,7 @@ function Tag(props) {
     light,
     dark,
     black,
+    hasAddons,
     ...restProps
   } = props;
   const brightnessClassName = white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || undefined;
@@ -39,7 +40,7 @@ function Tag(props) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ref: forwardedRef,
     ...restProps,
-    className: (0, _classnames.default)('tag', styleClassName, sizeClassName, brightnessClassName, hasHover && 'is-hoverable', rounded && 'is-rounded', isDelete && 'is-delete', className),
+    className: (0, _classnames.default)('tag', styleClassName, sizeClassName, brightnessClassName, hasHover && 'is-hoverable', rounded && 'is-rounded', isDelete && 'is-delete', hasAddons && 'has-addons', className),
     children: [children, onClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {
       onClick: onClose
     })]

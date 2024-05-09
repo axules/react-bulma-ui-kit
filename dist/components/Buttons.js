@@ -12,11 +12,12 @@ function Buttons(props) {
   const {
     children,
     className,
+    hasAddons,
     ...restProps
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
-    className: (0, _classnames.default)('buttons', className),
+    className: (0, _classnames.default)('buttons', hasAddons && 'has-addons', className),
     children: children
   });
 }

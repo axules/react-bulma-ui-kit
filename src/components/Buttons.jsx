@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 
 function Buttons(props) {
-  const { children, className, ...restProps } = props;
+  const { children, className, hasAddons, ...restProps } = props;
 
   return (
-    <div {...restProps} className={classNames('buttons', className)}>
+    <div {...restProps} className={classNames('buttons', hasAddons && 'has-addons', className)}>
       {children}
     </div>
   );
@@ -16,6 +16,7 @@ function Buttons(props) {
 Buttons.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  hasAddons: PropTypes.bool,
 };
 
 export default Buttons

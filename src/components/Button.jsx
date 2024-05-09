@@ -10,7 +10,7 @@ function Button(props) {
     as: HtmlTag = 'button',
     children,
     className,
-    isLoading,
+    loading,
     forwardedRef,
 
     danger,
@@ -64,13 +64,13 @@ function Button(props) {
       ref={forwardedRef}
       type="button"
       {...restProps}
-      disabled={disabled || isLoading}
+      disabled={disabled || loading}
       className={classNames(
         'button',
         styleClassName,
         sizeClassName,
         brightnessClassName,
-        isLoading && 'is-loading',
+        loading && 'is-loading',
         outlined && 'is-outlined',
         rounded && 'is-rounded',
         fullWidth && 'is-fullwidth',
@@ -86,7 +86,7 @@ Button.propTypes = {
   as: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  isLoading: PropTypes.bool,
+  loading: PropTypes.bool,
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
 

@@ -14,7 +14,7 @@ function Button(props) {
     as: HtmlTag = 'button',
     children,
     className,
-    isLoading,
+    loading,
     forwardedRef,
     danger,
     success,
@@ -44,8 +44,8 @@ function Button(props) {
     ref: forwardedRef,
     type: "button",
     ...restProps,
-    disabled: disabled || isLoading,
-    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, isLoading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', className),
+    disabled: disabled || loading,
+    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', className),
     children: children
   });
 }
