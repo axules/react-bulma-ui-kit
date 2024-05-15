@@ -35,6 +35,7 @@ function Button(props) {
     outlined,
     rounded,
     disabled,
+    type = 'button',
     ...restProps
   } = props;
   const brightnessClassName = white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || text && 'is-text' || ghost && 'is-ghost' || undefined;
@@ -42,7 +43,7 @@ function Button(props) {
   const sizeClassName = small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
-    type: "button",
+    type: type != null ? type : undefined,
     ...restProps,
     disabled: disabled || loading,
     className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', className),

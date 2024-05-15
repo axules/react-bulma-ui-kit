@@ -35,6 +35,7 @@ function Button(props) {
     outlined,
     rounded,
     disabled,
+    type = 'button',
     ...restProps
   } = props;
 
@@ -62,7 +63,7 @@ function Button(props) {
   return (
     <HtmlTag
       ref={forwardedRef}
-      type="button"
+      type={type ?? undefined}
       {...restProps}
       disabled={disabled || loading}
       className={classNames(
@@ -89,6 +90,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
+  type: PropTypes.any,
 
   rounded: PropTypes.bool,
   forwardedRef: PropTypes.any,
