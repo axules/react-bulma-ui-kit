@@ -35,7 +35,7 @@ function Button(props) {
     outlined,
     rounded,
     disabled,
-    type = 'button',
+    type = HtmlTag === 'button' ? 'button' : undefined,
     ...restProps
   } = props;
   const brightnessClassName = white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || text && 'is-text' || ghost && 'is-ghost' || undefined;

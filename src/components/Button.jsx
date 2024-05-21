@@ -35,7 +35,7 @@ function Button(props) {
     outlined,
     rounded,
     disabled,
-    type = 'button',
+    type = HtmlTag ==='button' ? 'button' : undefined,
     ...restProps
   } = props;
 
