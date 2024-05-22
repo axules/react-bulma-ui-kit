@@ -10,6 +10,7 @@ var _PanelHead = _interopRequireDefault(require("./PanelParts/PanelHead"));
 var _PanelIcon = _interopRequireDefault(require("./PanelParts/PanelIcon"));
 var _PanelTabs = _interopRequireDefault(require("./PanelParts/PanelTabs"));
 var _Tab = _interopRequireDefault(require("./Tab"));
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Panel;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -18,11 +19,35 @@ function Panel(props) {
     as: HtmlTag = 'div',
     children,
     className,
+    white,
+    light,
+    dark,
+    black,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
     ...restProps
   } = props;
+  const styleClassName = (0, _utils.getStyleClassName)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+    white,
+    light,
+    dark,
+    black
+  });
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)('panel', className),
+    className: (0, _classnames.default)('panel', styleClassName, brightnessClassName, className),
     children: children
   });
 }

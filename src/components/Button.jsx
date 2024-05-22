@@ -4,6 +4,12 @@ import classNames from 'classnames';
 
 import { withForwardedRef } from '../withRef';
 
+import {
+  getBrightnessClassName,
+  getSizeClassName,
+  getStyleClassName
+} from './utils';
+
 
 function Button(props) {
   const {
@@ -40,26 +46,9 @@ function Button(props) {
     ...restProps
   } = props;
 
-  const brightnessClassName = white && 'is-white'
-  || light && 'is-light'
-  || dark && 'is-dark'
-  || black && 'is-black'
-  || text && 'is-text'
-  || ghost && 'is-ghost'
-  || undefined;
-
-  const styleClassName = danger && 'is-danger'
-    || success && 'is-success'
-    || warning && 'is-warning'
-    || info && 'is-info'
-    || link && 'is-link'
-    || primary && 'is-primary'
-    || undefined;
-
-  const sizeClassName = small && 'is-small'
-    || medium && 'is-medium'
-    || large && 'is-large'
-    || undefined;
+  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
+  const brightnessClassName = getBrightnessClassName({ white, light, dark, black, text, ghost });
+  const sizeClassName = getSizeClassName({ small, medium, large });
 
   return (
     <HtmlTag

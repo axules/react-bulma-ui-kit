@@ -6,6 +6,7 @@ var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../withRef");
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _HelpText;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14,11 +15,22 @@ function HelpText(props) {
     as: HtmlTag = 'div',
     children,
     className,
-    success,
     danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
     ...restProps
   } = props;
-  const styleClassName = success && 'is-success' || danger && 'is-danger';
+  const styleClassName = (0, _utils.getStyleClassName)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
     className: (0, _classnames.default)('help', styleClassName, className),

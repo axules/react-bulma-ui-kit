@@ -2,6 +2,8 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { getSizeClassName } from './utils';
+
 
 function DeleteButton(props) {
   const {
@@ -13,10 +15,7 @@ function DeleteButton(props) {
     ...restProps
   } = props;
 
-  const sizeClassName = small && 'is-small'
-   || medium && 'is-medium'
-   || large && 'is-large'
-   || undefined;
+  const sizeClassName = getSizeClassName({ small, medium, large });
 
   return (
     <button

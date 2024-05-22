@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import DeleteButton from './DeleteButton';
+import {
+  getBrightnessClassName,
+  getStyleClassName
+} from './utils';
 
 
 function Notification(props) {
@@ -10,6 +14,7 @@ function Notification(props) {
     className,
     children,
     onClose,
+
     danger,
     success,
     warning,
@@ -20,16 +25,11 @@ function Notification(props) {
     ...restProps
   } = props;
 
-  const styleClassName = danger && 'is-danger'
-    || success && 'is-success'
-    || warning && 'is-warning'
-    || info && 'is-info'
-    || link && 'is-link'
-    || primary && 'is-primary'
-    || undefined;
+  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
+  const brightnessClassName = getBrightnessClassName({ light });
 
   return (
-    <div className={classNames('notification', styleClassName, light && 'is-light', className)} {...restProps}>
+    <div className={classNames('notification', styleClassName, brightnessClassName, className)} {...restProps}>
       {onClose && <DeleteButton onClick={onClose} />}
 
       {children}
@@ -41,6 +41,7 @@ Notification.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   onClose: PropTypes.func,
+
   primary: PropTypes.bool,
   link: PropTypes.bool,
   info: PropTypes.bool,

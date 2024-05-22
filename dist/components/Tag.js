@@ -6,6 +6,7 @@ var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _DeleteButton = _interopRequireDefault(require("./DeleteButton"));
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Tag;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -34,8 +35,20 @@ function Tag(props) {
     hasAddons,
     ...restProps
   } = props;
-  const brightnessClassName = white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || undefined;
-  const styleClassName = danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
+  const styleClassName = (0, _utils.getStyleClassName)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+    white,
+    light,
+    dark,
+    black
+  });
   const sizeClassName = medium && 'is-medium' || large && 'is-large' || undefined;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ref: forwardedRef,

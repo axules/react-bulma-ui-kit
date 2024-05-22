@@ -5,6 +5,10 @@ import classNames from 'classnames';
 import { withForwardedRef } from '../withRef';
 
 import Control from './Control';
+import {
+  getSizeClassName,
+  getStyleClassName
+} from './utils';
 
 
 function TextInput(props) {
@@ -28,18 +32,8 @@ function TextInput(props) {
     ...restProps
   } = props;
 
-  const styleClassName = danger && 'is-danger'
-    || success && 'is-success'
-    || warning && 'is-warning'
-    || info && 'is-info'
-    || link && 'is-link'
-    || primary && 'is-primary'
-    || undefined;
-
-  const sizeClassName = small && 'is-small'
-    || medium && 'is-medium'
-    || large && 'is-large'
-    || undefined;
+  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
+  const sizeClassName = getSizeClassName({ small, medium, large });
 
   const inputRender = (
     <input

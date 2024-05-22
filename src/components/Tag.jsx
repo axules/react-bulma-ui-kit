@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import DeleteButton from './DeleteButton';
+import {
+  getBrightnessClassName,
+  getStyleClassName
+} from './utils';
 
 
 
@@ -37,19 +41,8 @@ function Tag(props) {
     ...restProps
   } = props;
 
-  const brightnessClassName = white && 'is-white'
-  || light && 'is-light'
-  || dark && 'is-dark'
-  || black && 'is-black'
-  || undefined;
-
-  const styleClassName = danger && 'is-danger'
-    || success && 'is-success'
-    || warning && 'is-warning'
-    || info && 'is-info'
-    || link && 'is-link'
-    || primary && 'is-primary'
-    || undefined;
+  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
+  const brightnessClassName = getBrightnessClassName({ white, light, dark, black });
 
   const sizeClassName = medium && 'is-medium'
     || large && 'is-large'

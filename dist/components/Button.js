@@ -6,6 +6,7 @@ var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../withRef");
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _Button;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -39,9 +40,27 @@ function Button(props) {
     type = HtmlTag === 'button' ? 'button' : undefined,
     ...restProps
   } = props;
-  const brightnessClassName = white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || text && 'is-text' || ghost && 'is-ghost' || undefined;
-  const styleClassName = danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
-  const sizeClassName = small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
+  const styleClassName = (0, _utils.getStyleClassName)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+    white,
+    light,
+    dark,
+    black,
+    text,
+    ghost
+  });
+  const sizeClassName = (0, _utils.getSizeClassName)({
+    small,
+    medium,
+    large
+  });
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: type != null ? type : undefined,

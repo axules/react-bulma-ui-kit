@@ -7,6 +7,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../withRef");
 var _Control = _interopRequireDefault(require("./Control"));
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _TextInput;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30,8 +31,19 @@ function TextInput(props) {
     isExpanded,
     ...restProps
   } = props;
-  const styleClassName = danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
-  const sizeClassName = small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
+  const styleClassName = (0, _utils.getStyleClassName)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const sizeClassName = (0, _utils.getSizeClassName)({
+    small,
+    medium,
+    large
+  });
   const inputRender = /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
     type: "text",
     ref: forwardedRef,

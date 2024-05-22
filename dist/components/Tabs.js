@@ -5,6 +5,7 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Tabs;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -13,11 +14,19 @@ function Tabs(props) {
     as: HtmlTag = 'div',
     children,
     className,
+    small,
+    medium,
+    large,
     ...restProps
   } = props;
+  const sizeClassName = (0, _utils.getSizeClassName)({
+    small,
+    medium,
+    large
+  });
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)('tabs', className),
+    className: (0, _classnames.default)('tabs', sizeClassName, className),
     children: children
   });
 }
