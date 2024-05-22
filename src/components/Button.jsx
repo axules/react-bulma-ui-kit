@@ -12,6 +12,7 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
+    isDelete,
 
     danger,
     success,
@@ -75,6 +76,7 @@ function Button(props) {
         outlined && 'is-outlined',
         rounded && 'is-rounded',
         fullWidth && 'is-fullwidth',
+        isDelete && 'is-delete',
         className
       )}
     >
@@ -94,6 +96,7 @@ Button.propTypes = {
 
   rounded: PropTypes.bool,
   forwardedRef: PropTypes.any,
+  isDelete: PropTypes.bool,
 
   white: PropTypes.bool,
   light: PropTypes.bool,

@@ -116,6 +116,7 @@ module.exports = {
     // "react/sort-prop-types": ["error", { callbacksLast: true }],
     // "react/jsx-sort-default-props": ["error"],
     'react/jsx-tag-spacing': ['error'],
+    'react/jsx-indent': ['error', 2],
     'react/jsx-wrap-multilines': ['error', {
       declaration: 'parens-new-line',
       assignment: 'parens-new-line',

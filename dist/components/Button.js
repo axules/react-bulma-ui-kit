@@ -16,6 +16,7 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
+    isDelete,
     danger,
     success,
     warning,
@@ -46,7 +47,7 @@ function Button(props) {
     type: type != null ? type : undefined,
     ...restProps,
     disabled: disabled || loading,
-    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', className),
+    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', className),
     children: children
   });
 }

@@ -4,18 +4,20 @@ import classNames from 'classnames';
 
 
 function Label(props) {
-  const { children, className, ...restProps } = props;
+  const { children, className, required, ...restProps } = props;
 
   return (
     <label {...restProps} className={classNames('label', className)}>
       {children}
+      {required && <sup> *</sup>}
     </label>
   );
 }
 
 Label.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  required: PropTypes.bool,
 };
 
 export default Label

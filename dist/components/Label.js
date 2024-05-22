@@ -12,12 +12,15 @@ function Label(props) {
   const {
     children,
     className,
+    required,
     ...restProps
   } = props;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
     ...restProps,
     className: (0, _classnames.default)('label', className),
-    children: children
+    children: [children, required && /*#__PURE__*/(0, _jsxRuntime.jsx)("sup", {
+      children: " *"
+    })]
   });
 }
 var _default = exports.default = (_Label = Label, /*#__PURE__*/(0, _react.memo)(_Label));
