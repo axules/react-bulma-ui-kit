@@ -18,9 +18,7 @@ function Label(props) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
     ...restProps,
     className: (0, _classnames.default)('label', className),
-    children: [children, required && /*#__PURE__*/(0, _jsxRuntime.jsx)("sup", {
-      children: " *"
-    })]
+    children: [children, required && ' *']
   });
 }
 var _default = exports.default = (_Label = Label, /*#__PURE__*/(0, _react.memo)(_Label));

@@ -9,7 +9,7 @@ function Label(props) {
   return (
     <label {...restProps} className={classNames('label', className)}>
       {children}
-      {required && <sup> *</sup>}
+      {required && ' *'}
     </label>
   );
 }
