@@ -19,6 +19,7 @@ function Panel(props) {
     as: HtmlTag = 'div',
     children,
     className,
+    title,
     white,
     light,
     dark,
@@ -45,10 +46,12 @@ function Panel(props) {
     dark,
     black
   });
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ...restProps,
     className: (0, _classnames.default)('panel', styleClassName, brightnessClassName, className),
-    children: children
+    children: [title && /*#__PURE__*/(0, _jsxRuntime.jsx)(_PanelHead.default, {
+      children: title
+    }), children]
   });
 }
 const PanelExport = (_Panel = Panel, /*#__PURE__*/(0, _react.memo)(_Panel));

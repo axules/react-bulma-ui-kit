@@ -19,6 +19,8 @@ function Panel(props) {
     children,
     className,
 
+    title,
+
     white,
     light,
     dark,
@@ -38,6 +40,7 @@ function Panel(props) {
 
   return (
     <HtmlTag {...restProps} className={classNames('panel', styleClassName, brightnessClassName, className)}>
+      {title && <PanelHead>{title}</PanelHead>}
       {children}
     </HtmlTag>
   );
@@ -47,6 +50,8 @@ Panel.propTypes = {
   as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
+
+  title: PropTypes.node,
 
   white: PropTypes.bool,
   light: PropTypes.bool,
