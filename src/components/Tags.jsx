@@ -4,11 +4,12 @@ import classNames from 'classnames';
 
 
 function Tags(props) {
-  const { children, className, hasAddons, ...restProps } = props;
+  const { children, className, hasAddons, nowrap, ...restProps } = props;
 
   const classNamesValue = classNames(
     'tags',
     hasAddons && 'has-addons',
+    nowrap && 'is-flex-wrap-nowrap',
     className
   );
 
@@ -23,6 +24,7 @@ Tags.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   hasAddons: PropTypes.bool,
+  nowrap: PropTypes.bool,
 };
 
 export default Tags

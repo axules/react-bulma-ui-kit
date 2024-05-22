@@ -13,9 +13,10 @@ function Tags(props) {
     children,
     className,
     hasAddons,
+    nowrap,
     ...restProps
   } = props;
-  const classNamesValue = (0, _classnames.default)('tags', hasAddons && 'has-addons', className);
+  const classNamesValue = (0, _classnames.default)('tags', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
     className: classNamesValue,
