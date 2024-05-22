@@ -25,7 +25,6 @@ function Field(props) {
     required,
     ...restProps
   } = props;
-  const classes = [isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons'];
   const errorHelp = errorText && /*#__PURE__*/(0, _jsxRuntime.jsx)(_HelpText.default, {
     danger: true,
     children: errorText
@@ -33,9 +32,10 @@ function Field(props) {
   const help = helpText && /*#__PURE__*/(0, _jsxRuntime.jsx)(_HelpText.default, {
     children: helpText
   });
+  const classNamesValue = (0, _classnames.default)('field', isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ...restProps,
-    className: (0, _classnames.default)('field', className, ...classes),
+    className: classNamesValue,
     children: [label && (isHorizontal ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "field-label is-normal",
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Label.default, {

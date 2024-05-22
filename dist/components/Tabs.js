@@ -17,16 +17,17 @@ function Tabs(props) {
     small,
     medium,
     large,
+    nowrap,
     ...restProps
   } = props;
-  const sizeClassName = (0, _utils.getSizeClassName)({
+  const classNamesValue = (0, _classnames.default)('tabs', (0, _utils.getSizeClassName)({
     small,
     medium,
     large
-  });
+  }), nowrap && 'is-flex-wrap-nowrap', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)('tabs', sizeClassName, className),
+    className: classNamesValue,
     children: children
   });
 }

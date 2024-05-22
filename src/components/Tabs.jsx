@@ -14,13 +14,20 @@ function Tabs(props) {
     small,
     medium,
     large,
+
+    nowrap,
     ...restProps
   } = props;
 
-  const sizeClassName = getSizeClassName({ small, medium, large });
+  const classNamesValue = classNames(
+    'tabs',
+    getSizeClassName({ small, medium, large }),
+    nowrap && 'is-flex-wrap-nowrap',
+    className,
+  );
 
   return (
-    <HtmlTag {...restProps} className={classNames('tabs', sizeClassName, className)}>
+    <HtmlTag {...restProps} className={classNamesValue}>
       {children}
     </HtmlTag>
   );
@@ -34,6 +41,8 @@ Tabs.propTypes = {
   small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,
+
+  nowrap: PropTypes.bool,
 };
 
 Tabs.defaultProps = {

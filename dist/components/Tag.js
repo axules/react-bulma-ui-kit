@@ -35,25 +35,26 @@ function Tag(props) {
     hasAddons,
     ...restProps
   } = props;
-  const styleClassName = (0, _utils.getStyleClassName)({
+  const classNamesValue = (0, _classnames.default)('tag', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
-  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+  }), (0, _utils.getSizeClassName)({
+    medium,
+    large
+  }), (0, _utils.getBrightnessClassName)({
     white,
     light,
     dark,
     black
-  });
-  const sizeClassName = medium && 'is-medium' || large && 'is-large' || undefined;
+  }), hasHover && 'is-hoverable', rounded && 'is-rounded', isDelete && 'is-delete', hasAddons && 'has-addons', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ref: forwardedRef,
     ...restProps,
-    className: (0, _classnames.default)('tag', styleClassName, sizeClassName, brightnessClassName, hasHover && 'is-hoverable', rounded && 'is-rounded', isDelete && 'is-delete', hasAddons && 'has-addons', className),
+    className: classNamesValue,
     children: [children, onClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {
       onClick: onClose
     })]

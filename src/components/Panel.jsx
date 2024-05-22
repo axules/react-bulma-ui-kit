@@ -35,11 +35,15 @@ function Panel(props) {
     ...restProps
   } = props;
 
-  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
-  const brightnessClassName = getBrightnessClassName({ white, light, dark, black });
+  const classNamesValue = classNames(
+    'panel',
+    getStyleClassName({ danger, success, warning, info, link, primary }),
+    getBrightnessClassName({ white, light, dark, black }),
+    className
+  );
 
   return (
-    <HtmlTag {...restProps} className={classNames('panel', styleClassName, brightnessClassName, className)}>
+    <HtmlTag {...restProps} className={classNamesValue}>
       {title && <PanelHead>{title}</PanelHead>}
       {children}
     </HtmlTag>

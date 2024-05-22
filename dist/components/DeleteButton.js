@@ -18,16 +18,16 @@ function DeleteButton(props) {
     forwardedRef,
     ...restProps
   } = props;
-  const sizeClassName = (0, _utils.getSizeClassName)({
+  const classNamesValue = (0, _classnames.default)('delete', (0, _utils.getSizeClassName)({
     small,
     medium,
     large
-  });
+  }), className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     ref: forwardedRef,
     type: "button",
     ...restProps,
-    className: (0, _classnames.default)('delete', sizeClassName, className)
+    className: classNamesValue
   });
 }
 var _default = exports.default = (_DeleteButton = DeleteButton, /*#__PURE__*/(0, _react.memo)(_DeleteButton));

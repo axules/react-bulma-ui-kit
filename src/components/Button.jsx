@@ -46,9 +46,18 @@ function Button(props) {
     ...restProps
   } = props;
 
-  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
-  const brightnessClassName = getBrightnessClassName({ white, light, dark, black, text, ghost });
-  const sizeClassName = getSizeClassName({ small, medium, large });
+  const classNamesValue = classNames(
+    'button',
+    getStyleClassName({ danger, success, warning, info, link, primary }),
+    getSizeClassName({ small, medium, large }),
+    getBrightnessClassName({ white, light, dark, black, text, ghost }),
+    loading && 'is-loading',
+    outlined && 'is-outlined',
+    rounded && 'is-rounded',
+    fullWidth && 'is-fullwidth',
+    isDelete && 'is-delete',
+    className
+  );
 
   return (
     <HtmlTag
@@ -56,18 +65,7 @@ function Button(props) {
       type={type ?? undefined}
       {...restProps}
       disabled={disabled || loading}
-      className={classNames(
-        'button',
-        styleClassName,
-        sizeClassName,
-        brightnessClassName,
-        loading && 'is-loading',
-        outlined && 'is-outlined',
-        rounded && 'is-rounded',
-        fullWidth && 'is-fullwidth',
-        isDelete && 'is-delete',
-        className
-      )}
+      className={classNamesValue}
     >
       {children}
     </HtmlTag>

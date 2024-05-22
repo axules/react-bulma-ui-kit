@@ -23,10 +23,14 @@ function HelpText(props) {
     ...restProps
   } = props;
 
-  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
+  const classNamesValue = classNames(
+    'help',
+    getStyleClassName({ danger, success, warning, info, link, primary }),
+    className
+  );
 
   return (
-    <HtmlTag {...restProps} className={classNames('help', styleClassName, className)}>
+    <HtmlTag {...restProps} className={classNamesValue}>
       {children}
     </HtmlTag>
   );

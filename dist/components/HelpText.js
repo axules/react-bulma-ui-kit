@@ -23,17 +23,17 @@ function HelpText(props) {
     primary,
     ...restProps
   } = props;
-  const styleClassName = (0, _utils.getStyleClassName)({
+  const classNamesValue = (0, _classnames.default)('help', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
+  }), className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)('help', styleClassName, className),
+    className: classNamesValue,
     children: children
   });
 }

@@ -32,23 +32,22 @@ function Panel(props) {
     primary,
     ...restProps
   } = props;
-  const styleClassName = (0, _utils.getStyleClassName)({
+  const classNamesValue = (0, _classnames.default)('panel', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
-  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+  }), (0, _utils.getBrightnessClassName)({
     white,
     light,
     dark,
     black
-  });
+  }), className);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)('panel', styleClassName, brightnessClassName, className),
+    className: classNamesValue,
     children: [title && /*#__PURE__*/(0, _jsxRuntime.jsx)(_PanelHead.default, {
       children: title
     }), children]

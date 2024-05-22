@@ -23,19 +23,19 @@ function Field(props) {
     ...restProps
   } = props;
 
-  const classes = [
+  const errorHelp = errorText && <HelpText danger>{errorText}</HelpText>;
+  const help = helpText && <HelpText>{helpText}</HelpText>;
+  const classNamesValue = classNames(
+    'field',
     isGrouped && 'is-grouped',
     isGroupedMultiline && 'is-grouped is-grouped-multiline',
     isHorizontal && 'is-horizontal',
     hasAddons && 'has-addons',
-  ];
-
-  const errorHelp = errorText && <HelpText danger>{errorText}</HelpText>;
-
-  const help = helpText && <HelpText>{helpText}</HelpText>;
+    className,
+  );
 
   return (
-    <div {...restProps} className={classNames('field', className, ...classes)}>
+    <div {...restProps} className={classNamesValue}>
       {label && (
         isHorizontal
           ? <div className="field-label is-normal"><Label>{label}</Label></div>

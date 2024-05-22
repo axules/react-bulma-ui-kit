@@ -6,8 +6,14 @@ import classNames from 'classnames';
 function Tags(props) {
   const { children, className, hasAddons, ...restProps } = props;
 
+  const classNamesValue = classNames(
+    'tags',
+    hasAddons && 'has-addons',
+    className
+  );
+
   return (
-    <div {...restProps} className={classNames('tags', hasAddons && 'has-addons', className)}>
+    <div {...restProps} className={classNamesValue}>
       {children}
     </div>
   );

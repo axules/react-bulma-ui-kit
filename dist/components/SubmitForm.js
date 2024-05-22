@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../withRef");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _SubmitForm;
@@ -13,13 +14,16 @@ function SubmitForm(props) {
     children,
     disabled,
     forwardedRef,
+    loading,
+    className,
     ...restProps
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
     ...restProps,
+    className: (0, _classnames.default)(className, loading && 'is-loading'),
     ref: forwardedRef,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-      disabled: disabled,
+      disabled: disabled || loading,
       type: "submit",
       style: {
         display: 'none'

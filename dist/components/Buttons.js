@@ -13,11 +13,13 @@ function Buttons(props) {
     children,
     className,
     hasAddons,
+    nowrap,
     ...restProps
   } = props;
+  const classNamesValue = (0, _classnames.default)('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
-    className: (0, _classnames.default)('buttons', hasAddons && 'has-addons', className),
+    className: classNamesValue,
     children: children
   });
 }

@@ -24,19 +24,18 @@ function Notification(props) {
     light,
     ...restProps
   } = props;
-  const styleClassName = (0, _utils.getStyleClassName)({
+  const classNamesValue = (0, _classnames.default)('notification', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
-  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+  }), (0, _utils.getBrightnessClassName)({
     light
-  });
+  }), className);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: (0, _classnames.default)('notification', styleClassName, brightnessClassName, className),
+    className: classNamesValue,
     ...restProps,
     children: [onClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {
       onClick: onClose

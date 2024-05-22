@@ -15,14 +15,18 @@ function DeleteButton(props) {
     ...restProps
   } = props;
 
-  const sizeClassName = getSizeClassName({ small, medium, large });
+  const classNamesValue = classNames(
+    'delete',
+    getSizeClassName({ small, medium, large }),
+    className
+  );
 
   return (
     <button
       ref={forwardedRef}
       type="button"
       {...restProps}
-      className={classNames('delete', sizeClassName, className)}
+      className={classNamesValue}
     />
   );
 }

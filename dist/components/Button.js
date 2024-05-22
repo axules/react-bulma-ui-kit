@@ -40,33 +40,31 @@ function Button(props) {
     type = HtmlTag === 'button' ? 'button' : undefined,
     ...restProps
   } = props;
-  const styleClassName = (0, _utils.getStyleClassName)({
+  const classNamesValue = (0, _classnames.default)('button', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
-  const brightnessClassName = (0, _utils.getBrightnessClassName)({
+  }), (0, _utils.getSizeClassName)({
+    small,
+    medium,
+    large
+  }), (0, _utils.getBrightnessClassName)({
     white,
     light,
     dark,
     black,
     text,
     ghost
-  });
-  const sizeClassName = (0, _utils.getSizeClassName)({
-    small,
-    medium,
-    large
-  });
+  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: type != null ? type : undefined,
     ...restProps,
     disabled: disabled || loading,
-    className: (0, _classnames.default)('button', styleClassName, sizeClassName, brightnessClassName, loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', className),
+    className: classNamesValue,
     children: children
   });
 }

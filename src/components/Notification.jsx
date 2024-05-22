@@ -25,11 +25,15 @@ function Notification(props) {
     ...restProps
   } = props;
 
-  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
-  const brightnessClassName = getBrightnessClassName({ light });
+  const classNamesValue = classNames(
+    'notification',
+    getStyleClassName({ danger, success, warning, info, link, primary }),
+    getBrightnessClassName({ light }),
+    className
+  );
 
   return (
-    <div className={classNames('notification', styleClassName, brightnessClassName, className)} {...restProps}>
+    <div className={classNamesValue} {...restProps}>
       {onClose && <DeleteButton onClick={onClose} />}
 
       {children}

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import DeleteButton from './DeleteButton';
 import {
   getBrightnessClassName,
+  getSizeClassName,
   getStyleClassName
 } from './utils';
 
@@ -41,28 +42,23 @@ function Tag(props) {
     ...restProps
   } = props;
 
-  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
-  const brightnessClassName = getBrightnessClassName({ white, light, dark, black });
-
-  const sizeClassName = medium && 'is-medium'
-    || large && 'is-large'
-    || undefined;
+  const classNamesValue = classNames(
+    'tag',
+    getStyleClassName({ danger, success, warning, info, link, primary }),
+    getSizeClassName({ medium, large }),
+    getBrightnessClassName({ white, light, dark, black }),
+    hasHover && 'is-hoverable',
+    rounded && 'is-rounded',
+    isDelete && 'is-delete',
+    hasAddons && 'has-addons',
+    className
+  );
 
   return (
     <HtmlTag
       ref={forwardedRef}
       {...restProps}
-      className={classNames(
-        'tag',
-        styleClassName,
-        sizeClassName,
-        brightnessClassName,
-        hasHover && 'is-hoverable',
-        rounded && 'is-rounded',
-        isDelete && 'is-delete',
-        hasAddons && 'has-addons',
-        className
-      )}
+      className={classNamesValue}
     >
       {children}
       {onClose && <DeleteButton onClick={onClose} />}

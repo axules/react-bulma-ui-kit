@@ -15,9 +15,10 @@ function Tags(props) {
     hasAddons,
     ...restProps
   } = props;
+  const classNamesValue = (0, _classnames.default)('tags', hasAddons && 'has-addons', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
-    className: (0, _classnames.default)('tags', hasAddons && 'has-addons', className),
+    className: classNamesValue,
     children: children
   });
 }
