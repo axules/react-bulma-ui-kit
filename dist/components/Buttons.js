@@ -5,6 +5,7 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
+var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Buttons;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14,9 +15,16 @@ function Buttons(props) {
     className,
     hasAddons,
     nowrap,
+    left,
+    centered,
+    right,
     ...restProps
   } = props;
-  const classNamesValue = (0, _classnames.default)('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', className);
+  const classNamesValue = (0, _classnames.default)('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', (0, _utils.getAlignClassName)({
+    left,
+    centered,
+    right
+  }), className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
     className: classNamesValue,

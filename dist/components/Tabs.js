@@ -18,17 +18,29 @@ function Tabs(props) {
     medium,
     large,
     nowrap,
+    centered,
+    right,
+    boxed,
+    toggle,
+    toggleRounded,
+    fullWidth,
     ...restProps
   } = props;
   const classNamesValue = (0, _classnames.default)('tabs', (0, _utils.getSizeClassName)({
     small,
     medium,
     large
-  }), nowrap && 'is-flex-wrap-nowrap', className);
+  }), nowrap && 'is-flex-wrap-nowrap', fullWidth && 'is-fullwidth' || (0, _utils.getAlignClassName)({
+    right,
+    centered
+  }), boxed && 'is-boxed' || toggle && 'is-toggle' || toggleRounded && 'is-toggle is-toggle-rounded', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
-    children: children
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
+      role: "tablist",
+      children: children
+    })
   });
 }
 Tabs.defaultProps = {};

@@ -8,8 +8,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 var _PanelBlock = _interopRequireDefault(require("./PanelParts/PanelBlock"));
 var _PanelHead = _interopRequireDefault(require("./PanelParts/PanelHead"));
 var _PanelIcon = _interopRequireDefault(require("./PanelParts/PanelIcon"));
+var _PanelTab = _interopRequireDefault(require("./PanelParts/PanelTab"));
 var _PanelTabs = _interopRequireDefault(require("./PanelParts/PanelTabs"));
-var _Tab = _interopRequireDefault(require("./Tab"));
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Panel;
@@ -58,6 +58,6 @@ PanelExport.Head = _PanelHead.default;
 PanelExport.Block = _PanelBlock.default;
 PanelExport.BlockIcon = _PanelIcon.default;
 PanelExport.Tabs = _PanelTabs.default;
-PanelExport.Tab = _Tab.default;
+PanelExport.Tab = _PanelTab.default;
 var _default = exports.default = PanelExport;
 //# sourceMappingURL=Panel.js.map

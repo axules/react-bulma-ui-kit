@@ -10,6 +10,7 @@ import Label from './Label';
 
 function Field(props) {
   const {
+    as: HtmlTag = 'div',
     className,
     isHorizontal,
     children,
@@ -35,7 +36,7 @@ function Field(props) {
   );
 
   return (
-    <div {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} className={classNamesValue}>
       {label && (
         isHorizontal
           ? <div className="field-label is-normal"><Label>{label}</Label></div>
@@ -46,11 +47,12 @@ function Field(props) {
 
       {help}
       {errorHelp}
-    </div>
+    </HtmlTag>
   );
 }
 
 Field.propTypes = {
+  as: PropTypes.any,
   label: PropTypes.node,
   errorText: PropTypes.node,
   helpText: PropTypes.node,

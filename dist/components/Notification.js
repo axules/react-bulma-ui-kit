@@ -15,6 +15,7 @@ function Notification(props) {
     className,
     children,
     onClose,
+    closeDelay,
     danger,
     success,
     warning,
@@ -34,6 +35,16 @@ function Notification(props) {
   }), (0, _utils.getBrightnessClassName)({
     light
   }), className);
+  (0, _react.useEffect)(() => {
+    if (closeDelay) {
+      if (!onClose) {
+        console.error('onClose handler is required once closeDelay is defined');
+        return;
+      }
+      const timer = setTimeout(() => onClose(), closeDelay);
+      return () => clearTimeout(timer);
+    }
+  }, [closeDelay, onClose]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: classNamesValue,
     ...restProps,

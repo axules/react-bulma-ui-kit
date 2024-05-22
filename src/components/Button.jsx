@@ -39,6 +39,8 @@ function Button(props) {
     text,
     ghost,
 
+    inverted,
+
     outlined,
     rounded,
     disabled,
@@ -56,6 +58,7 @@ function Button(props) {
     rounded && 'is-rounded',
     fullWidth && 'is-fullwidth',
     isDelete && 'is-delete',
+    inverted && 'is-inverted',
     className
   );
 
@@ -102,6 +105,8 @@ Button.propTypes = {
   small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,
+
+  inverted: PropTypes.bool,
 
   fullWidth: PropTypes,
 };

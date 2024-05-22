@@ -7,7 +7,7 @@ function PanelTabs(props) {
   const { as: HtmlTag = 'div', children, className, ...restProps } = props;
 
   return (
-    <HtmlTag {...restProps} className={classNames('panel-tabs', className)}>
+    <HtmlTag role="tablist" {...restProps} className={classNames('panel-tabs', className)}>
       {children}
     </HtmlTag>
   );

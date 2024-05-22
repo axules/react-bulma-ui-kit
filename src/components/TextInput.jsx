@@ -13,6 +13,7 @@ import {
 
 function TextInput(props) {
   const {
+    as: HtmlTag = 'input',
     forwardedRef,
     className,
     leftIcon,
@@ -26,7 +27,8 @@ function TextInput(props) {
     small,
     medium,
     large,
-    offAutocomplete,
+    autoCompleteOff,
+    autoComplete,
     asControl,
     isExpanded,
     ...restProps
@@ -36,10 +38,10 @@ function TextInput(props) {
   const sizeClassName = getSizeClassName({ small, medium, large });
 
   const inputRender = (
-    <input
-      type="text"
+    <HtmlTag
+      type={HtmlTag === 'input' ? 'text' : undefined}
       ref={forwardedRef}
-      autoComplete={offAutocomplete ? 'off' : undefined}
+      autoComplete={autoComplete === false || autoCompleteOff ? 'off' : autoComplete}
       {...restProps}
       className={classNames('input', styleClassName, sizeClassName, className)}
     />
@@ -48,7 +50,7 @@ function TextInput(props) {
   return leftIcon || rightIcon || asControl
     ? (
       <Control
-        className={classNames(leftIcon && 'has-icons-left', leftIcon && 'has-icons-right')}
+        className={classNames(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right')}
         isExpanded={isExpanded}
       >
 
@@ -71,6 +73,7 @@ function TextInput(props) {
 }
 
 TextInput.propTypes = {
+  as: PropTypes.any,
   forwardedRef: PropTypes.object,
   className: PropTypes.string,
   leftIcon: PropTypes.node,
@@ -90,7 +93,8 @@ TextInput.propTypes = {
   medium: PropTypes.bool,
   large: PropTypes.bool,
 
-  offAutocomplete: PropTypes.bool,
+  autoComplete: PropTypes.any,
+  autoCompleteOff: PropTypes.bool,
 };
 
 export default TextInput

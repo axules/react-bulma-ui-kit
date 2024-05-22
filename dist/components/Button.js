@@ -34,6 +34,7 @@ function Button(props) {
     black,
     text,
     ghost,
+    inverted,
     outlined,
     rounded,
     disabled,
@@ -58,7 +59,7 @@ function Button(props) {
     black,
     text,
     ghost
-  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', className);
+  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', inverted && 'is-inverted', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: type != null ? type : undefined,

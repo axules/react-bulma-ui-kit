@@ -6,22 +6,23 @@ var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _jsxRuntime = require("react/jsx-runtime");
-var _PanelTabs;
+var _PanelTab;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function PanelTabs(props) {
+function PanelTab(props) {
   const {
-    as: HtmlTag = 'div',
+    as: HtmlTag = 'a',
     children,
     className,
+    active,
     ...restProps
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
-    role: "tablist",
+    role: "tab",
     ...restProps,
-    className: (0, _classnames.default)('panel-tabs', className),
+    className: (0, _classnames.default)(active && 'is-active', className),
     children: children
   });
 }
-PanelTabs.defaultProps = {};
-var _default = exports.default = (_PanelTabs = PanelTabs, /*#__PURE__*/(0, _react.memo)(_PanelTabs));
-//# sourceMappingURL=PanelTabs.js.map
+PanelTab.defaultProps = {};
+var _default = exports.default = (_PanelTab = PanelTab, /*#__PURE__*/(0, _react.memo)(_PanelTab));
+//# sourceMappingURL=PanelTab.js.map

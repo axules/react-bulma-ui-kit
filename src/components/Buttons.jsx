@@ -2,6 +2,8 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { getAlignClassName } from './utils';
+
 
 function Buttons(props) {
   const {
@@ -9,6 +11,10 @@ function Buttons(props) {
     className,
     hasAddons,
     nowrap,
+
+    left,
+    centered,
+    right,
     ...restProps
   } = props;
 
@@ -16,6 +22,7 @@ function Buttons(props) {
     'buttons',
     hasAddons && 'has-addons',
     nowrap && 'is-flex-wrap-nowrap',
+    getAlignClassName({ left, centered, right }),
     className
   );
 
@@ -31,6 +38,10 @@ Buttons.propTypes = {
   className: PropTypes.string,
   hasAddons: PropTypes.bool,
   nowrap: PropTypes.bool,
+
+  left: PropTypes.bool,
+  centered: PropTypes.bool,
+  right: PropTypes.bool,
 };
 
 export default Buttons

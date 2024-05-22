@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import PanelBlock from './PanelParts/PanelBlock';
 import PanelHead from './PanelParts/PanelHead';
 import PanelIcon from './PanelParts/PanelIcon';
+import PanelTab from './PanelParts/PanelTab';
 import PanelTabs from './PanelParts/PanelTabs';
-import Tab from './Tab';
 import {
   getBrightnessClassName,
   getStyleClassName
@@ -77,6 +77,6 @@ PanelExport.Head = PanelHead;
 PanelExport.Block = PanelBlock;
 PanelExport.BlockIcon = PanelIcon;
 PanelExport.Tabs = PanelTabs;
-PanelExport.Tab = Tab;
+PanelExport.Tab = PanelTab;
 
 export default PanelExport;

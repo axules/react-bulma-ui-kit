@@ -10,16 +10,27 @@ var _Tab;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Tab(props) {
   const {
-    as: HtmlTag = 'div',
+    as: HtmlTag = 'li',
     children,
     className,
     active,
+    href,
+    onClick,
+    onMouseUp,
+    onMouseDown,
     ...restProps
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
     className: (0, _classnames.default)(className, active && 'is-active'),
-    children: children
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+      role: "tab",
+      href: href,
+      onClick: onClick,
+      onMouseUp: onMouseUp,
+      onMouseDown: onMouseDown,
+      children: children
+    })
   });
 }
 Tab.defaultProps = {};

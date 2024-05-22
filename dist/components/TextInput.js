@@ -13,6 +13,7 @@ var _ref, _TextInput;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function TextInput(props) {
   const {
+    as: HtmlTag = 'input',
     forwardedRef,
     className,
     leftIcon,
@@ -26,7 +27,8 @@ function TextInput(props) {
     small,
     medium,
     large,
-    offAutocomplete,
+    autoCompleteOff,
+    autoComplete,
     asControl,
     isExpanded,
     ...restProps
@@ -44,15 +46,15 @@ function TextInput(props) {
     medium,
     large
   });
-  const inputRender = /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
-    type: "text",
+  const inputRender = /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
+    type: HtmlTag === 'input' ? 'text' : undefined,
     ref: forwardedRef,
-    autoComplete: offAutocomplete ? 'off' : undefined,
+    autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
     ...restProps,
     className: (0, _classnames.default)('input', styleClassName, sizeClassName, className)
   });
   return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Control.default, {
-    className: (0, _classnames.default)(leftIcon && 'has-icons-left', leftIcon && 'has-icons-right'),
+    className: (0, _classnames.default)(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
     isExpanded: isExpanded,
     children: [inputRender, leftIcon && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: "icon is-left",

@@ -13,6 +13,7 @@ var _ref, _Field;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function Field(props) {
   const {
+    as: HtmlTag = 'div',
     className,
     isHorizontal,
     children,
@@ -33,7 +34,7 @@ function Field(props) {
     children: helpText
   });
   const classNamesValue = (0, _classnames.default)('field', isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons', className);
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
     children: [label && (isHorizontal ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {

@@ -16,6 +16,24 @@ export function getStyleClassName(styles) {
     || undefined;
 }
 
+export function getTextColorClassName(styles) {
+  const {
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+  } = styles;
+  return danger && 'has-text-danger'
+    || success && 'has-text-success'
+    || warning && 'has-text-warning'
+    || info && 'has-text-info'
+    || link && 'has-text-link'
+    || primary && 'has-text-primary'
+    || undefined;
+}
+
 export function getBrightnessClassName(styles) {
   const {
     white,
@@ -45,5 +63,18 @@ export function getSizeClassName(styles) {
   return small && 'is-small'
     || medium && 'is-medium'
     || large && 'is-large'
+    || undefined;
+}
+
+export function getAlignClassName(styles) {
+  const {
+    right,
+    centered,
+    left,
+  } = styles;
+
+  return left && 'is-left'
+    || centered && 'is-centered'
+    || right && 'is-right'
     || undefined;
 }

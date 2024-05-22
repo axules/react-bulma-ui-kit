@@ -2,7 +2,10 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { getSizeClassName } from './utils';
+import {
+  getAlignClassName,
+  getSizeClassName
+} from './utils';
 
 
 function Tabs(props) {
@@ -16,6 +19,15 @@ function Tabs(props) {
     large,
 
     nowrap,
+
+    centered,
+    right,
+
+    boxed,
+    toggle,
+    toggleRounded,
+
+    fullWidth,
     ...restProps
   } = props;
 
@@ -23,12 +35,16 @@ function Tabs(props) {
     'tabs',
     getSizeClassName({ small, medium, large }),
     nowrap && 'is-flex-wrap-nowrap',
+    fullWidth && 'is-fullwidth' || getAlignClassName({ right, centered }),
+    boxed && 'is-boxed' || toggle && 'is-toggle' || toggleRounded && 'is-toggle is-toggle-rounded',
     className,
   );
 
   return (
     <HtmlTag {...restProps} className={classNamesValue}>
-      {children}
+      <ul role="tablist">
+        {children}
+      </ul>
     </HtmlTag>
   );
 }
@@ -43,6 +59,14 @@ Tabs.propTypes = {
   large: PropTypes.bool,
 
   nowrap: PropTypes.bool,
+
+  centered: PropTypes.bool,
+  right: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+
+  boxed: PropTypes.bool,
+  toggle: PropTypes.bool,
+  toggleRounded: PropTypes.bool,
 };
 
 Tabs.defaultProps = {
