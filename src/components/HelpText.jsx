@@ -26,7 +26,7 @@ function HelpText(props) {
 }
 
 HelpText.propTypes = {
-  as: PropTypes.string,
+  as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   success: PropTypes.bool,

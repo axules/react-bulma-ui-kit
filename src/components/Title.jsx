@@ -48,7 +48,7 @@ function Title(props) {
 }
 
 Title.propTypes = {
-  as: PropTypes.string,
+  as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   forwardedRef: PropTypes.any,

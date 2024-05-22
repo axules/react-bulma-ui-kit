@@ -25,7 +25,7 @@ function Control(props) {
 }
 
 Control.propTypes = {
-  as: PropTypes.string,
+  as: PropTypes.any,
   className: PropTypes.string,
   children: PropTypes.node,
   isExpanded: PropTypes.bool,

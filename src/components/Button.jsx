@@ -86,7 +86,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  as: PropTypes.string,
+  as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   loading: PropTypes.bool,
