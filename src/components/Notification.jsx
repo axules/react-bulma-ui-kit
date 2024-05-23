@@ -25,14 +25,14 @@ function Notification(props) {
     info,
     link,
     primary,
-    light,
+    white, light, dark, black,
     ...restProps
   } = props;
 
   const classNamesValue = classNames(
     'notification',
     getStyleClassName({ danger, success, warning, info, link, primary }),
-    getBrightnessClassName({ light }),
+    getBrightnessClassName({ white, light, dark, black }),
     className
   );
 
@@ -68,7 +68,11 @@ Notification.propTypes = {
   warning: PropTypes.bool,
   success: PropTypes.bool,
   danger: PropTypes.bool,
-  light: PropTypes.bool
+
+  white: PropTypes.bool,
+  light: PropTypes.bool,
+  dark: PropTypes.bool,
+  black: PropTypes.bool,
 };
 
 export default Notification

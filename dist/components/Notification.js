@@ -22,7 +22,10 @@ function Notification(props) {
     info,
     link,
     primary,
+    white,
     light,
+    dark,
+    black,
     ...restProps
   } = props;
   const classNamesValue = (0, _classnames.default)('notification', (0, _utils.getStyleClassName)({
@@ -33,7 +36,10 @@ function Notification(props) {
     link,
     primary
   }), (0, _utils.getBrightnessClassName)({
-    light
+    white,
+    light,
+    dark,
+    black
   }), className);
   (0, _react.useEffect)(() => {
     if (closeDelay) {

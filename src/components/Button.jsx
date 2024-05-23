@@ -92,6 +92,7 @@ Button.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
   black: PropTypes.bool,
+
   text: PropTypes.bool,
   ghost: PropTypes.bool,
 
