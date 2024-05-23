@@ -1,0 +1,10 @@
+<body>
+    <div id="general"></div>
+
+    <% Array.prototype.forEach.call(htmlWebpackPlugin.files.css, function(file) { %>
+        <link href="<%= file %>" rel="stylesheet" />
+    <% }); %>
+    <% Array.prototype.forEach.call(htmlWebpackPlugin.files.js, function(file) { %>
+        <script src="<%= file %>"></script>
+    <% }); %>
+</body>
