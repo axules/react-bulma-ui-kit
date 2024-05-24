@@ -109,7 +109,7 @@ Button.propTypes = {
 
   inverted: PropTypes.bool,
 
-  fullWidth: PropTypes,
+  fullWidth: PropTypes.bool,
 };
 
 export default Button

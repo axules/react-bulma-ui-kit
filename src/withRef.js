@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 /**
  * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
- * @param {React Component} WrappedComponent
+ * @param {React.Component} WrappedComponent
  * @returns
  */
 export function withForwardedRef(WrappedComponent) {
@@ -19,6 +19,7 @@ function withRef(propName) {
     });
 
     Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    Wrapper.type = WrappedComponent;
 
     return Wrapper;
   };

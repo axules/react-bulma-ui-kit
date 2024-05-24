@@ -6,7 +6,7 @@ var _react = require("react");
 var _jsxRuntime = require("react/jsx-runtime");
 /**
  * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
- * @param {React Component} WrappedComponent
+ * @param {React.Component} WrappedComponent
  * @returns
  */
 function withForwardedRef(WrappedComponent) {
@@ -24,6 +24,7 @@ function withRef(propName) {
       });
     });
     Wrapper.displayName = "WithRef(" + (WrappedComponent.displayName || WrappedComponent.name || 'Component') + ")";
+    Wrapper.type = WrappedComponent;
     return Wrapper;
   };
 }
