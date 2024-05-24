@@ -1,6 +1,6 @@
-import Buttons from '../../dist/components/Buttons';
-import Notification from '../../dist/components/Notification';
-import { sheetEntry } from '../sheetEntry';
+import Buttons from '../../src/components/Buttons';
+import Notification from '../../src/components/Notification';
+import { sheetRenderer } from '../sheetRenderer';
 
 
 const styles = '.primary.link.success.warning.danger'.split('.');
@@ -23,10 +23,12 @@ function renderEach(cases, props) {
   );
 }
 
-export default sheetEntry({
+const examples = {
   styles: renderEach(styles),
   stylesWithClose: renderEach(styles, { onClose: () => console.warn('onClose callback') }),
   stylesLight: renderEach(styles, { light: true }),
   stylesDark: renderEach(styles, { dark: true }),
   brightness: renderEach(brightness),
-});
+};
+
+export default sheetRenderer(Notification, examples);

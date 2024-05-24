@@ -22,7 +22,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: OUTPUT_PATH,
-    clean: true,
+    clean: false,
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -53,7 +53,10 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        loader: 'babel-loader',
+        options: {
+          configFile: path.resolve(__dirname, 'babelSheets.js')
+        },
       },
       {
         test: /\.(css|scss|sass)$/i,

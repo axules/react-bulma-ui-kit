@@ -1,6 +1,6 @@
-import Button from '../../dist/components/Button';
-import Buttons from '../../dist/components/Buttons';
-import { sheetEntry } from '../sheetEntry';
+import Button from '../../src/components/Button';
+import Buttons from '../../src/components/Buttons';
+import { sheetRenderer } from '../sheetRenderer';
 
 
 const styles = '.primary.link.success.warning.danger'.split('.');
@@ -23,11 +23,13 @@ function renderEach(cases, props) {
   );
 }
 
-export default sheetEntry({
+const examples = {
   styles: renderEach(styles),
   stylesLight: renderEach(styles, { light: true }),
   stylesDark: renderEach(styles, { dark: true }),
   stylesOutlined: renderEach(styles, { outlined: true }),
   brightness: renderEach(brightness),
   sizes: renderEach(sizes)
-});
+};
+
+export default sheetRenderer(Button, examples, { pt: true });
