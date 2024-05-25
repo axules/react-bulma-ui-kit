@@ -134,6 +134,7 @@ module.exports = {
           name: 'vendor',
           enforce: true,
           reuseExistingChunk: true,
+          priority: 19,
         },
         default: 'i',
       },

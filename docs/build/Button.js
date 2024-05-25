@@ -1,25 +1,16 @@
 "use strict";
 (self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[939],{
 
-/***/ 645:
+/***/ 567:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  r: () => (/* binding */ sheetRenderer)
-});
-
-// EXTERNAL MODULE: ./node_modules/react-dom/client.js
-var client = __webpack_require__(338);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(556);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./docs/SheetProps.jsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
 var _SheetProps;
 
 
@@ -29,17 +20,17 @@ function SheetProps(props) {
   const {
     propTypesData
   } = props;
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: cnPrefix,
-    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
       children: "Prop types:"
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("table", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
       className: "table is-bordered",
-      children: /*#__PURE__*/(0,jsx_runtime.jsx)("tbody", {
-        children: Object.entries(propTypesData).map(([k]) => /*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,jsx_runtime.jsx)("td", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+        children: Object.entries(propTypesData).map(([k]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
             children: k
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
             children: "???"
           })]
         }, k))
@@ -48,10 +39,65 @@ function SheetProps(props) {
   });
 }
 SheetProps.propTypes = {
-  propTypesData: (prop_types_default()).node
+  propTypesData: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node)
 };
 SheetProps.defaultProps = {};
-/* harmony default export */ const docs_SheetProps = (_SheetProps = SheetProps, /*#__PURE__*/(0,react.memo)(_SheetProps));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_SheetProps = SheetProps, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_SheetProps));
+
+/***/ }),
+
+/***/ 807:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  r: () => (/* binding */ sheetRenderer)
+});
+
+// EXTERNAL MODULE: ./node_modules/lodash.debounce/index.js
+var lodash_debounce = __webpack_require__(181);
+var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce);
+// EXTERNAL MODULE: ./node_modules/react-dom/client.js
+var client = __webpack_require__(338);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(942);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./docs/SheetExamples.jsx
+var _SheetExamples;
+
+
+
+
+const cnPrefix = 'sheetExamples';
+function SheetExamples(props) {
+  const {
+    children,
+    title
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: cnPrefix,
+    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+      children: title
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      children: children
+    })]
+  });
+}
+SheetExamples.propTypes = {
+  children: (prop_types_default()).node,
+  title: (prop_types_default()).node
+};
+SheetExamples.defaultProps = {};
+/* harmony default export */ const docs_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
+// EXTERNAL MODULE: ./docs/SheetProps.jsx
+var SheetProps = __webpack_require__(567);
 ;// CONCATENATED MODULE: ./docs/utils.js
 function extractCore(component) {
   let node = component;
@@ -65,27 +111,37 @@ function extractCore(component) {
 
 
 
-function renderSheet(title, children) {
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
-      children: title
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-      children: children
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("hr", {})]
-  });
+
+
+function resizeMessage() {
+  const html = document.querySelector('html');
+  html.style.height = '0';
+  const event = {
+    type: 'FRAME_RESIZE',
+    payload: {
+      height: html.scrollHeight,
+      url: window.location.href
+    }
+  };
+  window.top.postMessage(event, '*');
 }
+const onWindowResize = lodash_debounce_default()(resizeMessage, 250);
+window.addEventListener('resize', onWindowResize);
 function renderSandbox() {}
 function sheetRenderer(CMP, sheets, options = {}) {
   const CoreComponent = extractCore(CMP);
-  console.log(CMP, CoreComponent);
-  const renderedSheets = Object.entries(sheets).map(([key, value]) => renderSheet(key, value));
+  const renderedSheets = Object.entries(sheets).map(([key, value]) => /*#__PURE__*/(0,jsx_runtime.jsx)(docs_SheetExamples, {
+    title: key,
+    children: value
+  }, key));
   (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h1", {
       children: CoreComponent === CMP ? CMP.displayName || CoreComponent.name : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`
-    }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(docs_SheetProps, {
+    }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(SheetProps/* default */.A, {
       propTypesData: CoreComponent.propTypes
     })]
   }));
+  resizeMessage();
   return sheets;
 }
 
@@ -112,7 +168,7 @@ var jsx_runtime = __webpack_require__(848);
 
 /**
  * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
- * @param {React Component} WrappedComponent
+ * @param {React.Component} WrappedComponent
  * @returns
  */
 
@@ -237,7 +293,7 @@ Button.propTypes = {
 // EXTERNAL MODULE: ./src/components/Buttons.jsx
 var Buttons = __webpack_require__(535);
 // EXTERNAL MODULE: ./docs/sheetRenderer.js + 2 modules
-var sheetRenderer = __webpack_require__(645);
+var sheetRenderer = __webpack_require__(807);
 ;// CONCATENATED MODULE: ./docs/sheets/Button.sheet.js
 
 

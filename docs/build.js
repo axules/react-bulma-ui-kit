@@ -9,7 +9,9 @@ const fs = require('fs');
 
 
 const SHEETS_PATH = path.resolve(__dirname, 'sheets');
-const TEMPLATE_PATH = path.resolve(__dirname, 'sheet.template.ejs');
+const SHEET_TEMPLATE_PATH = path.resolve(__dirname, 'sheet.template.ejs');
+const MAIN_ENTRY_PATH = path.resolve(__dirname, 'index.js');
+const MAIN_TEMPLATE_PATH = path.resolve(__dirname, 'index.template.ejs');
 
 function getDirectories(src, callback) {
   glob(src + '/**/*.sheet.js', callback);
@@ -31,18 +33,35 @@ function cleanOutput(outputPath) {
 function compile(files) {
   // eslint-disable-next-line no-console
   console.log('Found files:', files);
+  const allSheets = [];
 
   files.forEach((it) => {
     const fileName = path.basename(it).replace('.sheet.js', '');
+
     Object.assign(webpackConfig.entry, { [fileName]: it });
-    webpackConfig.plugins.push(
-      new HtmlWebpackPlugin({
+
+    webpackConfig.plugins
+      .push(new HtmlWebpackPlugin({
         filename: `${fileName}.html`,
-        template: TEMPLATE_PATH,
+        template: SHEET_TEMPLATE_PATH,
         chunks: [fileName],
-      }),
-    );
+      }));
+
+    allSheets.push({
+      name: fileName,
+      path: `${fileName}.html`,
+    });
   });
+
+  Object.assign(webpackConfig.entry, { index: MAIN_ENTRY_PATH });
+
+  webpackConfig.plugins
+    .push(new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: MAIN_TEMPLATE_PATH,
+      chunks: ['index'],
+      SHEETS_LIST: JSON.stringify(allSheets)
+    }));
 
   // console.log('webpackConfig: ', webpackConfig);
   webpack(
