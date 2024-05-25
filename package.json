@@ -17,7 +17,7 @@
     "test": "jest",
     "eslint": "eslint --ext .js,.jsx src/",
     "build": "babel --source-maps --delete-dir-on-start -d dist src -x .js,.jsx",
-    "docs-build": "node ./docs/build.js"
+    "docs-build": "node ./docsSrc/build.js"
   },
   "keywords": [
     "ui-kit",

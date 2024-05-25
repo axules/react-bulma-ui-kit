@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[290],{
 
-/***/ 567:
+/***/ 549:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -46,7 +46,7 @@ SheetProps.defaultProps = {};
 
 /***/ }),
 
-/***/ 807:
+/***/ 325:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -69,7 +69,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 var classnames = __webpack_require__(942);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./docs/SheetExamples.jsx
+;// CONCATENATED MODULE: ./docsSrc/SheetExamples.jsx
 var _SheetExamples;
 
 
@@ -95,10 +95,10 @@ SheetExamples.propTypes = {
   title: (prop_types_default()).node
 };
 SheetExamples.defaultProps = {};
-/* harmony default export */ const docs_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
-// EXTERNAL MODULE: ./docs/SheetProps.jsx
-var SheetProps = __webpack_require__(567);
-;// CONCATENATED MODULE: ./docs/utils.js
+/* harmony default export */ const docsSrc_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
+// EXTERNAL MODULE: ./docsSrc/SheetProps.jsx
+var SheetProps = __webpack_require__(549);
+;// CONCATENATED MODULE: ./docsSrc/utils.js
 function extractCore(component) {
   let node = component;
   while (node.type) {
@@ -106,7 +106,7 @@ function extractCore(component) {
   }
   return node;
 }
-;// CONCATENATED MODULE: ./docs/sheetRenderer.js
+;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
 
 
 
@@ -130,7 +130,7 @@ window.addEventListener('resize', onWindowResize);
 function renderSandbox() {}
 function sheetRenderer(CMP, sheets, options = {}) {
   const CoreComponent = extractCore(CMP);
-  const renderedSheets = Object.entries(sheets).map(([key, value]) => /*#__PURE__*/(0,jsx_runtime.jsx)(docs_SheetExamples, {
+  const renderedSheets = Object.entries(sheets).map(([key, value]) => /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
     title: key,
     children: value
   }, key));
@@ -147,7 +147,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 312:
+/***/ 70:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -277,9 +277,9 @@ Notification.propTypes = {
   black: (prop_types_default()).bool
 };
 /* harmony default export */ const components_Notification = (_Notification = Notification, /*#__PURE__*/(0,react.memo)(_Notification));
-// EXTERNAL MODULE: ./docs/sheetRenderer.js + 2 modules
-var sheetRenderer = __webpack_require__(807);
-;// CONCATENATED MODULE: ./docs/sheets/Notification.sheet.js
+// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 2 modules
+var sheetRenderer = __webpack_require__(325);
+;// CONCATENATED MODULE: ./docsSrc/sheets/Notification.sheet.js
 
 
 
@@ -433,7 +433,7 @@ function getAlignClassName(styles) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(312)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(70)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

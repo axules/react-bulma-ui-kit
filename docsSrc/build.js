@@ -82,7 +82,7 @@ function createSeparateSheets(files) {
 }
 
 function main() {
-  cleanOutput(webpackConfig.output.path);
+  // cleanOutput(webpackConfig.output.path);
   // eslint-disable-next-line no-console
   console.log('Sheets path:', SHEETS_PATH);
 
