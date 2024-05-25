@@ -1,8 +1,11 @@
 html {
   overflow: auto;
+  display: flex;
+  min-height: 100vh;
 }
 
 body {
+  flex: 1 1;
   display: flex;
 }
 
