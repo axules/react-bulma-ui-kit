@@ -23,12 +23,12 @@ function Title(props) {
     subtitle,
     ...restProps
   } = props;
-  const HtmlTag = as || is1 && 'h1' || is2 && 'h2' || is3 && 'h3' || is4 && 'h4' || is5 && 'h5' || is6 && 'h6';
-  const hClassName = is1 && 'is-1' || is2 && 'is-2' || is3 && 'is-3' || is4 && 'is-4' || is5 && 'is-5' || is6 && 'is-6';
+  const HtmlTag = as || is1 && 'h1' || is2 && 'h2' || is3 && 'h3' || is4 && 'h4' || is5 && 'h5' || is6 && 'h6' || 'h3';
+  const hClassName = is1 && 'is-1' || is2 && 'is-2' || is3 && 'is-3' || is4 && 'is-4' || is5 && 'is-5' || is6 && 'is-6' || undefined;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     ...restProps,
-    className: (0, _classnames.default)(subtitle ? 'is-subtitle' : 'is-title', hClassName, className),
+    className: (0, _classnames.default)(subtitle ? 'subtitle' : 'title', hClassName, className),
     children: children
   });
 }
