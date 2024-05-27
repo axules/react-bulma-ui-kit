@@ -51,7 +51,10 @@ function Message(props) {
     children: [(title || onClose) && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "message-header",
       children: [title, onClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {})]
-    }), children]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "message-body",
+      children: children
+    })]
   });
 }
 var _default = exports.default = (_Message = Message, /*#__PURE__*/(0, _react.memo)(_Message));
