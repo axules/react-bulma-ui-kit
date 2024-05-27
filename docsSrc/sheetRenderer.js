@@ -1,6 +1,8 @@
 import debounce from 'lodash.debounce';
 import { createRoot } from 'react-dom/client';
 
+import Title from '../src/components/Title';
+
 import SheetExamples from './SheetExamples';
 import SheetProps from './SheetProps';
 import { extractCore } from './utils';
@@ -31,9 +33,11 @@ export function sheetRenderer(CMP, sheets, options = {}) {
   createRoot(document.getElementById('general'))
     .render(
       <>
-        <h1>{CoreComponent === CMP
-          ? CMP.displayName || CoreComponent.name
-          : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`}</h1>
+        <Title is5>
+          {CoreComponent === CMP
+            ? CMP.displayName || CoreComponent.name
+            : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`}
+        </Title>
 
         {renderedSheets}
 

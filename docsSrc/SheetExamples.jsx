@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+
+import Panel from '../src/components/Panel';
 
 
 const cnPrefix = 'sheetExamples';
@@ -9,12 +10,11 @@ function SheetExamples(props) {
   const { children, title } = props;
 
   return (
-    <div className={cnPrefix}>
-      {title && <h3>{title}</h3>}
-      <div>
+    <Panel className={cnPrefix} title={title} light>
+      <Panel.Block>
         {children}
-      </div>
-    </div>
+      </Panel.Block>
+    </Panel>
   );
 }
 

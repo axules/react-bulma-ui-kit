@@ -5,7 +5,7 @@ import { sheetRenderer } from '../sheetRenderer';
 
 const styles = '.primary.link.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
-const sizes = 'primary.link.success.warning.danger'.split('.');
+const sizes = '.small.normal.large'.split('.');
 
 function renderEach(cases, props) {
   return (

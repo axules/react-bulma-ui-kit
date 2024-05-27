@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[290],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[299],{
 
 /***/ 549:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -364,22 +364,21 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 837:
+/***/ 964:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-/* harmony import */ var _src_components_Buttons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(535);
-/* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(277);
+/* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(277);
+/* harmony import */ var _src_components_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(322);
 /* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(174);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
 
 
 
 
-const styles = '.primary.link.success.warning.danger'.split('.');
-const brightness = 'white.light.dark.black'.split('.');
+const sizes = '.is1.is2.is3.is4.is5.is6'.split('.');
 function renderEach(cases, props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_src_components_Buttons__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
-    children: cases.map(it => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: cases.map(it => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_src_components_Title__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
       ...(it ? {
         [it]: true
       } : {}),
@@ -389,73 +388,12 @@ function renderEach(cases, props) {
   });
 }
 const examples = {
-  styles: renderEach(styles),
-  stylesWithClose: renderEach(styles, {
-    onClose: () => console.warn('onClose callback')
-  }),
-  stylesLight: renderEach(styles, {
-    light: true
-  }),
-  stylesDark: renderEach(styles, {
-    dark: true
-  }),
-  brightness: renderEach(brightness)
+  sizes: renderEach(sizes),
+  sizesSubtitle: renderEach(sizes, {
+    subtitle: true
+  })
 };
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, examples));
-
-/***/ }),
-
-/***/ 535:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
-var _Buttons;
-
-
-
-
-
-function Buttons(props) {
-  const {
-    children,
-    className,
-    hasAddons,
-    nowrap,
-    left,
-    centered,
-    right,
-    ...restProps
-  } = props;
-  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getAlignClassName */ .HA)({
-    left,
-    centered,
-    right
-  }), className);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    ...restProps,
-    className: classNamesValue,
-    children: children
-  });
-}
-Buttons.propTypes = {
-  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
-  hasAddons: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  nowrap: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  left: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  centered: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  right: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Buttons = Buttons, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Buttons));
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples));
 
 /***/ }),
 
@@ -716,7 +654,7 @@ function getAlignClassName(styles) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(837)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(964)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

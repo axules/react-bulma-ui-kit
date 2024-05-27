@@ -6,6 +6,8 @@ import {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import Title from '../src/components/Title';
+
 import SheetsMenu from './MainSheetsMenu';
 import SheetProps from './SheetProps';
 
@@ -58,7 +60,7 @@ function MainPage(props) {
       <div className={`${cnPrefix}__view`}>
         {selectedSheet
           ? <>
-            <h3>{selectedSheet.name}</h3>
+            <Title is4>{selectedSheet.name}</Title>
             <iframe title={selectedSheet.name} src={url} />
           </>
           : <h1>Select component</h1>

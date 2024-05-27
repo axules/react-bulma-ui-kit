@@ -46,7 +46,7 @@ SheetProps.defaultProps = {};
 
 /***/ }),
 
-/***/ 325:
+/***/ 174:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -60,6 +60,8 @@ var lodash_debounce = __webpack_require__(181);
 var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce);
 // EXTERNAL MODULE: ./node_modules/react-dom/client.js
 var client = __webpack_require__(338);
+// EXTERNAL MODULE: ./src/components/Title.jsx
+var Title = __webpack_require__(322);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(540);
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -67,8 +69,221 @@ var prop_types = __webpack_require__(556);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./src/components/PanelParts/PanelBlock.jsx
+var _PanelBlock;
+
+
+
+
+function PanelBlock(props) {
+  const {
+    as: HtmlTag = 'div',
+    children,
+    className,
+    active,
+    ...restProps
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    ...restProps,
+    className: classnames_default()('panel-block', active && 'is-active', className),
+    children: children
+  });
+}
+PanelBlock.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  active: (prop_types_default()).bool
+};
+PanelBlock.defaultProps = {};
+/* harmony default export */ const PanelParts_PanelBlock = (_PanelBlock = PanelBlock, /*#__PURE__*/(0,react.memo)(_PanelBlock));
+;// CONCATENATED MODULE: ./src/components/PanelParts/PanelHead.jsx
+var _PanelHead;
+
+
+
+
+function PanelHead(props) {
+  const {
+    as: HtmlTag = 'div',
+    children,
+    className,
+    ...restProps
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    ...restProps,
+    className: classnames_default()('panel-heading', className),
+    children: children
+  });
+}
+PanelHead.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string
+};
+PanelHead.defaultProps = {};
+/* harmony default export */ const PanelParts_PanelHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
+;// CONCATENATED MODULE: ./src/components/PanelParts/PanelIcon.jsx
+var _PanelIcon;
+
+
+
+
+function PanelIcon(props) {
+  const {
+    as: HtmlTag = 'div',
+    children,
+    className,
+    ...restProps
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    ...restProps,
+    className: classnames_default()('panel-icon', className),
+    children: children
+  });
+}
+PanelIcon.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string
+};
+PanelIcon.defaultProps = {};
+/* harmony default export */ const PanelParts_PanelIcon = (_PanelIcon = PanelIcon, /*#__PURE__*/(0,react.memo)(_PanelIcon));
+;// CONCATENATED MODULE: ./src/components/PanelParts/PanelTab.jsx
+var _PanelTab;
+
+
+
+
+function PanelTab(props) {
+  const {
+    as: HtmlTag = 'a',
+    children,
+    className,
+    active,
+    ...restProps
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    role: "tab",
+    ...restProps,
+    className: classnames_default()(active && 'is-active', className),
+    children: children
+  });
+}
+PanelTab.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  active: (prop_types_default()).bool
+};
+PanelTab.defaultProps = {};
+/* harmony default export */ const PanelParts_PanelTab = (_PanelTab = PanelTab, /*#__PURE__*/(0,react.memo)(_PanelTab));
+;// CONCATENATED MODULE: ./src/components/PanelParts/PanelTabs.jsx
+var _PanelTabs;
+
+
+
+
+function PanelTabs(props) {
+  const {
+    as: HtmlTag = 'div',
+    children,
+    className,
+    ...restProps
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    role: "tablist",
+    ...restProps,
+    className: classnames_default()('panel-tabs', className),
+    children: children
+  });
+}
+PanelTabs.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string
+};
+PanelTabs.defaultProps = {};
+/* harmony default export */ const PanelParts_PanelTabs = (_PanelTabs = PanelTabs, /*#__PURE__*/(0,react.memo)(_PanelTabs));
+// EXTERNAL MODULE: ./src/components/utils.js
+var utils = __webpack_require__(13);
+;// CONCATENATED MODULE: ./src/components/Panel.jsx
+var _Panel;
+
+
+
+
+
+
+
+
+
+
+function Panel(props) {
+  const {
+    as: HtmlTag = 'div',
+    children,
+    className,
+    title,
+    white,
+    light,
+    dark,
+    black,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    ...restProps
+  } = props;
+  const classNamesValue = classnames_default()('panel', (0,utils/* getStyleClassName */.Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  }), (0,utils/* getBrightnessClassName */.P2)({
+    white,
+    light,
+    dark,
+    black
+  }), className);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
+    ...restProps,
+    className: classNamesValue,
+    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(PanelParts_PanelHead, {
+      children: title
+    }), children]
+  });
+}
+Panel.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  title: (prop_types_default()).node,
+  white: (prop_types_default()).bool,
+  light: (prop_types_default()).bool,
+  dark: (prop_types_default()).bool,
+  black: (prop_types_default()).bool,
+  primary: (prop_types_default()).bool,
+  link: (prop_types_default()).bool,
+  info: (prop_types_default()).bool,
+  warning: (prop_types_default()).bool,
+  success: (prop_types_default()).bool,
+  danger: (prop_types_default()).bool
+};
+const PanelExport = (_Panel = Panel, /*#__PURE__*/(0,react.memo)(_Panel));
+PanelExport.Head = PanelParts_PanelHead;
+PanelExport.Block = PanelParts_PanelBlock;
+PanelExport.BlockIcon = PanelParts_PanelIcon;
+PanelExport.Tabs = PanelParts_PanelTabs;
+PanelExport.Tab = PanelParts_PanelTab;
+/* harmony default export */ const components_Panel = (PanelExport);
 ;// CONCATENATED MODULE: ./docsSrc/SheetExamples.jsx
 var _SheetExamples;
 
@@ -81,13 +296,13 @@ function SheetExamples(props) {
     children,
     title
   } = props;
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel, {
     className: cnPrefix,
-    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
-      children: title
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    title: title,
+    light: true,
+    children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
       children: children
-    })]
+    })
   });
 }
 SheetExamples.propTypes = {
@@ -107,6 +322,7 @@ function extractCore(component) {
   return node;
 }
 ;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
+
 
 
 
@@ -135,7 +351,8 @@ function sheetRenderer(CMP, sheets, options = {}) {
     children: value
   }, key));
   (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h1", {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Title/* default */.A, {
+      is5: true,
       children: CoreComponent === CMP ? CMP.displayName || CoreComponent.name : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`
     }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(SheetProps/* default */.A, {
       propTypesData: CoreComponent.propTypes
@@ -292,8 +509,8 @@ Button.propTypes = {
 /* harmony default export */ const components_Button = (_ref = (_Button = Button, /*#__PURE__*/(0,react.memo)(_Button)), withForwardedRef(_ref));
 // EXTERNAL MODULE: ./src/components/Buttons.jsx
 var Buttons = __webpack_require__(535);
-// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 2 modules
-var sheetRenderer = __webpack_require__(325);
+// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
+var sheetRenderer = __webpack_require__(174);
 ;// CONCATENATED MODULE: ./docsSrc/sheets/Button.sheet.js
 
 
@@ -301,7 +518,7 @@ var sheetRenderer = __webpack_require__(325);
 
 const styles = '.primary.link.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
-const sizes = 'primary.link.success.warning.danger'.split('.');
+const sizes = '.small.normal.large'.split('.');
 function renderEach(cases, props) {
   return /*#__PURE__*/(0,jsx_runtime.jsx)(Buttons/* default */.A, {
     children: cases.map(it => /*#__PURE__*/(0,jsx_runtime.jsx)(components_Button, {
@@ -384,6 +601,64 @@ Buttons.propTypes = {
   right: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Buttons = Buttons, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Buttons));
+
+/***/ }),
+
+/***/ 322:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
+var _Title;
+
+
+
+
+function Title(props) {
+  const {
+    as,
+    children,
+    className,
+    forwardedRef,
+    is1,
+    is2,
+    is3,
+    is4,
+    is5,
+    is6,
+    subtitle,
+    ...restProps
+  } = props;
+  const HtmlTag = as || is1 && 'h1' || is2 && 'h2' || is3 && 'h3' || is4 && 'h4' || is5 && 'h5' || is6 && 'h6' || 'h3';
+  const hClassName = is1 && 'is-1' || is2 && 'is-2' || is3 && 'is-3' || is4 && 'is-4' || is5 && 'is-5' || is6 && 'is-6' || undefined;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(HtmlTag, {
+    ref: forwardedRef,
+    ...restProps,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(subtitle ? 'subtitle' : 'title', hClassName, className),
+    children: children
+  });
+}
+Title.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  is1: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  is2: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  is3: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  is4: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  is5: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  is6: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  subtitle: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Title = Title, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Title));
 
 /***/ }),
 
