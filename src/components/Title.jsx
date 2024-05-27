@@ -27,20 +27,22 @@ function Title(props) {
     || is3 && 'h3'
     || is4 && 'h4'
     || is5 && 'h5'
-    || is6 && 'h6';
+    || is6 && 'h6'
+    || 'h3';
 
   const hClassName = is1 && 'is-1'
     || is2 && 'is-2'
     || is3 && 'is-3'
     || is4 && 'is-4'
     || is5 && 'is-5'
-    || is6 && 'is-6';
+    || is6 && 'is-6'
+    || undefined;
 
   return (
     <HtmlTag
       ref={forwardedRef}
       {...restProps}
-      className={classNames(subtitle ? 'is-subtitle' : 'is-title', hClassName, className)}
+      className={classNames(subtitle ? 'subtitle' : 'title', hClassName, className)}
     >
       {children}
     </HtmlTag>
