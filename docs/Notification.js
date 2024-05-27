@@ -46,7 +46,7 @@ SheetProps.defaultProps = {};
 
 /***/ }),
 
-/***/ 174:
+/***/ 780:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -294,33 +294,31 @@ const cnPrefix = 'sheetExamples';
 function SheetExamples(props) {
   const {
     children,
-    title
+    title,
+    source
   } = props;
-  return /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel, {
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Panel, {
     className: cnPrefix,
     title: title,
     light: true,
-    children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
       children: children
-    })
+    }), source && /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
+      children: source
+    })]
   });
 }
 SheetExamples.propTypes = {
   children: (prop_types_default()).node,
-  title: (prop_types_default()).node
+  title: (prop_types_default()).node,
+  source: (prop_types_default()).node
 };
 SheetExamples.defaultProps = {};
 /* harmony default export */ const docsSrc_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
 // EXTERNAL MODULE: ./docsSrc/SheetProps.jsx
 var SheetProps = __webpack_require__(549);
-;// CONCATENATED MODULE: ./docsSrc/utils.js
-function extractCore(component) {
-  let node = component;
-  while (node.type) {
-    node = node.type;
-  }
-  return node;
-}
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var docsSrc_utils = __webpack_require__(271);
 ;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
 
 
@@ -345,10 +343,11 @@ const onWindowResize = lodash_debounce_default()(resizeMessage, 250);
 window.addEventListener('resize', onWindowResize);
 function renderSandbox() {}
 function sheetRenderer(CMP, sheets, options = {}) {
-  const CoreComponent = extractCore(CMP);
+  const CoreComponent = (0,docsSrc_utils/* extractCore */.n)(CMP);
   const renderedSheets = Object.entries(sheets).map(([key, value]) => /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
     title: key,
-    children: value
+    source: value.source,
+    children: value.render ? value.render : value
   }, key));
   (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Title/* default */.A, {
@@ -369,7 +368,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /* harmony import */ var _src_components_Buttons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(535);
 /* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(277);
-/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(174);
+/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(780);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
 
 
@@ -402,6 +401,38 @@ const examples = {
   brightness: renderEach(brightness)
 };
 /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, examples));
+
+/***/ }),
+
+/***/ 271:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   n: () => (/* binding */ extractCore),
+/* harmony export */   p: () => (/* binding */ prepareSource)
+/* harmony export */ });
+function extractCore(component) {
+  let node = component;
+  while (node.type) {
+    node = node.type;
+  }
+  return node;
+}
+function prepareSource(cmp, props) {
+  const {
+    children,
+    ...restProps
+  } = props;
+  const propsSrc = Object.entries(restProps).map(([key, value]) => {
+    if (value === null) return `${key}={null}`;
+    if (value === undefined) return null;
+    if (value === true) return key;
+    if (value === false) return `${key}={false}`;
+    if (typeof value === 'string') return `${key}="${value}"`;
+    return `${key}={${value}}`;
+  }).filter(Boolean).join(' ');
+  return children ? `<${cmp} ${propsSrc}>${children}</${cmp}>` : `<${cmp} ${propsSrc}/>`;
+}
 
 /***/ }),
 

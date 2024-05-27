@@ -7,13 +7,19 @@ import Panel from '../src/components/Panel';
 const cnPrefix = 'sheetExamples';
 
 function SheetExamples(props) {
-  const { children, title } = props;
+  const { children, title, source } = props;
 
   return (
     <Panel className={cnPrefix} title={title} light>
       <Panel.Block>
         {children}
       </Panel.Block>
+
+      {source && (
+        <Panel.Block>
+          {source}
+        </Panel.Block>
+      )}
     </Panel>
   );
 }
@@ -21,6 +27,7 @@ function SheetExamples(props) {
 SheetExamples.propTypes = {
   children: PropTypes.node,
   title: PropTypes.node,
+  source: PropTypes.node,
 };
 
 SheetExamples.defaultProps = {};

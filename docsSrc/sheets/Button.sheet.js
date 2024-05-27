@@ -1,15 +1,27 @@
 import Button from '../../src/components/Button';
 import Buttons from '../../src/components/Buttons';
 import { sheetRenderer } from '../sheetRenderer';
+import { prepareSource } from '../utils';
 
 
 const styles = '.primary.link.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.small.normal.large'.split('.');
 
-function renderEach(cases, props) {
+function renderSrc(cases, props) {
   return (
-    <Buttons>
+    <pre>
+      {cases
+        .map(it => prepareSource('Button', { children: 'click me', ...props, [it]: true }))
+        .join('\r\n\r\n')
+      }
+    </pre>
+  );
+}
+
+function renderEach(cases, props) {
+  return {
+    render: <Buttons>
       {cases.map((it) => (
         <Button
           key={it}
@@ -19,8 +31,9 @@ function renderEach(cases, props) {
           {it || 'Default'}
         </Button>
       ))}
-    </Buttons>
-  );
+    </Buttons>,
+    source: renderSrc(cases, props)
+  };
 }
 
 const examples = {

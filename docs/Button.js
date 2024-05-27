@@ -46,7 +46,7 @@ SheetProps.defaultProps = {};
 
 /***/ }),
 
-/***/ 174:
+/***/ 780:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -294,33 +294,31 @@ const cnPrefix = 'sheetExamples';
 function SheetExamples(props) {
   const {
     children,
-    title
+    title,
+    source
   } = props;
-  return /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel, {
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Panel, {
     className: cnPrefix,
     title: title,
     light: true,
-    children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
       children: children
-    })
+    }), source && /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
+      children: source
+    })]
   });
 }
 SheetExamples.propTypes = {
   children: (prop_types_default()).node,
-  title: (prop_types_default()).node
+  title: (prop_types_default()).node,
+  source: (prop_types_default()).node
 };
 SheetExamples.defaultProps = {};
 /* harmony default export */ const docsSrc_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
 // EXTERNAL MODULE: ./docsSrc/SheetProps.jsx
 var SheetProps = __webpack_require__(549);
-;// CONCATENATED MODULE: ./docsSrc/utils.js
-function extractCore(component) {
-  let node = component;
-  while (node.type) {
-    node = node.type;
-  }
-  return node;
-}
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var docsSrc_utils = __webpack_require__(271);
 ;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
 
 
@@ -345,10 +343,11 @@ const onWindowResize = lodash_debounce_default()(resizeMessage, 250);
 window.addEventListener('resize', onWindowResize);
 function renderSandbox() {}
 function sheetRenderer(CMP, sheets, options = {}) {
-  const CoreComponent = extractCore(CMP);
+  const CoreComponent = (0,docsSrc_utils/* extractCore */.n)(CMP);
   const renderedSheets = Object.entries(sheets).map(([key, value]) => /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
     title: key,
-    children: value
+    source: value.source,
+    children: value.render ? value.render : value
   }, key));
   (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Title/* default */.A, {
@@ -509,9 +508,12 @@ Button.propTypes = {
 /* harmony default export */ const components_Button = (_ref = (_Button = Button, /*#__PURE__*/(0,react.memo)(_Button)), withForwardedRef(_ref));
 // EXTERNAL MODULE: ./src/components/Buttons.jsx
 var Buttons = __webpack_require__(535);
-// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
-var sheetRenderer = __webpack_require__(174);
+// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 7 modules
+var sheetRenderer = __webpack_require__(780);
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var docsSrc_utils = __webpack_require__(271);
 ;// CONCATENATED MODULE: ./docsSrc/sheets/Button.sheet.js
+
 
 
 
@@ -519,16 +521,28 @@ var sheetRenderer = __webpack_require__(174);
 const styles = '.primary.link.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.small.normal.large'.split('.');
-function renderEach(cases, props) {
-  return /*#__PURE__*/(0,jsx_runtime.jsx)(Buttons/* default */.A, {
-    children: cases.map(it => /*#__PURE__*/(0,jsx_runtime.jsx)(components_Button, {
-      ...(it ? {
-        [it]: true
-      } : {}),
+function renderSrc(cases, props) {
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+    children: cases.map(it => (0,docsSrc_utils/* prepareSource */.p)('Button', {
+      children: 'click me',
       ...props,
-      children: it || 'Default'
-    }, it))
+      [it]: true
+    })).join('\r\n\r\n')
   });
+}
+function renderEach(cases, props) {
+  return {
+    render: /*#__PURE__*/(0,jsx_runtime.jsx)(Buttons/* default */.A, {
+      children: cases.map(it => /*#__PURE__*/(0,jsx_runtime.jsx)(components_Button, {
+        ...(it ? {
+          [it]: true
+        } : {}),
+        ...props,
+        children: it || 'Default'
+      }, it))
+    }),
+    source: renderSrc(cases, props)
+  };
 }
 const examples = {
   styles: renderEach(styles),
@@ -547,6 +561,38 @@ const examples = {
 /* harmony default export */ const Button_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Button, examples, {
   pt: true
 }));
+
+/***/ }),
+
+/***/ 271:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   n: () => (/* binding */ extractCore),
+/* harmony export */   p: () => (/* binding */ prepareSource)
+/* harmony export */ });
+function extractCore(component) {
+  let node = component;
+  while (node.type) {
+    node = node.type;
+  }
+  return node;
+}
+function prepareSource(cmp, props) {
+  const {
+    children,
+    ...restProps
+  } = props;
+  const propsSrc = Object.entries(restProps).map(([key, value]) => {
+    if (value === null) return `${key}={null}`;
+    if (value === undefined) return null;
+    if (value === true) return key;
+    if (value === false) return `${key}={false}`;
+    if (typeof value === 'string') return `${key}="${value}"`;
+    return `${key}={${value}}`;
+  }).filter(Boolean).join(' ');
+  return children ? `<${cmp} ${propsSrc}>${children}</${cmp}>` : `<${cmp} ${propsSrc}/>`;
+}
 
 /***/ }),
 

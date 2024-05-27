@@ -51,7 +51,9 @@ function Message(props) {
           {onClose && <DeleteButton />}
         </div>
       )}
-      {children}
+      <div className="message-body">
+        {children}
+      </div>
     </HtmlTag>
   );
 }

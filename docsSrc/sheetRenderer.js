@@ -28,7 +28,15 @@ export function sheetRenderer(CMP, sheets, options = {}) {
   const CoreComponent = extractCore(CMP);
 
   const renderedSheets = Object.entries(sheets)
-    .map(([key, value]) => <SheetExamples key={key} title={key}>{value}</SheetExamples>);
+    .map(([key, value]) => (
+      <SheetExamples
+        key={key}
+        title={key}
+        source={value.source}
+      >
+        {value.render ? value.render : value}
+      </SheetExamples>
+    ));
 
   createRoot(document.getElementById('general'))
     .render(
