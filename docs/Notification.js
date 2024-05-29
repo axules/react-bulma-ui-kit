@@ -367,7 +367,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 /* harmony import */ var _src_components_Buttons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(535);
-/* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(277);
+/* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(311);
 /* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(780);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
 
@@ -490,28 +490,19 @@ Buttons.propTypes = {
 
 /***/ }),
 
-/***/ 277:
+/***/ 91:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ components_Notification)
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(556);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(942);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/components/utils.js
-var utils = __webpack_require__(13);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/DeleteButton.jsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
 var _DeleteButton;
 
 
@@ -527,12 +518,12 @@ function DeleteButton(props) {
     forwardedRef,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('delete', (0,utils/* getSizeClassName */.bP)({
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('delete', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getSizeClassName */ .bP)({
     small,
     medium,
     large
   }), className);
-  return /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
     ref: forwardedRef,
     type: "button",
     ...restProps,
@@ -540,14 +531,30 @@ function DeleteButton(props) {
   });
 }
 DeleteButton.propTypes = {
-  className: (prop_types_default()).string,
-  forwardedRef: (prop_types_default()).any,
-  small: (prop_types_default()).bool,
-  medium: (prop_types_default()).bool,
-  large: (prop_types_default()).bool
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
-/* harmony default export */ const components_DeleteButton = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react.memo)(_DeleteButton));
-;// CONCATENATED MODULE: ./src/components/Notification.jsx
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_DeleteButton));
+
+/***/ }),
+
+/***/ 311:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _DeleteButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(91);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(848);
 var _Notification;
 
 
@@ -573,20 +580,20 @@ function Notification(props) {
     black,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('notification', (0,utils/* getStyleClassName */.Zb)({
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('notification', (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getStyleClassName */ .Zb)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  }), (0,utils/* getBrightnessClassName */.P2)({
+  }), (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getBrightnessClassName */ .P2)({
     white,
     light,
     dark,
     black
   }), className);
-  (0,react.useEffect)(() => {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (closeDelay) {
       if (!onClose) {
         console.error('onClose handler is required once closeDelay is defined');
@@ -596,31 +603,31 @@ function Notification(props) {
       return () => clearTimeout(timer);
     }
   }, [closeDelay, onClose]);
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: classNamesValue,
     ...restProps,
-    children: [onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(components_DeleteButton, {
+    children: [onClose && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_DeleteButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
       onClick: onClose
     }), children]
   });
 }
 Notification.propTypes = {
-  className: (prop_types_default()).string,
-  children: (prop_types_default()).node,
-  onClose: (prop_types_default()).func,
-  closeDelay: (prop_types_default()).number,
-  primary: (prop_types_default()).bool,
-  link: (prop_types_default()).bool,
-  info: (prop_types_default()).bool,
-  warning: (prop_types_default()).bool,
-  success: (prop_types_default()).bool,
-  danger: (prop_types_default()).bool,
-  white: (prop_types_default()).bool,
-  light: (prop_types_default()).bool,
-  dark: (prop_types_default()).bool,
-  black: (prop_types_default()).bool
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+  closeDelay: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number),
+  primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  link: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  info: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  white: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  light: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  dark: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  black: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
-/* harmony default export */ const components_Notification = (_Notification = Notification, /*#__PURE__*/(0,react.memo)(_Notification));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Notification = Notification, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Notification));
 
 /***/ }),
 

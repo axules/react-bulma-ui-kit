@@ -39,6 +39,7 @@ function renderEach(cases, props) {
 const examples = {
   styles: renderEach(styles),
   stylesLight: renderEach(styles, { light: true }),
+  stylesInverted: renderEach(styles, { inverted: true }),
   stylesDark: renderEach(styles, { dark: true }),
   stylesOutlined: renderEach(styles, { outlined: true }),
   brightness: renderEach(brightness),

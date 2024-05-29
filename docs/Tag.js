@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[939],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[185],{
 
 /***/ 549:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -363,14 +363,144 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 166:
+/***/ 418:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-/* harmony import */ var _src_components_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(641);
-/* harmony import */ var _src_components_Buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(535);
-/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(780);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(271);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
+
+// UNUSED EXPORTS: default
+
+// EXTERNAL MODULE: ./src/components/Button.jsx + 1 modules
+var Button = __webpack_require__(641);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/components/DeleteButton.jsx
+var DeleteButton = __webpack_require__(91);
+// EXTERNAL MODULE: ./src/components/utils.js
+var utils = __webpack_require__(13);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./src/components/Tag.jsx
+var _Tag;
+
+
+
+
+
+
+function Tag(props) {
+  const {
+    as: HtmlTag = 'span',
+    children,
+    className,
+    onClose,
+    forwardedRef,
+    rounded,
+    hasHover,
+    isDelete,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    medium,
+    large,
+    white,
+    light,
+    dark,
+    black,
+    hasAddons,
+    ...restProps
+  } = props;
+  const classNamesValue = classnames_default()('tag', (0,utils/* getStyleClassName */.Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  }), (0,utils/* getSizeClassName */.bP)({
+    medium,
+    large
+  }), (0,utils/* getBrightnessClassName */.P2)({
+    white,
+    light,
+    dark,
+    black
+  }), hasHover && 'is-hoverable', rounded && 'is-rounded', isDelete && 'is-delete', hasAddons && 'has-addons', className);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
+    ref: forwardedRef,
+    ...restProps,
+    className: classNamesValue,
+    children: [children, onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {
+      onClick: onClose
+    })]
+  });
+}
+Tag.propTypes = {
+  as: (prop_types_default()).any,
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  onClose: (prop_types_default()).func,
+  forwardedRef: (prop_types_default()).any,
+  rounded: (prop_types_default()).bool,
+  hasHover: (prop_types_default()).bool,
+  isDelete: (prop_types_default()).bool,
+  white: (prop_types_default()).bool,
+  light: (prop_types_default()).bool,
+  dark: (prop_types_default()).bool,
+  black: (prop_types_default()).bool,
+  primary: (prop_types_default()).bool,
+  link: (prop_types_default()).bool,
+  info: (prop_types_default()).bool,
+  warning: (prop_types_default()).bool,
+  success: (prop_types_default()).bool,
+  danger: (prop_types_default()).bool,
+  medium: (prop_types_default()).bool,
+  large: (prop_types_default()).bool,
+  hasAddons: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Tag = (_Tag = Tag, /*#__PURE__*/(0,react.memo)(_Tag));
+;// CONCATENATED MODULE: ./src/components/Tags.jsx
+var _Tags;
+
+
+
+
+function Tags(props) {
+  const {
+    children,
+    className,
+    hasAddons,
+    nowrap,
+    ...restProps
+  } = props;
+  const classNamesValue = classnames_default()('tags', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', className);
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    ...restProps,
+    className: classNamesValue,
+    children: children
+  });
+}
+Tags.propTypes = {
+  children: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  hasAddons: (prop_types_default()).bool,
+  nowrap: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Tags = (_Tags = Tags, /*#__PURE__*/(0,react.memo)(_Tags));
+// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 7 modules
+var sheetRenderer = __webpack_require__(780);
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var docsSrc_utils = __webpack_require__(271);
+;// CONCATENATED MODULE: ./docsSrc/sheets/Tag.sheet.js
+
 
 
 
@@ -378,25 +508,25 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 const styles = '.primary.link.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
-const sizes = '.small.normal.large'.split('.');
+const sizes = '.medium.large'.split('.');
 function renderSrc(cases, props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("pre", {
-    children: cases.map(it => (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .prepareSource */ .p)('Button', {
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+    children: cases.map(it => (0,docsSrc_utils/* prepareSource */.p)('Tag', {
       children: 'click me',
       ...props,
       [it]: true
     })).join('\r\n\r\n')
   });
 }
-function renderEach(cases, props) {
+function renderEach(cases, props = {}) {
   return {
-    render: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Buttons__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
-      children: cases.map(it => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Button__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+    render: /*#__PURE__*/(0,jsx_runtime.jsx)(components_Tags, {
+      children: cases.map(it => /*#__PURE__*/(0,jsx_runtime.jsx)(components_Tag, {
         ...(it ? {
           [it]: true
         } : {}),
         ...props,
-        children: it || 'Default'
+        children: props.children ?? (it || 'Default')
       }, it))
     }),
     source: renderSrc(cases, props)
@@ -404,22 +534,27 @@ function renderEach(cases, props) {
 }
 const examples = {
   styles: renderEach(styles),
-  stylesLight: renderEach(styles, {
+  light: renderEach(styles, {
     light: true
   }),
-  stylesInverted: renderEach(styles, {
-    inverted: true
-  }),
-  stylesDark: renderEach(styles, {
+  dark: renderEach(styles, {
     dark: true
   }),
-  stylesOutlined: renderEach(styles, {
-    outlined: true
+  isDelete: renderEach(styles, {
+    isDelete: true,
+    hasHover: true,
+    children: ''
+  }),
+  rounded: renderEach(styles, {
+    rounded: true
+  }),
+  hasHover: renderEach(styles, {
+    hasHover: true
   }),
   brightness: renderEach(brightness),
   sizes: renderEach(sizes)
 };
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Button__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples, {
+/* harmony default export */ const Tag_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Tag, examples, {
   pt: true
 }));
 
@@ -606,7 +741,7 @@ Button.propTypes = {
 
 /***/ }),
 
-/***/ 535:
+/***/ 91:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -619,44 +754,41 @@ Button.propTypes = {
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
-var _Buttons;
+var _DeleteButton;
 
 
 
 
 
-function Buttons(props) {
+function DeleteButton(props) {
   const {
-    children,
     className,
-    hasAddons,
-    nowrap,
-    left,
-    centered,
-    right,
+    small,
+    medium,
+    large,
+    forwardedRef,
     ...restProps
   } = props;
-  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getAlignClassName */ .HA)({
-    left,
-    centered,
-    right
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('delete', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getSizeClassName */ .bP)({
+    small,
+    medium,
+    large
   }), className);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    ref: forwardedRef,
+    type: "button",
     ...restProps,
-    className: classNamesValue,
-    children: children
+    className: classNamesValue
   });
 }
-Buttons.propTypes = {
-  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+DeleteButton.propTypes = {
   className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
-  hasAddons: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  nowrap: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  left: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  centered: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  right: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Buttons = Buttons, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Buttons));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_DeleteButton));
 
 /***/ }),
 
@@ -783,7 +915,7 @@ function getAlignClassName(styles) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(166)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(418)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

@@ -1,19 +1,18 @@
-import { PureComponent } from 'react';
+import { memo } from 'react';
 
 
-class NumberInput extends PureComponent {
-  render() {
-    return (
-      <input
-        {...this.props}
-        type="number"
-        data-type="number"
-      />
-    );
-  }
+function NumberInput(props) {
+  return (
+    <input
+      {...props}
+      type="number"
+      data-type="number"
+    />
+  );
 }
 
 NumberInput.propTypes = {
 };
 
-export default NumberInput;
+export default NumberInput
+  |> memo;
