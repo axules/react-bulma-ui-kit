@@ -26,6 +26,7 @@ function Notification(props) {
     light,
     dark,
     black,
+    centered,
     ...restProps
   } = props;
   const classNamesValue = (0, _classnames.default)('notification', (0, _utils.getStyleClassName)({
@@ -40,7 +41,7 @@ function Notification(props) {
     light,
     dark,
     black
-  }), className);
+  }), centered && 'has-text-centered', className);
   (0, _react.useEffect)(() => {
     if (closeDelay) {
       if (!onClose) {
