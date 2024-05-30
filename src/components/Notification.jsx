@@ -26,6 +26,7 @@ function Notification(props) {
     link,
     primary,
     white, light, dark, black,
+    centered,
     ...restProps
   } = props;
 
@@ -33,6 +34,7 @@ function Notification(props) {
     'notification',
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getBrightnessClassName({ white, light, dark, black }),
+    centered && 'has-text-centered',
     className
   );
 
@@ -73,6 +75,8 @@ Notification.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
   black: PropTypes.bool,
+
+  centered: PropTypes.bool,
 };
 
 export default Notification

@@ -516,6 +516,7 @@ function Notification(props) {
     light,
     dark,
     black,
+    centered,
     ...restProps
   } = props;
   const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('notification', (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getStyleClassName */ .Zb)({
@@ -530,7 +531,7 @@ function Notification(props) {
     light,
     dark,
     black
-  }), className);
+  }), centered && 'has-text-centered', className);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (closeDelay) {
       if (!onClose) {
@@ -563,7 +564,8 @@ Notification.propTypes = {
   white: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   light: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   dark: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  black: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+  black: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  centered: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Notification = Notification, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Notification));
 

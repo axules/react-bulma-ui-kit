@@ -25,6 +25,7 @@ function renderEach(cases, props) {
 
 const examples = {
   styles: renderEach(styles),
+  centered: renderEach(styles, { centered: true }),
   stylesWithClose: renderEach(styles, { onClose: () => console.warn('onClose callback') }),
   stylesLight: renderEach(styles, { light: true }),
   stylesDark: renderEach(styles, { dark: true }),
