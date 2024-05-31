@@ -1,52 +1,52 @@
 "use strict";
 (self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[290],{
 
-/***/ 549:
+/***/ 312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   p: () => (/* binding */ FrameMessenger)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
-var _SheetProps;
-
-
-
-const cnPrefix = 'sheetProps';
-function SheetProps(props) {
-  const {
-    propTypesData
-  } = props;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: cnPrefix,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-      children: "Prop types:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-      className: "table is-bordered",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
-        children: Object.entries(propTypesData).map(([k]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-            children: k
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-            children: "???"
-          })]
-        }, k))
-      })
-    })]
-  });
+class FrameMessengerClass {
+  TYPES = {
+    FRAME_RESIZE: 'FRAME_RESIZE',
+    SHEET_SECTIONS: 'SHEET_SECTIONS',
+    SCROLL_TO: 'SCROLL_TO'
+  };
+  sendParentMessage(type, payload) {
+    const event = {
+      type,
+      payload
+    };
+    window.top.postMessage(event, '*');
+  }
+  sendChildMessage(type, payload) {
+    const event = {
+      type,
+      payload
+    };
+    document.querySelector('iframe')?.contentWindow?.postMessage(event, '*');
+  }
+  listenMessages(callback) {
+    const onMessage = function (event) {
+      if (typeof event.data !== 'object') return;
+      const {
+        type,
+        payload
+      } = event.data;
+      callback(type, payload);
+    };
+    window.addEventListener('message', onMessage);
+    return () => {
+      window.removeEventListener('message', onMessage);
+    };
+  }
 }
-SheetProps.propTypes = {
-  propTypesData: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node)
-};
-SheetProps.defaultProps = {};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_SheetProps = SheetProps, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_SheetProps));
+const FrameMessenger = new FrameMessengerClass();
 
 /***/ }),
 
-/***/ 780:
+/***/ 73:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -55,13 +55,12 @@ __webpack_require__.d(__webpack_exports__, {
   r: () => (/* binding */ sheetRenderer)
 });
 
-// EXTERNAL MODULE: ./node_modules/lodash.debounce/index.js
-var lodash_debounce = __webpack_require__(181);
-var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce);
 // EXTERNAL MODULE: ./node_modules/react-dom/client.js
 var client = __webpack_require__(338);
 // EXTERNAL MODULE: ./src/components/Title.jsx
 var Title = __webpack_require__(322);
+// EXTERNAL MODULE: ./docsSrc/FrameMessenger.js
+var FrameMessenger = __webpack_require__(312);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(540);
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -293,30 +292,79 @@ var _SheetExamples;
 const cnPrefix = 'sheetExamples';
 function SheetExamples(props) {
   const {
+    id,
     children,
     title,
-    source
+    source,
+    samples
   } = props;
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Panel, {
+    id: id,
     className: cnPrefix,
     title: title,
     light: true,
-    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
+    children: [children && /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
+      className: `${cnPrefix}__example`,
       children: children
     }), source && /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
-      children: source
-    })]
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+        className: `${cnPrefix}__sampleSource`,
+        children: source
+      })
+    }), samples?.map(it => /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Panel.Block, {
+      className: `${cnPrefix}__example`,
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: `${cnPrefix}__sample`,
+        children: it
+      }), it.__source && /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+        className: `${cnPrefix}__sampleSource`,
+        children: it.__source
+      })]
+    }, it))]
   });
 }
 SheetExamples.propTypes = {
+  samples: (prop_types_default()).array,
   children: (prop_types_default()).node,
   title: (prop_types_default()).node,
-  source: (prop_types_default()).node
+  source: (prop_types_default()).node,
+  id: (prop_types_default()).string
 };
 SheetExamples.defaultProps = {};
 /* harmony default export */ const docsSrc_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
-// EXTERNAL MODULE: ./docsSrc/SheetProps.jsx
-var SheetProps = __webpack_require__(549);
+;// CONCATENATED MODULE: ./docsSrc/SheetProps.jsx
+var _SheetProps;
+
+
+
+const SheetProps_cnPrefix = 'sheetProps';
+function SheetProps(props) {
+  const {
+    propTypesData
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: SheetProps_cnPrefix,
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+      children: "Prop types:"
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)("table", {
+      className: "table is-bordered",
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("tbody", {
+        children: Object.entries(propTypesData).map(([k]) => /*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,jsx_runtime.jsx)("td", {
+            children: k
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
+            children: "???"
+          })]
+        }, k))
+      })
+    })]
+  });
+}
+SheetProps.propTypes = {
+  propTypesData: (prop_types_default()).node
+};
+SheetProps.defaultProps = {};
+/* harmony default export */ const docsSrc_SheetProps = (_SheetProps = SheetProps, /*#__PURE__*/(0,react.memo)(_SheetProps));
 // EXTERNAL MODULE: ./docsSrc/utils.js
 var docsSrc_utils = __webpack_require__(271);
 ;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
@@ -327,37 +375,50 @@ var docsSrc_utils = __webpack_require__(271);
 
 
 
-function resizeMessage() {
-  const html = document.querySelector('html');
-  html.style.height = '0';
-  const event = {
-    type: 'FRAME_RESIZE',
-    payload: {
-      height: html.scrollHeight,
-      url: window.location.href
-    }
-  };
-  window.top.postMessage(event, '*');
-}
-const onWindowResize = lodash_debounce_default()(resizeMessage, 250);
-window.addEventListener('resize', onWindowResize);
+(0,docsSrc_utils/* registerResizeMessage */.lt)();
 function renderSandbox() {}
 function sheetRenderer(CMP, sheets, options = {}) {
-  const CoreComponent = (0,docsSrc_utils/* extractCore */.n)(CMP);
-  const renderedSheets = Object.entries(sheets).map(([key, value]) => /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
-    title: key,
-    source: value.source,
-    children: value.render ? value.render : value
-  }, key));
+  const CoreComponent = (0,docsSrc_utils/* extractCore */.nr)(CMP);
+  const subMenu = [];
+  const renderedSheets = Object.entries(sheets).map(([key, value]) => {
+    const href = key.replaceAll(/[^a-zA-Z0-9]/gi, '-').toLowerCase();
+    subMenu.push({
+      title: key,
+      href
+    });
+    return /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
+      id: href,
+      title: key,
+      samples: Array.isArray(value) ? value : undefined,
+      source: Array.isArray(value) ? undefined : value.__source,
+      children: Array.isArray(value) ? undefined : value
+    }, key);
+  });
+  FrameMessenger/* FrameMessenger */.p.listenMessages((type, payload) => {
+    if (type === FrameMessenger/* FrameMessenger */.p.TYPES.SCROLL_TO) {
+      const {
+        selector
+      } = payload;
+      document.querySelector(selector)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
   (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Title/* default */.A, {
       is5: true,
-      children: CoreComponent === CMP ? CMP.displayName || CoreComponent.name : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`
-    }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(SheetProps/* default */.A, {
+      children: CoreComponent === CMP ? CoreComponent.displayName || CoreComponent.name : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`
+    }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetProps, {
       propTypesData: CoreComponent.propTypes
     })]
   }));
-  resizeMessage();
+  FrameMessenger/* FrameMessenger */.p.sendParentMessage(FrameMessenger/* FrameMessenger */.p.TYPES.SHEET_SECTIONS, {
+    items: subMenu,
+    sheetName: CoreComponent.displayName || CoreComponent.name,
+    pathname: location.pathname
+  });
+  (0,docsSrc_utils/* resizeMessage */.EN)();
   return sheets;
 }
 
@@ -366,9 +427,9 @@ function sheetRenderer(CMP, sheets, options = {}) {
 /***/ 837:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-/* harmony import */ var _src_components_Buttons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(535);
-/* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(311);
-/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(780);
+/* harmony import */ var _src_components_Notification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(311);
+/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(271);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
 
 
@@ -377,33 +438,37 @@ function sheetRenderer(CMP, sheets, options = {}) {
 const styles = '.primary.link.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 function renderEach(cases, props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_src_components_Buttons__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
-    children: cases.map(it => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
-      ...(it ? {
-        [it]: true
-      } : {}),
-      ...props,
-      children: [it || 'Default', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "It is example of text which could be in this Notification component"]
-    }, it))
-  });
+  return cases.map(it => (0,_utils__WEBPACK_IMPORTED_MODULE_2__/* .prepareSample */ .ws)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+    key: it,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+      children: [it || 'Default', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), " It is example of text which could be in this Notification component"]
+    }),
+    ...(it ? {
+      [it]: true
+    } : {}),
+    ...props
+  }, {
+    children: 'I am notification children',
+    onClose: () => {}
+  }));
 }
 const examples = {
-  styles: renderEach(styles),
-  centered: renderEach(styles, {
+  Colors: renderEach(styles),
+  Centered: renderEach(styles, {
     centered: true
   }),
-  stylesWithClose: renderEach(styles, {
+  'Has close': renderEach(styles, {
     onClose: () => console.warn('onClose callback')
   }),
-  stylesLight: renderEach(styles, {
+  'Light colors': renderEach(styles, {
     light: true
   }),
-  stylesDark: renderEach(styles, {
+  'Dark colors': renderEach(styles, {
     dark: true
   }),
-  brightness: renderEach(brightness)
+  Brightness: renderEach(brightness)
 };
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, examples));
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_1__/* .sheetRenderer */ .r)(_src_components_Notification__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples));
 
 /***/ }),
 
@@ -411,15 +476,45 @@ const examples = {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   n: () => (/* binding */ extractCore),
-/* harmony export */   p: () => (/* binding */ prepareSource)
+/* harmony export */   EN: () => (/* binding */ resizeMessage),
+/* harmony export */   lt: () => (/* binding */ registerResizeMessage),
+/* harmony export */   nr: () => (/* binding */ extractCore),
+/* harmony export */   ws: () => (/* binding */ prepareSample)
 /* harmony export */ });
+/* unused harmony exports renderSample, prepareSource */
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(181);
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(312);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
+
+
+
 function extractCore(component) {
   let node = component;
   while (node.type) {
     node = node.type;
   }
   return node;
+}
+function prepareSample(CMP, props, sourcePropsExt = {}) {
+  const coreCmp = extractCore(CMP);
+  const cmpName = sourcePropsExt.__name || coreCmp.displayName || coreCmp.name;
+  const R = renderSample(CMP, props);
+  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsExt).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
+  const srcProps = {
+    ...props,
+    ...sourcePropsExt
+  };
+  EXCLUDED_KEYS.forEach(k => {
+    delete srcProps[k];
+  });
+  R.__source = prepareSource(cmpName, srcProps);
+  return R;
+}
+function renderSample(CMP, props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CMP, {
+    ...props
+  });
 }
 function prepareSource(cmp, props) {
   const {
@@ -434,62 +529,21 @@ function prepareSource(cmp, props) {
     if (typeof value === 'string') return `${key}="${value}"`;
     return `${key}={${value}}`;
   }).filter(Boolean).join(' ');
-  return children ? `<${cmp} ${propsSrc}>${children}</${cmp}>` : `<${cmp} ${propsSrc}/>`;
+  const mainSrc = [cmp, propsSrc].filter(Boolean).join(' ');
+  return children ? `<${mainSrc}>\r\n  ${children}\r\n</${cmp}>` : `<${mainSrc} />`;
 }
-
-/***/ }),
-
-/***/ 535:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
-var _Buttons;
-
-
-
-
-
-function Buttons(props) {
-  const {
-    children,
-    className,
-    hasAddons,
-    nowrap,
-    left,
-    centered,
-    right,
-    ...restProps
-  } = props;
-  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getAlignClassName */ .HA)({
-    left,
-    centered,
-    right
-  }), className);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    ...restProps,
-    className: classNamesValue,
-    children: children
+function resizeMessage() {
+  const html = document.querySelector('html');
+  html.style.height = '0';
+  _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.sendParentMessage(_FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.TYPES.FRAME_RESIZE, {
+    height: html.scrollHeight,
+    url: window.location.href
   });
 }
-Buttons.propTypes = {
-  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
-  hasAddons: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  nowrap: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  left: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  centered: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  right: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Buttons = Buttons, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Buttons));
+function registerResizeMessage() {
+  const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
+  window.addEventListener('resize', onWindowResize);
+}
 
 /***/ }),
 

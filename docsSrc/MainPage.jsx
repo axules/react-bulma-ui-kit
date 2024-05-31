@@ -4,12 +4,13 @@ import {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
+import Button from '../dist/components/Button';
 import Title from '../src/components/Title';
+import { useStaticCallback } from '../src/useStaticCallback';
 
+import { FrameMessenger } from './FrameMessenger';
 import SheetsMenu from './MainSheetsMenu';
-import SheetProps from './SheetProps';
 
 
 const cnPrefix = 'mainPage';
@@ -17,20 +18,19 @@ const cnPrefix = 'mainPage';
 function MainPage(props) {
   const { sheets } = props;
   const [selectedSheet, setSelectedSheet] = useState(() => {
-    const hash = (document.location.hash || '').replace('#', '');
-    return hash
-      ? sheets.find((it) => it.name === hash)
+    const name = /page=([^&=]+)/.exec(document.location.search || '')?.[1];
+    // const hash = (document.location.hash || '').replace('#', '');
+    return name
+      ? sheets.find((it) => it.name === name)
       : undefined;
   });
+
   const url = selectedSheet ? `./${selectedSheet.path}` : undefined;
 
   useEffect(() => {
-    const onMessage = function(event) {
-      if (typeof event.data !== 'object') return;
-      const { type, payload } = event.data;
-
+    const onMessage = function(type, payload) {
       switch (type) {
-        case 'FRAME_RESIZE': {
+        case FrameMessenger.TYPES.FRAME_RESIZE: {
           const { height, url } = payload;
           const fileName = url.split('/').pop();
           const frame = document.querySelector(`iframe[src*="${fileName}"]`);
@@ -38,18 +38,23 @@ function MainPage(props) {
           if (frame) {
             frame.style['min-height'] = `${height}px`;
           }
-          break;
+          return true;
         }
-        default:
-          console.warn('Undefined command [%s]', event.data);
       }
     };
 
-    window.addEventListener('message', onMessage);
+    return FrameMessenger.listenMessages(onMessage);
+  }, []);
 
-    return () => {
-      window.removeEventListener('message', onMessage);
-    };
+  const onClickToTop = useStaticCallback(() => {
+    document.body.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  const onLoadIframe = useStaticCallback(() => {
+    const hash = (document.location.hash || '');
+    if (hash) {
+      setTimeout(() => FrameMessenger.sendChildMessage(FrameMessenger.TYPES.SCROLL_TO, { selector: hash }), 50);
+    }
   });
 
   return (
@@ -61,11 +66,15 @@ function MainPage(props) {
         {selectedSheet
           ? <>
             <Title is4>{selectedSheet.name}</Title>
-            <iframe title={selectedSheet.name} src={url} />
+            <iframe name="SheetFrame" title={selectedSheet.name} src={url} onLoad={onLoadIframe} />
           </>
-          : <h1>Select component</h1>
+          : <Title is2>{'<- '}Select component in menu</Title>
         }
       </div>
+
+      <Button info light className={`${cnPrefix}__toTop`} onClick={onClickToTop}>
+        <span className="icon">&#129145;</span>
+      </Button>
     </div>
   );
 }

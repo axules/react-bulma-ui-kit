@@ -69,6 +69,8 @@ function compile(files) {
     (err, stats) => {
       if (err || stats?.hasErrors()) {
         console.error(err || stats.toString());
+      } else {
+        console.log(stats.toString());
       }
     }
   );

@@ -1,24 +1,18 @@
-import debounce from 'lodash.debounce';
 import { createRoot } from 'react-dom/client';
 
 import Title from '../src/components/Title';
 
+import { FrameMessenger } from './FrameMessenger';
 import SheetExamples from './SheetExamples';
 import SheetProps from './SheetProps';
-import { extractCore } from './utils';
+import {
+  extractCore,
+  registerResizeMessage,
+  resizeMessage
+} from './utils';
 
 
-function resizeMessage() {
-  const html = document.querySelector('html');
-  html.style.height = '0';
-
-  const event = { type: 'FRAME_RESIZE', payload: { height: html.scrollHeight, url: window.location.href } };
-  window.top.postMessage(event, '*');
-}
-
-const onWindowResize = debounce(resizeMessage, 250);
-
-window.addEventListener('resize', onWindowResize);
+registerResizeMessage();
 
 function renderSandbox() {
 
@@ -27,23 +21,38 @@ function renderSandbox() {
 export function sheetRenderer(CMP, sheets, options = {}) {
   const CoreComponent = extractCore(CMP);
 
+  const subMenu = [];
   const renderedSheets = Object.entries(sheets)
-    .map(([key, value]) => (
-      <SheetExamples
-        key={key}
-        title={key}
-        source={value.source}
-      >
-        {value.render ? value.render : value}
-      </SheetExamples>
-    ));
+    .map(([key, value]) => {
+      const href = key.replaceAll(/[^a-zA-Z0-9]/gi, '-').toLowerCase();
+      subMenu.push({ title: key, href });
+      return (
+        <SheetExamples
+          id={href}
+          key={key}
+          title={key}
+          samples={Array.isArray(value) ? value : undefined}
+          source={Array.isArray(value) ? undefined : value.__source}
+        >
+          {Array.isArray(value) ? undefined : value}
+        </SheetExamples>
+      );
+    });
+
+  FrameMessenger.listenMessages((type, payload) => {
+    if (type === FrameMessenger.TYPES.SCROLL_TO) {
+      const { selector } = payload;
+      document.querySelector(selector)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 
   createRoot(document.getElementById('general'))
     .render(
       <>
         <Title is5>
           {CoreComponent === CMP
-            ? CMP.displayName || CoreComponent.name
+            ? CoreComponent.displayName || CoreComponent.name
             : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`}
         </Title>
 
@@ -56,6 +65,11 @@ export function sheetRenderer(CMP, sheets, options = {}) {
         )}
       </>
     );
+
+  FrameMessenger.sendParentMessage(
+    FrameMessenger.TYPES.SHEET_SECTIONS,
+    { items: subMenu, sheetName: CoreComponent.displayName || CoreComponent.name, pathname: location.pathname }
+  );
 
   resizeMessage();
   return sheets;
