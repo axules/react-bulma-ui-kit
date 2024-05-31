@@ -653,7 +653,7 @@ function extractCore(component) {
   }
   return node;
 }
-function prepareSample(CMP, props, sourcePropsExt = {}) {
+function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
   const coreCmp = extractCore(CMP);
   const cmpName = sourcePropsExt.__name || coreCmp.displayName || coreCmp.name;
   const R = renderSample(CMP, props);
@@ -665,7 +665,7 @@ function prepareSample(CMP, props, sourcePropsExt = {}) {
   EXCLUDED_KEYS.forEach(k => {
     delete srcProps[k];
   });
-  R.__source = prepareSource(cmpName, srcProps);
+  R.__source = prepareSource(cmpName, srcProps, config);
   return R;
 }
 function renderSample(CMP, props) {
@@ -673,21 +673,30 @@ function renderSample(CMP, props) {
     ...props
   });
 }
-function prepareSource(cmp, props) {
+function prepareSource(cmp, props, config = {}) {
   const {
     children,
     ...restProps
   } = props;
-  const propsSrc = Object.entries(restProps).map(([key, value]) => {
+  const {
+    multilineProps = 3,
+    multilineChild
+  } = config;
+  const preparedProps = Object.entries(restProps).map(([key, value]) => {
     if (value === null) return `${key}={null}`;
     if (value === undefined) return null;
     if (value === true) return key;
     if (value === false) return `${key}={false}`;
     if (typeof value === 'string') return `${key}="${value}"`;
     return `${key}={${value}}`;
-  }).filter(Boolean).join(' ');
-  const mainSrc = [cmp, propsSrc].filter(Boolean).join(' ');
-  return children ? `<${mainSrc}>\r\n  ${children}\r\n</${cmp}>` : `<${mainSrc} />`;
+  }).filter(Boolean);
+  const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
+  const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
+  const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
+  const templated = children ? `<${mainSrc}>[*CHILD_BEFORE*]${children}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
+  const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
+  console.log(multiProps);
+  return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
 }
 function resizeMessage() {
   const html = document.querySelector('html');
