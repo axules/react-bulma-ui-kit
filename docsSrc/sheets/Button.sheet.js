@@ -4,7 +4,7 @@ import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
 
 
-const styles = '.primary.link.success.warning.danger'.split('.');
+const styles = '.primary.link.info.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.small.normal.large'.split('.');
 

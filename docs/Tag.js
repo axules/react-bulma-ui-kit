@@ -564,7 +564,7 @@ var docsSrc_utils = __webpack_require__(271);
 
 
 
-const styles = '.primary.link.success.warning.danger'.split('.');
+const styles = '.primary.link.info.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.medium.large'.split('.');
 function renderEach(cases, props = {}) {

@@ -1,4 +1,3 @@
-import Notification from '../../src/components/Notification';
 import Title from '../../src/components/Title';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
@@ -25,4 +24,4 @@ const examples = {
   Subtitle: renderEach(sizes, { subtitle: true, children: 'I am subtitle text' }),
 };
 
-export default sheetRenderer(Notification, examples);
+export default sheetRenderer(Title, examples);

@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[299],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[718],{
 
 /***/ 312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -424,34 +424,183 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 964:
+/***/ 353:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-/* harmony import */ var _src_components_Title__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(322);
-/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(271);
+
+// UNUSED EXPORTS: default
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/withRef.js
+var withRef = __webpack_require__(790);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./src/components/Control.jsx
+var _ref, _Control;
 
 
 
-const sizes = '.is1.is2.is3.is4.is5.is6'.split('.');
+
+
+function Control(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    children,
+    isExpanded,
+    ...restProps
+  } = props;
+  const classes = [isExpanded && 'is-expanded'];
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    ...restProps,
+    className: classnames_default()('control', className, ...classes),
+    children: children
+  });
+}
+Control.propTypes = {
+  as: (prop_types_default()).any,
+  className: (prop_types_default()).string,
+  children: (prop_types_default()).node,
+  isExpanded: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Control = (_ref = (_Control = Control, /*#__PURE__*/(0,react.memo)(_Control)), (0,withRef/* withForwardedRef */.i)(_ref));
+// EXTERNAL MODULE: ./src/components/utils.js
+var utils = __webpack_require__(13);
+;// CONCATENATED MODULE: ./src/components/TextInput.jsx
+var TextInput_ref, _TextInput;
+
+
+
+
+
+
+
+function TextInput(props) {
+  const {
+    as: HtmlTag = 'input',
+    forwardedRef,
+    className,
+    leftIcon,
+    rightIcon,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    small,
+    medium,
+    large,
+    autoCompleteOff,
+    autoComplete,
+    asControl,
+    isExpanded,
+    ...restProps
+  } = props;
+  const styleClassName = (0,utils/* getStyleClassName */.Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const sizeClassName = (0,utils/* getSizeClassName */.bP)({
+    small,
+    medium,
+    large
+  });
+  const inputRender = /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    type: HtmlTag === 'input' ? 'text' : undefined,
+    ref: forwardedRef,
+    autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
+    ...restProps,
+    className: classnames_default()('input', styleClassName, sizeClassName, className)
+  });
+  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Control, {
+    className: classnames_default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
+    isExpanded: isExpanded,
+    children: [inputRender, leftIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+      className: "icon is-left",
+      children: leftIcon
+    }), rightIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+      className: "icon is-right",
+      children: rightIcon
+    })]
+  }) : inputRender;
+}
+TextInput.propTypes = {
+  as: (prop_types_default()).any,
+  forwardedRef: (prop_types_default()).object,
+  className: (prop_types_default()).string,
+  leftIcon: (prop_types_default()).node,
+  rightIcon: (prop_types_default()).node,
+  asControl: (prop_types_default()).bool,
+  isExpanded: (prop_types_default()).bool,
+  primary: (prop_types_default()).bool,
+  link: (prop_types_default()).bool,
+  info: (prop_types_default()).bool,
+  warning: (prop_types_default()).bool,
+  success: (prop_types_default()).bool,
+  danger: (prop_types_default()).bool,
+  small: (prop_types_default()).bool,
+  medium: (prop_types_default()).bool,
+  large: (prop_types_default()).bool,
+  autoComplete: (prop_types_default()).any,
+  autoCompleteOff: (prop_types_default()).bool
+};
+/* harmony default export */ const components_TextInput = (TextInput_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react.memo)(_TextInput)), (0,withRef/* withForwardedRef */.i)(TextInput_ref));
+// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
+var sheetRenderer = __webpack_require__(73);
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var docsSrc_utils = __webpack_require__(271);
+;// CONCATENATED MODULE: ./docsSrc/sheets/TextInput.sheet.js
+
+
+
+
+const styles = '.primary.link.info.success.warning.danger'.split('.');
+const sizes = '.small.normal.large'.split('.');
+const icons = [{
+  leftIcon: /*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
+    children: "\uD83D\uDE08"
+  })
+}, {
+  rightIcon: /*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
+    children: "\uD83D\uDE08"
+  })
+}, {
+  leftIcon: /*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
+    children: "\uD83D\uDE08"
+  }),
+  rightIcon: /*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
+    children: "\uD83D\uDE08"
+  })
+}];
 function renderEach(cases, props) {
-  return cases.map(it => (0,_utils__WEBPACK_IMPORTED_MODULE_2__/* .prepareSample */ .ws)(_src_components_Title__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_TextInput, {
     key: it,
-    children: 'I am title text',
-    ...(it ? {
+    placeholder: 'I am placeholder',
+    ...(typeof it === 'string' && it ? {
       [it]: true
     } : {}),
+    ...(typeof it === 'object' ? it : {}),
     ...props
   }));
 }
 const examples = {
-  Title: renderEach(sizes),
-  Subtitle: renderEach(sizes, {
-    subtitle: true,
-    children: 'I am subtitle text'
-  })
+  Styles: renderEach(styles),
+  Size: renderEach(sizes),
+  Icons: renderEach(icons)
 };
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_1__/* .sheetRenderer */ .r)(_src_components_Title__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples));
+/* harmony default export */ const TextInput_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_TextInput, examples));
 
 /***/ }),
 
@@ -657,12 +806,50 @@ function getAlignClassName(styles) {
   return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
 }
 
+/***/ }),
+
+/***/ 790:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   i: () => (/* binding */ withForwardedRef)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(848);
+
+
+/**
+ * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ * @param {React.Component} WrappedComponent
+ * @returns
+ */
+
+function withForwardedRef(WrappedComponent) {
+  return withRef('forwardedRef')(WrappedComponent);
+}
+function withRef(propName) {
+  return function (WrappedComponent) {
+    const Wrapper = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) => {
+      if (ref && props[propName]) {
+        throw new Error(`withRef error: forwarded ref property collision (property name is '${propName}')`);
+      }
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(WrappedComponent, {
+        ...props,
+        [propName]: ref || props[propName]
+      });
+    });
+    Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    Wrapper.type = WrappedComponent;
+    return Wrapper;
+  };
+}
+
 /***/ })
 
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(964)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(353)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

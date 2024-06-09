@@ -53,7 +53,6 @@ function TextInput(props) {
         className={classNames(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right')}
         isExpanded={isExpanded}
       >
-
         {inputRender}
 
         {leftIcon && (

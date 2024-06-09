@@ -424,7 +424,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 567:
+/***/ 644:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -438,38 +438,12 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/withRef.js
-
-
-/**
- * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
- * @param {React.Component} WrappedComponent
- * @returns
- */
-
-function withForwardedRef(WrappedComponent) {
-  return withRef('forwardedRef')(WrappedComponent);
-}
-function withRef(propName) {
-  return function (WrappedComponent) {
-    const Wrapper = /*#__PURE__*/(0,react.forwardRef)((props, ref) => {
-      if (ref && props[propName]) {
-        throw new Error(`withRef error: forwarded ref property collision (property name is '${propName}')`);
-      }
-      return /*#__PURE__*/(0,jsx_runtime.jsx)(WrappedComponent, {
-        ...props,
-        [propName]: ref || props[propName]
-      });
-    });
-    Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
-    Wrapper.type = WrappedComponent;
-    return Wrapper;
-  };
-}
+// EXTERNAL MODULE: ./src/withRef.js
+var withRef = __webpack_require__(790);
 // EXTERNAL MODULE: ./src/components/utils.js
 var utils = __webpack_require__(13);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
 ;// CONCATENATED MODULE: ./src/components/Button.jsx
 var _ref, _Button;
 
@@ -566,7 +540,7 @@ Button.propTypes = {
   inverted: (prop_types_default()).bool,
   fullWidth: (prop_types_default()).bool
 };
-/* harmony default export */ const components_Button = (_ref = (_Button = Button, /*#__PURE__*/(0,react.memo)(_Button)), withForwardedRef(_ref));
+/* harmony default export */ const components_Button = (_ref = (_Button = Button, /*#__PURE__*/(0,react.memo)(_Button)), (0,withRef/* withForwardedRef */.i)(_ref));
 ;// CONCATENATED MODULE: ./src/components/Buttons.jsx
 var _Buttons;
 
@@ -616,7 +590,7 @@ var docsSrc_utils = __webpack_require__(271);
 
 
 
-const styles = '.primary.link.success.warning.danger'.split('.');
+const styles = '.primary.link.info.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.small.normal.large'.split('.');
 function renderEach(cases, props) {
@@ -872,12 +846,50 @@ function getAlignClassName(styles) {
   return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
 }
 
+/***/ }),
+
+/***/ 790:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   i: () => (/* binding */ withForwardedRef)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(848);
+
+
+/**
+ * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ * @param {React.Component} WrappedComponent
+ * @returns
+ */
+
+function withForwardedRef(WrappedComponent) {
+  return withRef('forwardedRef')(WrappedComponent);
+}
+function withRef(propName) {
+  return function (WrappedComponent) {
+    const Wrapper = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) => {
+      if (ref && props[propName]) {
+        throw new Error(`withRef error: forwarded ref property collision (property name is '${propName}')`);
+      }
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(WrappedComponent, {
+        ...props,
+        [propName]: ref || props[propName]
+      });
+    });
+    Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    Wrapper.type = WrappedComponent;
+    return Wrapper;
+  };
+}
+
 /***/ })
 
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(567)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(644)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
