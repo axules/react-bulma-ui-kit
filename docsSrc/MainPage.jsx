@@ -72,7 +72,7 @@ function MainPage(props) {
         }
       </div>
 
-      <Button info light className={`${cnPrefix}__toTop`} onClick={onClickToTop}>
+      <Button info className={`${cnPrefix}__toTop`} onClick={onClickToTop}>
         <span className="icon">&#129145;</span>
       </Button>
     </div>

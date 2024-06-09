@@ -19,12 +19,18 @@ body {
   display: flex;
   flex-direction: row;
   min-height: 100%;
+  padding-left: 250px;
 
   &__menu {
     min-width: 250px;
+    max-width: 250px;
     padding: 10px;
     border-right: 2px solid #e1e1e1;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow: auto;
   }
 
   &__view {

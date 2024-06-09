@@ -428,7 +428,6 @@ function MainPage(props) {
       })
     }), /*#__PURE__*/(0,jsx_runtime.jsx)(Button/* default */.A, {
       info: true,
-      light: true,
       className: `${MainPage_cnPrefix}__toTop`,
       onClick: onClickToTop,
       children: /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
