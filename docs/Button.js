@@ -459,7 +459,6 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
-    isDelete,
     danger,
     success,
     warning,
@@ -501,7 +500,7 @@ function Button(props) {
     black,
     text,
     ghost
-  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', inverted && 'is-inverted', className);
+  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', inverted && 'is-inverted', className);
   return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: type ?? undefined,
@@ -521,7 +520,6 @@ Button.propTypes = {
   type: (prop_types_default()).any,
   rounded: (prop_types_default()).bool,
   forwardedRef: (prop_types_default()).any,
-  isDelete: (prop_types_default()).bool,
   white: (prop_types_default()).bool,
   light: (prop_types_default()).bool,
   dark: (prop_types_default()).bool,
@@ -605,17 +603,23 @@ function renderEach(cases, props) {
 }
 const examples = {
   Colors: renderEach(styles),
-  'Light colors': renderEach(styles, {
-    light: true
-  }),
   'Inverted colors': renderEach(styles, {
     inverted: true
+  }),
+  'Light colors': renderEach(styles, {
+    light: true
   }),
   'Dark colors': renderEach(styles, {
     dark: true
   }),
   Outlined: renderEach(styles, {
     outlined: true
+  }),
+  Loading: renderEach([''], {
+    loading: true
+  }),
+  Disabled: renderEach([''], {
+    disabled: true
   }),
   Brightness: renderEach(brightness),
   Sizes: renderEach(sizes),
@@ -670,17 +674,23 @@ function extractCore(component) {
 }
 function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
   const coreCmp = extractCore(CMP);
-  const cmpName = sourcePropsExt.__name || coreCmp.displayName || coreCmp.name;
+  const {
+    __name,
+    __source,
+    ...sourcePropsReplacement
+  } = sourcePropsExt || {};
+  const cmpName = __name || coreCmp.displayName || coreCmp.name;
   const R = renderSample(CMP, props);
-  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsExt).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
-  const srcProps = {
-    ...props,
-    ...sourcePropsExt
+  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsReplacement).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
+  const propValueProcessor = key => {
+    if (EXCLUDED_KEYS.includes(key)) return undefined;
+    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
+    return false;
   };
-  EXCLUDED_KEYS.forEach(k => {
-    delete srcProps[k];
+  R.__source = __source || prepareSource(cmpName, props, {
+    ...config,
+    propValueProcessor
   });
-  R.__source = prepareSource(cmpName, srcProps, config);
   return R;
 }
 function renderSample(CMP, props) {
@@ -695,9 +705,16 @@ function prepareSource(cmp, props, config = {}) {
   } = props;
   const {
     multilineProps = 3,
-    multilineChild
+    multilineChild,
+    propValueProcessor
   } = config;
+  const preparedChildren = children && propValueProcessor && propValueProcessor('children', children, props) || children;
   const preparedProps = Object.entries(restProps).map(([key, value]) => {
+    if (propValueProcessor) {
+      const processed = propValueProcessor(key, value, props);
+      if (processed === undefined) return null;
+      if (processed) return `${key}=${processed}`;
+    }
     if (value === null) return `${key}={null}`;
     if (value === undefined) return null;
     if (value === true) return key;
@@ -708,9 +725,8 @@ function prepareSource(cmp, props, config = {}) {
   const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
   const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
   const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
-  const templated = children ? `<${mainSrc}>[*CHILD_BEFORE*]${children}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
+  const templated = preparedChildren ? `<${mainSrc}>[*CHILD_BEFORE*]${preparedChildren}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
   const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
-  console.log(multiProps);
   return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
 }
 function resizeMessage() {

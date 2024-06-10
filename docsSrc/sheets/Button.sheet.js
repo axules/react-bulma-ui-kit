@@ -12,17 +12,24 @@ function renderEach(cases, props) {
   return cases.map((it) => (
     prepareSample(
       Button,
-      { key: it, children: 'click me', ...(it ? { [it]: true } : {}), ...props }
+      {
+        key: it,
+        children: 'click me',
+        ...(it ? { [it]: true } : {}),
+        ...props
+      }
     )
   ));
 }
 
 const examples = {
   Colors: renderEach(styles),
-  'Light colors': renderEach(styles, { light: true }),
   'Inverted colors': renderEach(styles, { inverted: true }),
+  'Light colors': renderEach(styles, { light: true }),
   'Dark colors': renderEach(styles, { dark: true }),
   Outlined: renderEach(styles, { outlined: true }),
+  Loading: renderEach([''], { loading: true }),
+  Disabled: renderEach([''], { disabled: true }),
   Brightness: renderEach(brightness),
   Sizes: renderEach(sizes),
   Buttons: (() => {

@@ -39,7 +39,7 @@ function Field(props) {
     <HtmlTag {...restProps} className={classNamesValue}>
       {label && (
         isHorizontal
-          ? <div className="field-label is-normal"><Label>{label}</Label></div>
+          ? <div className="field-label is-normal"><Label required={required}>{label}</Label></div>
           : <Label required={required}>{label}</Label>
       )}
 

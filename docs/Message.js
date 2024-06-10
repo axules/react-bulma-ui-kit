@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[290],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[588],{
 
 /***/ 312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -424,7 +424,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 872:
+/***/ 722:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -444,125 +444,116 @@ var DeleteButton = __webpack_require__(91);
 var utils = __webpack_require__(13);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Notification.jsx
-var _Notification;
+;// CONCATENATED MODULE: ./src/components/Message.jsx
+var _Message;
 
 
 
 
 
 
-function Notification(props) {
+function Message(props) {
   const {
+    as: HtmlTag = 'div',
     className,
+    title,
     children,
     onClose,
-    closeDelay,
     danger,
     success,
     warning,
     info,
     link,
     primary,
-    white,
+    small,
+    medium,
+    large,
     light,
     dark,
-    black,
-    centered,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('notification', (0,utils/* getStyleClassName */.Zb)({
+  const classNamesValue = classnames_default()('message', (0,utils/* getStyleClassName */.Zb)({
     danger,
     success,
     warning,
     info,
     link,
     primary
+  }), (0,utils/* getSizeClassName */.bP)({
+    small,
+    medium,
+    large
   }), (0,utils/* getBrightnessClassName */.P2)({
-    white,
     light,
-    dark,
-    black
-  }), centered && 'has-text-centered', className);
-  (0,react.useEffect)(() => {
-    if (closeDelay) {
-      if (!onClose) {
-        console.error('onClose handler is required once closeDelay is defined');
-        return;
-      }
-      const timer = setTimeout(() => onClose(), closeDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [closeDelay, onClose]);
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    className: classNamesValue,
+    dark
+  }), className);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
     ...restProps,
-    children: [onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {
-      onClick: onClose
-    }), children]
+    className: classNamesValue,
+    children: [(title || onClose) && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "message-header",
+      children: [title, onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {})]
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "message-body",
+      children: children
+    })]
   });
 }
-Notification.propTypes = {
+Message.propTypes = {
+  as: (prop_types_default()).any,
   className: (prop_types_default()).string,
+  title: (prop_types_default()).node,
   children: (prop_types_default()).node,
   onClose: (prop_types_default()).func,
-  closeDelay: (prop_types_default()).number,
+  light: (prop_types_default()).bool,
+  dark: (prop_types_default()).bool,
   primary: (prop_types_default()).bool,
   link: (prop_types_default()).bool,
   info: (prop_types_default()).bool,
   warning: (prop_types_default()).bool,
   success: (prop_types_default()).bool,
   danger: (prop_types_default()).bool,
-  white: (prop_types_default()).bool,
-  light: (prop_types_default()).bool,
-  dark: (prop_types_default()).bool,
-  black: (prop_types_default()).bool,
-  centered: (prop_types_default()).bool
+  small: (prop_types_default()).bool,
+  medium: (prop_types_default()).bool,
+  large: (prop_types_default()).bool
 };
-/* harmony default export */ const components_Notification = (_Notification = Notification, /*#__PURE__*/(0,react.memo)(_Notification));
+/* harmony default export */ const components_Message = (_Message = Message, /*#__PURE__*/(0,react.memo)(_Message));
 // EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
 var sheetRenderer = __webpack_require__(73);
 // EXTERNAL MODULE: ./docsSrc/utils.js
 var docsSrc_utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheets/Notification.sheet.js
+;// CONCATENATED MODULE: ./docsSrc/sheets/Message.sheet.js
 
 
 
-
-const styles = '.primary.link.info.success.warning.danger'.split('.');
-const brightness = 'white.light.dark.black'.split('.');
+const styles = '.light.dark.primary.link.info.success.warning.danger'.split('.');
+const sizes = '.small.large'.split('.');
 function renderEach(cases, props) {
-  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Notification, {
+  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Message, {
     key: it,
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-      children: [it || 'Default', /*#__PURE__*/(0,jsx_runtime.jsx)("br", {}), " It is example of text which could be in this Notification component"]
-    }),
+    children: 'I am message children!',
+    title: 'I am title',
     ...(it ? {
       [it]: true
     } : {}),
     ...props
-  }, {
-    children: 'I am notification children',
-    onClose: () => {}
   }));
 }
 const examples = {
   Colors: renderEach(styles),
-  Centered: renderEach(styles, {
-    centered: true
+  'With close button': renderEach(styles, {
+    onClose: () => null
   }),
-  'Has close': renderEach(styles, {
-    onClose: () => console.warn('onClose callback')
+  'Without title': renderEach(styles, {
+    title: undefined
   }),
-  'Light colors': renderEach(styles, {
-    light: true
-  }),
-  'Dark colors': renderEach(styles, {
-    dark: true
-  }),
-  Brightness: renderEach(brightness)
+  Sizes: renderEach(sizes, {
+    onClose: () => null
+  })
 };
-/* harmony default export */ const Notification_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Notification, examples));
+/* harmony default export */ const Message_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Message, examples, {
+  pt: true
+}));
 
 /***/ }),
 
@@ -836,7 +827,7 @@ function getAlignClassName(styles) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(872)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(722)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

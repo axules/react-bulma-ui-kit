@@ -18,13 +18,15 @@ function Card(props) {
     className,
 
     title,
+    titleCentered,
+    titleIcon,
 
     ...restProps
   } = props;
 
   return (
     <HtmlTag {...restProps} className={classNames('card', className)}>
-      {title && <CardHead title={title} />}
+      {title && <CardHead title={title} centered={titleCentered} icon={titleIcon} />}
       {children}
     </HtmlTag>
   );
@@ -36,6 +38,8 @@ Card.propTypes = {
   className: PropTypes.string,
 
   title: PropTypes.node,
+  titleCentered: PropTypes.bool,
+  titleIcon: PropTypes.node,
 };
 
 const CardExport = Card

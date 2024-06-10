@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { withForwardedRef } from '../withRef';
 
-import { getStyleClassName } from './utils';
+import {getBrightnessClassName, getStyleClassName} from './utils';
 
 
 function HelpText(props) {
@@ -20,12 +20,15 @@ function HelpText(props) {
     link,
     primary,
 
+    light,
+
     ...restProps
   } = props;
 
   const classNamesValue = classNames(
     'help',
     getStyleClassName({ danger, success, warning, info, link, primary }),
+    getBrightnessClassName({ light }),
     className
   );
 
@@ -47,6 +50,8 @@ HelpText.propTypes = {
   warning: PropTypes.bool,
   success: PropTypes.bool,
   danger: PropTypes.bool,
+
+  light: PropTypes.bool,
 };
 
 export default HelpText

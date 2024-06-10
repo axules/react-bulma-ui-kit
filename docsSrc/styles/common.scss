@@ -61,10 +61,10 @@ body {
   &__sample {
     flex: 1 1;
 
-    &:not(:last-child) {
-      display: flex;
-      justify-content: end;
-    }
+    //&:not(:last-child) {
+    //  display: flex;
+    //  justify-content: end;
+    //}
   }
 
   &__sampleSource {

@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[290],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[733],{
 
 /***/ 312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -424,7 +424,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 872:
+/***/ 115:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -438,131 +438,156 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/components/DeleteButton.jsx
-var DeleteButton = __webpack_require__(91);
-// EXTERNAL MODULE: ./src/components/utils.js
-var utils = __webpack_require__(13);
+// EXTERNAL MODULE: ./src/withRef.js
+var withRef = __webpack_require__(790);
+// EXTERNAL MODULE: ./src/components/HelpText.jsx
+var HelpText = __webpack_require__(810);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Notification.jsx
-var _Notification;
+;// CONCATENATED MODULE: ./src/components/Label.jsx
+var _Label;
 
 
 
 
-
-
-function Notification(props) {
+function Label(props) {
   const {
-    className,
     children,
-    onClose,
-    closeDelay,
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary,
-    white,
-    light,
-    dark,
-    black,
-    centered,
+    className,
+    required,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('notification', (0,utils/* getStyleClassName */.Zb)({
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  }), (0,utils/* getBrightnessClassName */.P2)({
-    white,
-    light,
-    dark,
-    black
-  }), centered && 'has-text-centered', className);
-  (0,react.useEffect)(() => {
-    if (closeDelay) {
-      if (!onClose) {
-        console.error('onClose handler is required once closeDelay is defined');
-        return;
-      }
-      const timer = setTimeout(() => onClose(), closeDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [closeDelay, onClose]);
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    className: classNamesValue,
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("label", {
     ...restProps,
-    children: [onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {
-      onClick: onClose
-    }), children]
+    className: classnames_default()('label', className),
+    children: [children, required && ' *']
   });
 }
-Notification.propTypes = {
+Label.propTypes = {
   className: (prop_types_default()).string,
   children: (prop_types_default()).node,
-  onClose: (prop_types_default()).func,
-  closeDelay: (prop_types_default()).number,
-  primary: (prop_types_default()).bool,
-  link: (prop_types_default()).bool,
-  info: (prop_types_default()).bool,
-  warning: (prop_types_default()).bool,
-  success: (prop_types_default()).bool,
-  danger: (prop_types_default()).bool,
-  white: (prop_types_default()).bool,
-  light: (prop_types_default()).bool,
-  dark: (prop_types_default()).bool,
-  black: (prop_types_default()).bool,
-  centered: (prop_types_default()).bool
+  required: (prop_types_default()).bool
 };
-/* harmony default export */ const components_Notification = (_Notification = Notification, /*#__PURE__*/(0,react.memo)(_Notification));
+/* harmony default export */ const components_Label = (_Label = Label, /*#__PURE__*/(0,react.memo)(_Label));
+;// CONCATENATED MODULE: ./src/components/Field.jsx
+var _ref, _Field;
+
+
+
+
+
+
+
+function Field(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    isHorizontal,
+    children,
+    label,
+    isGrouped,
+    isGroupedMultiline,
+    hasAddons,
+    errorText,
+    helpText,
+    required,
+    ...restProps
+  } = props;
+  const errorHelp = errorText && /*#__PURE__*/(0,jsx_runtime.jsx)(HelpText/* default */.A, {
+    danger: true,
+    children: errorText
+  });
+  const help = helpText && /*#__PURE__*/(0,jsx_runtime.jsx)(HelpText/* default */.A, {
+    children: helpText
+  });
+  const classNamesValue = classnames_default()('field', isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons', className);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
+    ...restProps,
+    className: classNamesValue,
+    children: [label && (isHorizontal ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "field-label is-normal",
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_Label, {
+        required: required,
+        children: label
+      })
+    }) : /*#__PURE__*/(0,jsx_runtime.jsx)(components_Label, {
+      required: required,
+      children: label
+    })), isHorizontal ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "field-body",
+      children: children
+    }) : children, help, errorHelp]
+  });
+}
+Field.propTypes = {
+  as: (prop_types_default()).any,
+  label: (prop_types_default()).node,
+  errorText: (prop_types_default()).node,
+  helpText: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  children: (prop_types_default()).node,
+  isHorizontal: (prop_types_default()).bool,
+  isGrouped: (prop_types_default()).bool,
+  isGroupedMultiline: (prop_types_default()).bool,
+  hasAddons: (prop_types_default()).bool,
+  required: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Field = (_ref = (_Field = Field, /*#__PURE__*/(0,react.memo)(_Field)), (0,withRef/* withForwardedRef */.i)(_ref));
+// EXTERNAL MODULE: ./src/components/TextInput.jsx + 1 modules
+var TextInput = __webpack_require__(786);
 // EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
 var sheetRenderer = __webpack_require__(73);
 // EXTERNAL MODULE: ./docsSrc/utils.js
-var docsSrc_utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheets/Notification.sheet.js
+var utils = __webpack_require__(271);
+;// CONCATENATED MODULE: ./docsSrc/sheets/Field.sheet.js
 
 
 
 
-const styles = '.primary.link.info.success.warning.danger'.split('.');
-const brightness = 'white.light.dark.black'.split('.');
-function renderEach(cases, props) {
-  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Notification, {
-    key: it,
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-      children: [it || 'Default', /*#__PURE__*/(0,jsx_runtime.jsx)("br", {}), " It is example of text which could be in this Notification component"]
-    }),
-    ...(it ? {
-      [it]: true
-    } : {}),
+
+const defaultProps = {
+  label: 'I am label',
+  children: /*#__PURE__*/(0,jsx_runtime.jsx)(TextInput/* default */.A, {
+    placeholder: "Type text"
+  })
+};
+const sourceProps = {
+  children: '\r\n  <TextInput placeholder="Type text" />\r\n'
+};
+function prepareOne(props, srcProps) {
+  return [(0,utils/* prepareSample */.ws)(components_Field, {
+    ...defaultProps,
     ...props
   }, {
-    children: 'I am notification children',
-    onClose: () => {}
-  }));
+    ...sourceProps,
+    ...srcProps
+  })];
 }
 const examples = {
-  Colors: renderEach(styles),
-  Centered: renderEach(styles, {
-    centered: true
+  Default: prepareOne({
+    label: undefined
   }),
-  'Has close': renderEach(styles, {
-    onClose: () => console.warn('onClose callback')
+  'With label': prepareOne(),
+  'With help': prepareOne({
+    helpText: 'Help helpText'
   }),
-  'Light colors': renderEach(styles, {
-    light: true
+  'With error': prepareOne({
+    errorText: 'I am errorText'
   }),
-  'Dark colors': renderEach(styles, {
-    dark: true
+  'With help + error': prepareOne({
+    helpText: 'Help text',
+    errorText: 'I am errorText'
   }),
-  Brightness: renderEach(brightness)
+  Horizontal: prepareOne({
+    isHorizontal: true
+  }),
+  Required: prepareOne({
+    required: true
+  })
 };
-/* harmony default export */ const Notification_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Notification, examples));
+/* harmony default export */ const Field_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Field, examples, {
+  pt: true
+}));
 
 /***/ }),
 
@@ -662,7 +687,7 @@ function registerResizeMessage() {
 
 /***/ }),
 
-/***/ 91:
+/***/ 810:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -673,43 +698,198 @@ function registerResizeMessage() {
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
-var _DeleteButton;
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(848);
+var _ref, _HelpText;
 
 
 
 
 
-function DeleteButton(props) {
+
+function HelpText(props) {
   const {
+    as: HtmlTag = 'div',
+    children,
     className,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    light,
+    ...restProps
+  } = props;
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('help', (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getStyleClassName */ .Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  }), (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getBrightnessClassName */ .P2)({
+    light
+  }), className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(HtmlTag, {
+    ...restProps,
+    className: classNamesValue,
+    children: children
+  });
+}
+HelpText.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  link: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  info: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  light: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_HelpText = HelpText, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_HelpText)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
+
+/***/ }),
+
+/***/ 786:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  A: () => (/* binding */ components_TextInput)
+});
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/withRef.js
+var withRef = __webpack_require__(790);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./src/components/Control.jsx
+var _ref, _Control;
+
+
+
+
+
+function Control(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    children,
+    isExpanded,
+    ...restProps
+  } = props;
+  const classes = [isExpanded && 'is-expanded'];
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    ...restProps,
+    className: classnames_default()('control', className, ...classes),
+    children: children
+  });
+}
+Control.propTypes = {
+  as: (prop_types_default()).any,
+  className: (prop_types_default()).string,
+  children: (prop_types_default()).node,
+  isExpanded: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Control = (_ref = (_Control = Control, /*#__PURE__*/(0,react.memo)(_Control)), (0,withRef/* withForwardedRef */.i)(_ref));
+// EXTERNAL MODULE: ./src/components/utils.js
+var utils = __webpack_require__(13);
+;// CONCATENATED MODULE: ./src/components/TextInput.jsx
+var TextInput_ref, _TextInput;
+
+
+
+
+
+
+
+function TextInput(props) {
+  const {
+    as: HtmlTag = 'input',
+    forwardedRef,
+    className,
+    leftIcon,
+    rightIcon,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
     small,
     medium,
     large,
-    forwardedRef,
+    autoCompleteOff,
+    autoComplete,
+    asControl,
+    isExpanded,
     ...restProps
   } = props;
-  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('delete', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getSizeClassName */ .bP)({
+  const styleClassName = (0,utils/* getStyleClassName */.Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const sizeClassName = (0,utils/* getSizeClassName */.bP)({
     small,
     medium,
     large
-  }), className);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-    ref: forwardedRef,
-    type: "button",
-    ...restProps,
-    className: classNamesValue
   });
+  const inputRender = /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    type: HtmlTag === 'input' ? 'text' : undefined,
+    ref: forwardedRef,
+    autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
+    ...restProps,
+    className: classnames_default()('input', styleClassName, sizeClassName, className)
+  });
+  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Control, {
+    className: classnames_default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
+    isExpanded: isExpanded,
+    children: [inputRender, leftIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+      className: "icon is-left",
+      children: leftIcon
+    }), rightIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+      className: "icon is-right",
+      children: rightIcon
+    })]
+  }) : inputRender;
 }
-DeleteButton.propTypes = {
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
-  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
-  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+TextInput.propTypes = {
+  as: (prop_types_default()).any,
+  forwardedRef: (prop_types_default()).object,
+  className: (prop_types_default()).string,
+  leftIcon: (prop_types_default()).node,
+  rightIcon: (prop_types_default()).node,
+  asControl: (prop_types_default()).bool,
+  isExpanded: (prop_types_default()).bool,
+  primary: (prop_types_default()).bool,
+  link: (prop_types_default()).bool,
+  info: (prop_types_default()).bool,
+  warning: (prop_types_default()).bool,
+  success: (prop_types_default()).bool,
+  danger: (prop_types_default()).bool,
+  small: (prop_types_default()).bool,
+  medium: (prop_types_default()).bool,
+  large: (prop_types_default()).bool,
+  autoComplete: (prop_types_default()).any,
+  autoCompleteOff: (prop_types_default()).bool
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_DeleteButton));
+/* harmony default export */ const components_TextInput = (TextInput_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react.memo)(_TextInput)), (0,withRef/* withForwardedRef */.i)(TextInput_ref));
 
 /***/ }),
 
@@ -831,12 +1011,50 @@ function getAlignClassName(styles) {
   return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
 }
 
+/***/ }),
+
+/***/ 790:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   i: () => (/* binding */ withForwardedRef)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(848);
+
+
+/**
+ * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ * @param {React.Component} WrappedComponent
+ * @returns
+ */
+
+function withForwardedRef(WrappedComponent) {
+  return withRef('forwardedRef')(WrappedComponent);
+}
+function withRef(propName) {
+  return function (WrappedComponent) {
+    const Wrapper = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) => {
+      if (ref && props[propName]) {
+        throw new Error(`withRef error: forwarded ref property collision (property name is '${propName}')`);
+      }
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(WrappedComponent, {
+        ...props,
+        [propName]: ref || props[propName]
+      });
+    });
+    Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    Wrapper.type = WrappedComponent;
+    return Wrapper;
+  };
+}
+
 /***/ })
 
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(872)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(115)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

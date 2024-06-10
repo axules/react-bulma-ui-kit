@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 
 function CardImage(props) {
-  const { as: HtmlTag = 'div', children, className, ...restProps } = props;
+  const { as: HtmlTag = 'figure', children, className, ...restProps } = props;
 
   return (
     <HtmlTag {...restProps} className={classNames('card-image', className)}>
