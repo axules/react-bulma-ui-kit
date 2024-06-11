@@ -543,7 +543,7 @@ function renderEach(cases, props) {
     ...props
   }, {
     children: 'I am notification children',
-    onClose: () => {}
+    onClose: '{() => { ... }}'
   }));
 }
 const examples = {

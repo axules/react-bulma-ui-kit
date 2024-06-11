@@ -16,7 +16,7 @@ function renderEach(cases, props) {
         ...(it ? { [it]: true } : {}),
         ...props
       },
-      { children: 'I am notification children', onClose: () => {} }
+      { children: 'I am notification children', onClose: '{() => { ... }}' }
     )
   ));
 }

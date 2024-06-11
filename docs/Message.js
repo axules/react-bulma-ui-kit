@@ -472,7 +472,8 @@ function Message(props) {
     dark,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('message', (0,utils/* getStyleClassName */.Zb)({
+  const hasHeader = title || onClose;
+  const classNamesValue = classnames_default()('message', !hasHeader && 'message-body', (0,utils/* getStyleClassName */.Zb)({
     danger,
     success,
     warning,
@@ -490,13 +491,13 @@ function Message(props) {
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
-    children: [(title || onClose) && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    children: [hasHeader && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
       className: "message-header",
       children: [title, onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {})]
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    }), hasHeader ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
       className: "message-body",
       children: children
-    })]
+    }) : children]
   });
 }
 Message.propTypes = {

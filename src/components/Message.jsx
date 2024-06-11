@@ -35,8 +35,11 @@ function Message(props) {
     ...restProps
   } = props;
 
+  const hasHeader = title || onClose;
+
   const classNamesValue = classNames(
     'message',
+    !hasHeader && 'message-body',
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getSizeClassName({ small, medium, large }),
     getBrightnessClassName({ light, dark }),
@@ -45,15 +48,17 @@ function Message(props) {
 
   return (
     <HtmlTag {...restProps} className={classNamesValue}>
-      {(title || onClose) && (
+      {hasHeader && (
         <div className="message-header">
           {title}
           {onClose && <DeleteButton />}
         </div>
       )}
-      <div className="message-body">
-        {children}
-      </div>
+      {hasHeader
+        ? <div className="message-body">
+          {children}
+        </div>
+        : children}
     </HtmlTag>
   );
 }
