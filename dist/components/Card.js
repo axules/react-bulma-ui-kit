@@ -14,20 +14,24 @@ var _CardHeadTitle = _interopRequireDefault(require("./CardParts/CardHeadTitle")
 var _CardImage = _interopRequireDefault(require("./CardParts/CardImage"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _Card;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Card(props) {
   const {
     as: HtmlTag = 'div',
     children,
     className,
     title,
+    titleCentered,
+    titleIcon,
     ...restProps
   } = props;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ...restProps,
     className: (0, _classnames.default)('card', className),
     children: [title && /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardHead.default, {
-      title: title
+      title: title,
+      centered: titleCentered,
+      icon: titleIcon
     }), children]
   });
 }

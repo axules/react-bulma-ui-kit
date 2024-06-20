@@ -7,10 +7,10 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _CardImage;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function CardImage(props) {
   const {
-    as: HtmlTag = 'div',
+    as: HtmlTag = 'figure',
     children,
     className,
     ...restProps

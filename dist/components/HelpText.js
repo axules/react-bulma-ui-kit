@@ -9,7 +9,7 @@ var _withRef = require("../withRef");
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _HelpText;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function HelpText(props) {
   const {
     as: HtmlTag = 'div',
@@ -21,6 +21,7 @@ function HelpText(props) {
     info,
     link,
     primary,
+    light,
     ...restProps
   } = props;
   const classNamesValue = (0, _classnames.default)('help', (0, _utils.getStyleClassName)({
@@ -30,6 +31,8 @@ function HelpText(props) {
     info,
     link,
     primary
+  }), (0, _utils.getBrightnessClassName)({
+    light
   }), className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,

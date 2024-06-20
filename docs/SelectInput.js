@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[939],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[473],{
 
 /***/ 312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -427,7 +427,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 644:
+/***/ 396:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -443,25 +443,27 @@ var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 // EXTERNAL MODULE: ./src/withRef.js
 var withRef = __webpack_require__(790);
+// EXTERNAL MODULE: ./src/components/Control.jsx
+var Control = __webpack_require__(991);
 // EXTERNAL MODULE: ./src/components/utils.js
 var utils = __webpack_require__(13);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Button.jsx
-var _ref, _Button;
+;// CONCATENATED MODULE: ./src/components/SelectInput.jsx
+var _ref, _SelectInput;
 
 
 
 
 
 
-function Button(props) {
+
+function SelectInput(props) {
   const {
-    as: HtmlTag = 'button',
-    children,
-    className,
-    loading,
+    as: HtmlTag = 'div',
     forwardedRef,
+    className,
+    icon,
     danger,
     success,
     warning,
@@ -471,21 +473,13 @@ function Button(props) {
     small,
     medium,
     large,
-    fullWidth,
-    white,
-    light,
-    dark,
-    black,
-    text,
-    ghost,
-    inverted,
-    outlined,
-    rounded,
-    disabled,
-    type = HtmlTag === 'button' ? 'button' : undefined,
+    asControl,
+    isExpanded,
+    loading,
+    multiple,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('button', (0,utils/* getStyleClassName */.Zb)({
+  const classNamesValue = classnames_default()('select', (0,utils/* getStyleClassName */.Zb)({
     danger,
     success,
     warning,
@@ -496,39 +490,31 @@ function Button(props) {
     small,
     medium,
     large
-  }), (0,utils/* getBrightnessClassName */.P2)({
-    white,
-    light,
-    dark,
-    black,
-    text,
-    ghost
-  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', inverted && 'is-inverted', className);
-  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
-    ref: forwardedRef,
-    type: type ?? undefined,
-    ...restProps,
-    disabled: disabled || loading,
+  }), loading && 'is-loading', multiple && 'is-multiple', className);
+  const selectRender = /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
     className: classNamesValue,
-    children: children
+    children: /*#__PURE__*/(0,jsx_runtime.jsx)("select", {
+      ref: forwardedRef,
+      multiple: multiple,
+      ...restProps
+    })
   });
+  return icon || asControl ? /*#__PURE__*/(0,jsx_runtime.jsxs)(Control/* default */.A, {
+    className: classnames_default()(icon && 'has-icons-left'),
+    isExpanded: isExpanded,
+    children: [selectRender, icon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+      className: "icon is-left",
+      children: icon
+    })]
+  }) : selectRender;
 }
-Button.propTypes = {
+SelectInput.propTypes = {
   as: (prop_types_default()).any,
-  children: (prop_types_default()).node,
+  forwardedRef: (prop_types_default()).object,
   className: (prop_types_default()).string,
-  loading: (prop_types_default()).bool,
-  disabled: (prop_types_default()).bool,
-  outlined: (prop_types_default()).bool,
-  type: (prop_types_default()).any,
-  rounded: (prop_types_default()).bool,
-  forwardedRef: (prop_types_default()).any,
-  white: (prop_types_default()).bool,
-  light: (prop_types_default()).bool,
-  dark: (prop_types_default()).bool,
-  black: (prop_types_default()).bool,
-  text: (prop_types_default()).bool,
-  ghost: (prop_types_default()).bool,
+  icon: (prop_types_default()).node,
+  asControl: (prop_types_default()).bool,
+  isExpanded: (prop_types_default()).bool,
   primary: (prop_types_default()).bool,
   link: (prop_types_default()).bool,
   info: (prop_types_default()).bool,
@@ -538,116 +524,83 @@ Button.propTypes = {
   small: (prop_types_default()).bool,
   medium: (prop_types_default()).bool,
   large: (prop_types_default()).bool,
-  inverted: (prop_types_default()).bool,
-  fullWidth: (prop_types_default()).bool
+  loading: (prop_types_default()).bool,
+  multiple: (prop_types_default()).bool
 };
-/* harmony default export */ const components_Button = (_ref = (_Button = Button, /*#__PURE__*/(0,react.memo)(_Button)), (0,withRef/* withForwardedRef */.i)(_ref));
-;// CONCATENATED MODULE: ./src/components/Buttons.jsx
-var _Buttons;
-
-
-
-
-
-function Buttons(props) {
-  const {
-    children,
-    className,
-    hasAddons,
-    nowrap,
-    left,
-    centered,
-    right,
-    ...restProps
-  } = props;
-  const classNamesValue = classnames_default()('buttons', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', (0,utils/* getAlignClassName */.HA)({
-    left,
-    centered,
-    right
-  }), className);
-  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-    ...restProps,
-    className: classNamesValue,
-    children: children
-  });
-}
-Buttons.propTypes = {
-  children: (prop_types_default()).node,
-  className: (prop_types_default()).string,
-  hasAddons: (prop_types_default()).bool,
-  nowrap: (prop_types_default()).bool,
-  left: (prop_types_default()).bool,
-  centered: (prop_types_default()).bool,
-  right: (prop_types_default()).bool
-};
-/* harmony default export */ const components_Buttons = (_Buttons = Buttons, /*#__PURE__*/(0,react.memo)(_Buttons));
+/* harmony default export */ const components_SelectInput = (_ref = (_SelectInput = SelectInput, /*#__PURE__*/(0,react.memo)(_SelectInput)), (0,withRef/* withForwardedRef */.i)(_ref));
 // EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
 var sheetRenderer = __webpack_require__(73);
 // EXTERNAL MODULE: ./docsSrc/utils.js
 var docsSrc_utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheets/Button.sheet.js
-
+;// CONCATENATED MODULE: ./docsSrc/sheets/SelectInput.sheet.js
 
 
 
 
 const styles = '.primary.link.info.success.warning.danger'.split('.');
-const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.small.normal.large'.split('.');
+const icons = [{
+  icon: /*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
+    children: "\uD83D\uDE08"
+  })
+}];
+const multiple = [{
+  size: 1
+}, {
+  size: 3
+}, {
+  size: 5
+}];
 function renderEach(cases, props) {
-  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Button, {
+  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_SelectInput, {
     key: it,
-    children: 'click me',
-    ...(it ? {
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 1"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 2"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 3"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 4"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 5"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 6"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 7"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("option", {
+        children: "Option Item 8"
+      })]
+    }),
+    placeholder: 'I am placeholder',
+    ...(typeof it === 'string' && it ? {
       [it]: true
     } : {}),
+    ...(typeof it === 'object' ? it : {}),
     ...props
+  }, {
+    children: `
+  <option>Option Item 1</option>
+  <option>Option Item 2</option>
+  <option>Option Item 3</option>
+  <option>Option Item 4</option>
+  <option>Option Item 5</option>
+  <option>Option Item 6</option>
+  <option>Option Item 7</option>
+  <option>Option Item 8</option>\r\n`,
+    icon: '{<>&#x1F608;</>}'
   }));
 }
 const examples = {
-  Colors: renderEach(styles),
-  'Inverted colors': renderEach(styles, {
-    inverted: true
-  }),
-  'Light colors': renderEach(styles, {
-    light: true
-  }),
-  'Dark colors': renderEach(styles, {
-    dark: true
-  }),
-  Outlined: renderEach(styles, {
-    outlined: true
-  }),
-  Loading: renderEach([''], {
-    loading: true
-  }),
-  Disabled: renderEach([''], {
-    disabled: true
-  }),
-  Brightness: renderEach(brightness),
-  Sizes: renderEach(sizes),
-  Buttons: (() => {
-    const R = /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Buttons, {
-      children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_Button, {
-        primary: true,
-        children: "Save"
-      }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_Button, {
-        light: true,
-        children: "Cancel"
-      })]
-    });
-    R.__source = `
-<Buttons>
-  <Button primary>Save</Button>
-  <Button light>Cancel</Button>
-</Buttons>
-    `.trim();
-    return [R];
-  })()
+  Styles: renderEach(styles),
+  Size: renderEach(sizes),
+  Icons: renderEach(icons),
+  Multiple: renderEach(multiple, {
+    multiple
+  })
 };
-/* harmony default export */ const Button_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Button, examples, {
-  pt: true
-}));
+/* harmony default export */ const SelectInput_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_SelectInput, examples));
 
 /***/ }),
 
@@ -744,6 +697,52 @@ function registerResizeMessage() {
   const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
   window.addEventListener('resize', onWindowResize);
 }
+
+/***/ }),
+
+/***/ 991:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
+var _ref, _Control;
+
+
+
+
+
+function Control(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    children,
+    isExpanded,
+    loading,
+    ...restProps
+  } = props;
+  const classNameValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(HtmlTag, {
+    ...restProps,
+    className: classNameValue,
+    children: children
+  });
+}
+Control.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_Control = Control, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Control)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
 
 /***/ }),
 
@@ -908,7 +907,7 @@ function withRef(propName) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(644)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(396)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

@@ -7,7 +7,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _Content;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Content(props) {
   const {
     as: HtmlTag = 'div',

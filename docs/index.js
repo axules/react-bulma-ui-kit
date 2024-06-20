@@ -16,9 +16,9 @@ var _withRef = __webpack_require__(154);
 var _utils = __webpack_require__(721);
 var _jsxRuntime = __webpack_require__(848);
 var _ref, _Button;
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
+function _interopRequireDefault(e) {
+  return e && e.__esModule ? e : {
+    default: e
   };
 }
 function Button(props) {
@@ -28,7 +28,6 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
-    isDelete,
     danger,
     success,
     warning,
@@ -70,7 +69,7 @@ function Button(props) {
     black,
     text,
     ghost
-  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', inverted && 'is-inverted', className);
+  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', inverted && 'is-inverted', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: type != null ? type : undefined,

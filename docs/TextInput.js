@@ -386,12 +386,15 @@ function sheetRenderer(CMP, sheets, options = {}) {
       title: key,
       href
     });
+    const render = typeof value === 'function' ? value() : value;
+    const samples = Array.isArray(render) ? render : undefined;
+    const source = Array.isArray(render) ? undefined : render.__source;
     return /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
       id: href,
       title: key,
-      samples: Array.isArray(value) ? value : undefined,
-      source: Array.isArray(value) ? undefined : value.__source,
-      children: Array.isArray(value) ? undefined : value
+      samples: samples,
+      source: source,
+      children: Array.isArray(render) ? undefined : render
     }, key);
   });
   FrameMessenger/* FrameMessenger */.p.listenMessages((type, payload) => {
@@ -418,7 +421,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
     sheetName: CoreComponent.displayName || CoreComponent.name,
     pathname: location.pathname
   });
-  (0,docsSrc_utils/* resizeMessage */.EN)();
+  setTimeout(() => (0,docsSrc_utils/* resizeMessage */.EN)(), 50);
   return sheets;
 }
 
@@ -427,10 +430,12 @@ function sheetRenderer(CMP, sheets, options = {}) {
 /***/ 391:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-/* harmony import */ var _src_components_TextInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(786);
-/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(271);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
+/* harmony import */ var _src_components_Field__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(654);
+/* harmony import */ var _src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(355);
+/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(271);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
+
 
 
 
@@ -438,23 +443,23 @@ function sheetRenderer(CMP, sheets, options = {}) {
 const styles = '.primary.link.info.success.warning.danger'.split('.');
 const sizes = '.small.normal.large'.split('.');
 const icons = [{
-  leftIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+  leftIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: "\uD83D\uDE08"
   })
 }, {
-  rightIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+  rightIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: "\uD83D\uDE08"
   })
 }, {
-  leftIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+  leftIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: "\uD83D\uDE08"
   }),
-  rightIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+  rightIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: "\uD83D\uDE08"
   })
 }];
 function renderEach(cases, props) {
-  return cases.map(it => (0,_utils__WEBPACK_IMPORTED_MODULE_2__/* .prepareSample */ .ws)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+  return cases.map(it => (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .prepareSample */ .ws)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
     key: it,
     placeholder: 'I am placeholder',
     ...(typeof it === 'string' && it ? {
@@ -467,9 +472,27 @@ function renderEach(cases, props) {
 const examples = {
   Styles: renderEach(styles),
   Size: renderEach(sizes),
-  Icons: renderEach(icons)
+  Icons: renderEach(icons),
+  'With label': () => {
+    const render = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Field__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+      label: "Text input label",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
+        placeholder: "Type text ..."
+      })
+    });
+    render.__source = `
+<Field label="Text input label">
+  <TextInput placeholder="Type text ..." />
+</Field>`;
+    return [render];
+  },
+  Loading: (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .prepareSample */ .ws)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
+    placeholder: '',
+    asControl: true,
+    loading: true
+  })
 };
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_1__/* .sheetRenderer */ .r)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples));
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, examples));
 
 /***/ }),
 
@@ -569,28 +592,19 @@ function registerResizeMessage() {
 
 /***/ }),
 
-/***/ 786:
+/***/ 991:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ components_TextInput)
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(556);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(942);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/withRef.js
-var withRef = __webpack_require__(790);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Control.jsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
 var _ref, _Control;
 
 
@@ -603,26 +617,225 @@ function Control(props) {
     className,
     children,
     isExpanded,
+    loading,
     ...restProps
   } = props;
-  const classes = [isExpanded && 'is-expanded'];
-  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+  const classNameValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(HtmlTag, {
     ...restProps,
-    className: classnames_default()('control', className, ...classes),
+    className: classNameValue,
     children: children
   });
 }
 Control.propTypes = {
-  as: (prop_types_default()).any,
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_Control = Control, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Control)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
+
+/***/ }),
+
+/***/ 654:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  A: () => (/* binding */ components_Field)
+});
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/withRef.js
+var withRef = __webpack_require__(790);
+// EXTERNAL MODULE: ./src/components/HelpText.jsx
+var HelpText = __webpack_require__(810);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./src/components/Label.jsx
+var _Label;
+
+
+
+
+function Label(props) {
+  const {
+    children,
+    className,
+    required,
+    ...restProps
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("label", {
+    ...restProps,
+    className: classnames_default()('label', className),
+    children: [children, required && ' *']
+  });
+}
+Label.propTypes = {
   className: (prop_types_default()).string,
   children: (prop_types_default()).node,
-  isExpanded: (prop_types_default()).bool
+  required: (prop_types_default()).bool
 };
-/* harmony default export */ const components_Control = (_ref = (_Control = Control, /*#__PURE__*/(0,react.memo)(_Control)), (0,withRef/* withForwardedRef */.i)(_ref));
-// EXTERNAL MODULE: ./src/components/utils.js
-var utils = __webpack_require__(13);
-;// CONCATENATED MODULE: ./src/components/TextInput.jsx
-var TextInput_ref, _TextInput;
+/* harmony default export */ const components_Label = (_Label = Label, /*#__PURE__*/(0,react.memo)(_Label));
+;// CONCATENATED MODULE: ./src/components/Field.jsx
+var _ref, _Field;
+
+
+
+
+
+
+
+function Field(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    isHorizontal,
+    children,
+    label,
+    isGrouped,
+    isGroupedMultiline,
+    hasAddons,
+    errorText,
+    helpText,
+    required,
+    ...restProps
+  } = props;
+  const errorHelp = errorText && /*#__PURE__*/(0,jsx_runtime.jsx)(HelpText/* default */.A, {
+    danger: true,
+    children: errorText
+  });
+  const help = helpText && /*#__PURE__*/(0,jsx_runtime.jsx)(HelpText/* default */.A, {
+    children: helpText
+  });
+  const classNamesValue = classnames_default()('field', isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons', className);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
+    ...restProps,
+    className: classNamesValue,
+    children: [label && (isHorizontal ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "field-label is-normal",
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_Label, {
+        required: required,
+        children: label
+      })
+    }) : /*#__PURE__*/(0,jsx_runtime.jsx)(components_Label, {
+      required: required,
+      children: label
+    })), isHorizontal ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "field-body",
+      children: children
+    }) : children, help, errorHelp]
+  });
+}
+Field.propTypes = {
+  as: (prop_types_default()).any,
+  label: (prop_types_default()).node,
+  errorText: (prop_types_default()).node,
+  helpText: (prop_types_default()).node,
+  className: (prop_types_default()).string,
+  children: (prop_types_default()).node,
+  isHorizontal: (prop_types_default()).bool,
+  isGrouped: (prop_types_default()).bool,
+  isGroupedMultiline: (prop_types_default()).bool,
+  hasAddons: (prop_types_default()).bool,
+  required: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Field = (_ref = (_Field = Field, /*#__PURE__*/(0,react.memo)(_Field)), (0,withRef/* withForwardedRef */.i)(_ref));
+
+/***/ }),
+
+/***/ 810:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(848);
+var _ref, _HelpText;
+
+
+
+
+
+
+function HelpText(props) {
+  const {
+    as: HtmlTag = 'div',
+    children,
+    className,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    light,
+    ...restProps
+  } = props;
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('help', (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getStyleClassName */ .Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  }), (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getBrightnessClassName */ .P2)({
+    light
+  }), className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(HtmlTag, {
+    ...restProps,
+    className: classNamesValue,
+    children: children
+  });
+}
+HelpText.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  link: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  info: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  light: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_HelpText = HelpText, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_HelpText)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
+
+/***/ }),
+
+/***/ 355:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var _Control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(991);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(848);
+var _ref, _TextInput;
 
 
 
@@ -650,9 +863,10 @@ function TextInput(props) {
     autoComplete,
     asControl,
     isExpanded,
+    loading,
     ...restProps
   } = props;
-  const styleClassName = (0,utils/* getStyleClassName */.Zb)({
+  const styleClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getStyleClassName */ .Zb)({
     danger,
     success,
     warning,
@@ -660,51 +874,53 @@ function TextInput(props) {
     link,
     primary
   });
-  const sizeClassName = (0,utils/* getSizeClassName */.bP)({
+  const sizeClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getSizeClassName */ .bP)({
     small,
     medium,
     large
   });
-  const inputRender = /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+  const inputRender = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(HtmlTag, {
     type: HtmlTag === 'input' ? 'text' : undefined,
     ref: forwardedRef,
     autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
     ...restProps,
-    className: classnames_default()('input', styleClassName, sizeClassName, className)
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('input', styleClassName, sizeClassName, className)
   });
-  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Control, {
-    className: classnames_default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
+  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_Control__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
     isExpanded: isExpanded,
-    children: [inputRender, leftIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+    loading: loading,
+    children: [inputRender, leftIcon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
       className: "icon is-left",
       children: leftIcon
-    }), rightIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+    }), rightIcon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
       className: "icon is-right",
       children: rightIcon
     })]
   }) : inputRender;
 }
 TextInput.propTypes = {
-  as: (prop_types_default()).any,
-  forwardedRef: (prop_types_default()).object,
-  className: (prop_types_default()).string,
-  leftIcon: (prop_types_default()).node,
-  rightIcon: (prop_types_default()).node,
-  asControl: (prop_types_default()).bool,
-  isExpanded: (prop_types_default()).bool,
-  primary: (prop_types_default()).bool,
-  link: (prop_types_default()).bool,
-  info: (prop_types_default()).bool,
-  warning: (prop_types_default()).bool,
-  success: (prop_types_default()).bool,
-  danger: (prop_types_default()).bool,
-  small: (prop_types_default()).bool,
-  medium: (prop_types_default()).bool,
-  large: (prop_types_default()).bool,
-  autoComplete: (prop_types_default()).any,
-  autoCompleteOff: (prop_types_default()).bool
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  leftIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  rightIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  asControl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  link: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  info: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  autoComplete: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  autoCompleteOff: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
-/* harmony default export */ const components_TextInput = (TextInput_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react.memo)(_TextInput)), (0,withRef/* withForwardedRef */.i)(TextInput_ref));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_TextInput)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
 
 /***/ }),
 

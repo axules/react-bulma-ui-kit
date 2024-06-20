@@ -14,7 +14,7 @@ var _ModalCardTitle = _interopRequireDefault(require("./ModalParts/ModalCardTitl
 var _ModalContent = _interopRequireDefault(require("./ModalParts/ModalContent"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _Modal;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Modal(props) {
   const {
     children,

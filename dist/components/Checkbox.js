@@ -9,7 +9,7 @@ var _useReusableRef = require("../useReusableRef");
 var _withRef = require("../withRef");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _Checkbox;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Checkbox(props) {
   const {
     className,

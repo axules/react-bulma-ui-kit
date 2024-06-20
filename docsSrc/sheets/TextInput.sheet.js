@@ -1,3 +1,4 @@
+import Field from '../../src/components/Field';
 import TextInput from '../../src/components/TextInput';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
@@ -30,6 +31,15 @@ const examples = {
   Styles: renderEach(styles),
   Size: renderEach(sizes),
   Icons: renderEach(icons),
+  'With label': () => {
+    const render = <Field label="Text input label"><TextInput placeholder="Type text ..." /></Field>;
+    render.__source = `
+<Field label="Text input label">
+  <TextInput placeholder="Type text ..." />
+</Field>`;
+    return [render];
+  },
+  Loading: prepareSample(TextInput, { placeholder: '', asControl: true, loading: true }),
 };
 
 export default sheetRenderer(TextInput, examples);

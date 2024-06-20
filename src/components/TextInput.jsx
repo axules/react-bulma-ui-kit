@@ -31,6 +31,7 @@ function TextInput(props) {
     autoComplete,
     asControl,
     isExpanded,
+    loading,
     ...restProps
   } = props;
 
@@ -52,6 +53,7 @@ function TextInput(props) {
       <Control
         className={classNames(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right')}
         isExpanded={isExpanded}
+        loading={loading}
       >
         {inputRender}
 
@@ -94,6 +96,7 @@ TextInput.propTypes = {
 
   autoComplete: PropTypes.any,
   autoCompleteOff: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 export default TextInput

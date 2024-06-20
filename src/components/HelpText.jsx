@@ -4,7 +4,10 @@ import classNames from 'classnames';
 
 import { withForwardedRef } from '../withRef';
 
-import {getBrightnessClassName, getStyleClassName} from './utils';
+import {
+  getBrightnessClassName,
+  getStyleClassName
+} from './utils';
 
 
 function HelpText(props) {

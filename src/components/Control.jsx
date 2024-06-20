@@ -11,14 +11,19 @@ function Control(props) {
     className,
     children,
     isExpanded,
+    loading,
     ...restProps
   } = props;
-  const classes = [
+
+  const classNameValue = classNames(
+    'control',
     isExpanded && 'is-expanded',
-  ];
+    loading && 'is-loading',
+    className,
+  );
 
   return (
-    <HtmlTag {...restProps} className={classNames('control', className, ...classes)}>
+    <HtmlTag {...restProps} className={classNameValue}>
       {children}
     </HtmlTag>
   );
@@ -29,6 +34,7 @@ Control.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   isExpanded: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 export default Control

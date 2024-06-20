@@ -9,7 +9,7 @@ var _CardHeadIcon = _interopRequireDefault(require("./CardHeadIcon"));
 var _CardHeadTitle = _interopRequireDefault(require("./CardHeadTitle"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _PanelHead;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function PanelHead(props) {
   const {
     as: HtmlTag = 'header',

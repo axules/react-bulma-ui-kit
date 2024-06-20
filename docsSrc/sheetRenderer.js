@@ -26,15 +26,19 @@ export function sheetRenderer(CMP, sheets, options = {}) {
     .map(([key, value]) => {
       const href = key.replaceAll(/[^a-zA-Z0-9]/gi, '-').toLowerCase();
       subMenu.push({ title: key, href });
+      const render = typeof value === 'function' ? value() : value;
+      const samples = Array.isArray(render) ? render : undefined;
+      const source = Array.isArray(render) ? undefined : render.__source;
+
       return (
         <SheetExamples
           id={href}
           key={key}
           title={key}
-          samples={Array.isArray(value) ? value : undefined}
-          source={Array.isArray(value) ? undefined : value.__source}
+          samples={samples}
+          source={source}
         >
-          {Array.isArray(value) ? undefined : value}
+          {Array.isArray(render) ? undefined : render}
         </SheetExamples>
       );
     });
@@ -71,6 +75,6 @@ export function sheetRenderer(CMP, sheets, options = {}) {
     { items: subMenu, sheetName: CoreComponent.displayName || CoreComponent.name, pathname: location.pathname }
   );
 
-  resizeMessage();
+  setTimeout(() => resizeMessage(), 50);
   return sheets;
 }

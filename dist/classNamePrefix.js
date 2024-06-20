@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports.classNamePrefix = classNamePrefix;
 var _classnames = _interopRequireDefault(require("classnames"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function classNamePrefix(prefix) {
   const fn = function (suffix) {
     const combined = "" + prefix + (suffix != null ? suffix : '');

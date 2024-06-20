@@ -386,12 +386,15 @@ function sheetRenderer(CMP, sheets, options = {}) {
       title: key,
       href
     });
+    const render = typeof value === 'function' ? value() : value;
+    const samples = Array.isArray(render) ? render : undefined;
+    const source = Array.isArray(render) ? undefined : render.__source;
     return /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
       id: href,
       title: key,
-      samples: Array.isArray(value) ? value : undefined,
-      source: Array.isArray(value) ? undefined : value.__source,
-      children: Array.isArray(value) ? undefined : value
+      samples: samples,
+      source: source,
+      children: Array.isArray(render) ? undefined : render
     }, key);
   });
   FrameMessenger/* FrameMessenger */.p.listenMessages((type, payload) => {
@@ -418,17 +421,221 @@ function sheetRenderer(CMP, sheets, options = {}) {
     sheetName: CoreComponent.displayName || CoreComponent.name,
     pathname: location.pathname
   });
-  (0,docsSrc_utils/* resizeMessage */.EN)();
+  setTimeout(() => (0,docsSrc_utils/* resizeMessage */.EN)(), 50);
   return sheets;
 }
 
 /***/ }),
 
-/***/ 115:
+/***/ 910:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
+/* harmony import */ var _src_components_Field__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(654);
+/* harmony import */ var _src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(355);
+/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(271);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
 
-// UNUSED EXPORTS: default
+
+
+
+
+const defaultProps = {
+  label: 'I am label',
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
+    placeholder: "Type text"
+  })
+};
+const sourceProps = {
+  children: '\r\n  <TextInput placeholder="Type text" />\r\n'
+};
+function prepareOne(props, srcProps) {
+  return [(0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .prepareSample */ .ws)(_src_components_Field__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+    ...defaultProps,
+    ...props
+  }, {
+    ...sourceProps,
+    ...srcProps
+  })];
+}
+const examples = {
+  Default: prepareOne({
+    label: undefined
+  }),
+  'With label': prepareOne(),
+  'With help': prepareOne({
+    helpText: 'Help helpText'
+  }),
+  'With error': prepareOne({
+    errorText: 'I am errorText'
+  }),
+  'With help + error': prepareOne({
+    helpText: 'Help text',
+    errorText: 'I am errorText'
+  }),
+  Horizontal: prepareOne({
+    isHorizontal: true
+  }),
+  Required: prepareOne({
+    required: true
+  })
+};
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Field__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples, {
+  pt: true
+}));
+
+/***/ }),
+
+/***/ 271:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EN: () => (/* binding */ resizeMessage),
+/* harmony export */   lt: () => (/* binding */ registerResizeMessage),
+/* harmony export */   nr: () => (/* binding */ extractCore),
+/* harmony export */   ws: () => (/* binding */ prepareSample)
+/* harmony export */ });
+/* unused harmony exports renderSample, prepareSource */
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(181);
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(312);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
+
+
+
+function extractCore(component) {
+  let node = component;
+  while (node.type) {
+    node = node.type;
+  }
+  return node;
+}
+function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
+  const coreCmp = extractCore(CMP);
+  const {
+    __name,
+    __source,
+    ...sourcePropsReplacement
+  } = sourcePropsExt || {};
+  const cmpName = __name || coreCmp.displayName || coreCmp.name;
+  const R = renderSample(CMP, props);
+  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsReplacement).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
+  const propValueProcessor = key => {
+    if (EXCLUDED_KEYS.includes(key)) return undefined;
+    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
+    return false;
+  };
+  R.__source = __source || prepareSource(cmpName, props, {
+    ...config,
+    propValueProcessor
+  });
+  return R;
+}
+function renderSample(CMP, props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CMP, {
+    ...props
+  });
+}
+function prepareSource(cmp, props, config = {}) {
+  const {
+    children,
+    ...restProps
+  } = props;
+  const {
+    multilineProps = 3,
+    multilineChild,
+    propValueProcessor
+  } = config;
+  const preparedChildren = children && propValueProcessor && propValueProcessor('children', children, props) || children;
+  const preparedProps = Object.entries(restProps).map(([key, value]) => {
+    if (propValueProcessor) {
+      const processed = propValueProcessor(key, value, props);
+      if (processed === undefined) return null;
+      if (processed) return `${key}=${processed}`;
+    }
+    if (value === null) return `${key}={null}`;
+    if (value === undefined) return null;
+    if (value === true) return key;
+    if (value === false) return `${key}={false}`;
+    if (typeof value === 'string') return `${key}="${value}"`;
+    return `${key}={${value}}`;
+  }).filter(Boolean);
+  const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
+  const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
+  const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
+  const templated = preparedChildren ? `<${mainSrc}>[*CHILD_BEFORE*]${preparedChildren}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
+  const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
+  return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
+}
+function resizeMessage() {
+  const html = document.querySelector('html');
+  html.style.height = '0';
+  _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.sendParentMessage(_FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.TYPES.FRAME_RESIZE, {
+    height: html.scrollHeight,
+    url: window.location.href
+  });
+}
+function registerResizeMessage() {
+  const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
+  window.addEventListener('resize', onWindowResize);
+}
+
+/***/ }),
+
+/***/ 991:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
+var _ref, _Control;
+
+
+
+
+
+function Control(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    children,
+    isExpanded,
+    loading,
+    ...restProps
+  } = props;
+  const classNameValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(HtmlTag, {
+    ...restProps,
+    className: classNameValue,
+    children: children
+  });
+}
+Control.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_Control = Control, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Control)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
+
+/***/ }),
+
+/***/ 654:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  A: () => (/* binding */ components_Field)
+});
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(540);
@@ -533,157 +740,6 @@ Field.propTypes = {
   required: (prop_types_default()).bool
 };
 /* harmony default export */ const components_Field = (_ref = (_Field = Field, /*#__PURE__*/(0,react.memo)(_Field)), (0,withRef/* withForwardedRef */.i)(_ref));
-// EXTERNAL MODULE: ./src/components/TextInput.jsx + 1 modules
-var TextInput = __webpack_require__(786);
-// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
-var sheetRenderer = __webpack_require__(73);
-// EXTERNAL MODULE: ./docsSrc/utils.js
-var utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheets/Field.sheet.js
-
-
-
-
-
-const defaultProps = {
-  label: 'I am label',
-  children: /*#__PURE__*/(0,jsx_runtime.jsx)(TextInput/* default */.A, {
-    placeholder: "Type text"
-  })
-};
-const sourceProps = {
-  children: '\r\n  <TextInput placeholder="Type text" />\r\n'
-};
-function prepareOne(props, srcProps) {
-  return [(0,utils/* prepareSample */.ws)(components_Field, {
-    ...defaultProps,
-    ...props
-  }, {
-    ...sourceProps,
-    ...srcProps
-  })];
-}
-const examples = {
-  Default: prepareOne({
-    label: undefined
-  }),
-  'With label': prepareOne(),
-  'With help': prepareOne({
-    helpText: 'Help helpText'
-  }),
-  'With error': prepareOne({
-    errorText: 'I am errorText'
-  }),
-  'With help + error': prepareOne({
-    helpText: 'Help text',
-    errorText: 'I am errorText'
-  }),
-  Horizontal: prepareOne({
-    isHorizontal: true
-  }),
-  Required: prepareOne({
-    required: true
-  })
-};
-/* harmony default export */ const Field_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Field, examples, {
-  pt: true
-}));
-
-/***/ }),
-
-/***/ 271:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   EN: () => (/* binding */ resizeMessage),
-/* harmony export */   lt: () => (/* binding */ registerResizeMessage),
-/* harmony export */   nr: () => (/* binding */ extractCore),
-/* harmony export */   ws: () => (/* binding */ prepareSample)
-/* harmony export */ });
-/* unused harmony exports renderSample, prepareSource */
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(181);
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(312);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
-
-
-
-function extractCore(component) {
-  let node = component;
-  while (node.type) {
-    node = node.type;
-  }
-  return node;
-}
-function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
-  const coreCmp = extractCore(CMP);
-  const {
-    __name,
-    __source,
-    ...sourcePropsReplacement
-  } = sourcePropsExt || {};
-  const cmpName = __name || coreCmp.displayName || coreCmp.name;
-  const R = renderSample(CMP, props);
-  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsReplacement).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
-  const propValueProcessor = key => {
-    if (EXCLUDED_KEYS.includes(key)) return undefined;
-    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
-    return false;
-  };
-  R.__source = __source || prepareSource(cmpName, props, {
-    ...config,
-    propValueProcessor
-  });
-  return R;
-}
-function renderSample(CMP, props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CMP, {
-    ...props
-  });
-}
-function prepareSource(cmp, props, config = {}) {
-  const {
-    children,
-    ...restProps
-  } = props;
-  const {
-    multilineProps = 3,
-    multilineChild,
-    propValueProcessor
-  } = config;
-  const preparedChildren = children && propValueProcessor && propValueProcessor('children', children, props) || children;
-  const preparedProps = Object.entries(restProps).map(([key, value]) => {
-    if (propValueProcessor) {
-      const processed = propValueProcessor(key, value, props);
-      if (processed === undefined) return null;
-      if (processed) return `${key}=${processed}`;
-    }
-    if (value === null) return `${key}={null}`;
-    if (value === undefined) return null;
-    if (value === true) return key;
-    if (value === false) return `${key}={false}`;
-    if (typeof value === 'string') return `${key}="${value}"`;
-    return `${key}={${value}}`;
-  }).filter(Boolean);
-  const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
-  const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
-  const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
-  const templated = preparedChildren ? `<${mainSrc}>[*CHILD_BEFORE*]${preparedChildren}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
-  const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
-  return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
-}
-function resizeMessage() {
-  const html = document.querySelector('html');
-  html.style.height = '0';
-  _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.sendParentMessage(_FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.TYPES.FRAME_RESIZE, {
-    height: html.scrollHeight,
-    url: window.location.href
-  });
-}
-function registerResizeMessage() {
-  const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
-  window.addEventListener('resize', onWindowResize);
-}
 
 /***/ }),
 
@@ -754,60 +810,22 @@ HelpText.propTypes = {
 
 /***/ }),
 
-/***/ 786:
+/***/ 355:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ components_TextInput)
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(556);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(942);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/withRef.js
-var withRef = __webpack_require__(790);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Control.jsx
-var _ref, _Control;
-
-
-
-
-
-function Control(props) {
-  const {
-    as: HtmlTag = 'div',
-    className,
-    children,
-    isExpanded,
-    ...restProps
-  } = props;
-  const classes = [isExpanded && 'is-expanded'];
-  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
-    ...restProps,
-    className: classnames_default()('control', className, ...classes),
-    children: children
-  });
-}
-Control.propTypes = {
-  as: (prop_types_default()).any,
-  className: (prop_types_default()).string,
-  children: (prop_types_default()).node,
-  isExpanded: (prop_types_default()).bool
-};
-/* harmony default export */ const components_Control = (_ref = (_Control = Control, /*#__PURE__*/(0,react.memo)(_Control)), (0,withRef/* withForwardedRef */.i)(_ref));
-// EXTERNAL MODULE: ./src/components/utils.js
-var utils = __webpack_require__(13);
-;// CONCATENATED MODULE: ./src/components/TextInput.jsx
-var TextInput_ref, _TextInput;
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var _Control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(991);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(848);
+var _ref, _TextInput;
 
 
 
@@ -835,9 +853,10 @@ function TextInput(props) {
     autoComplete,
     asControl,
     isExpanded,
+    loading,
     ...restProps
   } = props;
-  const styleClassName = (0,utils/* getStyleClassName */.Zb)({
+  const styleClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getStyleClassName */ .Zb)({
     danger,
     success,
     warning,
@@ -845,51 +864,53 @@ function TextInput(props) {
     link,
     primary
   });
-  const sizeClassName = (0,utils/* getSizeClassName */.bP)({
+  const sizeClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getSizeClassName */ .bP)({
     small,
     medium,
     large
   });
-  const inputRender = /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+  const inputRender = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(HtmlTag, {
     type: HtmlTag === 'input' ? 'text' : undefined,
     ref: forwardedRef,
     autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
     ...restProps,
-    className: classnames_default()('input', styleClassName, sizeClassName, className)
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('input', styleClassName, sizeClassName, className)
   });
-  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Control, {
-    className: classnames_default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
+  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_Control__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
     isExpanded: isExpanded,
-    children: [inputRender, leftIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+    loading: loading,
+    children: [inputRender, leftIcon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
       className: "icon is-left",
       children: leftIcon
-    }), rightIcon && /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+    }), rightIcon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
       className: "icon is-right",
       children: rightIcon
     })]
   }) : inputRender;
 }
 TextInput.propTypes = {
-  as: (prop_types_default()).any,
-  forwardedRef: (prop_types_default()).object,
-  className: (prop_types_default()).string,
-  leftIcon: (prop_types_default()).node,
-  rightIcon: (prop_types_default()).node,
-  asControl: (prop_types_default()).bool,
-  isExpanded: (prop_types_default()).bool,
-  primary: (prop_types_default()).bool,
-  link: (prop_types_default()).bool,
-  info: (prop_types_default()).bool,
-  warning: (prop_types_default()).bool,
-  success: (prop_types_default()).bool,
-  danger: (prop_types_default()).bool,
-  small: (prop_types_default()).bool,
-  medium: (prop_types_default()).bool,
-  large: (prop_types_default()).bool,
-  autoComplete: (prop_types_default()).any,
-  autoCompleteOff: (prop_types_default()).bool
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  leftIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  rightIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  asControl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  link: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  info: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  autoComplete: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  autoCompleteOff: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
-/* harmony default export */ const components_TextInput = (TextInput_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react.memo)(_TextInput)), (0,withRef/* withForwardedRef */.i)(TextInput_ref));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_TextInput)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
 
 /***/ }),
 
@@ -1054,7 +1075,7 @@ function withRef(propName) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(115)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(910)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

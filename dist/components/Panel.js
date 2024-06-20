@@ -13,7 +13,7 @@ var _PanelTabs = _interopRequireDefault(require("./PanelParts/PanelTabs"));
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Panel;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Panel(props) {
   const {
     as: HtmlTag = 'div',

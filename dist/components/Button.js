@@ -9,7 +9,7 @@ var _withRef = require("../withRef");
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _Button;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Button(props) {
   const {
     as: HtmlTag = 'button',
@@ -17,7 +17,6 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
-    isDelete,
     danger,
     success,
     warning,
@@ -59,7 +58,7 @@ function Button(props) {
     black,
     text,
     ghost
-  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', isDelete && 'is-delete', inverted && 'is-inverted', className);
+  }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', inverted && 'is-inverted', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,
     type: type != null ? type : undefined,

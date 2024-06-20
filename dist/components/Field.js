@@ -10,7 +10,7 @@ var _HelpText = _interopRequireDefault(require("./HelpText"));
 var _Label = _interopRequireDefault(require("./Label"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _Field;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Field(props) {
   const {
     as: HtmlTag = 'div',
@@ -40,6 +40,7 @@ function Field(props) {
     children: [label && (isHorizontal ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "field-label is-normal",
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Label.default, {
+        required: required,
         children: label
       })
     }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_Label.default, {

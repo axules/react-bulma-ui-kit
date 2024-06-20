@@ -1,5 +1,11 @@
 module.exports = {
   parser: '@babel/eslint-parser',
+  ignorePatterns: ['node_modules', 'build', 'dist', 'docs'],
+  overrides: [
+    {
+      files: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+    }
+  ],
   parserOptions: {
     optionalChaining: true,
     ecmaFeatures: {
@@ -20,7 +26,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
   ],
   plugins: [
-    'babel',
+    '@babel',
     'react',
     'import',
     'simple-import-sort',
@@ -32,7 +38,6 @@ module.exports = {
       version: 'detect'
     }
   },
-  ignorePatterns: ['node_modules', 'build', 'dist'],
   rules: {
     'arrow-spacing': ['error'],
     'keyword-spacing': ['warn'],

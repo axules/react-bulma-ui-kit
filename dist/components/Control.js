@@ -8,19 +8,20 @@ var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../withRef");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _Control;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Control(props) {
   const {
     as: HtmlTag = 'div',
     className,
     children,
     isExpanded,
+    loading,
     ...restProps
   } = props;
-  const classes = [isExpanded && 'is-expanded'];
+  const classNameValue = (0, _classnames.default)('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)('control', className, ...classes),
+    className: classNameValue,
     children: children
   });
 }

@@ -386,12 +386,15 @@ function sheetRenderer(CMP, sheets, options = {}) {
       title: key,
       href
     });
+    const render = typeof value === 'function' ? value() : value;
+    const samples = Array.isArray(render) ? render : undefined;
+    const source = Array.isArray(render) ? undefined : render.__source;
     return /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
       id: href,
       title: key,
-      samples: Array.isArray(value) ? value : undefined,
-      source: Array.isArray(value) ? undefined : value.__source,
-      children: Array.isArray(value) ? undefined : value
+      samples: samples,
+      source: source,
+      children: Array.isArray(render) ? undefined : render
     }, key);
   });
   FrameMessenger/* FrameMessenger */.p.listenMessages((type, payload) => {
@@ -418,7 +421,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
     sheetName: CoreComponent.displayName || CoreComponent.name,
     pathname: location.pathname
   });
-  (0,docsSrc_utils/* resizeMessage */.EN)();
+  setTimeout(() => (0,docsSrc_utils/* resizeMessage */.EN)(), 50);
   return sheets;
 }
 

@@ -8,7 +8,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 var _withRef = require("../withRef");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _SubmitForm;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function SubmitForm(props) {
   const {
     children,

@@ -10,7 +10,7 @@ var _Control = _interopRequireDefault(require("./Control"));
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _ref, _TextInput;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function TextInput(props) {
   const {
     as: HtmlTag = 'input',
@@ -31,6 +31,7 @@ function TextInput(props) {
     autoComplete,
     asControl,
     isExpanded,
+    loading,
     ...restProps
   } = props;
   const styleClassName = (0, _utils.getStyleClassName)({
@@ -56,6 +57,7 @@ function TextInput(props) {
   return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Control.default, {
     className: (0, _classnames.default)(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
     isExpanded: isExpanded,
+    loading: loading,
     children: [inputRender, leftIcon && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: "icon is-left",
       children: leftIcon

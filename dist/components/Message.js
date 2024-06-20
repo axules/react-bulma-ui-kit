@@ -9,7 +9,7 @@ var _DeleteButton = _interopRequireDefault(require("./DeleteButton"));
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Message;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Message(props) {
   const {
     as: HtmlTag = 'div',
@@ -30,7 +30,8 @@ function Message(props) {
     dark,
     ...restProps
   } = props;
-  const classNamesValue = (0, _classnames.default)('message', (0, _utils.getStyleClassName)({
+  const hasHeader = title || onClose;
+  const classNamesValue = (0, _classnames.default)('message', !hasHeader && 'message-body', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
@@ -48,13 +49,13 @@ function Message(props) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
-    children: [(title || onClose) && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [hasHeader && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "message-header",
       children: [title, onClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_DeleteButton.default, {})]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    }), hasHeader ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "message-body",
       children: children
-    })]
+    }) : children]
   });
 }
 var _default = exports.default = (_Message = Message, /*#__PURE__*/(0, _react.memo)(_Message));
