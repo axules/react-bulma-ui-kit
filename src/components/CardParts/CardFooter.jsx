@@ -19,8 +19,5 @@ CardFooter.propTypes = {
   className: PropTypes.string,
 };
 
-CardFooter.defaultProps = {
-};
-
 export default CardFooter
   |> memo;

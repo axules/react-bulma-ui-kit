@@ -29,8 +29,5 @@ SheetProps.propTypes = {
   propTypesData: PropTypes.node
 };
 
-SheetProps.defaultProps = {
-};
-
 export default SheetProps
   |> memo;

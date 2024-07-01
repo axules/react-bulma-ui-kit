@@ -30,6 +30,7 @@ function SelectInput(props) {
     isExpanded,
     loading,
     multiple,
+    fullWidth,
     ...restProps
   } = props;
   const classNamesValue = (0, _classnames.default)('select', (0, _utils.getStyleClassName)({
@@ -43,7 +44,7 @@ function SelectInput(props) {
     small,
     medium,
     large
-  }), loading && 'is-loading', multiple && 'is-multiple', className);
+  }), loading && 'is-loading', multiple && 'is-multiple', fullWidth && 'is-fullwidth', className);
   const selectRender = /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     className: classNamesValue,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("select", {

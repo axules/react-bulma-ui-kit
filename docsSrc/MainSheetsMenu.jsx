@@ -84,8 +84,5 @@ MainSheetsMenu.propTypes = {
   selected: PropTypes.object,
 };
 
-MainSheetsMenu.defaultProps = {
-};
-
 export default MainSheetsMenu
   |> memo;

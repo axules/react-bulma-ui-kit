@@ -21,6 +21,5 @@ function CardImage(props) {
     children: children
   });
 }
-CardImage.defaultProps = {};
 var _default = exports.default = (_CardImage = CardImage, /*#__PURE__*/(0, _react.memo)(_CardImage));
 //# sourceMappingURL=CardImage.js.map

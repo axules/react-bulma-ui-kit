@@ -22,6 +22,5 @@ function PanelTabs(props) {
     children: children
   });
 }
-PanelTabs.defaultProps = {};
 var _default = exports.default = (_PanelTabs = PanelTabs, /*#__PURE__*/(0, _react.memo)(_PanelTabs));
 //# sourceMappingURL=PanelTabs.js.map

@@ -83,7 +83,5 @@ MainPage.propTypes = {
   sheets: PropTypes.array
 };
 
-MainPage.defaultProps = {};
-
 export default MainPage
   |> memo;

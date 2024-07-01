@@ -21,6 +21,5 @@ function CardFooter(props) {
     children: children
   });
 }
-CardFooter.defaultProps = {};
 var _default = exports.default = (_CardFooter = CardFooter, /*#__PURE__*/(0, _react.memo)(_CardFooter));
 //# sourceMappingURL=CardFooter.js.map

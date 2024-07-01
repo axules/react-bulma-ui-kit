@@ -50,8 +50,5 @@ Icon.propTypes = {
   large: PropTypes.bool,
 };
 
-Icon.defaultProps = {
-};
-
 export default Icon
   |> memo;

@@ -20,8 +20,5 @@ PanelTab.propTypes = {
   active: PropTypes.bool,
 };
 
-PanelTab.defaultProps = {
-};
-
 export default PanelTab
   |> memo;

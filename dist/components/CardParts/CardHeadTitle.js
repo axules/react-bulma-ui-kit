@@ -22,6 +22,5 @@ function CardHeadTitle(props) {
     children: children
   });
 }
-CardHeadTitle.defaultProps = {};
 var _default = exports.default = (_CardHeadTitle = CardHeadTitle, /*#__PURE__*/(0, _react.memo)(_CardHeadTitle));
 //# sourceMappingURL=CardHeadTitle.js.map

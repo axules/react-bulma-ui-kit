@@ -31,6 +31,5 @@ function PanelHead(props) {
     }), children]
   });
 }
-PanelHead.defaultProps = {};
 var _default = exports.default = (_PanelHead = PanelHead, /*#__PURE__*/(0, _react.memo)(_PanelHead));
 //# sourceMappingURL=CardHead.js.map

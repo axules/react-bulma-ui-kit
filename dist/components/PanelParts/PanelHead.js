@@ -21,6 +21,5 @@ function PanelHead(props) {
     children: children
   });
 }
-PanelHead.defaultProps = {};
 var _default = exports.default = (_PanelHead = PanelHead, /*#__PURE__*/(0, _react.memo)(_PanelHead));
 //# sourceMappingURL=PanelHead.js.map

@@ -19,8 +19,5 @@ PanelIcon.propTypes = {
   className: PropTypes.string,
 };
 
-PanelIcon.defaultProps = {
-};
-
 export default PanelIcon
   |> memo;

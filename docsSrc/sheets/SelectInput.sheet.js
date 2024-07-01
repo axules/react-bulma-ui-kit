@@ -49,7 +49,8 @@ const examples = {
   Styles: renderEach(styles),
   Size: renderEach(sizes),
   Icons: renderEach(icons),
-  Multiple: renderEach(multiple, { multiple })
+  Multiple: renderEach(multiple, { multiple: true }),
+  FullWidth: renderEach(icons, { fullWidth: true })
 };
 
 export default sheetRenderer(SelectInput, examples);

@@ -20,8 +20,5 @@ CardHeadTitle.propTypes = {
   centered: PropTypes.bool,
 };
 
-CardHeadTitle.defaultProps = {
-};
-
 export default CardHeadTitle
   |> memo;

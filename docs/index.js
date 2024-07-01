@@ -344,7 +344,6 @@ MainSheetsMenu.propTypes = {
   onSelect: (prop_types_default()).func,
   selected: (prop_types_default()).object
 };
-MainSheetsMenu.defaultProps = {};
 /* harmony default export */ const docsSrc_MainSheetsMenu = (_MainSheetsMenu = MainSheetsMenu, /*#__PURE__*/(0,react.memo)(_MainSheetsMenu));
 ;// CONCATENATED MODULE: ./docsSrc/MainPage.jsx
 var _MainPage;
@@ -439,7 +438,6 @@ function MainPage(props) {
 MainPage.propTypes = {
   sheets: (prop_types_default()).array
 };
-MainPage.defaultProps = {};
 /* harmony default export */ const docsSrc_MainPage = (_MainPage = MainPage, /*#__PURE__*/(0,react.memo)(_MainPage));
 ;// CONCATENATED MODULE: ./docsSrc/index.js
 

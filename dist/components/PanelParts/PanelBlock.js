@@ -22,6 +22,5 @@ function PanelBlock(props) {
     children: children
   });
 }
-PanelBlock.defaultProps = {};
 var _default = exports.default = (_PanelBlock = PanelBlock, /*#__PURE__*/(0, _react.memo)(_PanelBlock));
 //# sourceMappingURL=PanelBlock.js.map

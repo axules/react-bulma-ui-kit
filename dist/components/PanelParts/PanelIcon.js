@@ -21,6 +21,5 @@ function PanelIcon(props) {
     children: children
   });
 }
-PanelIcon.defaultProps = {};
 var _default = exports.default = (_PanelIcon = PanelIcon, /*#__PURE__*/(0, _react.memo)(_PanelIcon));
 //# sourceMappingURL=PanelIcon.js.map

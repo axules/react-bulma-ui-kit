@@ -21,6 +21,5 @@ function CardHeadIcon(props) {
     children: children
   });
 }
-CardHeadIcon.defaultProps = {};
 var _default = exports.default = (_CardHeadIcon = CardHeadIcon, /*#__PURE__*/(0, _react.memo)(_CardHeadIcon));
 //# sourceMappingURL=CardHeadIcon.js.map

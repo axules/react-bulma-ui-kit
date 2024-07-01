@@ -30,6 +30,7 @@ function SelectInput(props) {
     isExpanded,
     loading,
     multiple,
+    fullWidth,
     ...restProps
   } = props;
 
@@ -39,6 +40,7 @@ function SelectInput(props) {
     getSizeClassName({ small, medium, large }),
     loading && 'is-loading',
     multiple && 'is-multiple',
+    fullWidth && 'is-fullwidth',
     className,
   );
 
@@ -92,6 +94,8 @@ SelectInput.propTypes = {
 
   loading: PropTypes.bool,
   multiple: PropTypes.bool,
+
+  fullWidth: PropTypes.bool,
 };
 
 export default SelectInput

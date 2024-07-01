@@ -19,8 +19,5 @@ SheetSandbox.propTypes = {
   children: PropTypes.node
 };
 
-SheetSandbox.defaultProps = {
-};
-
 export default SheetSandbox
   |> memo;

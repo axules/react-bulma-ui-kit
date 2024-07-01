@@ -19,8 +19,5 @@ PanelHead.propTypes = {
   className: PropTypes.string,
 };
 
-PanelHead.defaultProps = {
-};
-
 export default PanelHead
   |> memo;

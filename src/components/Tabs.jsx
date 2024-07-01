@@ -69,8 +69,5 @@ Tabs.propTypes = {
   toggleRounded: PropTypes.bool,
 };
 
-Tabs.defaultProps = {
-};
-
 export default Tabs
   |> memo;

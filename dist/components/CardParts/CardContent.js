@@ -21,6 +21,5 @@ function CardContent(props) {
     children: children
   });
 }
-CardContent.defaultProps = {};
 var _default = exports.default = (_CardContent = CardContent, /*#__PURE__*/(0, _react.memo)(_CardContent));
 //# sourceMappingURL=CardContent.js.map

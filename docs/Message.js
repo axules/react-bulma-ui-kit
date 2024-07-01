@@ -97,7 +97,6 @@ PanelBlock.propTypes = {
   className: (prop_types_default()).string,
   active: (prop_types_default()).bool
 };
-PanelBlock.defaultProps = {};
 /* harmony default export */ const PanelParts_PanelBlock = (_PanelBlock = PanelBlock, /*#__PURE__*/(0,react.memo)(_PanelBlock));
 ;// CONCATENATED MODULE: ./src/components/PanelParts/PanelHead.jsx
 var _PanelHead;
@@ -123,7 +122,6 @@ PanelHead.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-PanelHead.defaultProps = {};
 /* harmony default export */ const PanelParts_PanelHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
 ;// CONCATENATED MODULE: ./src/components/PanelParts/PanelIcon.jsx
 var _PanelIcon;
@@ -149,7 +147,6 @@ PanelIcon.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-PanelIcon.defaultProps = {};
 /* harmony default export */ const PanelParts_PanelIcon = (_PanelIcon = PanelIcon, /*#__PURE__*/(0,react.memo)(_PanelIcon));
 ;// CONCATENATED MODULE: ./src/components/PanelParts/PanelTab.jsx
 var _PanelTab;
@@ -178,7 +175,6 @@ PanelTab.propTypes = {
   className: (prop_types_default()).string,
   active: (prop_types_default()).bool
 };
-PanelTab.defaultProps = {};
 /* harmony default export */ const PanelParts_PanelTab = (_PanelTab = PanelTab, /*#__PURE__*/(0,react.memo)(_PanelTab));
 ;// CONCATENATED MODULE: ./src/components/PanelParts/PanelTabs.jsx
 var _PanelTabs;
@@ -205,7 +201,6 @@ PanelTabs.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-PanelTabs.defaultProps = {};
 /* harmony default export */ const PanelParts_PanelTabs = (_PanelTabs = PanelTabs, /*#__PURE__*/(0,react.memo)(_PanelTabs));
 // EXTERNAL MODULE: ./src/components/utils.js
 var utils = __webpack_require__(13);
@@ -330,7 +325,6 @@ SheetExamples.propTypes = {
   source: (prop_types_default()).node,
   id: (prop_types_default()).string
 };
-SheetExamples.defaultProps = {};
 /* harmony default export */ const docsSrc_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
 ;// CONCATENATED MODULE: ./docsSrc/SheetProps.jsx
 var _SheetProps;
@@ -363,7 +357,6 @@ function SheetProps(props) {
 SheetProps.propTypes = {
   propTypesData: (prop_types_default()).node
 };
-SheetProps.defaultProps = {};
 /* harmony default export */ const docsSrc_SheetProps = (_SheetProps = SheetProps, /*#__PURE__*/(0,react.memo)(_SheetProps));
 // EXTERNAL MODULE: ./docsSrc/utils.js
 var docsSrc_utils = __webpack_require__(271);

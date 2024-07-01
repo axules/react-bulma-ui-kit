@@ -19,8 +19,5 @@ CardHeadIcon.propTypes = {
   className: PropTypes.string,
 };
 
-CardHeadIcon.defaultProps = {
-};
-
 export default CardHeadIcon
   |> memo;

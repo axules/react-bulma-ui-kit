@@ -19,8 +19,5 @@ PanelTabs.propTypes = {
   className: PropTypes.string,
 };
 
-PanelTabs.defaultProps = {
-};
-
 export default PanelTabs
   |> memo;

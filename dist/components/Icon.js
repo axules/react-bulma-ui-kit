@@ -43,6 +43,5 @@ function Icon(props) {
     children: children
   });
 }
-Icon.defaultProps = {};
 var _default = exports.default = (_Icon = Icon, /*#__PURE__*/(0, _react.memo)(_Icon));
 //# sourceMappingURL=Icon.js.map

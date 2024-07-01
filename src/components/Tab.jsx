@@ -36,8 +36,5 @@ Tab.propTypes = {
   onMouseUp: PropTypes.func,
 };
 
-Tab.defaultProps = {
-};
-
 export default Tab
   |> memo;

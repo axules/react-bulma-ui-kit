@@ -43,6 +43,5 @@ function Tabs(props) {
     })
   });
 }
-Tabs.defaultProps = {};
 var _default = exports.default = (_Tabs = Tabs, /*#__PURE__*/(0, _react.memo)(_Tabs));
 //# sourceMappingURL=Tabs.js.map

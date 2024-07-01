@@ -45,7 +45,5 @@ SheetExamples.propTypes = {
   id: PropTypes.string,
 };
 
-SheetExamples.defaultProps = {};
-
 export default SheetExamples
   |> memo;

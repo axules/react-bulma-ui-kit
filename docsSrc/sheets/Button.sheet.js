@@ -5,7 +5,7 @@ import { prepareSample } from '../utils';
 
 
 const styles = '.primary.link.info.success.warning.danger'.split('.');
-const brightness = 'white.light.dark.black'.split('.');
+const brightness = 'white.light.dark.black.text.ghost'.split('.');
 const sizes = '.small.normal.large'.split('.');
 
 function renderEach(cases, props) {

@@ -20,8 +20,5 @@ PanelBlock.propTypes = {
   active: PropTypes.bool,
 };
 
-PanelBlock.defaultProps = {
-};
-
 export default PanelBlock
   |> memo;

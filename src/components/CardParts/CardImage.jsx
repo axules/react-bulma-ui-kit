@@ -19,8 +19,5 @@ CardImage.propTypes = {
   className: PropTypes.string,
 };
 
-CardImage.defaultProps = {
-};
-
 export default CardImage
   |> memo;
