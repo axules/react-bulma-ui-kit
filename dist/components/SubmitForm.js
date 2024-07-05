@@ -16,11 +16,18 @@ function SubmitForm(props) {
     forwardedRef,
     loading,
     className,
+    onSubmit,
     ...restProps
   } = props;
+  const onFormSubmit = (0, _react.useCallback)(event => {
+    event.preventDefault();
+    onSubmit(event);
+  }, [onSubmit]);
+  const classNameValue = (0, _classnames.default)(className, loading && 'is-loading');
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
     ...restProps,
-    className: (0, _classnames.default)(className, loading && 'is-loading'),
+    onSubmit: onFormSubmit,
+    className: classNameValue,
     ref: forwardedRef,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       disabled: disabled || loading,

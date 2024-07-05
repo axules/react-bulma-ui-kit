@@ -2,6 +2,7 @@ class FrameMessengerClass {
   TYPES = {
     FRAME_RESIZE: 'FRAME_RESIZE',
     SHEET_SECTIONS: 'SHEET_SECTIONS',
+    SHEET_META: 'SHEET_META',
     SCROLL_TO: 'SCROLL_TO',
   };
 

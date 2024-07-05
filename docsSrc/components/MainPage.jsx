@@ -5,11 +5,14 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../dist/components/Button';
-import Title from '../src/components/Title';
-import { useStaticCallback } from '../src/useStaticCallback';
+import Block from '../../src/components/Block';
+import Box from '../../src/components/Box';
+import Button from '../../src/components/Button';
+import Tag from '../../src/components/Tag';
+import Title from '../../src/components/Title';
+import { useStaticCallback } from '../../src/useStaticCallback';
+import { FrameMessenger } from '../FrameMessenger';
 
-import { FrameMessenger } from './FrameMessenger';
 import SheetsMenu from './MainSheetsMenu';
 
 
@@ -24,6 +27,7 @@ function MainPage(props) {
       ? sheets.find((it) => it.name === name)
       : undefined;
   });
+  const [frameMeta, setFrameMeta] = useState(null);
 
   const url = selectedSheet ? `./${selectedSheet.path}` : undefined;
 
@@ -38,6 +42,10 @@ function MainPage(props) {
           if (frame) {
             frame.style['min-height'] = `${height}px`;
           }
+          return true;
+        }
+        case FrameMessenger.TYPES.SHEET_META: {
+          setFrameMeta(payload);
           return true;
         }
       }
@@ -62,13 +70,40 @@ function MainPage(props) {
       <div className={`${cnPrefix}__menu`}>
         <SheetsMenu sheets={sheets} selected={selectedSheet} onSelect={setSelectedSheet} />
       </div>
+
       <div className={`${cnPrefix}__view`}>
         {selectedSheet
           ? <>
             <Title is4>{selectedSheet.name}</Title>
+            {frameMeta && (
+              <>
+                {frameMeta.description && (
+                  <Block>
+                    {frameMeta.description}
+                  </Block>
+                )}
+
+                {frameMeta.documentation && (
+                  <Block>
+                    <span>More about <Tag>{selectedSheet.name}</Tag> styles here </span>
+                    <a href={frameMeta.documentation} target="_blank" rel="noreferrer">
+                      {frameMeta.documentation}
+                    </a>
+                  </Block>
+                )}
+              </>
+            )}
             <iframe name="SheetFrame" title={selectedSheet.name} src={url} onLoad={onLoadIframe} />
           </>
-          : <Title is2>{'<- '}Select component in menu</Title>
+          : <>
+            <Title is2>{'<- '}Select component in menu</Title>
+            <Box>
+              <span>More information about <Tag primary>Bulma</Tag> is here </span>
+              <a href="https://bulma.io/documentation" target="_blank" rel="noreferrer">
+                https://bulma.io/documentation
+              </a>
+            </Box>
+          </>
         }
       </div>
 

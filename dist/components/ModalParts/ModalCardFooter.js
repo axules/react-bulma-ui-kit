@@ -12,11 +12,14 @@ function ModalCardFooter(props) {
   const {
     children,
     className,
+    right,
+    center,
     ...restProps
   } = props;
+  const classNameValue = (0, _classnames.default)('modal-card-foot', center && 'is-justify-content-center', right && 'is-justify-content-flex-end', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,
-    className: (0, _classnames.default)('modal-card-foot', className),
+    className: classNameValue,
     children: children
   });
 }

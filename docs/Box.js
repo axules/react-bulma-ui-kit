@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[290],{
+(self["webpackChunkreact_bulma_ui_kit"] = self["webpackChunkreact_bulma_ui_kit"] || []).push([[158],{
 
 /***/ 312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -216,145 +216,70 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 872:
+/***/ 923:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-
-// UNUSED EXPORTS: default
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(556);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(942);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/components/DeleteButton.jsx
-var DeleteButton = __webpack_require__(91);
-// EXTERNAL MODULE: ./src/components/utils.js
-var utils = __webpack_require__(13);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Notification.jsx
-var _Notification;
+/* harmony import */ var _src_components_Box__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(851);
+/* harmony import */ var _src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(355);
+/* harmony import */ var _sheetRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(808);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(271);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
 
 
 
 
 
-
-function Notification(props) {
-  const {
-    className,
-    children,
-    onClose,
-    closeDelay,
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary,
-    white,
-    light,
-    dark,
-    black,
-    centered,
-    ...restProps
-  } = props;
-  const classNamesValue = classnames_default()('notification', (0,utils/* getStyleClassName */.Zb)({
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  }), (0,utils/* getBrightnessClassName */.P2)({
-    white,
-    light,
-    dark,
-    black
-  }), centered && 'has-text-centered', className);
-  (0,react.useEffect)(() => {
-    if (closeDelay) {
-      if (!onClose) {
-        console.error('onClose handler is required once closeDelay is defined');
-        return;
-      }
-      const timer = setTimeout(() => onClose(), closeDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [closeDelay, onClose]);
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    className: classNamesValue,
-    ...restProps,
-    children: [onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {
-      onClick: onClose
-    }), children]
-  });
-}
-Notification.propTypes = {
-  className: (prop_types_default()).string,
-  children: (prop_types_default()).node,
-  onClose: (prop_types_default()).func,
-  closeDelay: (prop_types_default()).number,
-  primary: (prop_types_default()).bool,
-  link: (prop_types_default()).bool,
-  info: (prop_types_default()).bool,
-  warning: (prop_types_default()).bool,
-  success: (prop_types_default()).bool,
-  danger: (prop_types_default()).bool,
-  white: (prop_types_default()).bool,
-  light: (prop_types_default()).bool,
-  dark: (prop_types_default()).bool,
-  black: (prop_types_default()).bool,
-  centered: (prop_types_default()).bool
+const defaultProps = {
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
+    placeholder: "Type text"
+  })
 };
-/* harmony default export */ const components_Notification = (_Notification = Notification, /*#__PURE__*/(0,react.memo)(_Notification));
-// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 2 modules
-var sheetRenderer = __webpack_require__(808);
-// EXTERNAL MODULE: ./docsSrc/utils.js
-var docsSrc_utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheets/Notification.sheet.js
-
-
-
-
-const styles = '.primary.link.info.success.warning.danger'.split('.');
-const brightness = 'white.light.dark.black'.split('.');
-function renderEach(cases, props) {
-  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Notification, {
-    key: it,
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-      children: [it || 'Default', /*#__PURE__*/(0,jsx_runtime.jsx)("br", {}), " It is example of text which could be in this Notification component"]
-    }),
-    ...(it ? {
-      [it]: true
-    } : {}),
+const sourceProps = {
+  children: '\r\n  <TextInput placeholder="Type text" />\r\n'
+};
+function prepareOne(props, srcProps) {
+  return [(0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .prepareSample */ .ws)(_src_components_Box__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+    ...defaultProps,
     ...props
   }, {
-    children: 'I am notification children',
-    onClose: '{() => { ... }}'
-  }));
+    ...sourceProps,
+    ...srcProps
+  })];
 }
 const examples = {
-  Colors: renderEach(styles),
-  Centered: renderEach(styles, {
-    centered: true
+  Default: prepareOne(),
+  Content: prepareOne({
+    children: 'I am any content!'
+  }, {
+    children: undefined
   }),
-  'Has close': renderEach(styles, {
-    onClose: () => console.warn('onClose callback')
-  }),
-  'Light colors': renderEach(styles, {
-    light: true
-  }),
-  'Dark colors': renderEach(styles, {
-    dark: true
-  }),
-  Brightness: renderEach(brightness)
+  Some: () => {
+    const jsx = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Box__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+        children: "I am FIRST"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Box__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+        children: "I am SECOND"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Box__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
+        children: "I am THIRD"
+      })]
+    });
+    jsx.__source = `
+<div>
+  <Box>I am FIRST</Box>
+  <Box>I am SECOND</Box>
+  <Box>I am THIRD</Box>
+</div>
+    `;
+    return [jsx];
+  }
 };
-/* harmony default export */ const Notification_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Notification, examples));
+const meta = {
+  documentation: 'https://bulma.io/documentation/elements/box/'
+};
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_Box__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, examples, {
+  pt: true,
+  meta
+}));
 
 /***/ }),
 
@@ -454,7 +379,7 @@ function registerResizeMessage() {
 
 /***/ }),
 
-/***/ 91:
+/***/ 851:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -465,43 +390,77 @@ function registerResizeMessage() {
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
-var _DeleteButton;
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(848);
+var _Box;
 
 
 
 
-
-function DeleteButton(props) {
+function Box(props) {
   const {
+    as: HtmlTag = 'div',
     className,
-    small,
-    medium,
-    large,
-    forwardedRef,
+    children,
     ...restProps
   } = props;
-  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('delete', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getSizeClassName */ .bP)({
-    small,
-    medium,
-    large
-  }), className);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-    ref: forwardedRef,
-    type: "button",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(HtmlTag, {
     ...restProps,
-    className: classNamesValue
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('box', className),
+    children: children
   });
 }
-DeleteButton.propTypes = {
+Box.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
   className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
-  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
-  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node)
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_DeleteButton));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Box = Box, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Box));
+
+/***/ }),
+
+/***/ 991:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
+var _ref, _Control;
+
+
+
+
+
+function Control(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    children,
+    isExpanded,
+    loading,
+    ...restProps
+  } = props;
+  const classNameValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(HtmlTag, {
+    ...restProps,
+    className: classNameValue,
+    children: children
+  });
+}
+Control.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_Control = Control, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Control)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
 
 /***/ }),
 
@@ -734,6 +693,110 @@ PanelExport.Tab = PanelParts_PanelTab;
 
 /***/ }),
 
+/***/ 355:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _withRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(790);
+/* harmony import */ var _Control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(991);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(848);
+var _ref, _TextInput;
+
+
+
+
+
+
+
+function TextInput(props) {
+  const {
+    as: HtmlTag = 'input',
+    forwardedRef,
+    className,
+    leftIcon,
+    rightIcon,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    small,
+    medium,
+    large,
+    autoCompleteOff,
+    autoComplete,
+    asControl,
+    isExpanded,
+    loading,
+    ...restProps
+  } = props;
+  const styleClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getStyleClassName */ .Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  });
+  const sizeClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getSizeClassName */ .bP)({
+    small,
+    medium,
+    large
+  });
+  const inputRender = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(HtmlTag, {
+    type: HtmlTag === 'input' ? 'text' : undefined,
+    ref: forwardedRef,
+    autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
+    ...restProps,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('input', styleClassName, sizeClassName, className)
+  });
+  return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_Control__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
+    isExpanded: isExpanded,
+    loading: loading,
+    children: [inputRender, leftIcon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+      className: "icon is-left",
+      children: leftIcon
+    }), rightIcon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+      className: "icon is-right",
+      children: rightIcon
+    })]
+  }) : inputRender;
+}
+TextInput.propTypes = {
+  as: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  leftIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  rightIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  asControl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  link: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  info: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  autoComplete: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  autoCompleteOff: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_TextInput = TextInput, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_TextInput)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
+
+/***/ }),
+
 /***/ 322:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -852,12 +915,50 @@ function getAlignClassName(styles) {
   return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
 }
 
+/***/ }),
+
+/***/ 790:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   i: () => (/* binding */ withForwardedRef)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(848);
+
+
+/**
+ * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ * @param {React.Component} WrappedComponent
+ * @returns
+ */
+
+function withForwardedRef(WrappedComponent) {
+  return withRef('forwardedRef')(WrappedComponent);
+}
+function withRef(propName) {
+  return function (WrappedComponent) {
+    const Wrapper = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)((props, ref) => {
+      if (ref && props[propName]) {
+        throw new Error(`withRef error: forwarded ref property collision (property name is '${propName}')`);
+      }
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(WrappedComponent, {
+        ...props,
+        [propName]: ref || props[propName]
+      });
+    });
+    Wrapper.displayName = `WithRef(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    Wrapper.type = WrappedComponent;
+    return Wrapper;
+  };
+}
+
 /***/ })
 
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(872)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(923)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

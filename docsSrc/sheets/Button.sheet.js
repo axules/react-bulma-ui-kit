@@ -3,6 +3,8 @@ import Buttons from '../../src/components/Buttons';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
 
+import Tag from './Tag.sheet';
+
 
 const styles = '.primary.link.info.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black.text.ghost'.split('.');
@@ -44,4 +46,8 @@ const examples = {
   })(),
 };
 
-export default sheetRenderer(Button, examples, { pt: true });
+const meta = {
+  documentation: 'https://bulma.io/documentation/elements/button/',
+};
+
+export default sheetRenderer(Button, examples, { pt: true, meta });

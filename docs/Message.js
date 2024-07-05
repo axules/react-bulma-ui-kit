@@ -11,6 +11,7 @@ class FrameMessengerClass {
   TYPES = {
     FRAME_RESIZE: 'FRAME_RESIZE',
     SHEET_SECTIONS: 'SHEET_SECTIONS',
+    SHEET_META: 'SHEET_META',
     SCROLL_TO: 'SCROLL_TO'
   };
   sendParentMessage(type, payload) {
@@ -46,7 +47,7 @@ const FrameMessenger = new FrameMessengerClass();
 
 /***/ }),
 
-/***/ 73:
+/***/ 808:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -59,8 +60,452 @@ __webpack_require__.d(__webpack_exports__, {
 var client = __webpack_require__(338);
 // EXTERNAL MODULE: ./src/components/Title.jsx
 var Title = __webpack_require__(322);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./src/components/Panel.jsx + 5 modules
+var Panel = __webpack_require__(121);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./docsSrc/components/SheetExamples.jsx
+var _SheetExamples;
+
+
+
+
+const cnPrefix = 'sheetExamples';
+function SheetExamples(props) {
+  const {
+    id,
+    children,
+    title,
+    source,
+    samples
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(Panel/* default */.A, {
+    id: id,
+    className: cnPrefix,
+    title: title,
+    light: true,
+    children: [children && /*#__PURE__*/(0,jsx_runtime.jsx)(Panel/* default */.A.Block, {
+      className: `${cnPrefix}__example`,
+      children: children
+    }), source && /*#__PURE__*/(0,jsx_runtime.jsx)(Panel/* default */.A.Block, {
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+        className: `${cnPrefix}__sampleSource`,
+        children: source
+      })
+    }), samples?.map(it => /*#__PURE__*/(0,jsx_runtime.jsxs)(Panel/* default */.A.Block, {
+      className: `${cnPrefix}__example`,
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: `${cnPrefix}__sample`,
+        children: it
+      }), it.__source && /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+        className: `${cnPrefix}__sampleSource`,
+        children: it.__source
+      })]
+    }, it))]
+  });
+}
+SheetExamples.propTypes = {
+  samples: (prop_types_default()).array,
+  children: (prop_types_default()).node,
+  title: (prop_types_default()).node,
+  source: (prop_types_default()).node,
+  id: (prop_types_default()).string
+};
+/* harmony default export */ const components_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
+;// CONCATENATED MODULE: ./docsSrc/components/SheetProps.jsx
+var _SheetProps;
+
+
+
+const SheetProps_cnPrefix = 'sheetProps';
+function SheetProps(props) {
+  const {
+    propTypesData
+  } = props;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: SheetProps_cnPrefix,
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+      children: "Prop types:"
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)("table", {
+      className: "table is-bordered",
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("tbody", {
+        children: Object.entries(propTypesData).map(([k]) => /*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,jsx_runtime.jsx)("td", {
+            children: k
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
+            children: "???"
+          })]
+        }, k))
+      })
+    })]
+  });
+}
+SheetProps.propTypes = {
+  propTypesData: (prop_types_default()).node
+};
+/* harmony default export */ const components_SheetProps = (_SheetProps = SheetProps, /*#__PURE__*/(0,react.memo)(_SheetProps));
 // EXTERNAL MODULE: ./docsSrc/FrameMessenger.js
 var FrameMessenger = __webpack_require__(312);
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var utils = __webpack_require__(271);
+;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
+
+
+
+
+
+
+
+(0,utils/* registerResizeMessage */.lt)();
+function renderSandbox() {}
+function sheetRenderer(CMP, sheets, options = {}) {
+  const CoreComponent = (0,utils/* extractCore */.nr)(CMP);
+  const subMenu = [];
+  const renderedSheets = Object.entries(sheets).map(([key, value]) => {
+    const href = key.replaceAll(/[^a-zA-Z0-9]/gi, '-').toLowerCase();
+    subMenu.push({
+      title: key,
+      href
+    });
+    const render = typeof value === 'function' ? value() : value;
+    const samples = Array.isArray(render) ? render : undefined;
+    const source = Array.isArray(render) ? undefined : render.__source;
+    return /*#__PURE__*/(0,jsx_runtime.jsx)(components_SheetExamples, {
+      id: href,
+      title: key,
+      samples: samples,
+      source: source,
+      children: Array.isArray(render) ? undefined : render
+    }, key);
+  });
+  FrameMessenger/* FrameMessenger */.p.listenMessages((type, payload) => {
+    if (type === FrameMessenger/* FrameMessenger */.p.TYPES.SCROLL_TO) {
+      const {
+        selector
+      } = payload;
+      document.querySelector(selector)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+  (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Title/* default */.A, {
+      is5: true,
+      children: CoreComponent === CMP ? CoreComponent.displayName || CoreComponent.name : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`
+    }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(components_SheetProps, {
+      propTypesData: CoreComponent.propTypes
+    })]
+  }));
+  FrameMessenger/* FrameMessenger */.p.sendParentMessage(FrameMessenger/* FrameMessenger */.p.TYPES.SHEET_SECTIONS, {
+    items: subMenu,
+    sheetName: CoreComponent.displayName || CoreComponent.name,
+    pathname: location.pathname
+  });
+  setTimeout(() => (0,utils/* resizeMessage */.EN)(), 50);
+  if (options.meta) {
+    FrameMessenger/* FrameMessenger */.p.sendParentMessage(FrameMessenger/* FrameMessenger */.p.TYPES.SHEET_META, options.meta);
+  }
+  return sheets;
+}
+
+/***/ }),
+
+/***/ 722:
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+
+// UNUSED EXPORTS: default
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(540);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(556);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/components/DeleteButton.jsx
+var DeleteButton = __webpack_require__(91);
+// EXTERNAL MODULE: ./src/components/utils.js
+var utils = __webpack_require__(13);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(848);
+;// CONCATENATED MODULE: ./src/components/Message.jsx
+var _Message;
+
+
+
+
+
+
+function Message(props) {
+  const {
+    as: HtmlTag = 'div',
+    className,
+    title,
+    children,
+    onClose,
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary,
+    small,
+    medium,
+    large,
+    light,
+    dark,
+    ...restProps
+  } = props;
+  const hasHeader = title || onClose;
+  const classNamesValue = classnames_default()('message', !hasHeader && 'message-body', (0,utils/* getStyleClassName */.Zb)({
+    danger,
+    success,
+    warning,
+    info,
+    link,
+    primary
+  }), (0,utils/* getSizeClassName */.bP)({
+    small,
+    medium,
+    large
+  }), (0,utils/* getBrightnessClassName */.P2)({
+    light,
+    dark
+  }), className);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
+    ...restProps,
+    className: classNamesValue,
+    children: [hasHeader && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "message-header",
+      children: [title, onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {})]
+    }), hasHeader ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "message-body",
+      children: children
+    }) : children]
+  });
+}
+Message.propTypes = {
+  as: (prop_types_default()).any,
+  className: (prop_types_default()).string,
+  title: (prop_types_default()).node,
+  children: (prop_types_default()).node,
+  onClose: (prop_types_default()).func,
+  light: (prop_types_default()).bool,
+  dark: (prop_types_default()).bool,
+  primary: (prop_types_default()).bool,
+  link: (prop_types_default()).bool,
+  info: (prop_types_default()).bool,
+  warning: (prop_types_default()).bool,
+  success: (prop_types_default()).bool,
+  danger: (prop_types_default()).bool,
+  small: (prop_types_default()).bool,
+  medium: (prop_types_default()).bool,
+  large: (prop_types_default()).bool
+};
+/* harmony default export */ const components_Message = (_Message = Message, /*#__PURE__*/(0,react.memo)(_Message));
+// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 2 modules
+var sheetRenderer = __webpack_require__(808);
+// EXTERNAL MODULE: ./docsSrc/utils.js
+var docsSrc_utils = __webpack_require__(271);
+;// CONCATENATED MODULE: ./docsSrc/sheets/Message.sheet.js
+
+
+
+const styles = '.light.dark.primary.link.info.success.warning.danger'.split('.');
+const sizes = '.small.large'.split('.');
+function renderEach(cases, props) {
+  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Message, {
+    key: it,
+    children: 'I am message children!',
+    title: 'I am title',
+    ...(it ? {
+      [it]: true
+    } : {}),
+    ...props
+  }));
+}
+const examples = {
+  Colors: renderEach(styles),
+  'With close button': renderEach(styles, {
+    onClose: () => null
+  }),
+  'Without title': renderEach(styles, {
+    title: undefined
+  }),
+  Sizes: renderEach(sizes, {
+    onClose: () => null
+  })
+};
+/* harmony default export */ const Message_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Message, examples, {
+  pt: true
+}));
+
+/***/ }),
+
+/***/ 271:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EN: () => (/* binding */ resizeMessage),
+/* harmony export */   lt: () => (/* binding */ registerResizeMessage),
+/* harmony export */   nr: () => (/* binding */ extractCore),
+/* harmony export */   ws: () => (/* binding */ prepareSample)
+/* harmony export */ });
+/* unused harmony exports renderSample, prepareSource */
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(181);
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(312);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
+
+
+
+function extractCore(component) {
+  let node = component;
+  while (node.type) {
+    node = node.type;
+  }
+  return node;
+}
+function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
+  const coreCmp = extractCore(CMP);
+  const {
+    __name,
+    __source,
+    ...sourcePropsReplacement
+  } = sourcePropsExt || {};
+  const cmpName = __name || coreCmp.displayName || coreCmp.name;
+  const R = renderSample(CMP, props);
+  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsReplacement).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
+  const propValueProcessor = key => {
+    if (EXCLUDED_KEYS.includes(key)) return undefined;
+    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
+    return false;
+  };
+  R.__source = __source || prepareSource(cmpName, props, {
+    ...config,
+    propValueProcessor
+  });
+  return R;
+}
+function renderSample(CMP, props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CMP, {
+    ...props
+  });
+}
+function prepareSource(cmp, props, config = {}) {
+  const {
+    children,
+    ...restProps
+  } = props;
+  const {
+    multilineProps = 3,
+    multilineChild,
+    propValueProcessor
+  } = config;
+  const preparedChildren = children && propValueProcessor && propValueProcessor('children', children, props) || children;
+  const preparedProps = Object.entries(restProps).map(([key, value]) => {
+    if (propValueProcessor) {
+      const processed = propValueProcessor(key, value, props);
+      if (processed === undefined) return null;
+      if (processed) return `${key}=${processed}`;
+    }
+    if (value === null) return `${key}={null}`;
+    if (value === undefined) return null;
+    if (value === true) return key;
+    if (value === false) return `${key}={false}`;
+    if (typeof value === 'string') return `${key}="${value}"`;
+    return `${key}={${value}}`;
+  }).filter(Boolean);
+  const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
+  const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
+  const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
+  const templated = preparedChildren ? `<${mainSrc}>[*CHILD_BEFORE*]${preparedChildren}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
+  const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
+  return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
+}
+function resizeMessage() {
+  const html = document.querySelector('html');
+  html.style.height = '0';
+  _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.sendParentMessage(_FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.TYPES.FRAME_RESIZE, {
+    height: html.scrollHeight,
+    url: window.location.href
+  });
+}
+function registerResizeMessage() {
+  const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
+  window.addEventListener('resize', onWindowResize);
+}
+
+/***/ }),
+
+/***/ 91:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
+var _DeleteButton;
+
+
+
+
+
+function DeleteButton(props) {
+  const {
+    className,
+    small,
+    medium,
+    large,
+    forwardedRef,
+    ...restProps
+  } = props;
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('delete', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getSizeClassName */ .bP)({
+    small,
+    medium,
+    large
+  }), className);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    ref: forwardedRef,
+    type: "button",
+    ...restProps,
+    className: classNamesValue
+  });
+}
+DeleteButton.propTypes = {
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_DeleteButton));
+
+/***/ }),
+
+/***/ 121:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  A: () => (/* binding */ components_Panel)
+});
+
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(540);
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -278,426 +723,6 @@ PanelExport.BlockIcon = PanelParts_PanelIcon;
 PanelExport.Tabs = PanelParts_PanelTabs;
 PanelExport.Tab = PanelParts_PanelTab;
 /* harmony default export */ const components_Panel = (PanelExport);
-;// CONCATENATED MODULE: ./docsSrc/SheetExamples.jsx
-var _SheetExamples;
-
-
-
-
-const cnPrefix = 'sheetExamples';
-function SheetExamples(props) {
-  const {
-    id,
-    children,
-    title,
-    source,
-    samples
-  } = props;
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Panel, {
-    id: id,
-    className: cnPrefix,
-    title: title,
-    light: true,
-    children: [children && /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
-      className: `${cnPrefix}__example`,
-      children: children
-    }), source && /*#__PURE__*/(0,jsx_runtime.jsx)(components_Panel.Block, {
-      children: /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
-        className: `${cnPrefix}__sampleSource`,
-        children: source
-      })
-    }), samples?.map(it => /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Panel.Block, {
-      className: `${cnPrefix}__example`,
-      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-        className: `${cnPrefix}__sample`,
-        children: it
-      }), it.__source && /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
-        className: `${cnPrefix}__sampleSource`,
-        children: it.__source
-      })]
-    }, it))]
-  });
-}
-SheetExamples.propTypes = {
-  samples: (prop_types_default()).array,
-  children: (prop_types_default()).node,
-  title: (prop_types_default()).node,
-  source: (prop_types_default()).node,
-  id: (prop_types_default()).string
-};
-/* harmony default export */ const docsSrc_SheetExamples = (_SheetExamples = SheetExamples, /*#__PURE__*/(0,react.memo)(_SheetExamples));
-;// CONCATENATED MODULE: ./docsSrc/SheetProps.jsx
-var _SheetProps;
-
-
-
-const SheetProps_cnPrefix = 'sheetProps';
-function SheetProps(props) {
-  const {
-    propTypesData
-  } = props;
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    className: SheetProps_cnPrefix,
-    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
-      children: "Prop types:"
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("table", {
-      className: "table is-bordered",
-      children: /*#__PURE__*/(0,jsx_runtime.jsx)("tbody", {
-        children: Object.entries(propTypesData).map(([k]) => /*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,jsx_runtime.jsx)("td", {
-            children: k
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
-            children: "???"
-          })]
-        }, k))
-      })
-    })]
-  });
-}
-SheetProps.propTypes = {
-  propTypesData: (prop_types_default()).node
-};
-/* harmony default export */ const docsSrc_SheetProps = (_SheetProps = SheetProps, /*#__PURE__*/(0,react.memo)(_SheetProps));
-// EXTERNAL MODULE: ./docsSrc/utils.js
-var docsSrc_utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheetRenderer.js
-
-
-
-
-
-
-
-(0,docsSrc_utils/* registerResizeMessage */.lt)();
-function renderSandbox() {}
-function sheetRenderer(CMP, sheets, options = {}) {
-  const CoreComponent = (0,docsSrc_utils/* extractCore */.nr)(CMP);
-  const subMenu = [];
-  const renderedSheets = Object.entries(sheets).map(([key, value]) => {
-    const href = key.replaceAll(/[^a-zA-Z0-9]/gi, '-').toLowerCase();
-    subMenu.push({
-      title: key,
-      href
-    });
-    const render = typeof value === 'function' ? value() : value;
-    const samples = Array.isArray(render) ? render : undefined;
-    const source = Array.isArray(render) ? undefined : render.__source;
-    return /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetExamples, {
-      id: href,
-      title: key,
-      samples: samples,
-      source: source,
-      children: Array.isArray(render) ? undefined : render
-    }, key);
-  });
-  FrameMessenger/* FrameMessenger */.p.listenMessages((type, payload) => {
-    if (type === FrameMessenger/* FrameMessenger */.p.TYPES.SCROLL_TO) {
-      const {
-        selector
-      } = payload;
-      document.querySelector(selector)?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-  (0,client/* createRoot */.H)(document.getElementById('general')).render( /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Title/* default */.A, {
-      is5: true,
-      children: CoreComponent === CMP ? CoreComponent.displayName || CoreComponent.name : `${CoreComponent.displayName || CoreComponent.name} / ${CMP.displayName}`
-    }), renderedSheets, options.sandbox && renderSandbox(options), options.pt && /*#__PURE__*/(0,jsx_runtime.jsx)(docsSrc_SheetProps, {
-      propTypesData: CoreComponent.propTypes
-    })]
-  }));
-  FrameMessenger/* FrameMessenger */.p.sendParentMessage(FrameMessenger/* FrameMessenger */.p.TYPES.SHEET_SECTIONS, {
-    items: subMenu,
-    sheetName: CoreComponent.displayName || CoreComponent.name,
-    pathname: location.pathname
-  });
-  setTimeout(() => (0,docsSrc_utils/* resizeMessage */.EN)(), 50);
-  return sheets;
-}
-
-/***/ }),
-
-/***/ 722:
-/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
-
-
-// UNUSED EXPORTS: default
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(556);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(942);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/components/DeleteButton.jsx
-var DeleteButton = __webpack_require__(91);
-// EXTERNAL MODULE: ./src/components/utils.js
-var utils = __webpack_require__(13);
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Message.jsx
-var _Message;
-
-
-
-
-
-
-function Message(props) {
-  const {
-    as: HtmlTag = 'div',
-    className,
-    title,
-    children,
-    onClose,
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary,
-    small,
-    medium,
-    large,
-    light,
-    dark,
-    ...restProps
-  } = props;
-  const hasHeader = title || onClose;
-  const classNamesValue = classnames_default()('message', !hasHeader && 'message-body', (0,utils/* getStyleClassName */.Zb)({
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  }), (0,utils/* getSizeClassName */.bP)({
-    small,
-    medium,
-    large
-  }), (0,utils/* getBrightnessClassName */.P2)({
-    light,
-    dark
-  }), className);
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
-    ...restProps,
-    className: classNamesValue,
-    children: [hasHeader && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-      className: "message-header",
-      children: [title, onClose && /*#__PURE__*/(0,jsx_runtime.jsx)(DeleteButton/* default */.A, {})]
-    }), hasHeader ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-      className: "message-body",
-      children: children
-    }) : children]
-  });
-}
-Message.propTypes = {
-  as: (prop_types_default()).any,
-  className: (prop_types_default()).string,
-  title: (prop_types_default()).node,
-  children: (prop_types_default()).node,
-  onClose: (prop_types_default()).func,
-  light: (prop_types_default()).bool,
-  dark: (prop_types_default()).bool,
-  primary: (prop_types_default()).bool,
-  link: (prop_types_default()).bool,
-  info: (prop_types_default()).bool,
-  warning: (prop_types_default()).bool,
-  success: (prop_types_default()).bool,
-  danger: (prop_types_default()).bool,
-  small: (prop_types_default()).bool,
-  medium: (prop_types_default()).bool,
-  large: (prop_types_default()).bool
-};
-/* harmony default export */ const components_Message = (_Message = Message, /*#__PURE__*/(0,react.memo)(_Message));
-// EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 8 modules
-var sheetRenderer = __webpack_require__(73);
-// EXTERNAL MODULE: ./docsSrc/utils.js
-var docsSrc_utils = __webpack_require__(271);
-;// CONCATENATED MODULE: ./docsSrc/sheets/Message.sheet.js
-
-
-
-const styles = '.light.dark.primary.link.info.success.warning.danger'.split('.');
-const sizes = '.small.large'.split('.');
-function renderEach(cases, props) {
-  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(components_Message, {
-    key: it,
-    children: 'I am message children!',
-    title: 'I am title',
-    ...(it ? {
-      [it]: true
-    } : {}),
-    ...props
-  }));
-}
-const examples = {
-  Colors: renderEach(styles),
-  'With close button': renderEach(styles, {
-    onClose: () => null
-  }),
-  'Without title': renderEach(styles, {
-    title: undefined
-  }),
-  Sizes: renderEach(sizes, {
-    onClose: () => null
-  })
-};
-/* harmony default export */ const Message_sheet = ((0,sheetRenderer/* sheetRenderer */.r)(components_Message, examples, {
-  pt: true
-}));
-
-/***/ }),
-
-/***/ 271:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   EN: () => (/* binding */ resizeMessage),
-/* harmony export */   lt: () => (/* binding */ registerResizeMessage),
-/* harmony export */   nr: () => (/* binding */ extractCore),
-/* harmony export */   ws: () => (/* binding */ prepareSample)
-/* harmony export */ });
-/* unused harmony exports renderSample, prepareSource */
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(181);
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(312);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
-
-
-
-function extractCore(component) {
-  let node = component;
-  while (node.type) {
-    node = node.type;
-  }
-  return node;
-}
-function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
-  const coreCmp = extractCore(CMP);
-  const {
-    __name,
-    __source,
-    ...sourcePropsReplacement
-  } = sourcePropsExt || {};
-  const cmpName = __name || coreCmp.displayName || coreCmp.name;
-  const R = renderSample(CMP, props);
-  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsReplacement).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
-  const propValueProcessor = key => {
-    if (EXCLUDED_KEYS.includes(key)) return undefined;
-    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
-    return false;
-  };
-  R.__source = __source || prepareSource(cmpName, props, {
-    ...config,
-    propValueProcessor
-  });
-  return R;
-}
-function renderSample(CMP, props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CMP, {
-    ...props
-  });
-}
-function prepareSource(cmp, props, config = {}) {
-  const {
-    children,
-    ...restProps
-  } = props;
-  const {
-    multilineProps = 3,
-    multilineChild,
-    propValueProcessor
-  } = config;
-  const preparedChildren = children && propValueProcessor && propValueProcessor('children', children, props) || children;
-  const preparedProps = Object.entries(restProps).map(([key, value]) => {
-    if (propValueProcessor) {
-      const processed = propValueProcessor(key, value, props);
-      if (processed === undefined) return null;
-      if (processed) return `${key}=${processed}`;
-    }
-    if (value === null) return `${key}={null}`;
-    if (value === undefined) return null;
-    if (value === true) return key;
-    if (value === false) return `${key}={false}`;
-    if (typeof value === 'string') return `${key}="${value}"`;
-    return `${key}={${value}}`;
-  }).filter(Boolean);
-  const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
-  const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
-  const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
-  const templated = preparedChildren ? `<${mainSrc}>[*CHILD_BEFORE*]${preparedChildren}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
-  const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
-  return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
-}
-function resizeMessage() {
-  const html = document.querySelector('html');
-  html.style.height = '0';
-  _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.sendParentMessage(_FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.TYPES.FRAME_RESIZE, {
-    height: html.scrollHeight,
-    url: window.location.href
-  });
-}
-function registerResizeMessage() {
-  const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
-  window.addEventListener('resize', onWindowResize);
-}
-
-/***/ }),
-
-/***/ 91:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(556);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(942);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(848);
-var _DeleteButton;
-
-
-
-
-
-function DeleteButton(props) {
-  const {
-    className,
-    small,
-    medium,
-    large,
-    forwardedRef,
-    ...restProps
-  } = props;
-  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('delete', (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .getSizeClassName */ .bP)({
-    small,
-    medium,
-    large
-  }), className);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-    ref: forwardedRef,
-    type: "button",
-    ...restProps,
-    className: classNamesValue
-  });
-}
-DeleteButton.propTypes = {
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
-  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
-  small: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  medium: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  large: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DeleteButton = DeleteButton, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_DeleteButton));
 
 /***/ }),
 

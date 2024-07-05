@@ -5,6 +5,7 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
+var _reactDom = require("react-dom");
 var _useStaticCallback = require("../useStaticCallback");
 var _ModalCard = _interopRequireDefault(require("./ModalParts/ModalCard"));
 var _ModalCardBody = _interopRequireDefault(require("./ModalParts/ModalCardBody"));
@@ -22,6 +23,7 @@ function Modal(props) {
     transparent,
     closeOnEsc,
     onClose,
+    portalTo,
     ...restProps
   } = props;
   const onPressEsc = (0, _useStaticCallback.useStaticCallback)(event => {
@@ -36,14 +38,35 @@ function Modal(props) {
       document.removeEventListener('keydown', onPressEsc);
     };
   }, [closeOnEsc, onPressEsc]);
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  const modalDom = /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ...restProps,
     className: (0, _classnames.default)('modal', className, open && 'is-active'),
     children: [!transparent && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "modal-background"
     }), children]
   });
+  if (portalTo) {
+    if (typeof portalTo === 'string') {
+      const node = document.querySelector(portalTo);
+      return /*#__PURE__*/(0, _reactDom.createPortal)(modalDom, node);
+    }
+    if (typeof portalTo === 'function') {
+      const node = portalTo();
+      return /*#__PURE__*/(0, _reactDom.createPortal)(modalDom, node);
+    }
+    return /*#__PURE__*/(0, _reactDom.createPortal)(modalDom, portalTo);
+  }
+  return modalDom;
 }
+Modal.propTypes = {
+  children: _propTypes.default.node,
+  className: _propTypes.default.string,
+  transparent: _propTypes.default.bool,
+  open: _propTypes.default.bool,
+  onClose: _propTypes.default.func,
+  closeOnEsc: _propTypes.default.bool,
+  portalTo: _propTypes.default.any
+};
 const ModalExport = (_Modal = Modal, /*#__PURE__*/(0, _react.memo)(_Modal));
 ModalExport.Content = _ModalContent.default;
 ModalExport.Card = _ModalCard.default;

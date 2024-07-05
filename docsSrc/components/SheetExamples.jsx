@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import Panel from '../src/components/Panel';
+import Panel from '../../src/components/Panel';
 
 
 const cnPrefix = 'sheetExamples';

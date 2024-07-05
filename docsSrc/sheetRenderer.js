@@ -2,9 +2,9 @@ import { createRoot } from 'react-dom/client';
 
 import Title from '../src/components/Title';
 
+import SheetExamples from './components/SheetExamples';
+import SheetProps from './components/SheetProps';
 import { FrameMessenger } from './FrameMessenger';
-import SheetExamples from './SheetExamples';
-import SheetProps from './SheetProps';
 import {
   extractCore,
   registerResizeMessage,
@@ -76,5 +76,10 @@ export function sheetRenderer(CMP, sheets, options = {}) {
   );
 
   setTimeout(() => resizeMessage(), 50);
+
+  if (options.meta) {
+    FrameMessenger.sendParentMessage(FrameMessenger.TYPES.SHEET_META, options.meta);
+  }
+
   return sheets;
 }

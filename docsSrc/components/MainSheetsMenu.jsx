@@ -6,9 +6,8 @@ import {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { useStaticCallback } from '../src/useStaticCallback';
-
-import { FrameMessenger } from './FrameMessenger';
+import { useStaticCallback } from '../../src/useStaticCallback';
+import { FrameMessenger } from '../FrameMessenger';
 
 
 const cnPrefix = 'mainSheetsMenu';
@@ -48,6 +47,10 @@ function MainSheetsMenu(props) {
 
   return (
     <aside className="menu">
+      <div className="menu-label">Main</div>
+      <ul className={classNames(cnPrefix, 'menu-list')}>
+        <li><a href="?">Home</a></li>
+      </ul>
       <div className="menu-label">Components</div>
       <ul className={classNames(cnPrefix, 'menu-list')}>
         {sheets.map(it => (
