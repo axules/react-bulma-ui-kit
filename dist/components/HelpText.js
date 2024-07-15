@@ -22,6 +22,7 @@ function HelpText(props) {
     link,
     primary,
     light,
+    forwardedRef,
     ...restProps
   } = props;
   const classNamesValue = (0, _classnames.default)('help', (0, _utils.getStyleClassName)({
@@ -37,6 +38,7 @@ function HelpText(props) {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
+    ref: forwardedRef,
     children: children
   });
 }
