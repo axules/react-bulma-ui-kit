@@ -497,6 +497,7 @@ function Field(props) {
     errorText,
     helpText,
     required,
+    forwardedRef,
     ...restProps
   } = props;
   const errorHelp = errorText && /*#__PURE__*/(0,jsx_runtime.jsx)(HelpText/* default */.A, {
@@ -509,6 +510,7 @@ function Field(props) {
   const classNamesValue = classnames_default()('field', isGrouped && 'is-grouped', isGroupedMultiline && 'is-grouped is-grouped-multiline', isHorizontal && 'is-horizontal', hasAddons && 'has-addons', className);
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
     ...restProps,
+    ref: forwardedRef,
     className: classNamesValue,
     children: [label && (isHorizontal ? /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
       className: "field-label is-normal",
@@ -536,7 +538,8 @@ Field.propTypes = {
   isGrouped: (prop_types_default()).bool,
   isGroupedMultiline: (prop_types_default()).bool,
   hasAddons: (prop_types_default()).bool,
-  required: (prop_types_default()).bool
+  required: (prop_types_default()).bool,
+  forwardedRef: (prop_types_default()).any
 };
 /* harmony default export */ const components_Field = (_ref = (_Field = Field, /*#__PURE__*/(0,react.memo)(_Field)), (0,withRef/* withForwardedRef */.i)(_ref));
 

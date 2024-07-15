@@ -21,6 +21,7 @@ function Field(props) {
     errorText,
     helpText,
     required,
+    forwardedRef,
     ...restProps
   } = props;
 
@@ -36,7 +37,7 @@ function Field(props) {
   );
 
   return (
-    <HtmlTag {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} ref={forwardedRef} className={classNamesValue}>
       {label && (
         isHorizontal
           ? <div className="field-label is-normal"><Label required={required}>{label}</Label></div>
@@ -63,6 +64,7 @@ Field.propTypes = {
   isGroupedMultiline: PropTypes.bool,
   hasAddons: PropTypes.bool,
   required: PropTypes.bool,
+  forwardedRef: PropTypes.any,
 };
 
 export default Field
