@@ -374,6 +374,7 @@ function HelpText(props) {
     link,
     primary,
     light,
+    forwardedRef,
     ...restProps
   } = props;
   const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('help', (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .getStyleClassName */ .Zb)({
@@ -389,6 +390,7 @@ function HelpText(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
+    ref: forwardedRef,
     children: children
   });
 }
@@ -402,7 +404,8 @@ HelpText.propTypes = {
   warning: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   success: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   danger: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  light: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+  light: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_HelpText = HelpText, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_HelpText)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
 

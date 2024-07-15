@@ -25,6 +25,7 @@ function HelpText(props) {
 
     light,
 
+    forwardedRef,
     ...restProps
   } = props;
 
@@ -36,7 +37,7 @@ function HelpText(props) {
   );
 
   return (
-    <HtmlTag {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} className={classNamesValue} ref={forwardedRef}>
       {children}
     </HtmlTag>
   );
@@ -55,6 +56,8 @@ HelpText.propTypes = {
   danger: PropTypes.bool,
 
   light: PropTypes.bool,
+
+  forwardedRef: PropTypes.any,
 };
 
 export default HelpText
