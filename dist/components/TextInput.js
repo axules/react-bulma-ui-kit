@@ -18,6 +18,7 @@ function TextInput(props) {
     className,
     leftIcon,
     rightIcon,
+    skeleton,
     danger,
     success,
     warning,
@@ -34,25 +35,26 @@ function TextInput(props) {
     loading,
     ...restProps
   } = props;
-  const styleClassName = (0, _utils.getStyleClassName)({
+  const classNamesValue = (0, _classnames.default)('input', (0, _utils.getStyleClassName)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
-  const sizeClassName = (0, _utils.getSizeClassName)({
+  }), (0, _utils.getSizeClassName)({
     small,
     medium,
     large
-  });
+  }), (0, _utils.skeletonClassName)({
+    skeleton
+  }), className);
   const inputRender = /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     type: HtmlTag === 'input' ? 'text' : undefined,
     ref: forwardedRef,
     autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
     ...restProps,
-    className: (0, _classnames.default)('input', styleClassName, sizeClassName, className)
+    className: classNamesValue
   });
   return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Control.default, {
     className: (0, _classnames.default)(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),

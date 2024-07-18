@@ -130,7 +130,7 @@ module.exports = {
       cacheGroups: {
         vendor: {
           chunks: 'initial',
-          test: /node_modules|styles/,
+          test: /node_modules|styles|utils/,
           name: 'vendor',
           enforce: true,
           reuseExistingChunk: true,

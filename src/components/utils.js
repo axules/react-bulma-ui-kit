@@ -78,3 +78,10 @@ export function getAlignClassName(styles) {
     || right && 'is-right'
     || undefined;
 }
+
+export function skeletonClassName(styles) {
+  const { skeleton, hasSkeleton } = styles;
+  return hasSkeleton && 'has-skeleton'
+    || skeleton && 'is-skeleton'
+    || undefined;
+}

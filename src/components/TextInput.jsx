@@ -7,7 +7,8 @@ import { withForwardedRef } from '../withRef';
 import Control from './Control';
 import {
   getSizeClassName,
-  getStyleClassName
+  getStyleClassName,
+  skeletonClassName
 } from './utils';
 
 
@@ -18,15 +19,20 @@ function TextInput(props) {
     className,
     leftIcon,
     rightIcon,
+
+    skeleton,
+
     danger,
     success,
     warning,
     info,
     link,
     primary,
+
     small,
     medium,
     large,
+
     autoCompleteOff,
     autoComplete,
     asControl,
@@ -35,8 +41,13 @@ function TextInput(props) {
     ...restProps
   } = props;
 
-  const styleClassName = getStyleClassName({ danger, success, warning, info, link, primary });
-  const sizeClassName = getSizeClassName({ small, medium, large });
+  const classNamesValue = classNames(
+    'input',
+    getStyleClassName({ danger, success, warning, info, link, primary }),
+    getSizeClassName({ small, medium, large }),
+    skeletonClassName({ skeleton }),
+    className
+  );
 
   const inputRender = (
     <HtmlTag
@@ -44,7 +55,7 @@ function TextInput(props) {
       ref={forwardedRef}
       autoComplete={autoComplete === false || autoCompleteOff ? 'off' : autoComplete}
       {...restProps}
-      className={classNames('input', styleClassName, sizeClassName, className)}
+      className={classNamesValue}
     />
   );
 
@@ -79,6 +90,8 @@ TextInput.propTypes = {
   className: PropTypes.string,
   leftIcon: PropTypes.node,
   rightIcon: PropTypes.node,
+
+  skeleton: PropTypes.bool,
 
   asControl: PropTypes.bool,
   isExpanded: PropTypes.bool,

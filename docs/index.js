@@ -430,6 +430,7 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
+    skeleton,
     danger,
     success,
     warning,
@@ -471,6 +472,8 @@ function Button(props) {
     black,
     text,
     ghost
+  }), (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .skeletonClassName */ .DV)({
+    skeleton
   }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', inverted && 'is-inverted', className);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(HtmlTag, {
     ref: forwardedRef,
@@ -489,6 +492,7 @@ Button.propTypes = {
   disabled: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   outlined: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   type: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
+  skeleton: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   rounded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   forwardedRef: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any),
   white: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
@@ -717,68 +721,6 @@ Title.propTypes = {
   subtitle: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Title = Title, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Title));
-
-/***/ }),
-
-/***/ 13:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   HA: () => (/* binding */ getAlignClassName),
-/* harmony export */   P2: () => (/* binding */ getBrightnessClassName),
-/* harmony export */   Zb: () => (/* binding */ getStyleClassName),
-/* harmony export */   bP: () => (/* binding */ getSizeClassName)
-/* harmony export */ });
-/* unused harmony export getTextColorClassName */
-function getStyleClassName(styles) {
-  const {
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  } = styles;
-  return danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
-}
-function getTextColorClassName(styles) {
-  const {
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  } = styles;
-  return danger && 'has-text-danger' || success && 'has-text-success' || warning && 'has-text-warning' || info && 'has-text-info' || link && 'has-text-link' || primary && 'has-text-primary' || undefined;
-}
-function getBrightnessClassName(styles) {
-  const {
-    white,
-    light,
-    dark,
-    black,
-    text,
-    ghost
-  } = styles;
-  return white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || text && 'is-text' || ghost && 'is-ghost' || undefined;
-}
-function getSizeClassName(styles) {
-  const {
-    small,
-    medium,
-    large
-  } = styles;
-  return small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
-}
-function getAlignClassName(styles) {
-  const {
-    right,
-    centered,
-    left
-  } = styles;
-  return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
-}
 
 /***/ }),
 

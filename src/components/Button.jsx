@@ -7,7 +7,8 @@ import { withForwardedRef } from '../withRef';
 import {
   getBrightnessClassName,
   getSizeClassName,
-  getStyleClassName
+  getStyleClassName,
+  skeletonClassName
 } from './utils';
 
 
@@ -18,6 +19,8 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
+
+    skeleton,
 
     danger,
     success,
@@ -52,6 +55,7 @@ function Button(props) {
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getSizeClassName({ small, medium, large }),
     getBrightnessClassName({ white, light, dark, black, text, ghost }),
+    skeletonClassName({ skeleton }),
     loading && 'is-loading',
     outlined && 'is-outlined',
     rounded && 'is-rounded',
@@ -81,6 +85,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
   type: PropTypes.any,
+  skeleton: PropTypes.bool,
 
   rounded: PropTypes.bool,
   forwardedRef: PropTypes.any,

@@ -17,6 +17,7 @@ function Button(props) {
     className,
     loading,
     forwardedRef,
+    skeleton,
     danger,
     success,
     warning,
@@ -58,6 +59,8 @@ function Button(props) {
     black,
     text,
     ghost
+  }), (0, _utils.skeletonClassName)({
+    skeleton
   }), loading && 'is-loading', outlined && 'is-outlined', rounded && 'is-rounded', fullWidth && 'is-fullwidth', inverted && 'is-inverted', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ref: forwardedRef,

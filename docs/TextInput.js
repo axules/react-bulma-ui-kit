@@ -262,6 +262,9 @@ const examples = {
   Styles: renderEach(styles),
   Size: renderEach(sizes),
   Icons: renderEach(icons),
+  Skeleton: renderEach(styles, {
+    skeleton: true
+  }),
   'With label': () => {
     const render = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_src_components_Field__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A, {
       label: "Text input label",
@@ -282,102 +285,6 @@ const examples = {
   })
 };
 /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((0,_sheetRenderer__WEBPACK_IMPORTED_MODULE_2__/* .sheetRenderer */ .r)(_src_components_TextInput__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, examples));
-
-/***/ }),
-
-/***/ 271:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   EN: () => (/* binding */ resizeMessage),
-/* harmony export */   lt: () => (/* binding */ registerResizeMessage),
-/* harmony export */   nr: () => (/* binding */ extractCore),
-/* harmony export */   ws: () => (/* binding */ prepareSample)
-/* harmony export */ });
-/* unused harmony exports renderSample, prepareSource */
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(181);
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(312);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(848);
-
-
-
-function extractCore(component) {
-  let node = component;
-  while (node.type) {
-    node = node.type;
-  }
-  return node;
-}
-function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
-  const coreCmp = extractCore(CMP);
-  const {
-    __name,
-    __source,
-    ...sourcePropsReplacement
-  } = sourcePropsExt || {};
-  const cmpName = __name || coreCmp.displayName || coreCmp.name;
-  const R = renderSample(CMP, props);
-  const EXCLUDED_KEYS = ['key'].concat(Object.entries(sourcePropsReplacement).map(([k, v]) => v === undefined ? k : null)).filter(Boolean);
-  const propValueProcessor = key => {
-    if (EXCLUDED_KEYS.includes(key)) return undefined;
-    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
-    return false;
-  };
-  R.__source = __source || prepareSource(cmpName, props, {
-    ...config,
-    propValueProcessor
-  });
-  return R;
-}
-function renderSample(CMP, props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CMP, {
-    ...props
-  });
-}
-function prepareSource(cmp, props, config = {}) {
-  const {
-    children,
-    ...restProps
-  } = props;
-  const {
-    multilineProps = 3,
-    multilineChild,
-    propValueProcessor
-  } = config;
-  const preparedChildren = children && propValueProcessor && propValueProcessor('children', children, props) || children;
-  const preparedProps = Object.entries(restProps).map(([key, value]) => {
-    if (propValueProcessor) {
-      const processed = propValueProcessor(key, value, props);
-      if (processed === undefined) return null;
-      if (processed) return `${key}=${processed}`;
-    }
-    if (value === null) return `${key}={null}`;
-    if (value === undefined) return null;
-    if (value === true) return key;
-    if (value === false) return `${key}={false}`;
-    if (typeof value === 'string') return `${key}="${value}"`;
-    return `${key}={${value}}`;
-  }).filter(Boolean);
-  const propsTpl = preparedProps.join('[*PROP_BETWEEN*]');
-  const propsSrc = propsTpl ? `[*PROPS_BEFORE*]${propsTpl}[*PROPS_AFTER*]` : '';
-  const mainSrc = `${cmp}[*CMP_NAME*]${propsSrc}`;
-  const templated = preparedChildren ? `<${mainSrc}>[*CHILD_BEFORE*]${preparedChildren}[*CHILD_AFTER*]</${cmp}>` : `<${mainSrc} />`;
-  const multiProps = multilineProps === true || multilineProps && preparedProps.length >= multilineProps || false;
-  return templated.replaceAll(/\[\*PROP_BETWEEN\*]/g, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_BEFORE\*]/, multiProps ? '\r\n  ' : ' ').replace(/\[\*PROPS_AFTER\*]/, multiProps ? '\r\n' : '').replace(/\[\*CMP_NAME\*]/, multiProps ? '' : '').replace(/\[\*CHILD_BEFORE\*]/, multiProps || multilineChild ? '\r\n  ' : '').replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
-}
-function resizeMessage() {
-  const html = document.querySelector('html');
-  html.style.height = '0';
-  _FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.sendParentMessage(_FrameMessenger__WEBPACK_IMPORTED_MODULE_1__/* .FrameMessenger */ .p.TYPES.FRAME_RESIZE, {
-    height: html.scrollHeight,
-    url: window.location.href
-  });
-}
-function registerResizeMessage() {
-  const onWindowResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(resizeMessage, 250);
-  window.addEventListener('resize', onWindowResize);
-}
 
 /***/ }),
 
@@ -874,6 +781,7 @@ function TextInput(props) {
     className,
     leftIcon,
     rightIcon,
+    skeleton,
     danger,
     success,
     warning,
@@ -890,25 +798,26 @@ function TextInput(props) {
     loading,
     ...restProps
   } = props;
-  const styleClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getStyleClassName */ .Zb)({
+  const classNamesValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('input', (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getStyleClassName */ .Zb)({
     danger,
     success,
     warning,
     info,
     link,
     primary
-  });
-  const sizeClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getSizeClassName */ .bP)({
+  }), (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .getSizeClassName */ .bP)({
     small,
     medium,
     large
-  });
+  }), (0,_utils__WEBPACK_IMPORTED_MODULE_5__/* .skeletonClassName */ .DV)({
+    skeleton
+  }), className);
   const inputRender = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(HtmlTag, {
     type: HtmlTag === 'input' ? 'text' : undefined,
     ref: forwardedRef,
     autoComplete: autoComplete === false || autoCompleteOff ? 'off' : autoComplete,
     ...restProps,
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('input', styleClassName, sizeClassName, className)
+    className: classNamesValue
   });
   return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_Control__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
@@ -929,6 +838,7 @@ TextInput.propTypes = {
   className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
   leftIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
   rightIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
+  skeleton: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   asControl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
   primary: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
@@ -1003,68 +913,6 @@ Title.propTypes = {
   subtitle: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Title = Title, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Title));
-
-/***/ }),
-
-/***/ 13:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   HA: () => (/* binding */ getAlignClassName),
-/* harmony export */   P2: () => (/* binding */ getBrightnessClassName),
-/* harmony export */   Zb: () => (/* binding */ getStyleClassName),
-/* harmony export */   bP: () => (/* binding */ getSizeClassName)
-/* harmony export */ });
-/* unused harmony export getTextColorClassName */
-function getStyleClassName(styles) {
-  const {
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  } = styles;
-  return danger && 'is-danger' || success && 'is-success' || warning && 'is-warning' || info && 'is-info' || link && 'is-link' || primary && 'is-primary' || undefined;
-}
-function getTextColorClassName(styles) {
-  const {
-    danger,
-    success,
-    warning,
-    info,
-    link,
-    primary
-  } = styles;
-  return danger && 'has-text-danger' || success && 'has-text-success' || warning && 'has-text-warning' || info && 'has-text-info' || link && 'has-text-link' || primary && 'has-text-primary' || undefined;
-}
-function getBrightnessClassName(styles) {
-  const {
-    white,
-    light,
-    dark,
-    black,
-    text,
-    ghost
-  } = styles;
-  return white && 'is-white' || light && 'is-light' || dark && 'is-dark' || black && 'is-black' || text && 'is-text' || ghost && 'is-ghost' || undefined;
-}
-function getSizeClassName(styles) {
-  const {
-    small,
-    medium,
-    large
-  } = styles;
-  return small && 'is-small' || medium && 'is-medium' || large && 'is-large' || undefined;
-}
-function getAlignClassName(styles) {
-  const {
-    right,
-    centered,
-    left
-  } = styles;
-  return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
-}
 
 /***/ }),
 

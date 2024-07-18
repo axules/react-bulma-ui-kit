@@ -6,6 +6,7 @@ exports.getBrightnessClassName = getBrightnessClassName;
 exports.getSizeClassName = getSizeClassName;
 exports.getStyleClassName = getStyleClassName;
 exports.getTextColorClassName = getTextColorClassName;
+exports.skeletonClassName = skeletonClassName;
 function getStyleClassName(styles) {
   const {
     danger,
@@ -54,5 +55,12 @@ function getAlignClassName(styles) {
     left
   } = styles;
   return left && 'is-left' || centered && 'is-centered' || right && 'is-right' || undefined;
+}
+function skeletonClassName(styles) {
+  const {
+    skeleton,
+    hasSkeleton
+  } = styles;
+  return hasSkeleton && 'has-skeleton' || skeleton && 'is-skeleton' || undefined;
 }
 //# sourceMappingURL=utils.js.map

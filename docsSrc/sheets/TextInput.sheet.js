@@ -31,6 +31,7 @@ const examples = {
   Styles: renderEach(styles),
   Size: renderEach(sizes),
   Icons: renderEach(icons),
+  Skeleton: renderEach(styles, { skeleton: true }),
   'With label': () => {
     const render = <Field label="Text input label"><TextInput placeholder="Type text ..." /></Field>;
     render.__source = `
