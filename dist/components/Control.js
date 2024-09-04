@@ -16,9 +16,11 @@ function Control(props) {
     children,
     isExpanded,
     loading,
+    hasLeftIcon,
+    hasRightIcon,
     ...restProps
   } = props;
-  const classNameValue = (0, _classnames.default)('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
+  const classNameValue = (0, _classnames.default)('control', isExpanded && 'is-expanded', loading && 'is-loading', hasLeftIcon && 'has-icons-left', hasRightIcon && 'has-icons-right', className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
     className: classNameValue,

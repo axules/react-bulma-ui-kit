@@ -424,9 +424,11 @@ function Control(props) {
     children,
     isExpanded,
     loading,
+    hasLeftIcon,
+    hasRightIcon,
     ...restProps
   } = props;
-  const classNameValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('control', isExpanded && 'is-expanded', loading && 'is-loading', className);
+  const classNameValue = classnames__WEBPACK_IMPORTED_MODULE_2___default()('control', isExpanded && 'is-expanded', loading && 'is-loading', hasLeftIcon && 'has-icons-left', hasRightIcon && 'has-icons-right', className);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(HtmlTag, {
     ...restProps,
     className: classNameValue,
@@ -438,7 +440,9 @@ Control.propTypes = {
   className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
   children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node),
   isExpanded: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
-  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+  loading: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  hasLeftIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool),
+  hasRightIcon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ref = (_Control = Control, /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(_Control)), (0,_withRef__WEBPACK_IMPORTED_MODULE_3__/* .withForwardedRef */ .i)(_ref));
 

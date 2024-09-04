@@ -12,6 +12,8 @@ function Control(props) {
     children,
     isExpanded,
     loading,
+    hasLeftIcon,
+    hasRightIcon,
     ...restProps
   } = props;
 
@@ -19,6 +21,8 @@ function Control(props) {
     'control',
     isExpanded && 'is-expanded',
     loading && 'is-loading',
+    hasLeftIcon && 'has-icons-left',
+    hasRightIcon && 'has-icons-right',
     className,
   );
 
@@ -35,6 +39,8 @@ Control.propTypes = {
   children: PropTypes.node,
   isExpanded: PropTypes.bool,
   loading: PropTypes.bool,
+  hasLeftIcon: PropTypes.bool,
+  hasRightIcon: PropTypes.bool,
 };
 
 export default Control

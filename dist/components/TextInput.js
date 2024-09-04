@@ -57,9 +57,10 @@ function TextInput(props) {
     className: classNamesValue
   });
   return leftIcon || rightIcon || asControl ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Control.default, {
-    className: (0, _classnames.default)(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right'),
     isExpanded: isExpanded,
     loading: loading,
+    hasLeftIcon: !!leftIcon,
+    hasRightIcon: !!rightIcon,
     children: [inputRender, leftIcon && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: "icon is-left",
       children: leftIcon

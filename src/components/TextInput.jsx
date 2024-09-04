@@ -62,9 +62,10 @@ function TextInput(props) {
   return leftIcon || rightIcon || asControl
     ? (
       <Control
-        className={classNames(leftIcon && 'has-icons-left', rightIcon && 'has-icons-right')}
         isExpanded={isExpanded}
         loading={loading}
+        hasLeftIcon={!!leftIcon}
+        hasRightIcon={!!rightIcon}
       >
         {inputRender}
 
