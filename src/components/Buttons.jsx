@@ -7,6 +7,7 @@ import { getAlignClassName } from './utils';
 
 function Buttons(props) {
   const {
+    as: HtmlTag = 'div',
     children,
     className,
     hasAddons,
@@ -27,13 +28,14 @@ function Buttons(props) {
   );
 
   return (
-    <div {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} className={classNamesValue}>
       {children}
-    </div>
+    </HtmlTag>
   );
 }
 
 Buttons.propTypes = {
+  as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   hasAddons: PropTypes.bool,

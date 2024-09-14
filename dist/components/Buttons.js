@@ -11,6 +11,7 @@ var _Buttons;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Buttons(props) {
   const {
+    as: HtmlTag = 'div',
     children,
     className,
     hasAddons,
@@ -25,7 +26,7 @@ function Buttons(props) {
     centered,
     right
   }), className);
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
     children: children

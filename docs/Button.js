@@ -245,6 +245,7 @@ var _Buttons;
 
 function Buttons(props) {
   const {
+    as: HtmlTag = 'div',
     children,
     className,
     hasAddons,
@@ -259,13 +260,14 @@ function Buttons(props) {
     centered,
     right
   }), className);
-  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
     children: children
   });
 }
 Buttons.propTypes = {
+  as: (prop_types_default()).any,
   children: (prop_types_default()).node,
   className: (prop_types_default()).string,
   hasAddons: (prop_types_default()).bool,
