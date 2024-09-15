@@ -26,7 +26,7 @@ function renderEach(cases, props) {
 const examples = {
   General: () => {
     const jsx = (
-      <Table bordered>
+      <Table bordered fullWidth>
         <thead>
           <tr>
             <th>Column 1</th>
@@ -81,7 +81,7 @@ const examples = {
     );
 
     jsx.__source = `
-<Table bordered>
+<Table bordered fullWidth>
   <thead>
     <tr>
       <th>Column 1</th>

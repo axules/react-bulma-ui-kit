@@ -12,6 +12,7 @@ function Table(props) {
     className,
     bordered,
     striped,
+    fullWidth,
     ...restProps
   } = props;
 
@@ -19,6 +20,7 @@ function Table(props) {
     'table',
     bordered && 'is-bordered',
     striped && 'is-bordered',
+    fullWidth && 'is-fullwidth',
     className,
   );
 
@@ -34,6 +36,7 @@ Table.propTypes = {
   className: PropTypes.string,
   bordered: PropTypes.bool,
   striped: PropTypes.bool,
+  fullWidth: PropTypes.bool,
 };
 
 export default Table
