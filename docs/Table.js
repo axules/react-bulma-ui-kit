@@ -363,9 +363,10 @@ function Table_Table(props) {
     className,
     bordered,
     striped,
+    fullWidth,
     ...restProps
   } = props;
-  const classNameValue = classnames_default()('table', bordered && 'is-bordered', striped && 'is-bordered', className);
+  const classNameValue = classnames_default()('table', bordered && 'is-bordered', striped && 'is-bordered', fullWidth && 'is-fullwidth', className);
   return /*#__PURE__*/(0,jsx_runtime.jsx)("table", {
     ...restProps,
     className: classNameValue,
@@ -376,7 +377,8 @@ Table_Table.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string,
   bordered: (prop_types_default()).bool,
-  striped: (prop_types_default()).bool
+  striped: (prop_types_default()).bool,
+  fullWidth: (prop_types_default()).bool
 };
 /* harmony default export */ const components_Table = (_Table = Table_Table, /*#__PURE__*/(0,react.memo)(_Table));
 
@@ -408,6 +410,7 @@ const examples = {
   General: () => {
     const jsx = /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Table, {
       bordered: true,
+      fullWidth: true,
       children: [/*#__PURE__*/(0,jsx_runtime.jsx)("thead", {
         children: /*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
           children: [/*#__PURE__*/(0,jsx_runtime.jsx)("th", {
@@ -496,7 +499,7 @@ const examples = {
       })]
     });
     jsx.__source = `
-<Table bordered>
+<Table bordered fullWidth>
   <thead>
     <tr>
       <th>Column 1</th>
