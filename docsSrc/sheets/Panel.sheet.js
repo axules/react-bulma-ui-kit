@@ -1,4 +1,4 @@
-import Panel from '../../src/components/Panel';
+import Panel, { PanelBlock } from '../../src/components/Panel';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
 
@@ -7,11 +7,11 @@ const styles = '.primary.link.info.success.warning.danger.white.light.dark.black
 
 const defaultProps = {
   title: 'I am panel tile!',
-  children: <Panel.Block>Hello I am children!</Panel.Block>
+  children: <PanelBlock>Hello I am children!</PanelBlock>
 };
 
 const sourceProps = {
-  children: '\r\n  <Panel.Block>Hello I am children!</Panel.Block>\r\n'
+  children: '\r\n  <PanelBlock>Hello I am children!</PanelBlock>\r\n'
 };
 
 function prepareOne(props, srcProps) {

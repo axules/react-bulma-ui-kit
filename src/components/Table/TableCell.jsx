@@ -2,29 +2,17 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import PanelBlock from './Panel/PanelBlock';
-import PanelHead from './Panel/PanelHead';
-import PanelIcon from './Panel/PanelIcon';
-import PanelTab from './Panel/PanelTab';
-import PanelTabs from './Panel/PanelTabs';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from './utils';
+} from '../utils';
 
 
-function Panel(props) {
+function TableCell(props) {
   const {
-    as: HtmlTag = 'div',
     children,
     className,
-
-    title,
-
-    white,
-    light,
-    dark,
-    black,
+    header,
 
     danger,
     success,
@@ -32,30 +20,31 @@ function Panel(props) {
     info,
     link,
     primary,
-    ...restProps
+
+    white,
+    light,
+    dark,
+    black,
   } = props;
 
-  const classNamesValue = classNames(
-    'panel',
+  const classNameValue = classNames(
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getBrightnessClassName({ white, light, dark, black }),
-    className
+    className,
   );
 
+  const HtmlTag = header ? 'th' : 'td';
   return (
-    <HtmlTag {...restProps} className={classNamesValue}>
-      {title && <PanelHead>{title}</PanelHead>}
+    <HtmlTag className={classNameValue}>
       {children}
     </HtmlTag>
   );
 }
 
-Panel.propTypes = {
-  as: PropTypes.any,
+TableCell.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-
-  title: PropTypes.node,
+  header: PropTypes.bool,
 
   white: PropTypes.bool,
   light: PropTypes.bool,
@@ -70,13 +59,5 @@ Panel.propTypes = {
   danger: PropTypes.bool,
 };
 
-export default Panel
+export default TableCell
   |> memo;
-
-export {
-  PanelHead,
-  PanelIcon,
-  PanelTabs,
-  PanelTab,
-  PanelBlock,
-};

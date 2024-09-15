@@ -1,14 +1,18 @@
-import Card from '../../src/components/Card';
+import Card, {
+  CardContent,
+  CardFooter,
+  CardFooterItem
+} from '../../src/components/Card';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
 
 
 const defaultProps = {
-  children: <Card.Content>I am children content!</Card.Content>,
+  children: <CardContent>I am children content!</CardContent>,
 };
 
 const sourceProps = {
-  children: '\r\n  <Card.Content>I am children content!</Card.Content>\r\n',
+  children: '\r\n  <CardContent>I am children content!</CardContent>\r\n',
   titleIcon: '{<>&#x1F608;</>}'
 };
 
@@ -31,34 +35,34 @@ const examples = {
       ...defaultProps,
       title: 'I am title',
       children: <>
-        <Card.Content>Hello! I am card CONTENT.</Card.Content>
-        <Card.Footer>
-          <Card.FooterItem as="button" type="button">
+        <CardContent>Hello! I am card CONTENT.</CardContent>
+        <CardFooter>
+          <CardFooterItem as="button" type="button">
             prev
-          </Card.FooterItem>
-          <Card.FooterItem as="button" type="button">
+          </CardFooterItem>
+          <CardFooterItem as="button" type="button">
             ok
-          </Card.FooterItem>
-          <Card.FooterItem as="button" type="button">
+          </CardFooterItem>
+          <CardFooterItem as="button" type="button">
             next
-          </Card.FooterItem>
-        </Card.Footer>
+          </CardFooterItem>
+        </CardFooter>
       </>
     },
     {
       children: `
-  <Card.Content>Hello! I am card CONTENT.</Card.Content>
-  <Card.Footer>
-    <Card.FooterItem as="button" type="button">
+  <CardContent>Hello! I am card CONTENT.</CardContent>
+  <CardFooter>
+    <CardFooterItem as="button" type="button">
       prev
-    </Card.FooterItem>
-    <Card.FooterItem as="button" type="button">
+    </CardFooterItem>
+    <CardFooterItem as="button" type="button">
       ok
-    </Card.FooterItem>
-    <Card.FooterItem as="button" type="button">
+    </CardFooterItem>
+    <CardFooterItem as="button" type="button">
       next
-    </Card.FooterItem>
-  </Card.Footer>
+    </CardFooterItem>
+  </CardFooter>
 `
     }
   )],

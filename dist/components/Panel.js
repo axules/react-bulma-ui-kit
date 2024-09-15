@@ -5,11 +5,16 @@ exports.default = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _classnames = _interopRequireDefault(require("classnames"));
-var _PanelBlock = _interopRequireDefault(require("./PanelParts/PanelBlock"));
-var _PanelHead = _interopRequireDefault(require("./PanelParts/PanelHead"));
-var _PanelIcon = _interopRequireDefault(require("./PanelParts/PanelIcon"));
-var _PanelTab = _interopRequireDefault(require("./PanelParts/PanelTab"));
-var _PanelTabs = _interopRequireDefault(require("./PanelParts/PanelTabs"));
+var _PanelBlock = _interopRequireDefault(require("./Panel/PanelBlock"));
+exports.PanelBlock = _PanelBlock.default;
+var _PanelHead = _interopRequireDefault(require("./Panel/PanelHead"));
+exports.PanelHead = _PanelHead.default;
+var _PanelIcon = _interopRequireDefault(require("./Panel/PanelIcon"));
+exports.PanelIcon = _PanelIcon.default;
+var _PanelTab = _interopRequireDefault(require("./Panel/PanelTab"));
+exports.PanelTab = _PanelTab.default;
+var _PanelTabs = _interopRequireDefault(require("./Panel/PanelTabs"));
+exports.PanelTabs = _PanelTabs.default;
 var _utils = require("./utils");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Panel;
@@ -53,11 +58,5 @@ function Panel(props) {
     }), children]
   });
 }
-const PanelExport = (_Panel = Panel, /*#__PURE__*/(0, _react.memo)(_Panel));
-PanelExport.Head = _PanelHead.default;
-PanelExport.Block = _PanelBlock.default;
-PanelExport.BlockIcon = _PanelIcon.default;
-PanelExport.Tabs = _PanelTabs.default;
-PanelExport.Tab = _PanelTab.default;
-var _default = exports.default = PanelExport;
+var _default = exports.default = (_Panel = Panel, /*#__PURE__*/(0, _react.memo)(_Panel));
 //# sourceMappingURL=Panel.js.map

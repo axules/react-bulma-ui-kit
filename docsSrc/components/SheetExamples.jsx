@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import Panel from '../../src/components/Panel';
+import Panel, { PanelBlock } from '../../src/components/Panel';
 
 
 const cnPrefix = 'sheetExamples';
@@ -12,26 +12,26 @@ function SheetExamples(props) {
   return (
     <Panel id={id} className={cnPrefix} title={title} light>
       {children && (
-        <Panel.Block className={`${cnPrefix}__example`}>
+        <PanelBlock className={`${cnPrefix}__example`}>
           {children}
-        </Panel.Block>
+        </PanelBlock>
       )}
 
       {source && (
-        <Panel.Block>
+        <PanelBlock>
           <pre className={`${cnPrefix}__sampleSource`}>
             {source}
           </pre>
-        </Panel.Block>
+        </PanelBlock>
       )}
 
       {samples?.map(it => (
-        <Panel.Block key={it} className={`${cnPrefix}__example`}>
+        <PanelBlock key={it} className={`${cnPrefix}__example`}>
 
           <div className={`${cnPrefix}__sample`}>{it}</div>
 
           {it.__source && <pre className={`${cnPrefix}__sampleSource`}>{it.__source}</pre>}
-        </Panel.Block>
+        </PanelBlock>
       ))}
     </Panel>
   );

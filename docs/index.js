@@ -61,7 +61,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./src/components/Block.jsx
 var Block = __webpack_require__(891);
 // EXTERNAL MODULE: ./src/components/Box.jsx
-var Box = __webpack_require__(851);
+var Box = __webpack_require__(232);
 // EXTERNAL MODULE: ./src/components/Button.jsx
 var Button = __webpack_require__(162);
 // EXTERNAL MODULE: ./src/components/Tag.jsx
@@ -363,7 +363,7 @@ Block.propTypes = {
 
 /***/ }),
 
-/***/ 851:
+/***/ 232:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {

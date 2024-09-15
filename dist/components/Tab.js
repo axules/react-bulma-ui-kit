@@ -20,9 +20,10 @@ function Tab(props) {
     onMouseDown,
     ...restProps
   } = props;
+  const classNameValue = (0, _classnames.default)(className, active && 'is-active');
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(HtmlTag, {
     ...restProps,
-    className: (0, _classnames.default)(className, active && 'is-active'),
+    className: classNameValue,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
       role: "tab",
       href: href,

@@ -2,13 +2,13 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import CardContent from './CardParts/CardContent';
-import CardFooter from './CardParts/CardFooter';
-import CardFooterItem from './CardParts/CardFooterItem';
-import CardHead from './CardParts/CardHead';
-import CardHeadIcon from './CardParts/CardHeadIcon';
-import CardHeadTitle from './CardParts/CardHeadTitle';
-import CardImage from './CardParts/CardImage';
+import CardContent from './Card/CardContent';
+import CardFooter from './Card/CardFooter';
+import CardFooterItem from './Card/CardFooterItem';
+import CardHead from './Card/CardHead';
+import CardHeadIcon from './Card/CardHeadIcon';
+import CardHeadTitle from './Card/CardHeadTitle';
+import CardImage from './Card/CardImage';
 
 
 function Card(props) {
@@ -42,17 +42,15 @@ Card.propTypes = {
   titleIcon: PropTypes.node,
 };
 
-const CardExport = Card
+export default Card
   |> memo;
 
-CardExport.Head = CardHead;
-CardExport.HeadTitle = CardHeadTitle;
-CardExport.HeadIcon = CardHeadIcon;
-
-CardExport.Image = CardImage;
-CardExport.Content = CardContent;
-
-CardExport.Footer = CardFooter;
-CardExport.FooterItem = CardFooterItem;
-
-export default CardExport;
+export {
+  CardHead,
+  CardHeadTitle,
+  CardHeadIcon,
+  CardImage,
+  CardContent,
+  CardFooter,
+  CardFooterItem,
+};

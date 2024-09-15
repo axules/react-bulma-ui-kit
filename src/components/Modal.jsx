@@ -9,12 +9,12 @@ import { createPortal } from 'react-dom';
 
 import { useStaticCallback } from '../useStaticCallback';
 
-import ModalCard from './ModalParts/ModalCard';
-import ModalCardBody from './ModalParts/ModalCardBody';
-import ModalCardFooter from './ModalParts/ModalCardFooter';
-import ModalCardHead from './ModalParts/ModalCardHead';
-import ModalCardTitle from './ModalParts/ModalCardTitle';
-import ModalContent from './ModalParts/ModalContent';
+import ModalCard from './Modal/ModalCard';
+import ModalCardBody from './Modal/ModalCardBody';
+import ModalCardFooter from './Modal/ModalCardFooter';
+import ModalCardHead from './Modal/ModalCardHead';
+import ModalCardTitle from './Modal/ModalCardTitle';
+import ModalContent from './Modal/ModalContent';
 
 
 function Modal(props) {
@@ -77,14 +77,14 @@ Modal.propTypes = {
   portalTo: PropTypes.any,
 };
 
-const ModalExport = Modal
+export default Modal
   |> memo;
 
-ModalExport.Content = ModalContent;
-ModalExport.Card = ModalCard;
-ModalExport.CardBody = ModalCardBody;
-ModalExport.CardFooter = ModalCardFooter;
-ModalExport.CardHead = ModalCardHead;
-ModalExport.CardTitle = ModalCardTitle;
-
-export default ModalExport;
+export {
+  ModalContent,
+  ModalCard,
+  ModalCardBody,
+  ModalCardFooter,
+  ModalCardHead,
+  ModalCardTitle,
+};

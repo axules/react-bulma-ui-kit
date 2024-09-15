@@ -16,8 +16,10 @@ function Tab(props) {
     ...restProps
   } = props;
 
+  const classNameValue = classNames(className, active && 'is-active');
+
   return (
-    <HtmlTag {...restProps} className={classNames(className, active && 'is-active')}>
+    <HtmlTag {...restProps} className={classNameValue}>
       <a role="tab" href={href} onClick={onClick} onMouseUp={onMouseUp} onMouseDown={onMouseDown}>
         {children}
       </a>
