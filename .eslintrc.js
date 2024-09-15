@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  ignorePatterns: ['node_modules', 'build', 'dist', 'docs'],
+  ignorePatterns: ['node_modules', 'build', 'dist', 'lib', 'docs'],
   overrides: [
     {
       files: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useStaticCallback } from 'react-bulma-ui-kit/dist/useStaticCallback';
+import { useStaticCallback } from './useStaticCallback';
 
 
 export function useBooleanState(initValue) {

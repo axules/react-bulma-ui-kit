@@ -6,9 +6,9 @@
     "type": "git",
     "url": "https://github.com/axules/react-bulma-ui-kit"
   },
-  "main": "dist/",
+  "main": "lib",
   "files": [
-    "dist",
+    "lib",
     "LICENSE.md",
     "README.md"
   ],
@@ -16,7 +16,7 @@
     "test": "jest",
     "eslint": "eslint ./",
     "build": "npm run app-build && npm run docs-build",
-    "app-build": "babel --source-maps --delete-dir-on-start -d dist src -x .js,.jsx",
+    "app-build": "babel --source-maps --delete-dir-on-start -d lib src -x .js,.jsx",
     "docs-build": "node ./docsSrc/build.js"
   },
   "keywords": [
