@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "eslint": "eslint ./",
+    "eslint": "eslint ./ --ext=js,jsx",
     "build": "npm run app-build && npm run docs-build",
     "app-build": "babel --source-maps --delete-dir-on-start -d lib src -x .js,.jsx",
     "docs-build": "node ./docsSrc/build.js"

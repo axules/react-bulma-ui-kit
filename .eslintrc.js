@@ -39,6 +39,7 @@ module.exports = {
     }
   },
   rules: {
+    'linebreak-style': ['error', 'unix'],
     'arrow-spacing': ['error'],
     'keyword-spacing': ['warn'],
     'key-spacing': ['warn'],

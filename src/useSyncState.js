@@ -6,7 +6,7 @@ import {
 /**
  * Calls `valueSetter` once `deps` are changed. Returns `[value, setter]`
  * where `value` is result of `valueSetter`, like `React.useState`.
- * @param {Function(currentValue, deps)} valueSetter
+ * @param {Function} valueSetter Function(currentValue, deps)
  * @param {Array} deps
  * @returns {Array} Array of 2 elements [value, setter] like `useState`.
  */

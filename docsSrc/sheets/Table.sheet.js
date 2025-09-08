@@ -2,26 +2,7 @@ import Table from '../../src/components/Table';
 import TableCell from '../../src/components/Table/TableCell';
 import TableRow from '../../src/components/Table/TableRow';
 import { sheetRenderer } from '../sheetRenderer';
-import { prepareSample } from '../utils';
 
-
-const styles = '.light.dark.primary.link.info.success.warning.danger'.split('.');
-const sizes = '.small.large'.split('.');
-
-function renderEach(cases, props) {
-  return cases.map((it) => (
-    prepareSample(
-      Table,
-      {
-        key: it,
-        children: 'I am message children!',
-        title: 'I am title',
-        ...(it ? { [it]: true } : {}),
-        ...props
-      }
-    )
-  ));
-}
 
 const examples = {
   General: () => {
