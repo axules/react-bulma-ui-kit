@@ -47,7 +47,7 @@ const FrameMessenger = new FrameMessengerClass();
 
 /***/ }),
 
-/***/ 806:
+/***/ 155:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -68,26 +68,8 @@ var Button = __webpack_require__(162);
 var Tag = __webpack_require__(572);
 // EXTERNAL MODULE: ./src/components/Title.jsx
 var Title = __webpack_require__(322);
-;// CONCATENATED MODULE: ./src/useStaticCallback.js
-
-
-/**
- * Returns static function which never changes (during component re-render).
- * @param {Function} handler
- * @returns {Function} Immutable function, which never changes. If you call this function
- * then it calls the LAST passed `handler.
- * @example
- * const { saveValue } = props;
- * const [value, setValue] = useState('');
- * const onClick = useStaticCallback(() => {
- *  saveValue(value);
- * });
- */
-function useStaticCallback(handler) {
-  const handlerRef = (0,react.useRef)(handler);
-  handlerRef.current = handler;
-  return (0,react.useCallback)((...args) => handlerRef.current(...args), []);
-}
+// EXTERNAL MODULE: ./src/useStaticCallback.js
+var useStaticCallback = __webpack_require__(517);
 // EXTERNAL MODULE: ./docsSrc/FrameMessenger.js
 var FrameMessenger = __webpack_require__(312);
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
@@ -126,11 +108,11 @@ function MainSheetsMenu(props) {
     };
     return FrameMessenger/* FrameMessenger */.p.listenMessages(onMessage);
   }, []);
-  const onClickSheet = useStaticCallback(event => {
+  const onClickSheet = (0,useStaticCallback/* useStaticCallback */.X)(event => {
     const sheetName = event.target.getAttribute('href').slice(1);
     onSelect(sheets.find(it => it.name === sheetName));
   });
-  const onClickSubmenu = useStaticCallback(event => {
+  const onClickSubmenu = (0,useStaticCallback/* useStaticCallback */.X)(event => {
     const selector = event.target.getAttribute('href');
     if (selector) {
       FrameMessenger/* FrameMessenger */.p.sendChildMessage(FrameMessenger/* FrameMessenger */.p.TYPES.SCROLL_TO, {
@@ -232,12 +214,12 @@ function MainPage(props) {
     };
     return FrameMessenger/* FrameMessenger */.p.listenMessages(onMessage);
   }, []);
-  const onClickToTop = useStaticCallback(() => {
+  const onClickToTop = (0,useStaticCallback/* useStaticCallback */.X)(() => {
     document.body.scrollIntoView({
       behavior: 'smooth'
     });
   });
-  const onLoadIframe = useStaticCallback(() => {
+  const onLoadIframe = (0,useStaticCallback/* useStaticCallback */.X)(() => {
     const hash = document.location.hash || '';
     if (hash) {
       setTimeout(() => FrameMessenger/* FrameMessenger */.p.sendChildMessage(FrameMessenger/* FrameMessenger */.p.TYPES.SCROLL_TO, {
@@ -724,6 +706,35 @@ Title.propTypes = {
 
 /***/ }),
 
+/***/ 517:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   X: () => (/* binding */ useStaticCallback)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
+
+
+/**
+ * Returns static function which never changes (during component re-render).
+ * @param {Function} handler
+ * @returns {Function} Immutable function, which never changes. If you call this function
+ * then it calls the LAST passed `handler.
+ * @example
+ * const { saveValue } = props;
+ * const [value, setValue] = useState('');
+ * const onClick = useStaticCallback(() => {
+ *  saveValue(value);
+ * });
+ */
+function useStaticCallback(handler) {
+  const handlerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(handler);
+  handlerRef.current = handler;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((...args) => handlerRef.current(...args), []);
+}
+
+/***/ }),
+
 /***/ 790:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -765,7 +776,7 @@ function withRef(propName) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(806)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(155)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
