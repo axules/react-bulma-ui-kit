@@ -357,7 +357,7 @@ var _Table;
 
 
 
-function Table_Table(props) {
+function Table(props) {
   const {
     children,
     className,
@@ -373,39 +373,23 @@ function Table_Table(props) {
     children: children
   });
 }
-Table_Table.propTypes = {
+Table.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string,
   bordered: (prop_types_default()).bool,
   striped: (prop_types_default()).bool,
   fullWidth: (prop_types_default()).bool
 };
-/* harmony default export */ const components_Table = (_Table = Table_Table, /*#__PURE__*/(0,react.memo)(_Table));
+/* harmony default export */ const components_Table = (_Table = Table, /*#__PURE__*/(0,react.memo)(_Table));
 
 // EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 2 modules
 var sheetRenderer = __webpack_require__(808);
-// EXTERNAL MODULE: ./docsSrc/utils.js
-var docsSrc_utils = __webpack_require__(271);
 ;// CONCATENATED MODULE: ./docsSrc/sheets/Table.sheet.js
 
 
 
 
 
-
-const styles = '.light.dark.primary.link.info.success.warning.danger'.split('.');
-const sizes = '.small.large'.split('.');
-function renderEach(cases, props) {
-  return cases.map(it => prepareSample(Table, {
-    key: it,
-    children: 'I am message children!',
-    title: 'I am title',
-    ...(it ? {
-      [it]: true
-    } : {}),
-    ...props
-  }));
-}
 const examples = {
   General: () => {
     const jsx = /*#__PURE__*/(0,jsx_runtime.jsxs)(components_Table, {
