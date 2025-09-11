@@ -2,13 +2,13 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import CardContent from './Card/CardContent';
-import CardFooter from './Card/CardFooter';
-import CardFooterItem from './Card/CardFooterItem';
-import CardHead from './Card/CardHead';
-import CardHeadIcon from './Card/CardHeadIcon';
-import CardHeadTitle from './Card/CardHeadTitle';
-import CardImage from './Card/CardImage';
+import CardContent from './CardContent';
+import CardFooter from './CardFooter';
+import CardFooterItem from './CardFooterItem';
+import CardHead from './CardHead';
+import CardHeadIcon from './CardHeadIcon';
+import CardHeadTitle from './CardHeadTitle';
+import CardImage from './CardImage';
 
 
 function Card(props) {

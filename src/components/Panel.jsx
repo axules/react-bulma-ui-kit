@@ -2,11 +2,11 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import PanelBlock from './Panel/PanelBlock';
-import PanelHead from './Panel/PanelHead';
-import PanelIcon from './Panel/PanelIcon';
-import PanelTab from './Panel/PanelTab';
-import PanelTabs from './Panel/PanelTabs';
+import PanelBlock from './PanelBlock';
+import PanelHead from './PanelHead';
+import PanelIcon from './PanelIcon';
+import PanelTab from './PanelTab';
+import PanelTabs from './PanelTabs';
 import {
   getBrightnessClassName,
   getStyleClassName

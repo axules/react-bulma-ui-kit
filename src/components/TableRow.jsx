@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from '../utils';
+} from './utils';
 
 
 function TableRow(props) {
@@ -24,6 +24,7 @@ function TableRow(props) {
     light,
     dark,
     black,
+    ...restProps
   } = props;
 
   const classNameValue = classNames(
@@ -34,7 +35,7 @@ function TableRow(props) {
   );
 
   return (
-    <tr className={classNameValue}>
+    <tr {...restProps} className={classNameValue}>
       {children}
     </tr>
   );

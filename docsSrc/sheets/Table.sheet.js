@@ -1,6 +1,6 @@
 import Table from '../../src/components/Table';
-import TableCell from '../../src/components/Table/TableCell';
-import TableRow from '../../src/components/Table/TableRow';
+import TableCell from '../../src/components/TableCell';
+import TableRow from '../../src/components/TableRow';
 import { sheetRenderer } from '../sheetRenderer';
 
 

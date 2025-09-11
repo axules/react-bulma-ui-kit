@@ -2,8 +2,8 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import TableCell from './Table/TableCell';
-import TableRow from './Table/TableRow';
+import TableCell from './TableCell';
+import TableRow from './TableRow';
 
 
 function Table(props) {

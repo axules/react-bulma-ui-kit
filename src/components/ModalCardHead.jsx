@@ -2,8 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import DeleteButton from '../DeleteButton';
-
+import DeleteButton from './DeleteButton';
 import ModalCardTitle from './ModalCardTitle';
 
 

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from '../utils';
+} from './utils';
 
 
 function TableCell(props) {
@@ -25,6 +25,7 @@ function TableCell(props) {
     light,
     dark,
     black,
+    ...restProps
   } = props;
 
   const classNameValue = classNames(
@@ -35,7 +36,7 @@ function TableCell(props) {
 
   const HtmlTag = header ? 'th' : 'td';
   return (
-    <HtmlTag className={classNameValue}>
+    <HtmlTag {...restProps} className={classNameValue}>
       {children}
     </HtmlTag>
   );

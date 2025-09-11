@@ -9,12 +9,12 @@ import { createPortal } from 'react-dom';
 
 import { useStaticCallback } from '../useStaticCallback';
 
-import ModalCard from './Modal/ModalCard';
-import ModalCardBody from './Modal/ModalCardBody';
-import ModalCardFooter from './Modal/ModalCardFooter';
-import ModalCardHead from './Modal/ModalCardHead';
-import ModalCardTitle from './Modal/ModalCardTitle';
-import ModalContent from './Modal/ModalContent';
+import ModalCard from './ModalCard';
+import ModalCardBody from './ModalCardBody';
+import ModalCardFooter from './ModalCardFooter';
+import ModalCardHead from './ModalCardHead';
+import ModalCardTitle from './ModalCardTitle';
+import ModalContent from './ModalContent';
 
 
 function Modal(props) {
