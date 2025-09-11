@@ -66,7 +66,7 @@ var react = __webpack_require__(540);
 var prop_types = __webpack_require__(556);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./src/components/Panel.jsx + 5 modules
-var Panel = __webpack_require__(851);
+var Panel = __webpack_require__(921);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
 ;// CONCATENATED MODULE: ./docsSrc/components/SheetExamples.jsx
@@ -216,7 +216,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 922:
+/***/ 429:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -234,7 +234,7 @@ var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 var utils = __webpack_require__(13);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Table/TableCell.jsx
+;// CONCATENATED MODULE: ./src/components/TableCell.jsx
 var _TableCell;
 
 
@@ -255,7 +255,8 @@ function TableCell(props) {
     white,
     light,
     dark,
-    black
+    black,
+    ...restProps
   } = props;
   const classNameValue = classnames_default()((0,utils/* getStyleClassName */.Zb)({
     danger,
@@ -272,6 +273,7 @@ function TableCell(props) {
   }), className);
   const HtmlTag = header ? 'th' : 'td';
   return /*#__PURE__*/(0,jsx_runtime.jsx)(HtmlTag, {
+    ...restProps,
     className: classNameValue,
     children: children
   });
@@ -291,8 +293,8 @@ TableCell.propTypes = {
   success: (prop_types_default()).bool,
   danger: (prop_types_default()).bool
 };
-/* harmony default export */ const Table_TableCell = (_TableCell = TableCell, /*#__PURE__*/(0,react.memo)(_TableCell));
-;// CONCATENATED MODULE: ./src/components/Table/TableRow.jsx
+/* harmony default export */ const components_TableCell = (_TableCell = TableCell, /*#__PURE__*/(0,react.memo)(_TableCell));
+;// CONCATENATED MODULE: ./src/components/TableRow.jsx
 var _TableRow;
 
 
@@ -313,7 +315,8 @@ function TableRow(props) {
     white,
     light,
     dark,
-    black
+    black,
+    ...restProps
   } = props;
   const classNameValue = classnames_default()(className, selected && 'is-selected', (0,utils/* getStyleClassName */.Zb)({
     danger,
@@ -329,6 +332,7 @@ function TableRow(props) {
     black
   }));
   return /*#__PURE__*/(0,jsx_runtime.jsx)("tr", {
+    ...restProps,
     className: classNameValue,
     children: children
   });
@@ -348,7 +352,7 @@ TableRow.propTypes = {
   success: (prop_types_default()).bool,
   danger: (prop_types_default()).bool
 };
-/* harmony default export */ const Table_TableRow = (_TableRow = TableRow, /*#__PURE__*/(0,react.memo)(_TableRow));
+/* harmony default export */ const components_TableRow = (_TableRow = TableRow, /*#__PURE__*/(0,react.memo)(_TableRow));
 ;// CONCATENATED MODULE: ./src/components/Table.jsx
 var _Table;
 
@@ -401,7 +405,7 @@ const examples = {
             children: "Column 1"
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("th", {
             children: "Column 2"
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)(Table_TableCell, {
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_TableCell, {
             header: true,
             light: true,
             children: "Column 3"
@@ -413,7 +417,7 @@ const examples = {
         children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
           children: [/*#__PURE__*/(0,jsx_runtime.jsx)("td", {
             children: "Body 1 : Row 1 - Column 1"
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)(Table_TableCell, {
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_TableCell, {
             info: true,
             children: "Body 1 : Row 1 - Column 2"
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
@@ -422,14 +426,14 @@ const examples = {
             children: "Body 1 : Row 1 - Column 4"
           })]
         }), /*#__PURE__*/(0,jsx_runtime.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Table_TableCell, {
+          children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_TableCell, {
             primary: true,
             children: "Body 1 : Row 2 - Column 1"
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
             children: "Body 1 : Row 2 - Column 2"
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
             children: "Body 1 : Row 2 - Column 3"
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)(Table_TableCell, {
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_TableCell, {
             light: true,
             children: "Body 1 : Row 2 - Column 4"
           })]
@@ -438,7 +442,7 @@ const examples = {
             children: "Body 1 : Row 3 - Column 1"
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
             children: "Body 1 : Row 3 - Column 2"
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)(Table_TableCell, {
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_TableCell, {
             dark: true,
             children: "Body 1 : Row 3 - Column 3"
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("td", {
@@ -456,11 +460,11 @@ const examples = {
           })]
         })]
       }), /*#__PURE__*/(0,jsx_runtime.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Table_TableRow, {
+        children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(components_TableRow, {
           selected: true,
           children: [/*#__PURE__*/(0,jsx_runtime.jsx)("td", {
             children: "Body 2 : Row 1 - Column 1"
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)(Table_TableCell, {
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_TableCell, {
             light: true,
             warning: true,
             children: "Body 2 : Row 1 - Column 2"
@@ -545,13 +549,13 @@ const examples = {
 
 /***/ }),
 
-/***/ 851:
+/***/ 921:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "if": () => (/* reexport */ Panel_PanelBlock),
+  "if": () => (/* reexport */ components_PanelBlock),
   Ay: () => (/* binding */ components_Panel)
 });
 
@@ -567,7 +571,7 @@ var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Panel/PanelBlock.jsx
+;// CONCATENATED MODULE: ./src/components/PanelBlock.jsx
 var _PanelBlock;
 
 
@@ -593,8 +597,8 @@ PanelBlock.propTypes = {
   className: (prop_types_default()).string,
   active: (prop_types_default()).bool
 };
-/* harmony default export */ const Panel_PanelBlock = (_PanelBlock = PanelBlock, /*#__PURE__*/(0,react.memo)(_PanelBlock));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelHead.jsx
+/* harmony default export */ const components_PanelBlock = (_PanelBlock = PanelBlock, /*#__PURE__*/(0,react.memo)(_PanelBlock));
+;// CONCATENATED MODULE: ./src/components/PanelHead.jsx
 var _PanelHead;
 
 
@@ -618,8 +622,8 @@ PanelHead.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Panel_PanelHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelIcon.jsx
+/* harmony default export */ const components_PanelHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
+;// CONCATENATED MODULE: ./src/components/PanelIcon.jsx
 var _PanelIcon;
 
 
@@ -643,8 +647,8 @@ PanelIcon.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Panel_PanelIcon = (_PanelIcon = PanelIcon, /*#__PURE__*/(0,react.memo)(_PanelIcon));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelTab.jsx
+/* harmony default export */ const components_PanelIcon = (_PanelIcon = PanelIcon, /*#__PURE__*/(0,react.memo)(_PanelIcon));
+;// CONCATENATED MODULE: ./src/components/PanelTab.jsx
 var _PanelTab;
 
 
@@ -671,8 +675,8 @@ PanelTab.propTypes = {
   className: (prop_types_default()).string,
   active: (prop_types_default()).bool
 };
-/* harmony default export */ const Panel_PanelTab = (_PanelTab = PanelTab, /*#__PURE__*/(0,react.memo)(_PanelTab));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelTabs.jsx
+/* harmony default export */ const components_PanelTab = (_PanelTab = PanelTab, /*#__PURE__*/(0,react.memo)(_PanelTab));
+;// CONCATENATED MODULE: ./src/components/PanelTabs.jsx
 var _PanelTabs;
 
 
@@ -697,7 +701,7 @@ PanelTabs.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Panel_PanelTabs = (_PanelTabs = PanelTabs, /*#__PURE__*/(0,react.memo)(_PanelTabs));
+/* harmony default export */ const components_PanelTabs = (_PanelTabs = PanelTabs, /*#__PURE__*/(0,react.memo)(_PanelTabs));
 // EXTERNAL MODULE: ./src/components/utils.js
 var utils = __webpack_require__(13);
 ;// CONCATENATED MODULE: ./src/components/Panel.jsx
@@ -746,7 +750,7 @@ function Panel(props) {
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
-    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(Panel_PanelHead, {
+    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(components_PanelHead, {
       children: title
     }), children]
   });
@@ -833,7 +837,7 @@ Title.propTypes = {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(922)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(429)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

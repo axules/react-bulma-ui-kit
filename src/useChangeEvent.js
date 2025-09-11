@@ -3,7 +3,19 @@ import {
   useRef
 } from 'react';
 
-
+/**
+ * Calls handler ONLY when dependencies were changed. Does not call handler the first time like it does useEffect.
+ *
+ * @param {function(array, array)} handler handler(prevDeps, currentDeps)
+ * @param {array} dependencies dependencies like for useEffect
+ *
+ * @example
+ * useEffect(() => console.log('!'), [deps1, deps2]);
+ * // useEffect calls handler after the first render and once deps are changed
+ *
+ * useChangeEvent(() => console.log('!'), [deps1, deps2]);
+ * // useChangeEvent calls handler ONLY once deps are changed
+ */
 export function useChangeEvent(handler, dependencies) {
   const currentValue = useRef();
 
@@ -13,7 +25,7 @@ export function useChangeEvent(handler, dependencies) {
       // const changed = currentValue.current.some((it, n) => it !== dependencies[n]);
       // if (changed) {
       // call callback with the previous values
-      const result = handler(currentValue.current);
+      const result = handler(currentValue.current, dependencies);
       currentValue.current = dependencies;
       return result;
       // }

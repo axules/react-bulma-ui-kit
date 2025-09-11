@@ -66,7 +66,7 @@ var react = __webpack_require__(540);
 var prop_types = __webpack_require__(556);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./src/components/Panel.jsx + 5 modules
-var Panel = __webpack_require__(851);
+var Panel = __webpack_require__(921);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
 ;// CONCATENATED MODULE: ./docsSrc/components/SheetExamples.jsx
@@ -216,7 +216,7 @@ function sheetRenderer(CMP, sheets, options = {}) {
 
 /***/ }),
 
-/***/ 889:
+/***/ 516:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -232,7 +232,7 @@ var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Card/CardContent.jsx
+;// CONCATENATED MODULE: ./src/components/CardContent.jsx
 var _CardContent;
 
 
@@ -256,8 +256,8 @@ CardContent.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Card_CardContent = (_CardContent = CardContent, /*#__PURE__*/(0,react.memo)(_CardContent));
-;// CONCATENATED MODULE: ./src/components/Card/CardFooter.jsx
+/* harmony default export */ const components_CardContent = (_CardContent = CardContent, /*#__PURE__*/(0,react.memo)(_CardContent));
+;// CONCATENATED MODULE: ./src/components/CardFooter.jsx
 var _CardFooter;
 
 
@@ -281,8 +281,8 @@ CardFooter.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Card_CardFooter = (_CardFooter = CardFooter, /*#__PURE__*/(0,react.memo)(_CardFooter));
-;// CONCATENATED MODULE: ./src/components/Card/CardFooterItem.jsx
+/* harmony default export */ const components_CardFooter = (_CardFooter = CardFooter, /*#__PURE__*/(0,react.memo)(_CardFooter));
+;// CONCATENATED MODULE: ./src/components/CardFooterItem.jsx
 var _CardFooterItem;
 
 
@@ -306,8 +306,8 @@ CardFooterItem.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Card_CardFooterItem = (_CardFooterItem = CardFooterItem, /*#__PURE__*/(0,react.memo)(_CardFooterItem));
-;// CONCATENATED MODULE: ./src/components/Card/CardHeadIcon.jsx
+/* harmony default export */ const components_CardFooterItem = (_CardFooterItem = CardFooterItem, /*#__PURE__*/(0,react.memo)(_CardFooterItem));
+;// CONCATENATED MODULE: ./src/components/CardHeadIcon.jsx
 var _CardHeadIcon;
 
 
@@ -331,8 +331,8 @@ CardHeadIcon.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Card_CardHeadIcon = (_CardHeadIcon = CardHeadIcon, /*#__PURE__*/(0,react.memo)(_CardHeadIcon));
-;// CONCATENATED MODULE: ./src/components/Card/CardHeadTitle.jsx
+/* harmony default export */ const components_CardHeadIcon = (_CardHeadIcon = CardHeadIcon, /*#__PURE__*/(0,react.memo)(_CardHeadIcon));
+;// CONCATENATED MODULE: ./src/components/CardHeadTitle.jsx
 var _CardHeadTitle;
 
 
@@ -358,8 +358,8 @@ CardHeadTitle.propTypes = {
   className: (prop_types_default()).string,
   centered: (prop_types_default()).bool
 };
-/* harmony default export */ const Card_CardHeadTitle = (_CardHeadTitle = CardHeadTitle, /*#__PURE__*/(0,react.memo)(_CardHeadTitle));
-;// CONCATENATED MODULE: ./src/components/Card/CardHead.jsx
+/* harmony default export */ const components_CardHeadTitle = (_CardHeadTitle = CardHeadTitle, /*#__PURE__*/(0,react.memo)(_CardHeadTitle));
+;// CONCATENATED MODULE: ./src/components/CardHead.jsx
 var _PanelHead;
 
 
@@ -380,10 +380,10 @@ function PanelHead(props) {
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
     ...restProps,
     className: classnames_default()('card-header', className),
-    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardHeadTitle, {
+    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(components_CardHeadTitle, {
       centered: centered,
       children: title
-    }), icon && /*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardHeadIcon, {
+    }), icon && /*#__PURE__*/(0,jsx_runtime.jsx)(components_CardHeadIcon, {
       children: icon
     }), children]
   });
@@ -397,7 +397,7 @@ PanelHead.propTypes = {
   className: (prop_types_default()).string
 };
 /* harmony default export */ const CardHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
-;// CONCATENATED MODULE: ./src/components/Card/CardImage.jsx
+;// CONCATENATED MODULE: ./src/components/CardImage.jsx
 var _CardImage;
 
 
@@ -421,7 +421,7 @@ CardImage.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Card_CardImage = (_CardImage = CardImage, /*#__PURE__*/(0,react.memo)(_CardImage));
+/* harmony default export */ const components_CardImage = (_CardImage = CardImage, /*#__PURE__*/(0,react.memo)(_CardImage));
 ;// CONCATENATED MODULE: ./src/components/Card.jsx
 var _Card;
 
@@ -475,7 +475,7 @@ var utils = __webpack_require__(271);
 
 
 const defaultProps = {
-  children: /*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardContent, {
+  children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_CardContent, {
     children: "I am children content!"
   })
 };
@@ -505,18 +505,18 @@ const examples = {
     ...defaultProps,
     title: 'I am title',
     children: /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-      children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardContent, {
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_CardContent, {
         children: "Hello! I am card CONTENT."
-      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Card_CardFooter, {
-        children: [/*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardFooterItem, {
+      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(components_CardFooter, {
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_CardFooterItem, {
           as: "button",
           type: "button",
           children: "prev"
-        }), /*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardFooterItem, {
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_CardFooterItem, {
           as: "button",
           type: "button",
           children: "ok"
-        }), /*#__PURE__*/(0,jsx_runtime.jsx)(Card_CardFooterItem, {
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_CardFooterItem, {
           as: "button",
           type: "button",
           children: "next"
@@ -544,13 +544,13 @@ const examples = {
 
 /***/ }),
 
-/***/ 851:
+/***/ 921:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "if": () => (/* reexport */ Panel_PanelBlock),
+  "if": () => (/* reexport */ components_PanelBlock),
   Ay: () => (/* binding */ components_Panel)
 });
 
@@ -566,7 +566,7 @@ var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
-;// CONCATENATED MODULE: ./src/components/Panel/PanelBlock.jsx
+;// CONCATENATED MODULE: ./src/components/PanelBlock.jsx
 var _PanelBlock;
 
 
@@ -592,8 +592,8 @@ PanelBlock.propTypes = {
   className: (prop_types_default()).string,
   active: (prop_types_default()).bool
 };
-/* harmony default export */ const Panel_PanelBlock = (_PanelBlock = PanelBlock, /*#__PURE__*/(0,react.memo)(_PanelBlock));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelHead.jsx
+/* harmony default export */ const components_PanelBlock = (_PanelBlock = PanelBlock, /*#__PURE__*/(0,react.memo)(_PanelBlock));
+;// CONCATENATED MODULE: ./src/components/PanelHead.jsx
 var _PanelHead;
 
 
@@ -617,8 +617,8 @@ PanelHead.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Panel_PanelHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelIcon.jsx
+/* harmony default export */ const components_PanelHead = (_PanelHead = PanelHead, /*#__PURE__*/(0,react.memo)(_PanelHead));
+;// CONCATENATED MODULE: ./src/components/PanelIcon.jsx
 var _PanelIcon;
 
 
@@ -642,8 +642,8 @@ PanelIcon.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Panel_PanelIcon = (_PanelIcon = PanelIcon, /*#__PURE__*/(0,react.memo)(_PanelIcon));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelTab.jsx
+/* harmony default export */ const components_PanelIcon = (_PanelIcon = PanelIcon, /*#__PURE__*/(0,react.memo)(_PanelIcon));
+;// CONCATENATED MODULE: ./src/components/PanelTab.jsx
 var _PanelTab;
 
 
@@ -670,8 +670,8 @@ PanelTab.propTypes = {
   className: (prop_types_default()).string,
   active: (prop_types_default()).bool
 };
-/* harmony default export */ const Panel_PanelTab = (_PanelTab = PanelTab, /*#__PURE__*/(0,react.memo)(_PanelTab));
-;// CONCATENATED MODULE: ./src/components/Panel/PanelTabs.jsx
+/* harmony default export */ const components_PanelTab = (_PanelTab = PanelTab, /*#__PURE__*/(0,react.memo)(_PanelTab));
+;// CONCATENATED MODULE: ./src/components/PanelTabs.jsx
 var _PanelTabs;
 
 
@@ -696,7 +696,7 @@ PanelTabs.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string
 };
-/* harmony default export */ const Panel_PanelTabs = (_PanelTabs = PanelTabs, /*#__PURE__*/(0,react.memo)(_PanelTabs));
+/* harmony default export */ const components_PanelTabs = (_PanelTabs = PanelTabs, /*#__PURE__*/(0,react.memo)(_PanelTabs));
 // EXTERNAL MODULE: ./src/components/utils.js
 var utils = __webpack_require__(13);
 ;// CONCATENATED MODULE: ./src/components/Panel.jsx
@@ -745,7 +745,7 @@ function Panel(props) {
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(HtmlTag, {
     ...restProps,
     className: classNamesValue,
-    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(Panel_PanelHead, {
+    children: [title && /*#__PURE__*/(0,jsx_runtime.jsx)(components_PanelHead, {
       children: title
     }), children]
   });
@@ -832,7 +832,7 @@ Title.propTypes = {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(889)));
+/******/ __webpack_require__.O(0, [121], () => (__webpack_exec__(516)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

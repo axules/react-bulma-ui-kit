@@ -61,7 +61,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./src/components/Block.jsx
 var Block = __webpack_require__(891);
 // EXTERNAL MODULE: ./src/components/Box.jsx
-var Box = __webpack_require__(232);
+var Box = __webpack_require__(851);
 // EXTERNAL MODULE: ./src/components/Button.jsx
 var Button = __webpack_require__(162);
 // EXTERNAL MODULE: ./src/components/Tag.jsx
@@ -72,16 +72,22 @@ var Title = __webpack_require__(322);
 
 
 /**
- * Returns static function which never changes (during component re-render).
- * @param {Function} handler
+ * Returns static function which never changes (during component re-render), but will call actual code always.
+ * It is like `useCallback` but you do not need to pass the second argument.
+ *
+ * @param {function} handler any handler
  * @returns {Function} Immutable function, which never changes. If you call this function
  * then it calls the LAST passed `handler.
  * @example
- * const { saveValue } = props;
+ * const { saveValue, multiplier } = props;
  * const [value, setValue] = useState('');
  * const onClick = useStaticCallback(() => {
- *  saveValue(value);
+ *  saveValue(value * multiplier);
  * });
+ * // instead of
+ * const onClick = useCallback(() => {
+ *  saveValue(value * multiplier);
+ * }, [saveValue, multiplier]);
  */
 function useStaticCallback(handler) {
   const handlerRef = (0,react.useRef)(handler);
@@ -363,7 +369,7 @@ Block.propTypes = {
 
 /***/ }),
 
-/***/ 232:
+/***/ 851:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -736,6 +742,7 @@ Title.propTypes = {
 
 /**
  * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ *
  * @param {React.Component} WrappedComponent
  * @returns
  */

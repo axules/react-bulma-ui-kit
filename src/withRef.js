@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 
 /**
  * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ *
  * @param {React.Component} WrappedComponent
  * @returns
  */
