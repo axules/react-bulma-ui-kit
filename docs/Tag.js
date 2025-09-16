@@ -232,10 +232,13 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(942);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/components/utils.js
+var utils = __webpack_require__(13);
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(848);
 ;// CONCATENATED MODULE: ./src/components/Tags.jsx
 var _Tags;
+
 
 
 
@@ -246,9 +249,14 @@ function Tags(props) {
     className,
     hasAddons,
     nowrap,
+    right,
+    centered,
     ...restProps
   } = props;
-  const classNamesValue = classnames_default()('tags', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', className);
+  const classNamesValue = classnames_default()('tags', hasAddons && 'has-addons', nowrap && 'is-flex-wrap-nowrap', (0,utils/* getAlignClassName */.HA)({
+    right,
+    centered
+  }), className);
   return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
     ...restProps,
     className: classNamesValue,
@@ -259,13 +267,15 @@ Tags.propTypes = {
   children: (prop_types_default()).node,
   className: (prop_types_default()).string,
   hasAddons: (prop_types_default()).bool,
+  centered: (prop_types_default()).bool,
+  right: (prop_types_default()).bool,
   nowrap: (prop_types_default()).bool
 };
 /* harmony default export */ const components_Tags = (_Tags = Tags, /*#__PURE__*/(0,react.memo)(_Tags));
 // EXTERNAL MODULE: ./docsSrc/sheetRenderer.js + 2 modules
 var sheetRenderer = __webpack_require__(808);
 // EXTERNAL MODULE: ./docsSrc/utils.js
-var utils = __webpack_require__(271);
+var docsSrc_utils = __webpack_require__(271);
 ;// CONCATENATED MODULE: ./docsSrc/sheets/Tag.sheet.js
 
 
@@ -276,7 +286,7 @@ const styles = '.primary.link.info.success.warning.danger'.split('.');
 const brightness = 'white.light.dark.black'.split('.');
 const sizes = '.medium.large'.split('.');
 function renderEach(cases, props = {}) {
-  return cases.map(it => (0,utils/* prepareSample */.ws)(Tag/* default */.A, {
+  return cases.map(it => (0,docsSrc_utils/* prepareSample */.ws)(Tag/* default */.A, {
     key: it,
     children: it || 'Default',
     ...(it ? {
