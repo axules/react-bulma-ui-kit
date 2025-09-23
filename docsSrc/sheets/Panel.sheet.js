@@ -1,4 +1,5 @@
-import Panel, { PanelBlock } from '../../src/components/Panel';
+import Panel from '../../src/components/Panel';
+import PanelBlock from '../../src/components/PanelBlock';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
 

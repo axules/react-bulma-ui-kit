@@ -5,11 +5,11 @@ import {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import DeleteButton from './DeleteButton';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from './utils';
+} from './_utils';
+import DeleteButton from './DeleteButton';
 
 
 function Notification(props) {

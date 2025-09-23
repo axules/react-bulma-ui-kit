@@ -1,7 +1,7 @@
 const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const { ProvidePlugin } = require('webpack');
-// const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 // const postcssNormalize = require('postcss-normalize');
 // const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -113,12 +113,12 @@ module.exports = {
       //   }
       // }),
 
-      // new TerserPlugin({
-      //   terserOptions: {
-      //     keep_classnames: true,
-      //     keep_fnames: true,
-      //   },
-      // }),
+      new TerserPlugin({
+        terserOptions: {
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
       // new CssMinimizerPlugin(),
     ],
     runtimeChunk: {
@@ -130,7 +130,7 @@ module.exports = {
       cacheGroups: {
         vendor: {
           chunks: 'initial',
-          test: /node_modules|styles|utils/,
+          test: /node_modules|(docsSrc[\\/](styles|utils|components|sheetRenderer|FrameMessenger))|(src[\\/](use|with))/i,
           name: 'vendor',
           enforce: true,
           reuseExistingChunk: true,

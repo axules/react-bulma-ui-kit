@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {
   getAlignClassName,
   getSizeClassName
-} from './utils';
+} from './_utils';
 
 
 function Tabs(props) {

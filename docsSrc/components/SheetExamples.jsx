@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import Panel, { PanelBlock } from '../../src/components/Panel';
+import Panel from '../../src/components/Panel';
+import PanelBlock from '../../src/components/PanelBlock';
 
 
 const cnPrefix = 'sheetExamples';
@@ -20,7 +21,7 @@ function SheetExamples(props) {
       {source && (
         <PanelBlock>
           <pre className={`${cnPrefix}__sampleSource`}>
-            {source}
+            {source.trim()}
           </pre>
         </PanelBlock>
       )}

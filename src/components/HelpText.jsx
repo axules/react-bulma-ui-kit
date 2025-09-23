@@ -7,7 +7,7 @@ import { withForwardedRef } from '../withRef';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from './utils';
+} from './_utils';
 
 
 function HelpText(props) {

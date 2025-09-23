@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {
   getSizeClassName,
   getTextColorClassName
-} from './utils';
+} from './_utils';
 
 
 

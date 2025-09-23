@@ -2,12 +2,12 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import DeleteButton from './DeleteButton';
 import {
   getBrightnessClassName,
   getSizeClassName,
   getStyleClassName
-} from './utils';
+} from './_utils';
+import DeleteButton from './DeleteButton';
 
 
 

@@ -4,11 +4,11 @@ import classNames from 'classnames';
 
 import { withForwardedRef } from '../withRef';
 
-import Control from './Control';
 import {
   getSizeClassName,
   getStyleClassName
-} from './utils';
+} from './_utils';
+import Control from './Control';
 
 
 function SelectInput(props) {

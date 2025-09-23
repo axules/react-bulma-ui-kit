@@ -9,7 +9,7 @@ import {
   getSizeClassName,
   getStyleClassName,
   skeletonClassName
-} from './utils';
+} from './_utils';
 
 
 function Button(props) {

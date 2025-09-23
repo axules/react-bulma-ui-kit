@@ -2,7 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { getSizeClassName } from './utils';
+import { getSizeClassName } from './_utils';
 
 
 function DeleteButton(props) {

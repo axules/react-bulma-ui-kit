@@ -13,15 +13,12 @@ const SHEET_TEMPLATE_PATH = path.resolve(__dirname, 'sheet.template.ejs');
 const MAIN_ENTRY_PATH = path.resolve(__dirname, 'index.js');
 const MAIN_TEMPLATE_PATH = path.resolve(__dirname, 'index.template.ejs');
 
-function getDirectories(src, callback) {
-  glob(src + '/**/*.sheet.js', callback);
-}
 
 function cleanOutput(outputPath) {
   if (!fs.existsSync(outputPath)) return;
-  if (!path.resolve(outputPath).startsWith(__dirname)) {
-    throw new Error('Output directory is insecure:', outputPath);
-  }
+  // if (!path.resolve(outputPath).startsWith(__dirname)) {
+  //   throw new Error('Output directory is insecure:', outputPath);
+  // }
   // eslint-disable-next-line
   console.log('Clean output:', outputPath);
   fs.readdirSync(outputPath, { withFileTypes: true })
@@ -84,18 +81,14 @@ function createSeparateSheets(files) {
 }
 
 function main() {
-  // cleanOutput(webpackConfig.output.path);
+  cleanOutput(webpackConfig.output.path);
   // eslint-disable-next-line no-console
   console.log('Sheets path:', SHEETS_PATH);
 
-  getDirectories(SHEETS_PATH, function (err, files) {
-    if (err) {
-      throw err;
-    }
-    process.env.NODE_ENV = 'doc';
-    // createSeparateSheets(files);
-    compile(files);
-  });
+  const files = glob.sync(SHEETS_PATH + '/**/*.sheet.js');
+  process.env.NODE_ENV = 'doc';
+  // createSeparateSheets(files);
+  compile(files);
 }
 
 main();

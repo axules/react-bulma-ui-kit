@@ -2,21 +2,31 @@ const path = require('path');
 // const glob = require('glob-all');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const glob = require('glob');
 
 
-const COMPONENTS = [
-  'Button',
-  'Checkbox',
-  'Control',
-  'Field',
-  'HelpText',
-  'Label',
-  'SubmitForm',
-  'TextInput'
-].reduce((R, it) => Object.assign(R, { [it]: [`./src/components/${it}.jsx`] }), {});
+const FILES_ENTRY = Object.fromEntries(
+  glob.sync(path.resolve(__dirname, 'src') + '/**/*.sheet.js')
+    .map((it) => {
+      const fileName = path.basename(it).replace('.jsx', '');
+      return !fileName.startsWith('_') && [fileName, it];
+    })
+    .filter(Boolean)
+);
+
+// const COMPONENTS = [
+//   'Button',
+//   'Checkbox',
+//   'Control',
+//   'Field',
+//   'HelpText',
+//   'Label',
+//   'SubmitForm',
+//   'TextInput'
+// ].reduce((R, it) => Object.assign(R, { [it]: [`./src/components/${it}.jsx`] }), {});
 
 module.exports = {
-  entry: COMPONENTS,
+  entry: FILES_ENTRY,
   context: process.cwd(),
   output: {
     filename: '[name].js',
@@ -51,7 +61,7 @@ module.exports = {
       minSize: 1,
       cacheGroups: {
         utils: {
-          test: /[/\\]src[/\\]utils[/\\]/i,
+          test: /node_modules|([/\\]src[/\\]components[/\\]_utils[/\\])/i,
           chunks: 'all',
           name: 'utils',
           priority: 5,
@@ -73,7 +83,7 @@ module.exports = {
         options: {
           configFile: path.resolve(process.cwd(), 'babel.config.js')
         },
-        exclude: [/node_modules/, /\.test\.js/],
+        exclude: /node_modules|\.test\.js/,
       },
     ],
   },

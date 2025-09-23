@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from './utils';
+} from './_utils';
 
 
 function TableRow(props) {

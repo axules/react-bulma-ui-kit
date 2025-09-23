@@ -2,15 +2,11 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import PanelBlock from './PanelBlock';
-import PanelHead from './PanelHead';
-import PanelIcon from './PanelIcon';
-import PanelTab from './PanelTab';
-import PanelTabs from './PanelTabs';
 import {
   getBrightnessClassName,
   getStyleClassName
-} from './utils';
+} from './_utils';
+import PanelHead from './PanelHead';
 
 
 function Panel(props) {
@@ -72,11 +68,3 @@ Panel.propTypes = {
 
 export default Panel
   |> memo;
-
-export {
-  PanelHead,
-  PanelIcon,
-  PanelTabs,
-  PanelTab,
-  PanelBlock,
-};

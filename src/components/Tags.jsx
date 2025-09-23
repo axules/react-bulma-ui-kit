@@ -2,7 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { getAlignClassName } from './utils';
+import { getAlignClassName } from './_utils';
 
 
 function Tags(props) {
