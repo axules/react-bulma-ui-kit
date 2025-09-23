@@ -31,7 +31,7 @@ function SheetExamples(props) {
 
           <div className={`${cnPrefix}__sample`}>{it}</div>
 
-          {it.__source && <pre className={`${cnPrefix}__sampleSource`}>{it.__source}</pre>}
+          {it.__source && <pre className={`${cnPrefix}__sampleSource`}>{it.__source.trim()}</pre>}
         </PanelBlock>
       ))}
     </Panel>
