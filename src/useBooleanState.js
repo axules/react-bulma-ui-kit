@@ -6,8 +6,8 @@ import {
 /**
  * Just to replace several callbacks
  *
- * @param initValue
- * @returns {array[]} [value, setTrue, setFalse, toggle, setValue]
+ * @param {boolean?} initValue Default: false
+ * @returns {array[boolean,function,function,function,function]} [value, setTrue, setFalse, toggle, setValue]
  * @example
  * const [isOpened, setOpened, setHidden] = useBooleanState(false);
  *
@@ -16,7 +16,7 @@ import {
  * const onClickOpen = useCallback(() => setIsOpened(true), []);
  * const onClickClose = useCallback(() => setIsOpened(false), []);
  */
-export function useBooleanState(initValue) {
+export function useBooleanState(initValue = false) {
   const [value, setValue] = useState(initValue);
 
   const setTrue = useCallback(() => setValue(true), []);
