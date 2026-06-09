@@ -24,7 +24,6 @@ function TextField(props) {
     errorText,
     helpText,
     required,
-    forwardedRef,
     // --- props for text field
     id,
     inputAs,
@@ -49,6 +48,7 @@ function TextField(props) {
     asControl,
     isExpanded,
     loading,
+    forwardedRef,
     ...restProps
   } = props;
 
@@ -95,7 +95,6 @@ function TextField(props) {
     errorText,
     helpText,
     required,
-    forwardedRef,
   };
 
   return (
@@ -117,7 +116,6 @@ TextField.propTypes = {
   isGroupedMultiline: PropTypes.bool,
   hasAddons: PropTypes.bool,
   required: PropTypes.bool,
-  forwardedRef: PropTypes.any,
   // ----------- INPUT PROPS
   id: PropTypes.string,
   inputAs: PropTypes.any,
@@ -143,6 +141,7 @@ TextField.propTypes = {
   autoComplete: PropTypes.any,
   autoCompleteOff: PropTypes.bool,
   loading: PropTypes.bool,
+  forwardedRef: PropTypes.any,
 };
 
 export default TextField
