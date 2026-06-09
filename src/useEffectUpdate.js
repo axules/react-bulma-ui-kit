@@ -13,10 +13,10 @@ import {
  * useEffect(() => console.log('!'), [deps1, deps2]);
  * // useEffect calls handler after the first render and once deps are changed
  *
- * useChangeEvent(() => console.log('!'), [deps1, deps2]);
- * // useChangeEvent calls handler ONLY once deps are changed
+ * useEffectUpdate(() => console.log('!'), [deps1, deps2]);
+ * // useEffectUpdate calls handler ONLY once deps are changed
  */
-export function useChangeEvent(handler, dependencies) {
+export function useEffectUpdate(handler, dependencies) {
   const currentValue = useRef();
 
   return useEffect(() => {

@@ -24,6 +24,7 @@ import {
 export function useStaticCallback(handler) {
   const handlerRef = useRef(handler);
 
+  // eslint-disable-next-line react-hooks/refs
   handlerRef.current = handler;
 
   return useCallback(

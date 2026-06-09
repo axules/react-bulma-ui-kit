@@ -22,6 +22,7 @@ function Field(props) {
     helpText,
     required,
     forwardedRef,
+    labelFor,
     ...restProps
   } = props;
 
@@ -40,8 +41,8 @@ function Field(props) {
     <HtmlTag {...restProps} ref={forwardedRef} className={classNamesValue}>
       {label && (
         isHorizontal
-          ? <div className="field-label is-normal"><Label required={required}>{label}</Label></div>
-          : <Label required={required}>{label}</Label>
+          ? <div className="field-label is-normal"><Label htmlFor={labelFor} required={required}>{label}</Label></div>
+          : <Label htmlFor={labelFor} required={required}>{label}</Label>
       )}
 
       {isHorizontal ? <div className="field-body">{children}</div> : children}
@@ -65,6 +66,7 @@ Field.propTypes = {
   hasAddons: PropTypes.bool,
   required: PropTypes.bool,
   forwardedRef: PropTypes.any,
+  labelFor: PropTypes.string,
 };
 
 export default Field

@@ -51,7 +51,7 @@ export function sheetRenderer(CMP, sheets, options = {}) {
     }
   });
 
-  createRoot(document.getElementById('general'))
+  createRoot(document.getElementById('general'), { identifierPrefix: 'buk' })
     .render(
       <>
         <Title is5>
