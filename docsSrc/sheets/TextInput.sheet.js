@@ -40,7 +40,7 @@ const examples = {
 </Field>`;
     return [render];
   },
-  Loading: prepareSample(TextInput, { placeholder: '', asControl: true, loading: true }),
+  Loading: prepareSample(TextInput, { loading: true }),
 };
 
 export default sheetRenderer(TextInput, examples);

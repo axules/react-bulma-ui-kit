@@ -57,7 +57,7 @@ function TextField(props) {
   const inputProps = {
     id: id || domId,
     as: inputAs,
-    forwardedRef,
+    ref: forwardedRef,
     className,
     leftIcon,
     rightIcon,

@@ -59,7 +59,7 @@ function TextInput(props) {
     />
   );
 
-  return leftIcon || rightIcon || asControl
+  return leftIcon || rightIcon || asControl || loading
     ? (
       <Control
         isExpanded={isExpanded}
