@@ -7,10 +7,9 @@ module.exports = {
   presets: [
     ['@babel/preset-env', {
       useBuiltIns: 'entry',
-      corejs: '3',
+      corejs: '3.47',
       loose: true,
       forceAllTransforms: false,
-      targets: 'chrome 80, safari 12.1, ios 12.1'
     }],
     ['@babel/preset-react', {
       runtime: 'automatic',
