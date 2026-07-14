@@ -8,8 +8,10 @@
   },
   "exports": {
     "./*": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
     "./components/*": "./lib/components/*.js",
-    "./c/*": "./lib/components/*.js"
+    "./c/*": "./lib/components/*.js",
+    "./lib/components/*": "./lib/components/*.js"
   },
   "files": [
     "lib",
