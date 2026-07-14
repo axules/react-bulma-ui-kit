@@ -1,1 +1,1 @@
-"use strict";(globalThis.webpackChunkreact_bulma_ui_kit=globalThis.webpackChunkreact_bulma_ui_kit||[]).push([[869],{},a=>{a.O(0,[121],()=>{return u=1296,a(a.s=u);var u});a.O()}]);
+"use strict";(globalThis.webpackChunkreact_bulma_ui_kit=globalThis.webpackChunkreact_bulma_ui_kit||[]).push([[869],{},a=>{a.O(0,[121],()=>{return u=5885,a(a.s=u);var u});a.O()}]);

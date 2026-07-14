@@ -1,9 +1,5 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const { ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-// const postcssNormalize = require('postcss-normalize');
-// const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
@@ -28,25 +24,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
-    // new ProvidePlugin({
-    //   React: 'react',
-    //   ReactDOM: 'react-dom',
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'button.html',
-    //   template: './src/sheet.template.ejs',
-    //   chunks: ['button'],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'notification.html',
-    //   template: './src/sheet.template.ejs',
-    //   chunks: ['notification'],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'head.html',
-    //   template: './src/sheet.template.ejs',
-    //   chunks: ['head'],
-    // }),
   ],
   module: {
     rules: [
@@ -55,7 +32,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          configFile: path.resolve(__dirname, 'babelSheets.js')
+          configFile: path.resolve(__dirname, 'babelSheets.js'),
         },
       },
       {
@@ -75,51 +52,24 @@ module.exports = {
               importLoaders: 2,
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     postcssOptions: {
-          //       plugins: [
-          //         postcssNormalize(),
-          //       ]
-          //     }
-          //   },
-          // },
           {
             loader: 'sass-loader',
             options: {
               // precision: 8
-            }
+            },
           },
-          // {
-          //   loader: 'sass-resources-loader',
-          //   options: {
-          //     resources: [
-          //       path.resolve(__dirname, 'styles/_index.scss'),
-          //     ]
-          //   }
-          // },
-        ]
+        ],
       },
     ],
   },
   optimization: {
-    sideEffects: false,
     minimizer: [
-      // new CssMinimizerPlugin({
-      //   minify: CssMinimizerPlugin.parcelCssMinify,
-      //   minimizerOptions: {
-      //     targets: { chrome: 95 },
-      //   }
-      // }),
-
       new TerserPlugin({
         terserOptions: {
           keep_classnames: true,
           keep_fnames: true,
         },
       }),
-      // new CssMinimizerPlugin(),
     ],
     runtimeChunk: {
       name: 'manifest',
@@ -130,7 +80,7 @@ module.exports = {
       cacheGroups: {
         vendor: {
           chunks: 'initial',
-          test: /node_modules|(docsSrc[\\/](styles|utils|components|sheetRenderer|FrameMessenger))|(src[\\/](use|with))/i,
+          test: /node_modules|(docsSrc[\\/](styles|utils|components|sheetRenderer|FrameMessenger))|(src[\\/](use|with|components[\\/]_utils))/i,
           name: 'vendor',
           enforce: true,
           reuseExistingChunk: true,
