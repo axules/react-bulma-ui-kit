@@ -2,15 +2,18 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { withForwardedRef } from '../withRef';
+
 import {
   getAlignClassName,
-  getSizeClassName
+  getSizeClassName,
 } from './_utils';
 
 
 function Tabs(props) {
   const {
     as: HtmlTag = 'div',
+    forwardedRef,
     children,
     className,
 
@@ -41,7 +44,7 @@ function Tabs(props) {
   );
 
   return (
-    <HtmlTag {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} ref={forwardedRef} className={classNamesValue}>
       <ul role="tablist">
         {children}
       </ul>
@@ -51,6 +54,7 @@ function Tabs(props) {
 
 Tabs.propTypes = {
   as: PropTypes.any,
+  forwardedRef: PropTypes.object,
   children: PropTypes.node,
   className: PropTypes.string,
 
@@ -70,4 +74,5 @@ Tabs.propTypes = {
 };
 
 export default Tabs
-  |> memo;
+  |> memo
+  |> withForwardedRef;

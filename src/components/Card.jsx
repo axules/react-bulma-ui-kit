@@ -2,6 +2,8 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { withForwardedRef } from '../withRef';
+
 import CardContent from './CardContent';
 import CardFooter from './CardFooter';
 import CardFooterItem from './CardFooterItem';
@@ -14,6 +16,7 @@ import CardImage from './CardImage';
 function Card(props) {
   const {
     as: HtmlTag = 'div',
+    forwardedRef,
     children,
     className,
 
@@ -25,7 +28,7 @@ function Card(props) {
   } = props;
 
   return (
-    <HtmlTag {...restProps} className={classNames('card', className)}>
+    <HtmlTag {...restProps} ref={forwardedRef} className={classNames('card', className)}>
       {title && <CardHead title={title} centered={titleCentered} icon={titleIcon} />}
       {children}
     </HtmlTag>
@@ -34,6 +37,7 @@ function Card(props) {
 
 Card.propTypes = {
   as: PropTypes.any,
+  forwardedRef: PropTypes.object,
   children: PropTypes.node,
   className: PropTypes.string,
 
@@ -43,7 +47,8 @@ Card.propTypes = {
 };
 
 export default Card
-  |> memo;
+  |> memo
+  |> withForwardedRef;
 
 export {
   CardHead,

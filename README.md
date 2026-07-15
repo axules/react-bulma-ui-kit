@@ -97,7 +97,6 @@ Supported alias patterns:
 | Component | Description |
 |-----------|-------------|
 | `Icon` | Bulma Icon — integrates with text sizing |
-| `Image` | Bulma Image — responsive images |
 | `DeleteButton` | Delete / close button with skeleton variant |
 
 ### Navigation Components

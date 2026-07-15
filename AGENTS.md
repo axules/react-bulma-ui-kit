@@ -4,7 +4,7 @@
 
 React UI kit based on the [Bulma](https://bulma.io/) CSS framework (v1.0.4). Provides reusable React components and utility hooks for building Bulma-styled interfaces. Supports React 18–19.
 
-- **Version:** 1.20.0
+- **Version:** 1.20.2
 - **License:** ISC
 - **Author:** Shelest Denis (axules@gmail.com)
 - **Repository:** https://github.com/axules/react-bulma-ui-kit
@@ -35,7 +35,7 @@ src/                         # Source files (JSX)
     ├── Tabs.jsx             # Tabs component (Tab)
     ├── Tag.jsx              # Tag component (Tags)
     ├── ...                  # Other components (Block, Box, Buttons, Checkbox, Content, Control, DeleteButton, Field, HelpText, Icon, Label, Message, Notification, NumberInput, Radio, SelectInput, SubmitForm, TextField, TextInput, Title)
-lib/                         # Compiled output (Babel, CommonJS modules)
+lib/                         # Compiled output (Babel, CommonJS modules + source maps)
 docs/                        # Built documentation site
 docsSrc/                     # Documentation source
 ├── sheets/                  # Per-component sandbox examples (.sheet.js)
@@ -49,7 +49,7 @@ docsSrc/                     # Documentation source
 
 | Step | Command | Description |
 |------|---------|-------------|
-| App build | `babel --source-maps -d lib src -x .js,.jsx` | Transpile JSX to CommonJS |
+| App build | `cross-env NODE_ENV=production babel --source-maps --delete-dir-on-start -d lib src -x .js,.jsx` | Transpile JSX to CommonJS |
 | Docs build | `node ./docsSrc/build.js` | Build documentation site (webpack) |
 | Full build | `npm run build` | Runs app-build, then docs-build |
 
@@ -152,7 +152,6 @@ btn.toString() // → 'button'
 
 ### Media Components
 - `Icon` — Bulma Icon (with text size integration)
-- `Image` — Bulma Image (responsive)
 - `DeleteButton` — Delete/close button (skeleton variant)
 
 ### Navigation Components
@@ -185,14 +184,14 @@ btn.toString() // → 'button'
 - **Tool:** ESLint v10.5
 - **Config:** [`eslint.config.js`](eslint.config.js) uses `eslint-presets` (jsConfig + reactConfig) with custom overrides.
 - **Parser:** `@babel/eslint-parser`
-- **Plugins:** `@stylistic`, `import`, `jsx-a11y`, `react`, `react-hooks`, `simple-import-sort`, `es-plugin-es`
+- **Plugins:** `@stylistic`, `import`, `import-newlines`, `jsx-a11y`, `react`, `react-hooks`, `simple-import-sort`, `es-plugin-es`
 - **Command:** `npm run eslint`
 
 ## Dependencies
 
 - **Runtime:** `classnames` (2.x) — class name utility
 - **Peer:** `react` (18-19), `react-dom` (18-19)
-- **Dev:** Babel 8, Webpack 5, Bulma 1.0.4, Sass for SCSS processing
+- **Dev:** Babel 8, Webpack 5, Bulma 1.0.4, Sass for SCSS processing, `prop-types` for runtime type checking, `core-js` 3.x for polyfills
 
 ## Import Paths
 

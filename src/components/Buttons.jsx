@@ -2,12 +2,15 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { withForwardedRef } from '../withRef';
+
 import { getAlignClassName } from './_utils';
 
 
 function Buttons(props) {
   const {
     as: HtmlTag = 'div',
+    forwardedRef,
     children,
     className,
     hasAddons,
@@ -24,11 +27,11 @@ function Buttons(props) {
     hasAddons && 'has-addons',
     nowrap && 'is-flex-wrap-nowrap',
     getAlignClassName({ left, centered, right }),
-    className
+    className,
   );
 
   return (
-    <HtmlTag {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} ref={forwardedRef} className={classNamesValue}>
       {children}
     </HtmlTag>
   );
@@ -36,6 +39,7 @@ function Buttons(props) {
 
 Buttons.propTypes = {
   as: PropTypes.any,
+  forwardedRef: PropTypes.object,
   children: PropTypes.node,
   className: PropTypes.string,
   hasAddons: PropTypes.bool,
@@ -47,4 +51,5 @@ Buttons.propTypes = {
 };
 
 export default Buttons
-  |> memo;
+  |> memo
+  |> withForwardedRef;

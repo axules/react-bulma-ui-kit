@@ -2,10 +2,13 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { withForwardedRef } from '../withRef';
+
 
 function Tab(props) {
   const {
     as: HtmlTag = 'li',
+    forwardedRef,
     children,
     className,
     active,
@@ -19,7 +22,7 @@ function Tab(props) {
   const classNameValue = classNames(className, active && 'is-active');
 
   return (
-    <HtmlTag {...restProps} className={classNameValue}>
+    <HtmlTag {...restProps} ref={forwardedRef} className={classNameValue}>
       <a role="tab" href={href} onClick={onClick} onMouseUp={onMouseUp} onMouseDown={onMouseDown}>
         {children}
       </a>
@@ -29,6 +32,7 @@ function Tab(props) {
 
 Tab.propTypes = {
   as: PropTypes.any,
+  forwardedRef: PropTypes.object,
   href: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
@@ -39,4 +43,5 @@ Tab.propTypes = {
 };
 
 export default Tab
-  |> memo;
+  |> memo
+  |> withForwardedRef;

@@ -2,11 +2,16 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { withForwardedRef } from '../withRef';
+
 import { getAlignClassName } from './_utils';
 
 
 function Tags(props) {
-  const { children,
+  const {
+    as: HtmlTag = 'div',
+    forwardedRef,
+    children,
     className,
     hasAddons,
     nowrap,
@@ -20,17 +25,19 @@ function Tags(props) {
     hasAddons && 'has-addons',
     nowrap && 'is-flex-wrap-nowrap',
     getAlignClassName({ right, centered }),
-    className
+    className,
   );
 
   return (
-    <div {...restProps} className={classNamesValue}>
+    <HtmlTag {...restProps} ref={forwardedRef} className={classNamesValue}>
       {children}
-    </div>
+    </HtmlTag>
   );
 }
 
 Tags.propTypes = {
+  as: PropTypes.string,
+  forwardedRef: PropTypes.object,
   children: PropTypes.node,
   className: PropTypes.string,
   hasAddons: PropTypes.bool,
@@ -40,4 +47,5 @@ Tags.propTypes = {
 };
 
 export default Tags
-  |> memo;
+  |> memo
+  |> withForwardedRef;
