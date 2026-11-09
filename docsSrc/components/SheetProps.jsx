@@ -31,7 +31,7 @@ function SheetProps(props) {
 }
 
 SheetProps.propTypes = {
-  propTypesData: PropTypes.node
+  propTypesData: PropTypes.node,
 };
 
 export default SheetProps

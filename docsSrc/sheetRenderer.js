@@ -8,7 +8,7 @@ import { FrameMessenger } from './FrameMessenger';
 import {
   extractCore,
   registerResizeMessage,
-  resizeMessage
+  resizeMessage,
 } from './utils';
 
 
@@ -67,12 +67,12 @@ export function sheetRenderer(CMP, sheets, options = {}) {
         {options.pt && (
           <SheetProps propTypesData={CoreComponent.propTypes} />
         )}
-      </>
+      </>,
     );
 
   FrameMessenger.sendParentMessage(
     FrameMessenger.TYPES.SHEET_SECTIONS,
-    { items: subMenu, sheetName: CoreComponent.displayName || CoreComponent.name, pathname: location.pathname }
+    { items: subMenu, sheetName: CoreComponent.displayName || CoreComponent.name, pathname: location.pathname },
   );
 
   setTimeout(() => resizeMessage(), 50);

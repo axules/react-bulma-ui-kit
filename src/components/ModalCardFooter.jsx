@@ -9,7 +9,7 @@ function ModalCardFooter(props) {
     'modal-card-foot',
     center && 'is-justify-content-center',
     right && 'is-justify-content-flex-end',
-    className
+    className,
   );
 
   return (

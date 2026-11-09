@@ -30,7 +30,8 @@ function Radio(props) {
         />
         {children}
       </label>
-    ) : (
+    )
+    : (
       <input
         {...restProps}
         className={classNames('radio', className, classNameInput)}

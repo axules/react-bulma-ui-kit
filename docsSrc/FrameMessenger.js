@@ -17,7 +17,7 @@ class FrameMessengerClass {
   }
 
   listenMessages(callback) {
-    const onMessage = function(event) {
+    const onMessage = function (event) {
       if (typeof event.data !== 'object') return;
       const { type, payload } = event.data;
       callback(type, payload);

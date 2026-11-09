@@ -25,7 +25,7 @@ function Table(props) {
   );
 
   return (
-    <table {...restProps} className={classNameValue} >
+    <table {...restProps} className={classNameValue}>
       {children}
     </table>
   );

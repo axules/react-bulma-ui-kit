@@ -35,7 +35,7 @@ const examples = {
 </div>
     `;
     return [jsx];
-  }
+  },
 };
 
 const meta = {

@@ -15,7 +15,7 @@ function SheetSandbox(props) {
 }
 
 SheetSandbox.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default SheetSandbox

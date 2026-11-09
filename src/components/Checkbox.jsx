@@ -29,7 +29,7 @@ function Checkbox(props) {
         ? undefined
         : indeterminate || undefined;
     },
-    [indeterminate, checked, inputRef]
+    [indeterminate, checked, inputRef],
   );
 
   return children
@@ -46,7 +46,8 @@ function Checkbox(props) {
         />
         {children}
       </label>
-    ) : (
+    )
+    : (
       <input
         {...restProps}
         className={classNames('checkbox', className, classNameInput)}

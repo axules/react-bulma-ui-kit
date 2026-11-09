@@ -26,11 +26,11 @@ export function useRefCallback(initValue, onChange) {
             onChange(value, prevValue);
           }
         },
-      }
+      },
     }),
     // we need to create this main object only once - when component is initializing
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   return main.ref;

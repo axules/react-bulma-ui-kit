@@ -1,7 +1,7 @@
 import {
   memo,
   useEffect,
-  useState
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -32,7 +32,7 @@ function MainPage(props) {
   const url = selectedSheet ? `./${selectedSheet.path}` : undefined;
 
   useEffect(() => {
-    const onMessage = function(type, payload) {
+    const onMessage = function (type, payload) {
       switch (type) {
         case FrameMessenger.TYPES.FRAME_RESIZE: {
           const { height, url } = payload;
@@ -73,38 +73,56 @@ function MainPage(props) {
 
       <div className={`${cnPrefix}__view`}>
         {selectedSheet
-          ? <>
-            <Title is4>{selectedSheet.name}</Title>
-            {frameMeta && (
-              <>
-                {frameMeta.description && (
-                  <Block>
-                    {frameMeta.description}
-                  </Block>
-                )}
+          ? (
+            <>
+              <Title is4>{selectedSheet.name}</Title>
+              {frameMeta && (
+                <>
+                  {frameMeta.description && (
+                    <Block>
+                      {frameMeta.description}
+                    </Block>
+                  )}
 
-                {frameMeta.documentation && (
-                  <Block>
-                    <span>More about <Tag>{selectedSheet.name}</Tag> styles here </span>
-                    <a href={frameMeta.documentation} target="_blank" rel="noreferrer">
-                      {frameMeta.documentation}
-                    </a>
-                  </Block>
-                )}
-              </>
-            )}
-            <iframe name="SheetFrame" title={selectedSheet.name} src={url} onLoad={onLoadIframe} />
-          </>
-          : <>
-            <Title is2>{'<- '}Select component in menu</Title>
-            <Box>
-              <span>More information about <Tag primary>Bulma</Tag> is here </span>
-              <a href="https://bulma.io/documentation" target="_blank" rel="noreferrer">
-                https://bulma.io/documentation
-              </a>
-            </Box>
-          </>
-        }
+                  {frameMeta.documentation && (
+                    <Block>
+                      <span>
+                        More about
+                        <Tag>{selectedSheet.name}</Tag>
+                        {' '}
+                        styles here
+                        {' '}
+                      </span>
+                      <a href={frameMeta.documentation} target="_blank" rel="noreferrer">
+                        {frameMeta.documentation}
+                      </a>
+                    </Block>
+                  )}
+                </>
+              )}
+              <iframe name="SheetFrame" title={selectedSheet.name} src={url} onLoad={onLoadIframe} />
+            </>
+          )
+          : (
+            <>
+              <Title is2>
+                {'<- '}
+                Select component in menu
+              </Title>
+              <Box>
+                <span>
+                  More information about
+                  <Tag primary>Bulma</Tag>
+                  {' '}
+                  is here
+                  {' '}
+                </span>
+                <a href="https://bulma.io/documentation" target="_blank" rel="noreferrer">
+                  https://bulma.io/documentation
+                </a>
+              </Box>
+            </>
+          )}
       </div>
 
       <Button info className={`${cnPrefix}__toTop`} onClick={onClickToTop}>
@@ -115,7 +133,7 @@ function MainPage(props) {
 }
 
 MainPage.propTypes = {
-  sheets: PropTypes.array
+  sheets: PropTypes.array,
 };
 
 export default MainPage

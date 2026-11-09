@@ -1,6 +1,6 @@
 import {
   memo,
-  useCallback
+  useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -18,7 +18,7 @@ function SubmitForm(props) {
 
   const classNameValue = classNames(
     className,
-    loading && 'is-loading'
+    loading && 'is-loading',
   );
 
   return (

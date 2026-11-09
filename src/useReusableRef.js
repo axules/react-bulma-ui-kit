@@ -1,6 +1,6 @@
 import {
   createRef,
-  useMemo
+  useMemo,
 } from 'react';
 
 /**
@@ -45,6 +45,6 @@ export function useReusableRef(ref = undefined, initValue = undefined) {
       return createRef(initValue);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 }

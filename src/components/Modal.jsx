@@ -1,6 +1,6 @@
 import {
   memo,
-  useEffect
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -42,7 +42,7 @@ function Modal(props) {
         document.removeEventListener('keydown', onPressEsc);
       };
     },
-    [closeOnEsc, onPressEsc]
+    [closeOnEsc, onPressEsc],
   );
 
   const modalDom = (

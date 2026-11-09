@@ -9,7 +9,7 @@ function renderEach(cases, props) {
   return cases.map((it) => (
     prepareSample(
       HelpText,
-      { key: it, children: 'I am help children text', ...(it ? { [it]: true } : {}), ...props }
+      { key: it, children: 'I am help children text', ...(it ? { [it]: true } : {}), ...props },
     )
   ));
 }

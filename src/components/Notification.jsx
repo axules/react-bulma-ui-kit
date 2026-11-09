@@ -1,13 +1,13 @@
 import {
   memo,
-  useEffect
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import {
   getBrightnessClassName,
-  getStyleClassName
+  getStyleClassName,
 } from './_utils';
 import DeleteButton from './DeleteButton';
 
@@ -35,7 +35,7 @@ function Notification(props) {
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getBrightnessClassName({ white, light, dark, black }),
     centered && 'has-text-centered',
-    className
+    className,
   );
 
   useEffect(() => {

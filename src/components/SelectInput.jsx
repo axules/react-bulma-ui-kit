@@ -6,7 +6,7 @@ import { withForwardedRef } from '../withRef';
 
 import {
   getSizeClassName,
-  getStyleClassName
+  getStyleClassName,
 } from './_utils';
 import Control from './Control';
 

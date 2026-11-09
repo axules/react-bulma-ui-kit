@@ -9,7 +9,7 @@ const sizes = '.small.normal.large'.split('.');
 const icons = [
   { leftIcon: <>&#x1F608;</> },
   { rightIcon: <>&#x1F608;</> },
-  { leftIcon: <>&#x1F608;</>, rightIcon: <>&#x1F608;</> }
+  { leftIcon: <>&#x1F608;</>, rightIcon: <>&#x1F608;</> },
 ];
 
 function renderEach(cases, props) {

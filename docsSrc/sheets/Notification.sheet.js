@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import Notification from '../../src/components/Notification';
 import { sheetRenderer } from '../sheetRenderer';
 import { prepareSample } from '../utils';
@@ -12,11 +14,18 @@ function renderEach(cases, props) {
       Notification,
       {
         key: it,
-        children: <>{it || 'Default'}<br /> It is example of text which could be in this Notification component</>,
+        children: (
+          <Fragment>
+            {it || 'Default'}
+            <br />
+            {' '}
+            It is example of text which could be in this Notification component
+          </Fragment>
+        ),
         ...(it ? { [it]: true } : {}),
-        ...props
+        ...props,
       },
-      { children: 'I am notification children', onClose: '{() => { ... }}' }
+      { children: 'I am notification children', onClose: '{() => { ... }}' },
     )
   ));
 }

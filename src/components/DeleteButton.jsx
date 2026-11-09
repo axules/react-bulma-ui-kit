@@ -18,7 +18,7 @@ function DeleteButton(props) {
   const classNamesValue = classNames(
     'delete',
     getSizeClassName({ small, medium, large }),
-    className
+    className,
   );
 
   return (

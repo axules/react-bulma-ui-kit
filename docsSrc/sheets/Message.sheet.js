@@ -15,8 +15,8 @@ function renderEach(cases, props) {
         children: 'I am message children!',
         title: 'I am title',
         ...(it ? { [it]: true } : {}),
-        ...props
-      }
+        ...props,
+      },
     )
   ));
 }

@@ -16,8 +16,8 @@ function renderEach(cases, props) {
         key: it,
         children: 'click me',
         ...(it ? { [it]: true } : {}),
-        ...props
-      }
+        ...props,
+      },
     )
   ));
 }
@@ -34,7 +34,12 @@ const examples = {
   Brightness: renderEach(brightness),
   Sizes: renderEach(sizes),
   Buttons: (() => {
-    const R = <Buttons><Button primary>Save</Button><Button light>Cancel</Button></Buttons>;
+    const R = (
+      <Buttons>
+        <Button primary>Save</Button>
+        <Button light>Cancel</Button>
+      </Buttons>
+    );
     R.__source = `
 <Buttons>
   <Button primary>Save</Button>

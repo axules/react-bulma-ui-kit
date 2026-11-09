@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import {
   getBrightnessClassName,
-  getStyleClassName
+  getStyleClassName,
 } from './_utils';
 import PanelHead from './PanelHead';
 
@@ -35,7 +35,7 @@ function Panel(props) {
     'panel',
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getBrightnessClassName({ white, light, dark, black }),
-    className
+    className,
   );
 
   return (

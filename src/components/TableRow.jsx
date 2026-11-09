@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import {
   getBrightnessClassName,
-  getStyleClassName
+  getStyleClassName,
 } from './_utils';
 
 

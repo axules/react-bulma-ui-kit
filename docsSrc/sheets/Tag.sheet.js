@@ -33,10 +33,20 @@ const examples = {
   Brightness: renderEach(brightness),
   Sizes: renderEach(sizes),
   Tags: (() => {
-    const R1 = <Tags><Tag primary>today</Tag><Tag warning>tomorrow</Tag></Tags>;
+    const R1 = (
+      <Tags>
+        <Tag primary>today</Tag>
+        <Tag warning>tomorrow</Tag>
+      </Tags>
+    );
     R1.__source = '<Tags><Tag primary>today</Tag><Tag warning>tomorrow</Tag></Tags>';
 
-    const R2 = <Tags hasAddons><Tag primary>today</Tag><Tag warning>tomorrow</Tag></Tags>;
+    const R2 = (
+      <Tags hasAddons>
+        <Tag primary>today</Tag>
+        <Tag warning>tomorrow</Tag>
+      </Tags>
+    );
     R2.__source = '<Tags hasAddons><Tag primary>today</Tag><Tag warning>tomorrow</Tag></Tags>';
     return [R1, R2];
   })(),

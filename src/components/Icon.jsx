@@ -4,9 +4,8 @@ import classNames from 'classnames';
 
 import {
   getSizeClassName,
-  getTextColorClassName
+  getTextColorClassName,
 } from './_utils';
-
 
 
 function Icon(props) {
@@ -23,7 +22,7 @@ function Icon(props) {
     'icon',
     getTextColorClassName({ danger, success, warning, info, link, primary }),
     getSizeClassName({ small, medium, large }),
-    className
+    className,
   );
 
   return (

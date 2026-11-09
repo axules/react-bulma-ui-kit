@@ -7,7 +7,7 @@ import { withForwardedRef } from '../withRef';
 import {
   getSizeClassName,
   getStyleClassName,
-  skeletonClassName
+  skeletonClassName,
 } from './_utils';
 import Control from './Control';
 
@@ -46,7 +46,7 @@ function TextInput(props) {
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getSizeClassName({ small, medium, large }),
     skeletonClassName({ skeleton }),
-    className
+    className,
   );
 
   const inputRender = (

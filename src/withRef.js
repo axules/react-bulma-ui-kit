@@ -1,14 +1,5 @@
 import { forwardRef } from 'react';
 
-/**
- * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
- *
- * @param {React.Component} WrappedComponent
- * @returns
- */
-export function withForwardedRef(WrappedComponent) {
-  return withRef('forwardedRef')(WrappedComponent);
-}
 
 function withRef(propName) {
   return function (WrappedComponent) {
@@ -24,4 +15,14 @@ function withRef(propName) {
 
     return Wrapper;
   };
+}
+
+/**
+ * Adds `forwardedRef` prop to component. Uses `react.forwardRef`.
+ *
+ * @param {React.Component} WrappedComponent
+ * @returns
+ */
+export function withForwardedRef(WrappedComponent) {
+  return withRef('forwardedRef')(WrappedComponent);
 }

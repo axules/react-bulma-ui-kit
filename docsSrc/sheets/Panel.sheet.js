@@ -8,11 +8,11 @@ const styles = '.primary.link.info.success.warning.danger.white.light.dark.black
 
 const defaultProps = {
   title: 'I am panel tile!',
-  children: <PanelBlock>Hello I am children!</PanelBlock>
+  children: <PanelBlock>Hello I am children!</PanelBlock>,
 };
 
 const sourceProps = {
-  children: '\r\n  <PanelBlock>Hello I am children!</PanelBlock>\r\n'
+  children: '\r\n  <PanelBlock>Hello I am children!</PanelBlock>\r\n',
 };
 
 function prepareOne(props, srcProps) {
@@ -23,7 +23,7 @@ function renderEach(cases, props) {
   return cases.flatMap((it) => prepareOne({
     key: it,
     ...(it ? { [it]: true } : {}),
-    ...props
+    ...props,
   }));
 }
 

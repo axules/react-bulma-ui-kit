@@ -10,7 +10,6 @@ import globals from 'globals';
 
 const customConfig = {
   name: 'project-custom-config',
-  ignores: ['node_modules/**', 'build/**', 'coverage/**'],
   files: ['**/*.mjs', '**/*.js', '**/*.jsx'],
   languageOptions: {
     ecmaVersion: 'latest',
@@ -42,7 +41,13 @@ const customConfig = {
   },
 };
 
+const globalIgnores = {
+  name: 'project-global-ignores',
+  ignores: ['node_modules/**', 'build/**', 'coverage/**', 'lib/**', 'docs/**'],
+};
+
 export default defineConfig([
+  globalIgnores,
   customConfig,
   jsConfig,
   reactConfig,

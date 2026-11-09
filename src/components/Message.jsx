@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {
   getBrightnessClassName,
   getSizeClassName,
-  getStyleClassName
+  getStyleClassName,
 } from './_utils';
 import DeleteButton from './DeleteButton';
 
@@ -43,7 +43,7 @@ function Message(props) {
     getStyleClassName({ danger, success, warning, info, link, primary }),
     getSizeClassName({ small, medium, large }),
     getBrightnessClassName({ light, dark }),
-    className
+    className,
   );
 
   return (
@@ -55,9 +55,11 @@ function Message(props) {
         </div>
       )}
       {hasHeader
-        ? <div className="message-body">
-          {children}
-        </div>
+        ? (
+          <div className="message-body">
+            {children}
+          </div>
+        )
         : children}
     </HtmlTag>
   );

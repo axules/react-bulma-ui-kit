@@ -5,5 +5,5 @@ import MainPage from './components/MainPage';
 
 createRoot(document.getElementById('general'))
   .render(
-    <MainPage sheets={window.__SHEETS__} />
+    <MainPage sheets={window.__SHEETS__} />,
   );

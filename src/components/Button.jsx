@@ -8,7 +8,7 @@ import {
   getBrightnessClassName,
   getSizeClassName,
   getStyleClassName,
-  skeletonClassName
+  skeletonClassName,
 } from './_utils';
 
 
@@ -46,7 +46,7 @@ function Button(props) {
     outlined,
     rounded,
     disabled,
-    type = HtmlTag ==='button' ? 'button' : undefined,
+    type = HtmlTag === 'button' ? 'button' : undefined,
     ...restProps
   } = props;
 
@@ -61,7 +61,7 @@ function Button(props) {
     rounded && 'is-rounded',
     fullWidth && 'is-fullwidth',
     inverted && 'is-inverted',
-    className
+    className,
   );
 
   return (

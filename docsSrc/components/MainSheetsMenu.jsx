@@ -1,7 +1,7 @@
 import {
   memo,
   useEffect,
-  useState
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -21,7 +21,7 @@ function MainSheetsMenu(props) {
   }, [selected]);
 
   useEffect(() => {
-    const onMessage = function(type, payload) {
+    const onMessage = function (type, payload) {
       switch (type) {
         case FrameMessenger.TYPES.SHEET_SECTIONS: {
           setCurrentExamples(payload.items);

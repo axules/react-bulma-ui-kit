@@ -5,10 +5,9 @@ import classNames from 'classnames';
 import {
   getBrightnessClassName,
   getSizeClassName,
-  getStyleClassName
+  getStyleClassName,
 } from './_utils';
 import DeleteButton from './DeleteButton';
-
 
 
 function Tag(props) {
@@ -51,7 +50,7 @@ function Tag(props) {
     rounded && 'is-rounded',
     isDelete && 'is-delete',
     hasAddons && 'has-addons',
-    className
+    className,
   );
 
   return (

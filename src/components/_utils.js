@@ -45,12 +45,12 @@ export function getBrightnessClassName(styles) {
   } = styles;
 
   return white && 'is-white'
-  || light && 'is-light'
-  || dark && 'is-dark'
-  || black && 'is-black'
-  || text && 'is-text'
-  || ghost && 'is-ghost'
-  || undefined;
+    || light && 'is-light'
+    || dark && 'is-dark'
+    || black && 'is-black'
+    || text && 'is-text'
+    || ghost && 'is-ghost'
+    || undefined;
 }
 
 export function getSizeClassName(styles) {

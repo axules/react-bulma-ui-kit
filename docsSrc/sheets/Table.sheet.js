@@ -116,7 +116,7 @@ const examples = {
 </Table>
     `;
     return jsx;
-  }
+  },
 };
 
 export default sheetRenderer(Table, examples, { pt: true });

@@ -1,6 +1,6 @@
 import {
   useEffect,
-  useRef
+  useRef,
 } from 'react';
 
 /**

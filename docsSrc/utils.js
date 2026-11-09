@@ -11,27 +11,6 @@ export function extractCore(component) {
   return node;
 }
 
-export function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
-  const coreCmp = extractCore(CMP);
-  const { __name, __source, ...sourcePropsReplacement } = sourcePropsExt || {};
-  const cmpName = __name || coreCmp.displayName || coreCmp.name;
-
-  const R = renderSample(CMP, props);
-
-  const EXCLUDED_KEYS = [ 'key' ]
-    .concat(Object.entries(sourcePropsReplacement).map(([k, v]) => (v === undefined ? k : null)))
-    .filter(Boolean);
-
-  const propValueProcessor = (key) => {
-    if (EXCLUDED_KEYS.includes(key)) return undefined;
-    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
-    return false;
-  };
-
-  R.__source = __source || prepareSource(cmpName, props, { ...config, propValueProcessor });
-  return R;
-}
-
 export function renderSample(CMP, props) {
   return <CMP {...props} />;
 }
@@ -77,13 +56,34 @@ export function prepareSource(cmp, props, config = {}) {
     .replace(/\[\*CHILD_AFTER\*]/, multiProps || multilineChild ? '\r\n' : '');
 }
 
+export function prepareSample(CMP, props, sourcePropsExt = {}, config = {}) {
+  const coreCmp = extractCore(CMP);
+  const { __name, __source, ...sourcePropsReplacement } = sourcePropsExt || {};
+  const cmpName = __name || coreCmp.displayName || coreCmp.name;
+
+  const R = renderSample(CMP, props);
+
+  const EXCLUDED_KEYS = ['key']
+    .concat(Object.entries(sourcePropsReplacement).map(([k, v]) => (v === undefined ? k : null)))
+    .filter(Boolean);
+
+  const propValueProcessor = (key) => {
+    if (EXCLUDED_KEYS.includes(key)) return undefined;
+    if (sourcePropsReplacement[key]) return sourcePropsReplacement[key];
+    return false;
+  };
+
+  R.__source = __source || prepareSource(cmpName, props, { ...config, propValueProcessor });
+  return R;
+}
+
 export function resizeMessage() {
   const html = document.querySelector('html');
   html.style.height = '0';
 
   FrameMessenger.sendParentMessage(
     FrameMessenger.TYPES.FRAME_RESIZE,
-    { height: html.scrollHeight, url: window.location.href }
+    { height: html.scrollHeight, url: window.location.href },
   );
 }
 
